@@ -8,7 +8,7 @@ class Navbar extends Component {
         return (
             <>
                 <TopPanel />
-                
+
                 <TopHeader />
 
                 <MegaMenu />

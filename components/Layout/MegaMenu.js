@@ -8,7 +8,14 @@ class MegaMenu extends Component {
     state = {
         display: false,
         searchForm: false,
-        collapsed: true
+        collapsed: true,
+        collapseHomeItems: false,
+        collapseShopItems: false,
+        collapseWomenItems: false,
+        collapseMenItems: false,
+        collapseTodayItems: false,
+        collapsePagesItems: false,
+        collapseBlogItems: false,
     };
 
     handleCart = () => {
@@ -17,6 +24,31 @@ class MegaMenu extends Component {
                 display: !prevState.display
             };
         });
+    }
+
+    handleItemClick = (e, key) => {
+        e.preventDefault();
+        if (key === 'home') {
+            this.setState({ collapseHomeItems: !this.state.collapseHomeItems });
+        }
+        if (key === 'shop') {
+            this.setState({ collapseShopItems: !this.state.collapseShopItems });
+        }
+        if (key === 'women') {
+            this.setState({ collapseWomenItems: !this.state.collapseWomenItems  });
+        }
+        if (key === 'men') {
+            this.setState({ collapseMenItems: !this.state.collapseMenItems  });
+        }
+        if (key === 'today') {
+            this.setState({ collapseTodayItems: !this.state.collapseTodayItems  });
+        }
+        if (key === 'page') {
+            this.setState({ collapsePagesItems: !this.state.collapsePagesItems  });
+        }
+        if (key === 'blog') {
+            this.setState({ collapseBlogItems: !this.state.collapseBlogItems  });
+        }
     }
 
     handleSearchForm = () => {
@@ -46,11 +78,20 @@ class MegaMenu extends Component {
     }
 
     render() {
-        const { collapsed } = this.state;
+        const { collapsed,
+            collapseHomeItems,
+            collapseShopItems,
+            collapseWomenItems,
+            collapseMenItems,
+            collapseTodayItems,
+            collapsePagesItems,
+            collapseBlogItems,
+        } = this.state;
         const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
         const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
         let { products } = this.props;
+
         return (
             <>
                 <div className="navbar-area">
@@ -63,13 +104,13 @@ class MegaMenu extends Component {
                                     </a>
                                 </Link>
 
-                                <button 
-                                    onClick={this.toggleNavbar} 
+                                <button
+                                    onClick={this.toggleNavbar}
                                     className={classTwo}
-                                    type="button" 
-                                    data-toggle="collapse" 
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                                    aria-expanded="false" 
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false"
                                     aria-label="Toggle navigation"
                                 >
                                     <span className="icon-bar top-bar"></span>
@@ -81,294 +122,239 @@ class MegaMenu extends Component {
                                     <ul className="navbar-nav">
                                         <li className="nav-item p-relative">
                                             <Link href="#">
-                                                <a className="nav-link active" onClick={e => e.preventDefault()}>
-                                                    Home <i className="fas fa-chevron-down"></i>
+                                                <a className="nav-link active" onClick={(e) => this.handleItemClick(e, 'home')}>
+                                                    Home <i style={{ cursor: 'pointer' }} className="fas fa-chevron-down"></i>
                                                 </a>
                                             </Link>
+                                            {(collapseHomeItems || collapsed) &&
+                                                <ul className="dropdown-menu">
+                                                    <li className="nav-item">
+                                                        <Link href="/">
+                                                            <a className="nav-link">
+                                                                Home
+                                                            </a>
+                                                        </Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link href="/covid-19">
+                                                            <a className="nav-link">
+                                                                Covid-19
+                                                                <span className="new">New</span>
+                                                            </a>
+                                                        </Link>
+                                                    </li>
 
-                                            <ul className="dropdown-menu">
-                                                <li className="nav-item">
-                                                    <Link href="/">
-                                                        <a className="nav-link active">Home One</a>
-                                                    </Link>
-                                                </li>
+                                                    <li className="nav-item">
+                                                        <Link href="/grocery">
+                                                            <a className="nav-link">
+                                                                Grocery
+                                                                <span className="new">New</span>
+                                                            </a>
+                                                        </Link>
+                                                    </li>
 
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-two">
-                                                        <a className="nav-link">Home Two</a>
-                                                    </Link>
-                                                </li>
+                                                    <li className="nav-item">
+                                                        <Link href="/electronics">
+                                                            <a className="nav-link">
+                                                                Electronics
+                                                                <span className="new">New</span>
+                                                            </a>
+                                                        </Link>
+                                                    </li>
 
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-three">
-                                                        <a className="nav-link">Home Three</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-four">
-                                                        <a className="nav-link">Home Four</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-five">
-                                                        <a className="nav-link">Home Five</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-six">
-                                                        <a className="nav-link">Home Six</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-seven">
-                                                        <a className="nav-link">Home Seven</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-eight">
-                                                        <a className="nav-link">Home Eight</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-nine">
-                                                        <a className="nav-link">Home Nine</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-ten">
-                                                        <a className="nav-link">Home Ten</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/shop-style-eleven">
-                                                        <a className="nav-link">Home Eleven</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/covid-19">
-                                                        <a className="nav-link">
-                                                            Covid-19 
-                                                            <span className="new">New</span>
-                                                        </a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/grocery">
-                                                        <a className="nav-link">
-                                                            Grocery 
-                                                            <span className="new">New</span>
-                                                        </a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/electronics">
-                                                        <a className="nav-link">
-                                                            Electronics 
-                                                            <span className="new">New</span>
-                                                        </a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/furniture">
-                                                        <a className="nav-link">
-                                                            Furniture 
-                                                            <span className="new">New</span>
-                                                        </a>
-                                                    </Link>
-                                                </li>
-                                            </ul>
+                                                    <li className="nav-item">
+                                                        <Link href="/furniture">
+                                                            <a className="nav-link">
+                                                                Furniture
+                                                                <span className="new">New</span>
+                                                            </a>
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            }
                                         </li>
-                                        
+
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'shop')}>
                                                     Shop <i className="fas fa-chevron-down"></i>
                                                 </a>
                                             </Link>
-                                            <ul className="dropdown-menu">
-                                                <li className="nav-item">
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Collection Layouts</h6>
+                                            {(collapseShopItems || collapsed) &&
+                                                <ul className="dropdown-menu">
+                                                    <li className="nav-item">
+                                                        <div className="container">
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <h6 className="submenu-title">Collection Layouts</h6>
 
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/collections-style-one">
-                                                                            <a>Collections Type 1</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                    <ul className="megamenu-submenu">
+                                                                        <li>
+                                                                            <Link href="/collections-style-one">
+                                                                                <a>Collections Type 1</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/collections-style-two">
-                                                                            <a>Collections Type 2</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/collections-style-two">
+                                                                                <a>Collections Type 2</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-left-sidebar">
-                                                                            <a>Left Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/category-left-sidebar">
+                                                                                <a>Left Sidebar</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-left-sidebar-with-block">
-                                                                            <a>Left Sidebar With HTML Block</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/category-left-sidebar-with-block">
+                                                                                <a>Left Sidebar With HTML Block</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-right-sidebar">
-                                                                            <a>Right Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/category-right-sidebar">
+                                                                                <a>Right Sidebar</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-right-sidebar-with-block">
-                                                                            <a>Right Sidebar With HTML Block</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/category-right-sidebar-with-block">
+                                                                                <a>Right Sidebar With HTML Block</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-without-sidebar">
-                                                                            <a>Without Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/category-without-sidebar">
+                                                                                <a>Without Sidebar</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/category-sidebar-fullwidth">
-                                                                            <a>With Sidebar Full Width</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    
-                                                                    <li>
-                                                                        <Link href="/category-without-sidebar-fullwidth">
-                                                                            <a>Without Sidebar Full Width</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                                        <li>
+                                                                            <Link href="/category-sidebar-fullwidth">
+                                                                                <a>With Sidebar Full Width</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Other Pages</h6>
+                                                                        <li>
+                                                                            <Link href="/category-without-sidebar-fullwidth">
+                                                                                <a>Without Sidebar Full Width</a>
+                                                                            </Link>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
 
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/cart">
-                                                                            <a>Cart</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                <div className="col">
+                                                                    <h6 className="submenu-title">Other Pages</h6>
 
-                                                                    <li>
-                                                                        <Link href="/checkout">
-                                                                            <a>Checkout</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                    <ul className="megamenu-submenu">
+                                                                        <li>
+                                                                            <Link href="/cart">
+                                                                                <a>Cart</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/compare">
-                                                                            <a>Compare</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/checkout">
+                                                                                <a>Checkout</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/login">
-                                                                            <a>Login</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/compare">
+                                                                                <a>Compare</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/signup">
-                                                                            <a>Signup</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="/login">
+                                                                                <a>Login</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="/customer-service">
-                                                                            <a>Customer Service</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                                        <li>
+                                                                            <Link href="/signup">
+                                                                                <a>Signup</a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Top Brands</h6>
+                                                                        <li>
+                                                                            <Link href="/customer-service">
+                                                                                <a>Customer Service</a>
+                                                                            </Link>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
 
-                                                                <ul className="megamenu-submenu top-brands">
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner1.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
+                                                                <div className="col">
+                                                                    <h6 className="submenu-title">Top Brands</h6>
 
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner2.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner3.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
+                                                                    <ul className="megamenu-submenu top-brands">
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner1.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner4.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner2.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner5.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner3.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
 
-                                                                    <li>
-                                                                        <Link href="#">
-                                                                            <a>
-                                                                                <img src={require("../../images/partner6.png")} alt="image" />
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner4.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner5.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <Link href="#">
+                                                                                <a>
+                                                                                    <img src={require("../../images/partner6.png")} alt="image" />
+                                                                                </a>
+                                                                            </Link>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
+                                            }
                                         </li>
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'women')}>
                                                     Women's <i className="fas fa-chevron-down"></i>
                                                 </a>
                                             </Link>
-                                            <ul className="dropdown-menu">
+                                            {(collapseWomenItems || collapsed) &&
+                                                <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <div className="container">
                                                         <div className="row">
@@ -441,7 +427,7 @@ class MegaMenu extends Component {
                                                                             <a>Boots</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-left-sidebar-with-block">
                                                                             <a>Heels</a>
@@ -477,7 +463,7 @@ class MegaMenu extends Component {
                                                                             <a>Bags</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-right-sidebar">
                                                                             <a>Glasses</a>
@@ -545,13 +531,15 @@ class MegaMenu extends Component {
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
+                                            }
+                                       </li>
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>Men's <i className="fas fa-chevron-down"></i></a>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'men')}>Men's <i className="fas fa-chevron-down"></i></a>
                                             </Link>
-                                            <ul className="dropdown-menu">
+                                            {(collapseMenItems || collapsed) &&
+                                                <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <div className="container">
                                                         <div className="row">
@@ -570,7 +558,7 @@ class MegaMenu extends Component {
                                                                             <a>Jackets</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-right-sidebar">
                                                                             <a>Jeans</a>
@@ -672,7 +660,7 @@ class MegaMenu extends Component {
                                                                             <a>Backpacks</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-right-sidebar">
                                                                             <a>Glasses</a>
@@ -737,13 +725,15 @@ class MegaMenu extends Component {
                                                     </div>
                                                 </li>
                                             </ul>
+                                            }
                                         </li>
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>Today's Deals <i className="fas fa-chevron-down"></i></a>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'today')}>Today's Deals <i className="fas fa-chevron-down"></i></a>
                                             </Link>
-                                            <ul className="dropdown-menu">
+                                            {(collapseTodayItems || collapsed) &&
+                                                <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <div className="container">
                                                         <div className="row">
@@ -762,7 +752,7 @@ class MegaMenu extends Component {
                                                                             <a>Jackets</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-right-sidebar">
                                                                             <a>Jeans</a>
@@ -864,7 +854,7 @@ class MegaMenu extends Component {
                                                                             <a>Backpacks</a>
                                                                         </Link>
                                                                     </li>
-                                                                    
+
                                                                     <li>
                                                                         <Link href="/category-right-sidebar">
                                                                             <a>Glasses</a>
@@ -929,16 +919,17 @@ class MegaMenu extends Component {
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
+                                            }
+                                       </li>
 
                                         <li className="nav-item p-relative">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'page')}>
                                                     Pages <i className="fas fa-chevron-down"></i>
                                                 </a>
                                             </Link>
-
-                                            <ul className="dropdown-menu">
+                                            {(collapsePagesItems || collapsed) &&
+                                                <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <Link href="/about">
                                                         <a className="nav-link">About Us</a>
@@ -1034,14 +1025,15 @@ class MegaMenu extends Component {
                                                     </Link>
                                                 </li>
                                             </ul>
-                                        </li>
+                                            }
+                                       </li>
 
                                         <li className="nav-item p-relative">
                                             <Link href="#">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>Blog <i className="fas fa-chevron-down"></i></a>
+                                                <a className="nav-link" onClick={(e) => this.handleItemClick(e, 'blog')}>Blog <i className="fas fa-chevron-down"></i></a>
                                             </Link>
-
-                                            <ul className="dropdown-menu">
+                                            {(collapseBlogItems || collapsed) &&
+                                                <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <Link href="/blog">
                                                         <a className="nav-link">Blog Grid (3 in Row)</a>
@@ -1064,7 +1056,7 @@ class MegaMenu extends Component {
                                                     <Link href="/blog-details">
                                                         <a className="nav-link">Blog Details</a>
                                                     </Link>
-                                                    
+
                                                     <Link href="/blog-details-two">
                                                         <a className="nav-link">Blog Details Two</a>
                                                     </Link>
@@ -1074,25 +1066,26 @@ class MegaMenu extends Component {
                                                     </Link>
                                                 </li>
                                             </ul>
-                                        </li>
+                                            }
+                                       </li>
                                     </ul>
 
                                     <div className="others-option">
                                         <div className="option-item">
-                                            <i 
-                                                onClick={this.handleSearchForm} 
+                                            <i
+                                                onClick={this.handleSearchForm}
                                                 className="search-btn fas fa-search"
                                                 style={{
                                                     display: this.state.searchForm ? 'none' : 'block'
                                                 }}
                                             ></i>
 
-                                            <i 
-                                                onClick={this.handleSearchForm} 
+                                            <i
+                                                onClick={this.handleSearchForm}
                                                 className={`close-btn fas fa-times ${this.state.searchForm ? 'active' : ''}`}
                                             ></i>
-                                            
-                                            <div 
+
+                                            <div
                                                 className="search-overlay search-popup"
                                                 style={{
                                                     display: this.state.searchForm ? 'block' : 'none'
@@ -1134,7 +1127,7 @@ class MegaMenu extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 {this.state.display ? <Cart onClick={this.handleCart} /> : ''}
             </>
         );
