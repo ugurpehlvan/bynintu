@@ -8,7 +8,7 @@ import ProductImage from '../../components/product-details/ProductImage';
 import ProductContent from '../../components/product-details/ProductContent';
 import DetailsTab from '../../components/product-details/DetailsTab';
 import RelatedProducts from '../../components/product-details/RelatedProducts';
-import Facility from '../../components/shop-style-one/Facility';
+import Facility from '../../components/shop-style-two/Facility';
 
 const Product = () => {
     const router = useRouter()
@@ -25,7 +25,7 @@ const Product = () => {
             <section className="products-details-area pt-60">
                 <div className="container">
                     <div className="row">
-                        
+
                         <ProductImage />
 
                         <ProductContent product={product} />

@@ -7,7 +7,7 @@ import Facility from '../components/Common/Facility';
 import LeftSidebar from '../components/Sidebar/LeftSidebar';
 import ProductsFilterOptions from '../components/Common/ProductsFilterOptions';
 import ProductsCard from '../components/products/ProductsCard';
-import OfferArea from '../components/shop-style-one/OfferArea';
+import OfferArea from '../components/shop-style-two/OfferArea';
 
 const hookClass = (props) => {
     const products = useSelector((state) => state.products)
@@ -33,7 +33,7 @@ class Index extends Component {
         return (
             <>
                 <Navbar />
-                
+
                 <Breadcrumb title="Women's" />
 
                 <OfferArea />
