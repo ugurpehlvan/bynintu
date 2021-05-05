@@ -21,18 +21,8 @@ const Signup = () => {
 
                         <form className="signup-form">
                             <div className="form-group">
-                                <label>First Name</label>
-                                <input type="text" className="form-control" placeholder="Enter your name" id="fname" name="fname" />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Last Name</label>
-                                <input type="text" className="form-control" placeholder="Enter your name" id="lname" name="lname" />
-                            </div>
-
-                            <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" className="form-control" placeholder="Enter your name" id="name" name="name" />
+                                <input type="email" className="form-control" placeholder="Enter your email" id="name" name="email" />
                             </div>
 
                             <div className="form-group">
@@ -48,7 +38,7 @@ const Signup = () => {
                     </div>
                 </div>
             </section>
-            
+
             <Facility />
 
             <Footer />
