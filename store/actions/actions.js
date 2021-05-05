@@ -74,11 +74,10 @@ export const removeItemFromCompare = (id) => {
 
 //sign in action
 export const signIn = (formValues) => async (dispatch, getState) => {
-    console.log('getState()', getState());
     const response = (await axiosClient.post(apiURL.signIn, formValues)).data;
-    console.log('response', response);
     if (response.success) {
         dispatch({ type: AUTH_SUCCESS, payload: response });
+
     } else {
         dispatch({ type: AUTH_ERROR, payload: response?.error });
     }

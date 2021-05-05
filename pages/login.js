@@ -13,7 +13,7 @@ import notify from '../utils/notify';
 const Login = ({ signIn, user }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    console.log('user', user);
+
     const handleEmailChange = useCallback((e) => {
         setEmail(e.target.value);
     }, []);
