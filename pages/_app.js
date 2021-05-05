@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import '../public/assets/styles/bootstrap.min.css';
 import '../public/assets/styles/fontawesome.min.css';
 import '../public/assets/styles/animate.min.css';
@@ -9,6 +10,9 @@ import 'react-image-lightbox/style.css';
 import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
 
+// styles
+import 'react-toastify/dist/ReactToastify.css';
+
 import Layout from '../components/_App/Layout';
 import { Provider } from 'react-redux';
 // import withRedux from 'next-redux-wrapper';
@@ -17,11 +21,14 @@ import { useStore } from '../store/reducers/reducers';
 const MyApp = ({ Component, pageProps }) => {
     const store = useStore(pageProps.initialReduxState)
     return (
-        <Layout>
-            <Provider store={store}>
-                <Component {...pageProps} />
-            </Provider>
-        </Layout>
+        <>
+            <ToastContainer />
+            <Layout>
+                <Provider store={store}>
+                    <Component {...pageProps} />
+                </Provider>
+            </Layout>
+        </>
     );
 }
 

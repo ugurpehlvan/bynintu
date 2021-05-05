@@ -3,12 +3,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import {
-    products, 
-    productsCollectionSix, 
-    productsCollectionSeven, 
-    productsCollectionEight, 
-    productsCollectionNine, 
-    productsCollectionTen, 
+    products,
+    productsCollectionSix,
+    productsCollectionSeven,
+    productsCollectionEight,
+    productsCollectionNine,
+    productsCollectionTen,
     productsCollectionEleven,
     productsCovid19,
     productsGrocery,
@@ -18,16 +18,17 @@ import {
 
 let store
 
-import { 
+import {
     ADD_TO_CART,
     REMOVE_ITEM,
     SUB_QUANTITY,
-    ADD_QUANTITY, 
+    ADD_QUANTITY,
     ADD_SHIPPING,
     ADD_QUANTITY_WITH_NUMBER,
     RESET_CART,
     ADD_TO_COMPARE,
-    REMOVE_ITEM_FROM_COMPARE
+    REMOVE_ITEM_FROM_COMPARE,
+    AUTH_SUCCESS
 } from '../actions/action-types/action-names'
 
 const initialState = {
@@ -45,13 +46,14 @@ const initialState = {
     addedItems:[],
     addedItemsToCompare:[],
     total: 0,
-    shipping: 0
+    shipping: 0,
+    user: {}
 }
 
 const reducers = (state = initialState, action) => {
-   
+
     if(action.type === ADD_TO_CART){
-        let addedItem = state.products.find(item => item.id === action.id) 
+        let addedItem = state.products.find(item => item.id === action.id)
         || state.productsCollectionSix.find(item => item.id === action.id)
         || state.productsCollectionSeven.find(item => item.id === action.id)
         || state.productsCollectionEight.find(item => item.id === action.id)
@@ -65,22 +67,22 @@ const reducers = (state = initialState, action) => {
         //check if the action id exists in the addedItems
         let existed_item = state.addedItems.find(item => action.id === item.id)
         if(existed_item){
-            addedItem.quantity += 1 
+            addedItem.quantity += 1
             return {
                 ...state,
-                total: state.total + addedItem.price 
+                total: state.total + addedItem.price
             }
         } else {
             addedItem.quantity = 1;
             //calculating the total
-            let newTotal = state.total + addedItem.price 
-            
+            let newTotal = state.total + addedItem.price
+
             return {
                 ...state,
                 addedItems: [...state.addedItems, addedItem],
                 total : newTotal
             }
-            
+
         }
     }
 
@@ -96,9 +98,9 @@ const reducers = (state = initialState, action) => {
         || state.productsGrocery.find(item => item.id === action.id)
         || state.productsElectronics.find(item => item.id === action.id)
         || state.productsFurniture.find(item => item.id === action.id)
-        
+
         addedItemToCompare.quantity = 1;
-        
+
         return {
             ...state,
             addedItemsToCompare: [...state.addedItemsToCompare, addedItemToCompare]
@@ -120,20 +122,20 @@ const reducers = (state = initialState, action) => {
             addedItem.quantity = action.qty;
             //calculating the total
             let newTotal = state.total + addedItem.price * action.qty
-            
+
             return {
                 ...state,
                 addedItems: [...state.addedItems, addedItem],
                 total : newTotal
             }
-            
+
         }
     }
 
     if(action.type === REMOVE_ITEM){
         let itemToRemove = state.addedItems.find(item=> action.id === item.id)
         let new_items = state.addedItems.filter(item=> action.id !== item.id)
-        
+
         //calculating the total
         let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity );
 
@@ -146,7 +148,7 @@ const reducers = (state = initialState, action) => {
 
     if(action.type === REMOVE_ITEM_FROM_COMPARE){
         let new_items = state.addedItemsToCompare.filter(item=> action.id !== item.id)
-        
+
         return {
             ...state,
             addedItemsToCompare: new_items
@@ -155,7 +157,7 @@ const reducers = (state = initialState, action) => {
 
     if(action.type === ADD_QUANTITY){
         let addedItem = state.products.find(item=> item.id === action.id)
-        addedItem.quantity += 1 
+        addedItem.quantity += 1
         let newTotal = state.total + addedItem.price
         return {
             ...state,
@@ -163,8 +165,8 @@ const reducers = (state = initialState, action) => {
         }
     }
 
-    if(action.type === SUB_QUANTITY){  
-        let addedItem = state.products.find(item=> item.id === action.id) 
+    if(action.type === SUB_QUANTITY){
+        let addedItem = state.products.find(item=> item.id === action.id)
         //if the qt == 0 then it should be removed
         if(addedItem.quantity === 1){
             let new_items = state.addedItems.filter(item=>item.id !== action.id)
@@ -182,7 +184,7 @@ const reducers = (state = initialState, action) => {
                 total: newTotal
             }
         }
-        
+
     }
 
     if(action.type === ADD_SHIPPING){
@@ -207,7 +209,14 @@ const reducers = (state = initialState, action) => {
             shipping: 0
         }
     }
-    
+
+    if(action.type === AUTH_SUCCESS){
+        return {
+            ...state,
+            user: action.payload
+        }
+    }
+
     else {
         return state
     }
@@ -223,7 +232,7 @@ const initStore = (preloadedState = initialState) => {
 
 export const initializeStore = (preloadedState) => {
     let _store = store ?? initStore(preloadedState)
-  
+
     // After navigating to a page with an initial Redux state, merge that state
     // with the current state in the store, and create a new store
     if (preloadedState && store) {
@@ -234,12 +243,12 @@ export const initializeStore = (preloadedState) => {
         // Reset the current store
         store = undefined
     }
-  
+
     // For SSG and SSR always create a new store
     if (typeof window === 'undefined') return _store
     // Create the store once in the client
     if (!store) store = _store
-  
+
     return _store
 }
 
@@ -247,4 +256,3 @@ export const useStore = (initialState) => {
     const store = useMemo(() => initializeStore(initialState), [initialState])
     return store
 }
-  

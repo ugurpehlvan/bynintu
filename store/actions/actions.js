@@ -1,4 +1,5 @@
-import { 
+import { apiURL, axiosClient } from '../../service';
+import {
     ADD_TO_CART,
     REMOVE_ITEM,
     SUB_QUANTITY,
@@ -6,7 +7,9 @@ import {
     ADD_QUANTITY_WITH_NUMBER,
     RESET_CART,
     ADD_TO_COMPARE,
-    REMOVE_ITEM_FROM_COMPARE
+    REMOVE_ITEM_FROM_COMPARE,
+    AUTH_SUCCESS,
+    AUTH_ERROR
 } from './action-types/action-names'
 
 //add cart action
@@ -68,3 +71,15 @@ export const removeItemFromCompare = (id) => {
         id
     }
 }
+
+//sign in action
+export const signIn = (formValues) => async (dispatch, getState) => {
+    console.log('getState()', getState());
+    const response = (await axiosClient.post(apiURL.signIn, formValues)).data;
+    console.log('response', response);
+    if (response.success) {
+        dispatch({ type: AUTH_SUCCESS, payload: response });
+    } else {
+        dispatch({ type: AUTH_ERROR, payload: response?.error });
+    }
+};

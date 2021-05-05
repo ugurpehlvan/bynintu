@@ -61,10 +61,10 @@ class CartContent extends Component {
 
                                         <div className="col-lg-5 col-md-5 text-right">
                                             <label>
-                                                <input 
-                                                    type="checkbox" 
-                                                    ref="shipping" 
-                                                    onChange= {this.handleChecked} 
+                                                <input
+                                                    type="checkbox"
+                                                    ref="shipping"
+                                                    onChange= {this.handleChecked}
                                                 />
                                                 <span>Shipping(+6$)</span>
                                             </label>
@@ -80,7 +80,7 @@ class CartContent extends Component {
                                         <li>Shipping <span>${this.props.shipping}</span></li>
                                         <li>Total <span><b>${this.props.total + this.props.shipping}</b></span></li>
                                     </ul>
-                                    
+
                                     <Link href="/checkout">
                                         <a className="btn btn-light">Proceed to Checkout</a>
                                     </Link>
