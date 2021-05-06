@@ -10,7 +10,7 @@ import ProductsCard from '../components/products/ProductsCard';
 import OfferArea from '../components/shop-style-two/OfferArea';
 
 const hookClass = (props) => {
-    const products = useSelector((state) => state.products)
+    const products = useSelector((state) => state.other.products)
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />
 }

@@ -7,7 +7,7 @@ import ProductsFilterOptions from '../components/category-without-sidebar/Produc
 import ProductsCard from '../components/category-without-sidebar/ProductsCard';
 
 const hookClass = (props) => {
-    const products = useSelector((state) => state.products)
+    const products = useSelector((state) => state.other.products)
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />
 }
@@ -23,7 +23,7 @@ class Index extends Component {
             gridClass: e
         });
     }
-    
+
     render() {
         let { gridClass } = this.state;
         let { products, CompareProducts } = this.props;

@@ -1,332 +1,274 @@
 export const products = [
     {
         id: 1,
-        title: "Linen crochet trim t-shirt",
-        price: 190,
-        image: require("../../images/img1.jpg"),
-        imageHover: require("../../images/img-hover1.jpg"),
+        title: "Black Mini Dress with Shirring Hang",
+        price: 24.99,
+        image: require("../../images/landing-image/red-shoes-1.jpeg"),
+        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 2,
         title: "Neck empire sleeve t-shirts",
         price: 120,
-        image: require("../../images/img2.jpg"),
-        imageHover: require("../../images/img-hover2.jpg"),
+        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 3,
         title: "Mermaid pencil midi lace",
         price: 160,
-        image: require("../../images/img3.jpg"),
-        imageHover: require("../../images/img-hover3.jpg"),
+        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 4,
         title: "Criss-cross V neck bodycon",
         price: 130,
-        image: require("../../images/img4.jpg"),
-        imageHover: require("../../images/img-hover4.jpg"),
+        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 5,
         title: "The cosmic cornucopia",
         price: 90,
-        image: require("../../images/img5.jpg"),
-        imageHover: require("../../images/img-hover5.jpg"),
+        image: require("../../images/landing-image/red-shoes-1.jpeg"),
+        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 6,
         title: "Tenku remastered",
         price: 180,
-        image: require("../../images/img6.jpg"),
-        imageHover: require("../../images/img-hover6.jpg"),
+        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 7,
         title: "Women's sherpa lined hoodie",
         price: 330,
-        image: require("../../images/img7.jpg"),
-        imageHover: require("../../images/img-hover7.jpg"),
+        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 8,
         title: "Belted chino trousers polo",
         price: 140,
-        image: require("../../images/img8.jpg"),
-        imageHover: require("../../images/img-hover8.jpg"),
+        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 9,
         title: "The cosmic cornucopia",
         price: 430,
-        image: require("../../images/img1.jpg"),
-        imageHover: require("../../images/img-hover1.jpg"),
+        image: require("../../images/landing-image/red-shoes-1.jpeg"),
+        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 10,
         title: "Tenku remastered",
         price: 650,
-        image: require("../../images/img2.jpg"),
-        imageHover: require("../../images/img-hover2.jpg"),
+        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 11,
         title: "Women's sherpa lined hoodie",
         price: 230,
-        image: require("../../images/img3.jpg"),
-        imageHover: require("../../images/img-hover3.jpg"),
+        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 12,
         title: "Linen crochet trim t-shirt",
         price: 670,
-        image: require("../../images/img4.jpg"),
-        imageHover: require("../../images/img-hover4.jpg"),
+        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 13,
         title: "Neck empire sleeve t-shirts",
         price: 120,
-        image: require("../../images/img5.jpg"),
-        imageHover: require("../../images/img-hover5.jpg"),
+        image: require("../../images/landing-image/red-shoes-1.jpeg"),
+        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 14,
         title: "Mermaid pencil midi lace",
         price: 540,
-        image: require("../../images/img6.jpg"),
-        imageHover: require("../../images/img-hover6.jpg"),
+        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 15,
         title: "Criss-cross V neck bodycon",
         price: 230,
-        image: require("../../images/img7.jpg"),
-        imageHover: require("../../images/img-hover7.jpg"),
+        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 16,
         title: "Belted chino trousers polo",
         price: 530,
-        image: require("../../images/img8.jpg"),
-        imageHover: require("../../images/img-hover8.jpg"),
+        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
+        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     }
 ]
 
-export const productsCollectionSix = [
+export const productsCollectionPillows = [
     {
         id: 17,
         title: "Linen crochet trim",
         price: 190,
-        image: require("../../images/sunglasses-image/sunglasses-img1.jpg"),
+        image: require("../../images/landing-image/kirlent-1.jpeg"),
+        imageHover: require("../../images/landing-image/kirlent-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 18,
         title: "Neck empire sleeve",
         price: 120,
-        image: require("../../images/sunglasses-image/sunglasses-img2.jpg"),
+        image: require("../../images/landing-image/kirlent-11.jpeg"),
+        imageHover: require("../../images/landing-image/kirlent-12.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 19,
         title: "Mermaid pencil midi",
         price: 160,
-        image: require("../../images/sunglasses-image/sunglasses-img3.jpg"),
+        image: require("../../images/landing-image/kirlent-21.jpeg"),
+        imageHover: require("../../images/landing-image/kirlent-22.jpeg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 20,
+        title: "Linen crochet trim",
+        price: 190,
+        image: require("../../images/landing-image/kirlent-cicekli-1.jpeg"),
+        imageHover: require("../../images/landing-image/kirlent-cicekli-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     }
 ]
 
-export const productsCollectionSeven = [
+export const productsCollectionWomanDress = [
     {
         id: 20,
         title: "Linen Crochet Trim",
         price: 190,
-        image: require("../../images/product-image/product-img1.jpg"),
+        image: require("../../images/landing-image/dekolteli-kirmizi.jpeg"),
+        imageHover: require("../../images/landing-image/dekolteli-kirmizi-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 21,
         title: "Heartland Alabama",
         price: 300,
-        image: require("../../images/product-image/product-img2.jpg"),
+        image: require("../../images/landing-image/dekolteli-mavi.jpeg"),
+        imageHover: require("../../images/landing-image/dekolteli-mavi-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 22,
         title: "Mermaid pencil midi",
         price: 250,
-        image: require("../../images/product-image/product-img3.jpg"),
+        image: require("../../images/landing-image/dekolteli-mor.jpeg"),
+        imageHover: require("../../images/landing-image/dekolteli-mor-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 23,
         title: "Criss-cross",
         price: 160,
-        image: require("../../images/product-image/product-img4.jpg"),
+        image: require("../../images/landing-image/dekolteli-siyah.jpeg"),
+        imageHover: require("../../images/landing-image/dekolteli-siyah-miror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
-    {
-        id: 24,
-        title: "V neck bodycon",
-        price: 214,
-        image: require("../../images/product-image/product-img5.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 25,
-        title: "Cosmic Cornucopia",
-        price: 120,
-        image: require("../../images/product-image/product-img6.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 26,
-        title: "Tenku Remastered",
-        price: 540,
-        image: require("../../images/product-image/product-img7.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 27,
-        title: "Lined Hoodie",
-        price: 180,
-        image: require("../../images/product-image/product-img8.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    }
 ]
 
-export const productsCollectionEight = [
+export const productsCollectionLinens = [
     {
         id: 28,
         title: "Linen Crochet Trim",
         price: 190,
-        image: require("../../images/product-image/product-img1.jpg"),
+        image: require("../../images/landing-image/nevresim-1.jpeg"),
+        imageHover: require("../../images/landing-image/nevresim-1-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 29,
         title: "Heartland Alabama",
         price: 300,
-        image: require("../../images/product-image/product-img2.jpg"),
+        image: require("../../images/landing-image/nevresim-2.jpeg"),
+        imageHover: require("../../images/landing-image/nevresim-2-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 30,
         title: "Mermaid Pencil Midi",
         price: 250,
-        image: require("../../images/product-image/product-img3.jpg"),
+        image: require("../../images/landing-image/nevresim-3.jpeg"),
+        imageHover: require("../../images/landing-image/nevresim-3-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 31,
         title: "Criss-cross",
         price: 160,
-        image: require("../../images/product-image/product-img4.jpg"),
+        image: require("../../images/landing-image/nevresim-4.jpeg"),
+        imageHover: require("../../images/landing-image/nevresim-4-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 32,
         title: "Vneck Bodycon",
         price: 214,
-        image: require("../../images/product-image/product-img5.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 33,
-        title: "Cosmic Cornucopia",
-        price: 120,
-        image: require("../../images/product-image/product-img6.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 34,
-        title: "Tenku Remastered",
-        price: 540,
-        image: require("../../images/product-image/product-img7.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 35,
-        title: "Lined Hoodie",
-        price: 180,
-        image: require("../../images/product-image/product-img8.jpg"),
+        image: require("../../images/landing-image/nevresim-5.jpeg"),
+        imageHover: require("../../images/landing-image/nevresim-5-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     }
 ]
 
-export const productsCollectionNine = [
+export const productsCollectionBathrobe = [
     {
         id: 36,
         title: "Linen Crochet Trim",
         price: 190,
-        image: require("../../images/product-image/product-img1.jpg"),
+        image: require("../../images/landing-image/bornoz-beyaz.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 37,
         title: "Heartland Alabama",
         price: 300,
-        image: require("../../images/product-image/product-img2.jpg"),
+        image: require("../../images/landing-image/bornoz-gri.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 38,
         title: "Mermaid Pencil Midi",
         price: 250,
-        image: require("../../images/product-image/product-img3.jpg"),
+        image: require("../../images/landing-image/bornoz-bordo.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 39,
         title: "Criss-cross",
         price: 160,
-        image: require("../../images/product-image/product-img4.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 40,
-        title: "Vneck Bodycon",
-        price: 214,
-        image: require("../../images/product-image/product-img5.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 41,
-        title: "Cosmic Cornucopia",
-        price: 120,
-        image: require("../../images/product-image/product-img6.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 42,
-        title: "Tenku Remastered",
-        price: 540,
-        image: require("../../images/product-image/product-img7.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 43,
-        title: "Lined Hoodie",
-        price: 180,
-        image: require("../../images/product-image/product-img8.jpg"),
-        quickView: require("../../images/quick-view-img.jpg")
+        image: require("../../images/landing-image/bornoz-pudra.jpeg"),
     }
 ]
 
@@ -472,7 +414,7 @@ export const productsCovid19 = [
     },
     {
         id: 63,
-        title: "Drugs", 
+        title: "Drugs",
         price: 30,
         image: "https://demaxin.s3.ap-south-1.amazonaws.com/cd19-4-1589216248208.jpg",
         imageHover: "https://demaxin.s3.ap-south-1.amazonaws.com/cd19-4-1589216248208.jpg"
@@ -517,7 +459,7 @@ export const productsGrocery = [
     },
     {
         id: 69,
-        title: "Potatoes", 
+        title: "Potatoes",
         price: 30,
         image: "https://demaxin.s3.ap-south-1.amazonaws.com/grocery-product6-1592652493288.jpg",
         imageHover: "https://demaxin.s3.ap-south-1.amazonaws.com/grocery-product6-1592652493288.jpg"
@@ -562,7 +504,7 @@ export const productsElectronics = [
     },
     {
         id: 75,
-        title: "Smart Watch", 
+        title: "Smart Watch",
         price: 230,
         image: "https://demaxin.s3.ap-south-1.amazonaws.com/electronics-product6-1592295158729.jpg",
         imageHover: "https://demaxin.s3.ap-south-1.amazonaws.com/electronics-product6-1592295158729.jpg"
@@ -607,7 +549,7 @@ export const productsFurniture = [
     },
     {
         id: 81,
-        title: "Dorsten Oversized Chair", 
+        title: "Dorsten Oversized Chair",
         price: 330,
         image: "https://demaxin.s3.ap-south-1.amazonaws.com/furniture-product3-1592455668243.jpg",
         imageHover: "https://demaxin.s3.ap-south-1.amazonaws.com/furniture-product3-1592455668243.jpg"

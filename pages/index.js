@@ -18,6 +18,11 @@ import InstagramPhoto from '../components/Common/InstagramPhoto';
 
 const Index = () => {
     const products = useSelector((state) => state.other.products)
+    const productsCollectionPillows = useSelector((state) => state.other.productsCollectionPillows);
+    const productsCollectionWomanDress = useSelector((state) => state.other.productsCollectionWomanDress);
+    const productsCollectionLinens = useSelector((state) => state.other.productsCollectionLinens);
+    const productsCollectionBathrobe = useSelector((state) => state.other.productsCollectionBathrobe);
+
     const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare)
     return (
         <>
@@ -27,13 +32,18 @@ const Index = () => {
 
             <OfferArea />
 
-            <Products products={products} CompareProducts={addedItemsToCompare} />
+            <Products
+                products={products}
+                productsCollectionBathrobe={productsCollectionBathrobe}
+                productsCollectionLinens={productsCollectionLinens}
+                CompareProducts={addedItemsToCompare}
+            />
 
             <CategoryProducts />
 
-            <TrendingProducts products={products} CompareProducts={addedItemsToCompare} />
+            <TrendingProducts products={productsCollectionPillows} CompareProducts={addedItemsToCompare} />
 
-            <BestSeller products={products} CompareProducts={addedItemsToCompare} />
+            <BestSeller products={productsCollectionWomanDress} CompareProducts={addedItemsToCompare} />
 
             <Facility />
 

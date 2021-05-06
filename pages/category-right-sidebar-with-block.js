@@ -10,7 +10,7 @@ import ProductsCard from '../components/products/ProductsCard';
 import CategoryProducts from '../components/collections-styles/CategoryProducts';
 
 const hookClass = (props) => {
-    const products = useSelector((state) => state.products)
+    const products = useSelector((state) => state.other.products)
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />
 }
@@ -35,7 +35,7 @@ class Index extends Component {
                 <Navbar />
 
                 <Breadcrumb title="Men's" />
-                
+
                 <CategoryProducts />
 
                 <section className="products-collections-area ptb-60">

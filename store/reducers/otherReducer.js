@@ -12,10 +12,10 @@ import {
 
 import {
     products,
-    productsCollectionSix,
-    productsCollectionSeven,
-    productsCollectionEight,
-    productsCollectionNine,
+    productsCollectionPillows,
+    productsCollectionWomanDress,
+    productsCollectionLinens,
+    productsCollectionBathrobe,
     productsCollectionTen,
     productsCollectionEleven,
     productsCovid19,
@@ -26,10 +26,10 @@ import {
 
 export const initialState = {
     products: products,
-    productsCollectionSix: productsCollectionSix,
-    productsCollectionSeven: productsCollectionSeven,
-    productsCollectionEight: productsCollectionEight,
-    productsCollectionNine: productsCollectionNine,
+    productsCollectionPillows: productsCollectionPillows,
+    productsCollectionWomanDress: productsCollectionWomanDress,
+    productsCollectionLinens: productsCollectionLinens,
+    productsCollectionBathrobe: productsCollectionBathrobe,
     productsCollectionTen: productsCollectionTen,
     productsCollectionEleven: productsCollectionEleven,
     productsCovid19: productsCovid19,
@@ -46,10 +46,10 @@ export default (state = initialState, action) => {
 
   if(action.type === ADD_TO_CART){
       let addedItem = state.products.find(item => item.id === action.id)
-      || state.productsCollectionSix.find(item => item.id === action.id)
-      || state.productsCollectionSeven.find(item => item.id === action.id)
-      || state.productsCollectionEight.find(item => item.id === action.id)
-      || state.productsCollectionNine.find(item => item.id === action.id)
+      || state.productsCollectionPillows.find(item => item.id === action.id)
+      || state.productsCollectionWomanDress.find(item => item.id === action.id)
+      || state.productsCollectionLinens.find(item => item.id === action.id)
+      || state.productsCollectionBathrobe.find(item => item.id === action.id)
       || state.productsCollectionTen.find(item => item.id === action.id)
       || state.productsCollectionEleven.find(item => item.id === action.id)
       || state.productsCovid19.find(item => item.id === action.id)
@@ -80,10 +80,10 @@ export default (state = initialState, action) => {
 
   if(action.type === ADD_TO_COMPARE){
       let addedItemToCompare = state.products.find(item => item.id === action.id)
-      || state.productsCollectionSix.find(item => item.id === action.id)
-      || state.productsCollectionSeven.find(item => item.id === action.id)
-      || state.productsCollectionEight.find(item => item.id === action.id)
-      || state.productsCollectionNine.find(item => item.id === action.id)
+      || state.productsCollectionPillows.find(item => item.id === action.id)
+      || state.productsCollectionWomanDress.find(item => item.id === action.id)
+      || state.productsCollectionLinens.find(item => item.id === action.id)
+      || state.productsCollectionBathrobe.find(item => item.id === action.id)
       || state.productsCollectionTen.find(item => item.id === action.id)
       || state.productsCollectionEleven.find(item => item.id === action.id)
       || state.productsCovid19.find(item => item.id === action.id)

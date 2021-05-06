@@ -8,15 +8,15 @@ const Layout = ({ children }) => {
     return(
         <>
             <ReactTooltip  />
-            
+
             <Head>
-                <title>Novine - React Next eCommerce Templates</title>
+                <title>Bynintu</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Novine is a clean and modern purse React Next JS eCommerce template. This is built on React.js, Next.js, React-Redux, ES6+, Sass and Bootstrap 4." />
                 <meta name="og:title" property="og:title" content="Novine - React Next eCommerce Templates"></meta>
                 <meta name="twitter:card" content="Novine - React Next eCommerce Templates"></meta>
-                <link rel="canonical" href="https://novine-react.envytheme.com/"></link>
-                <meta property="og:image" content="https://res.cloudinary.com/dev-empty/image/upload/v1590076309/ppuymfucr4jubqvhqaqt.jpg" />
+                {/* <link rel="canonical" href="https://novine-react.envytheme.com/"></link>
+                <meta property="og:image" content="https://res.cloudinary.com/dev-empty/image/upload/v1590076309/ppuymfucr4jubqvhqaqt.jpg" /> */}
             </Head>
 
             { children }

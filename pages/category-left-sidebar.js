@@ -9,7 +9,7 @@ import ProductsFilterOptions from '../components/Common/ProductsFilterOptions';
 import ProductsCard from '../components/products/ProductsCard';
 
 const hookClass = (props) => {
-    const products = useSelector((state) => state.products)
+    const products = useSelector((state) => state.other.products)
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />
 }
@@ -32,7 +32,7 @@ class Index extends Component {
         return (
             <>
                 <Navbar />
-                
+
                 <Breadcrumb title="Women's" />
 
                 <section className="products-collections-area ptb-60">
@@ -43,12 +43,12 @@ class Index extends Component {
 
                         <div className="row">
                             <LeftSidebar />
- 
+
                             <div className="col-lg-8 col-md-12">
                                 <ProductsFilterOptions onClick={this.handleGrid} />
 
                                 <div id="products-filter" className={`products-collections-listing row ${gridClass}`}>
-                                    <ProductsCard products={products} CompareProducts={CompareProducts} /> 
+                                    <ProductsCard products={products} CompareProducts={CompareProducts} />
                                 </div>
                             </div>
                         </div>

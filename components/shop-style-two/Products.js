@@ -62,8 +62,8 @@ class Products extends Component {
         evt.currentTarget.className += "current";
     }
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     openModal = () => {
@@ -75,13 +75,14 @@ class Products extends Component {
     }
 
     handleModalData = (data) => {
-        this.setState({ 
+        this.setState({
             modalData: data
         });
     }
 
     render() {
-        let { products } = this.props;
+        let { products, productsCollectionLinens, productsCollectionBathrobe } = this.props;
+        console.log('products', products);
         const { modalOpen } = this.state;
         return (
             <section className="all-products-area pb-60">
@@ -98,7 +99,7 @@ class Products extends Component {
                                             <span className="dot"></span> Latest Products
                                         </span>
                                     </li>
-                                    
+
                                     <li
                                         onClick={(e) => {e.preventDefault(); this.openTabSection(e, 'tab2')}}
                                     >
@@ -106,7 +107,7 @@ class Products extends Component {
                                             <span className="dot"></span> Special Products
                                         </span>
                                     </li>
-                                    
+
                                     <li
                                         onClick={(e) => {e.preventDefault(); this.openTabSection(e, 'tab3')}}
                                     >
@@ -121,7 +122,7 @@ class Products extends Component {
                                 <div className="tab_content">
                                     <div id="tab1" className="tabs_item">
                                         <div className="row">
-                                        {this.state.display ? <OwlCarousel 
+                                        {this.state.display ? <OwlCarousel
                                             className="all-products-slides owl-carousel owl-theme"
                                             {...options}
                                         >
@@ -139,11 +140,11 @@ class Products extends Component {
                                                             <ul>
                                                                 <li>
                                                                     <Link href="#">
-                                                                        <a 
-                                                                            data-tip="Quick View" 
-                                                                            data-place="left" 
+                                                                        <a
+                                                                            data-tip="Quick View"
+                                                                            data-place="left"
                                                                             onClick={e => {
-                                                                                    e.preventDefault(); 
+                                                                                    e.preventDefault();
                                                                                     this.openModal();
                                                                                     this.handleModalData(data)
                                                                                 }
@@ -200,11 +201,11 @@ class Products extends Component {
 
                                     <div id="tab2" className="tabs_item">
                                         <div className="row">
-                                        {this.state.display ? <OwlCarousel 
+                                        {this.state.display ? <OwlCarousel
                                             className="all-products-slides owl-carousel owl-theme"
                                             {...options}
                                         >
-                                            {products.map((data, idx) => (
+                                            {productsCollectionLinens.map((data, idx) => (
                                                 <div className="col-lg-12 col-md-12" key={idx}>
                                                     <div className="single-product-box">
                                                         <div className="product-image">
@@ -218,11 +219,11 @@ class Products extends Component {
                                                             <ul>
                                                                 <li>
                                                                     <Link href="#">
-                                                                        <a 
-                                                                            data-tip="Quick View" 
-                                                                            data-place="left" 
+                                                                        <a
+                                                                            data-tip="Quick View"
+                                                                            data-place="left"
                                                                             onClick={e => {
-                                                                                    e.preventDefault(); 
+                                                                                    e.preventDefault();
                                                                                     this.openModal();
                                                                                     this.handleModalData(data)
                                                                                 }
@@ -279,11 +280,11 @@ class Products extends Component {
 
                                     <div id="tab3" className="tabs_item">
                                         <div className="row">
-                                        {this.state.display ? <OwlCarousel 
+                                        {this.state.display ? <OwlCarousel
                                             className="all-products-slides owl-carousel owl-theme"
                                             {...options}
                                         >
-                                            {products.map((data, idx) => (
+                                            {productsCollectionBathrobe.map((data, idx) => (
                                                 <div className="col-lg-12 col-md-12" key={idx}>
                                                     <div className="single-product-box">
                                                         <div className="product-image">
@@ -297,11 +298,11 @@ class Products extends Component {
                                                             <ul>
                                                                 <li>
                                                                     <Link href="#">
-                                                                        <a 
-                                                                            data-tip="Quick View" 
-                                                                            data-place="left" 
+                                                                        <a
+                                                                            data-tip="Quick View"
+                                                                            data-place="left"
                                                                             onClick={e => {
-                                                                                    e.preventDefault(); 
+                                                                                    e.preventDefault();
                                                                                     this.openModal();
                                                                                     this.handleModalData(data)
                                                                                 }
@@ -360,8 +361,8 @@ class Products extends Component {
                         </div>
                     </div>
                 </div>
-                { modalOpen ? <QuickView 
-                    closeModal={this.closeModal} 
+                { modalOpen ? <QuickView
+                    closeModal={this.closeModal}
                     modalData={this.state.modalData}
                 /> : '' }
             </section>

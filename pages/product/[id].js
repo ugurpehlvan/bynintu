@@ -13,9 +13,10 @@ import Facility from '../../components/shop-style-two/Facility';
 const Product = () => {
     const router = useRouter()
     const { id } = router.query
-    const product = useSelector((state) => state.products.find(item => item.id === parseInt(id)))
 
-    const products = useSelector((state) => state.products)
+    const product = useSelector((state) => state.other.products.find(item => item.id === parseInt(id)));
+
+    const products = useSelector((state) => state.other.products)
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return (
         <>
