@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import Navbar from '../components/Layout/Navbar';
-import Facility from '../components/shop-style-two/Facility';
-import Subscribe from '../components/Common/Subscribe';
-import Partner from '../components/Common/Partner';
-import InstagramPhoto from '../components/Common/InstagramPhoto';
-import Footer from '../components/Layout/Footer';
+import Navbar from 'components/Layout/Navbar';
+import Facility from 'components/shop-style-two/Facility';
+import Subscribe from 'components/Common/Subscribe';
+import Partner from 'components/Common/Partner';
+import InstagramPhoto from 'components/Common/InstagramPhoto';
+import Footer from 'components/Layout/Footer';
 
 const ThankYou = () => {
     return (

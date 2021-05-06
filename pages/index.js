@@ -17,8 +17,8 @@ import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
 const Index = () => {
-    const products = useSelector((state) => state.products)
-    const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
+    const products = useSelector((state) => state.other.products)
+    const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare)
     return (
         <>
             <Navbar />

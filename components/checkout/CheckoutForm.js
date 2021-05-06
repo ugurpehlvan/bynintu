@@ -316,8 +316,8 @@ function CheckoutForm({total, shipping}) {
 
 const mapStateToProps = (state) => {
     return {
-        total: state.total,
-        shipping: state.shipping
+        total: state.other.total,
+        shipping: state.other.shipping
     }
 }
 

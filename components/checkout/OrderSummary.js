@@ -67,9 +67,9 @@ class OrderSummary extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.addedItems,
-        total: state.total,
-        shipping: state.shipping
+        products: state.other.addedItems,
+        total: state.other.total,
+        shipping: state.other.shipping
     }
 }
 
