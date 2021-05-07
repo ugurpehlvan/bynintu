@@ -1,4 +1,4 @@
-export const products = [
+export const productsCollectionShoes = [
     {
         id: 1,
         title: "Black Mini Dress with Shirring Hang",
@@ -167,34 +167,98 @@ export const productsCollectionPillows = [
 export const productsCollectionWomanDress = [
     {
         id: 20,
-        title: "Linen Crochet Trim",
-        price: 190,
-        image: require("../../images/landing-image/dekolteli-kirmizi.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-kirmizi-mirror.jpeg"),
+        title: "Green Speckled Fabric Mini Dress",
+        price: 23.5,
+        image: require("../../images/dress-image/58395.jpeg"),
+        imageHover: require("../../images/dress-image/58395-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 21,
-        title: "Heartland Alabama",
-        price: 300,
-        image: require("../../images/landing-image/dekolteli-mavi.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-mavi-mirror.jpeg"),
+        title: "Yellow Viscose Fabric Floral Dress",
+        price: 23.32,
+        image: require("../../images/dress-image/581380-2.jpeg"),
+        imageHover: require("../../images/dress-image/581380-2-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 22,
-        title: "Mermaid pencil midi",
-        price: 250,
-        image: require("../../images/landing-image/dekolteli-mor.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-mor-mirror.jpeg"),
+        title: "Red Viscose Fabric Gathered Crop Blouse",
+        price: 18.97,
+        image: require("../../images/dress-image/581409-2.jpeg"),
+        imageHover: require("../../images/dress-image/581409-2-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 23,
-        title: "Criss-cross",
-        price: 160,
-        image: require("../../images/landing-image/dekolteli-siyah.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-siyah-miror.jpeg"),
+        title: "Black Atlas Fabric Short Dress with Balloon Long Sleeve",
+        price: 23.50,
+        image: require("../../images/dress-image/581478.jpeg"),
+        imageHover: require("../../images/dress-image/581478-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Red Crepe Fabric low-cut Mini Dress",
+        price: 24.50,
+        image: require("../../images/dress-image/dekolteli-kirmizi.jpeg"),
+        imageHover: require("../../images/dress-image/dekolteli-kirmizi-mirror.jpeg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Blue Viscose Fabric Floral Dress",
+        price: 23.32,
+        image: require("../../images/dress-image/581380.jpeg"),
+        imageHover: require("../../images/dress-image/581380-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Camisole Long Dress",
+        price: 23.50,
+        image: require("../../images/dress-image/581640.jpeg"),
+        imageHover: require("../../images/dress-image/581640-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Red Viscose Fabric Floral Long Dress",
+        price: 22.78,
+        image: require("../../images/dress-image/581384.jpeg"),
+        imageHover: require("../../images/dress-image/581384-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Purple Viscose Fabric Gathered Crop Blouse",
+        price: 18.97,
+        image: require("../../images/dress-image/581409.jpeg"),
+        imageHover: require("../../images/dress-image/581409-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Crepe Fabric Mini Dress",
+        price: 24.5,
+        image: require("../../images/dress-image/581637.jpeg"),
+        imageHover: require("../../images/dress-image/581637-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Crepe Fabric Asymmetric Dress",
+        price: 24.99,
+        image: require("../../images/dress-image/58788.jpeg"),
+        imageHover: require("../../images/dress-image/58788-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Purple Crepe Fabric low-cut Mini Dress",
+        price: 24.50,
+        image: require("../../images/dress-image/dekolteli-mor.jpeg"),
+        imageHover: require("../../images/dress-image/dekolteli-mor-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
 ]
