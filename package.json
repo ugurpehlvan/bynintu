@@ -8,7 +8,7 @@
         "build": "next build",
         "start": "next start"
     },
-    "author": "EnvyTheme.com",
+    "author": "EkipKurtulus",
     "license": "ISC",
     "dependencies": {
         "@babel/runtime-corejs2": "^7.13.10",

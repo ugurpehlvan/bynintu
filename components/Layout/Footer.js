@@ -110,7 +110,7 @@ class Footer extends Component {
                     <div className="container">
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-6">
-                                <p>Copyright &copy; 2021 Bynintu. All Rights Reserved By <a href="https://envytheme.com/" target="_blank">EnvyTheme.com</a></p>
+                                <p>Copyright &copy; 2021 Bynintu. All Rights Reserved By Bynintu</p>
                             </div>
 
                             <div className="col-lg-6 col-md-6">
