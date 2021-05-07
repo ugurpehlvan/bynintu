@@ -100,32 +100,32 @@ export const productsCollectionShoes = [
 export const productsCollectionPillows = [
     {
         id: 17,
-        title: "Linen crochet trim",
-        price: 190,
+        title: "Double Side Printed Leaf Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-1.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 18,
-        title: "Neck empire sleeve",
-        price: 120,
+        title: "Double Side Printed Cactus Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-11.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-12.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 19,
-        title: "Mermaid pencil midi",
-        price: 160,
+        title: "Double Side Printed Face Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-21.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-22.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 20,
-        title: "Linen crochet trim",
-        price: 190,
+        title: "Double Side Printed Peony Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-cicekli-1.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-cicekli-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
@@ -277,30 +277,34 @@ export const productsCollectionLinens = [
 export const productsCollectionBathrobe = [
     {
         id: 36,
-        title: "Linen Crochet Trim",
-        price: 190,
+        title: "White Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-beyaz.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-beyaz.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 37,
-        title: "Heartland Alabama",
-        price: 300,
+        title: "Grey Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-gri.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-gri.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 38,
-        title: "Mermaid Pencil Midi",
-        price: 250,
+        title: "Burgundy Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-bordo.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-bordo.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 39,
-        title: "Criss-cross",
-        price: 160,
+        title: "Powder Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-pudra.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-pudra.jpeg"),
     }
 ]
 
