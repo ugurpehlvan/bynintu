@@ -82,7 +82,6 @@ class Products extends Component {
 
     render() {
         let { products, productsCollectionLinens, productsCollectionBathrobe } = this.props;
-        console.log('products', products);
         const { modalOpen } = this.state;
         return (
             <section className="all-products-area pb-60">

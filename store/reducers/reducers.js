@@ -5,15 +5,11 @@ import thunkMiddleware from 'redux-thunk';
 
 //reducers
 import authReducer from "store/reducers/authReducer";
-import otherReducer, { initialState as otherInitialState } from "store/reducers/otherReducer";
+import otherReducer from "store/reducers/otherReducer";
 
 let store
 
-const initialState = {
-    ...otherInitialState
-}
-
-const initStore = (preloadedState = initialState) => {
+const initStore = (preloadedState = {}) => {
     return createStore(
         combineReducers({
             auth: authReducer,

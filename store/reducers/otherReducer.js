@@ -24,7 +24,7 @@ import {
     productsFurniture
 } from 'store/json-data/products';
 
-export const initialState = {
+const initialState = {
     products: products,
     productsCollectionPillows: productsCollectionPillows,
     productsCollectionWomanDress: productsCollectionWomanDress,
@@ -42,7 +42,7 @@ export const initialState = {
     shipping: 0,
 }
 
-export default (state = initialState, action) => {
+const otherReducer = (state = initialState, action) => {
 
   if(action.type === ADD_TO_CART){
       let addedItem = state.products.find(item => item.id === action.id)
@@ -206,3 +206,5 @@ export default (state = initialState, action) => {
       return state
   }
 }
+
+export default otherReducer;
