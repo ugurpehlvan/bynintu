@@ -1,130 +1,98 @@
 export const productsCollectionShoes = [
     {
         id: 1,
-        title: "Black Mini Dress with Shirring Hang",
-        price: 24.99,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Black Suede Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/1810.jpeg"),
+        imageHover: require("../../images/shoes-image/1810-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 2,
-        title: "Neck empire sleeve t-shirts",
-        price: 120,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "White Colored Heeled Shoes with Double Strap and Belted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2400-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2400-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 3,
-        title: "Mermaid pencil midi lace",
-        price: 160,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Powder Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 4,
-        title: "Criss-cross V neck bodycon",
-        price: 130,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "Red Suede Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/2525-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2525-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 5,
-        title: "The cosmic cornucopia",
-        price: 90,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Nude Colored Patent Leather Heeled Shoes with Banded and Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/1815-1.jpeg"),
+        imageHover: require("../../images/shoes-image/1815-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 6,
-        title: "Tenku remastered",
-        price: 180,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "Red Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-5.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-6.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 7,
-        title: "Women's sherpa lined hoodie",
-        price: 330,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Nude Colored Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/1810-3.jpeg"),
+        imageHover: require("../../images/shoes-image/1810-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 8,
-        title: "Belted chino trousers polo",
-        price: 140,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "White Colored Heeled Shoes with Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/2600-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2600-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 9,
-        title: "The cosmic cornucopia",
-        price: 430,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Black Colored Heeled Shoes with T-band and Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/2540-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2540-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 10,
-        title: "Tenku remastered",
-        price: 650,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "White Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-7.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-8.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 11,
-        title: "Women's sherpa lined hoodie",
-        price: 230,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Tan Colored Heeled Shoes with Croco Print",
+        price: 28.00,
+        image: require("../../images/shoes-image/2600-3.jpeg"),
+        imageHover: require("../../images/shoes-image/2600-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 12,
-        title: "Linen crochet trim t-shirt",
-        price: 670,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 13,
-        title: "Neck empire sleeve t-shirts",
-        price: 120,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 14,
-        title: "Mermaid pencil midi lace",
-        price: 540,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 15,
-        title: "Criss-cross V neck bodycon",
-        price: 230,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 16,
-        title: "Belted chino trousers polo",
-        price: 530,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "Mustard Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-3.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     }
 ]
@@ -266,40 +234,40 @@ export const productsCollectionWomanDress = [
 export const productsCollectionLinens = [
     {
         id: 28,
-        title: "Linen Crochet Trim",
-        price: 190,
+        title: "Blue Navy Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-1.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-1-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 29,
-        title: "Heartland Alabama",
-        price: 300,
+        title: "Pink Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-2.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-2-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 30,
-        title: "Mermaid Pencil Midi",
-        price: 250,
+        title: "Red Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-3.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-3-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 31,
-        title: "Criss-cross",
-        price: 160,
+        title: "Grey Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-4.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-4-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 32,
-        title: "Vneck Bodycon",
-        price: 214,
+        title: "Milky Brown Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-5.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-5-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
