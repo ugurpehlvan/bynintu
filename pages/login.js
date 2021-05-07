@@ -101,13 +101,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        signIn: (payload) => dispatch(signIn(payload)),
-    }
-}
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    { signIn }
 )(Login);

@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
-import Navbar from '../components/Layout/Navbar';
-import Footer from '../components/Layout/Footer';
-import Facility from '../components/Common/Facility';
-import Breadcrumb from '../components/Common/Breadcrumb';
+import { connect } from 'react-redux';
 
-const Signup = () => {
+// components
+import Navbar from 'components/Layout/Navbar';
+import Footer from 'components/Layout/Footer';
+import Facility from 'components/Common/Facility';
+import Breadcrumb from 'components/Common/Breadcrumb';
+
+// actions
+import { signUp } from 'store/actions/actions';
+
+// helpers
+import isEmail from 'utils/isEmail';
+import notify from 'utils/notify';
+
+const Signup = ({signUp, user}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailChange = useCallback((e) => {
+        setEmail(e.target.value);
+    }, []);
+
+    const handlePasswordChange = useCallback((e) => {
+        setPassword(e.target.value);
+    }, []);
+
+    const handleSubmit = useCallback((e) => {
+        console.log('asdasda');
+        e.preventDefault();
+        const isEmailValid = isEmail(email);
+        console.log('2');
+        if (!isEmailValid) {
+            notify('error', 'Please type an valid email');
+            return;
+        }
+        console.log('3');
+        signUp({
+            email,
+            password
+        });
+    }, [email, password]);
+    console.log('user', user);
     return (
         <>
             <Navbar />
@@ -22,15 +59,15 @@ const Signup = () => {
                         <form className="signup-form">
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" className="form-control" placeholder="Enter your email" id="name" name="email" />
+                                <input type="email" onChange={handleEmailChange} className="form-control" placeholder="Enter your email" id="name" name="email" />
                             </div>
 
                             <div className="form-group">
                                 <label>Password</label>
-                                <input type="password" className="form-control" placeholder="Enter your password" id="password" name="password" />
+                                <input type="password" onChange={handlePasswordChange} className="form-control" placeholder="Enter your password" id="password" name="password" />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">Signup</button>
+                            <button onClick={handleSubmit} type="submit" className="btn btn-primary">Signup</button>
                             <Link href="/">
                                 <a className="return-store">or Return to Store</a>
                             </Link>
@@ -46,4 +83,13 @@ const Signup = () => {
     );
 }
 
-export default Signup;
+const mapStateToProps = ({auth}) => {
+    return {
+        user: auth.user,
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { signUp }
+)(Signup);

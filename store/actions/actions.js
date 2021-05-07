@@ -82,3 +82,15 @@ export const signIn = (formValues) => async (dispatch, getState) => {
         dispatch({ type: AUTH_ERROR, payload: response?.error });
     }
 };
+
+export const signUp = (formValues) => async (dispatch) => {
+    console.log('signiuop');
+    const response = (await axiosClient.post(apiURL.signUp, formValues)).data;
+    console.log('response', response);
+    if (response.success) {
+        dispatch({ type: AUTH_SUCCESS, payload: response });
+
+    } else {
+        dispatch({ type: AUTH_ERROR, payload: response?.error });
+    }
+};
