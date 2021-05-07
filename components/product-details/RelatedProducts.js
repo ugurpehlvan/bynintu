@@ -35,14 +35,14 @@ const options = {
 }
 
 class RelatedProducts extends Component {
-    state = { 
+    state = {
         display: false,
         modalOpen: false,
         modalData: null
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     openModal = () => {
@@ -54,7 +54,7 @@ class RelatedProducts extends Component {
     }
 
     handleModalData = (data) => {
-        this.setState({ 
+        this.setState({
             modalData: data
         });
     }
@@ -71,7 +71,7 @@ class RelatedProducts extends Component {
                         </div>
 
                         <div className="row">
-                            {this.state.display ? <OwlCarousel 
+                            {this.state.display ? <OwlCarousel
                                 className="trending-products-slides-two owl-carousel owl-theme"
                                 {...options}
                             >
@@ -89,11 +89,11 @@ class RelatedProducts extends Component {
                                                 <ul>
                                                     <li>
                                                         <Link href="#">
-                                                            <a 
-                                                                data-tip="Quick View" 
-                                                                data-place="left" 
+                                                            <a
+                                                                data-tip="Quick View"
+                                                                data-place="left"
                                                                 onClick={e => {
-                                                                        e.preventDefault(); 
+                                                                        e.preventDefault();
                                                                         this.openModal();
                                                                         this.handleModalData(data)
                                                                     }
@@ -128,7 +128,7 @@ class RelatedProducts extends Component {
                                                 </h3>
 
                                                 <div className="product-price">
-                                                        <span className="new-price">${data.price}</span>
+                                                        <span className="new-price">€{data.price}</span>
                                                 </div>
 
                                                 <div className="rating">
@@ -147,9 +147,9 @@ class RelatedProducts extends Component {
                         </div>
                     </div>
                 </div>
-                
-                { modalOpen ? <QuickView 
-                    closeModal={this.closeModal} 
+
+                { modalOpen ? <QuickView
+                    closeModal={this.closeModal}
                     modalData={this.state.modalData}
                 /> : '' }
             </>

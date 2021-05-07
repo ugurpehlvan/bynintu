@@ -33,7 +33,7 @@ const Index = () => {
             <OfferArea />
 
             <Products
-                productsCollectionShoes={productsCollectionShoes}
+                productsCollectionWomanDress={productsCollectionWomanDress}
                 productsCollectionBathrobe={productsCollectionBathrobe}
                 productsCollectionLinens={productsCollectionLinens}
                 CompareProducts={addedItemsToCompare}
@@ -43,7 +43,7 @@ const Index = () => {
 
             <TrendingProducts products={productsCollectionPillows} CompareProducts={addedItemsToCompare} />
 
-            <BestSeller products={productsCollectionWomanDress} CompareProducts={addedItemsToCompare} />
+            <BestSeller products={productsCollectionShoes} CompareProducts={addedItemsToCompare} />
 
             <Facility />
 

@@ -128,7 +128,7 @@ class TrendingProducts extends Component {
                                         </h3>
 
                                         <div className="product-price">
-                                            <span className="new-price">${data.price}</span>
+                                            <span className="new-price">€{data.price}</span>
                                         </div>
 
                                         <div className="rating">

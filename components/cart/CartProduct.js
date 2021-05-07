@@ -53,26 +53,26 @@ class CartProduct extends Component {
                         </td>
 
                         <td className="product-price">
-                            <span className="unit-amount">${data.price}</span>
+                            <span className="unit-amount">€{data.price}</span>
                         </td>
 
                         <td className="product-quantity">
                             <div className="input-counter">
-                                <span 
+                                <span
                                     className="minus-btn"
                                     onClick={()=>{this.handleSubtractQuantity(data.id)}}
                                 >
                                     <i className="fas fa-minus"></i>
                                 </span>
-                                <input 
-                                    type="text" 
-                                    value={data.quantity} 
-                                    min="1" 
-                                    max={10} 
+                                <input
+                                    type="text"
+                                    value={data.quantity}
+                                    min="1"
+                                    max={10}
                                     readOnly={true}
                                     onChange={e => (e)}
                                 />
-                                <span 
+                                <span
                                     className="plus-btn"
                                     onClick={()=>{this.handleAddQuantity(data.id)}}
                                 >
@@ -82,7 +82,7 @@ class CartProduct extends Component {
                         </td>
 
                         <td className="product-subtotal">
-                            <span className="subtotal-amount">${data.price * data.quantity}</span>
+                            <span className="subtotal-amount">€{data.price * data.quantity}</span>
 
                             <Link href="#">
                                 <a
@@ -141,6 +141,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     mapDispatchToProps
 )(CartProduct)

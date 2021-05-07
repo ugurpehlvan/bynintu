@@ -15,11 +15,11 @@ class BestSeller extends Component {
         if(compare_exist.length > 0){
             return(
                 <Link href="#">
-                    <a 
-                        data-tip="Already Added" 
-                        data-place="left" 
+                    <a
+                        data-tip="Already Added"
+                        data-place="left"
                         onClick={e => {
-                                e.preventDefault(); 
+                                e.preventDefault();
                             }
                         }
                         disabled={true}
@@ -45,7 +45,7 @@ class BestSeller extends Component {
     }
 
     handleModalData = (data) => {
-        this.setState({ 
+        this.setState({
             modalData: data
         });
     }
@@ -74,11 +74,11 @@ class BestSeller extends Component {
                                         <ul>
                                             <li>
                                                 <Link href="#">
-                                                    <a 
-                                                        data-tip="Quick View" 
-                                                        data-place="left" 
+                                                    <a
+                                                        data-tip="Quick View"
+                                                        data-place="left"
                                                         onClick={e => {
-                                                                e.preventDefault(); 
+                                                                e.preventDefault();
                                                                 this.openModal();
                                                                 this.handleModalData(data)
                                                             }
@@ -111,7 +111,7 @@ class BestSeller extends Component {
                                         </h3>
 
                                         <div className="product-price">
-                                            <span className="new-price">${data.price}</span>
+                                            <span className="new-price">€{data.price}</span>
                                         </div>
 
                                         <div className="rating">
@@ -129,8 +129,8 @@ class BestSeller extends Component {
                         ))}
                     </div>
                 </div>
-                { modalOpen ? <QuickView 
-                    closeModal={this.closeModal} 
+                { modalOpen ? <QuickView
+                    closeModal={this.closeModal}
                     modalData={this.state.modalData}
                 /> : '' }
             </section>
