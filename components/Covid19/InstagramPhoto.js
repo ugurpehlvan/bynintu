@@ -46,7 +46,7 @@ class InstagramPhoto extends Component {
                 <div className="instagram-title">
                     <Link href="#">
                         <a target="_blank">
-                            <i className="fab fa-instagram"></i> Follow us on @novine
+                            <i className="fab fa-instagram"></i> Follow us on @Bynintu
                         </a>
                     </Link>
                 </div>
