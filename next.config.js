@@ -6,7 +6,7 @@ module.exports = {
         {
           source: '/api/:path*',
           destination: 'http://localhost:8094/:path*',
-          destinationOld: 'https://test.bynintu.com/:path*',
+          // destination: 'https://test.bynintu.com/:path*',
         },
       ]
     },
