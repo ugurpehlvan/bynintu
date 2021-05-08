@@ -42,8 +42,8 @@ class BestSeller extends Component {
         display: false,
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     openModal = () => {
@@ -55,7 +55,7 @@ class BestSeller extends Component {
     }
 
     handleModalData = (data) => {
-        this.setState({ 
+        this.setState({
             modalData: data
         });
     }
@@ -70,7 +70,7 @@ class BestSeller extends Component {
                     </div>
 
                     <div className="row">
-                    {this.state.display ? <OwlCarousel 
+                    {this.state.display ? <OwlCarousel
                         className="best-sellers-products-slides owl-carousel owl-theme"
                         {...options}
                     >
@@ -88,11 +88,11 @@ class BestSeller extends Component {
                                         <ul>
                                             <li>
                                                 <Link href="#">
-                                                    <a 
-                                                        data-tip="Quick View" 
-                                                        data-place="left" 
+                                                    <a
+                                                        data-tip="Quick View"
+                                                        data-place="left"
                                                         onClick={e => {
-                                                                e.preventDefault(); 
+                                                                e.preventDefault();
                                                                 this.openModal();
                                                                 this.handleModalData(data)
                                                             }
@@ -120,14 +120,14 @@ class BestSeller extends Component {
                                     </div>
 
                                     <div className="product-content">
-                                        <h3>
+                                        <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                             <Link href="/product/[id]" as={`/product/${data.id}`}>
                                                 <a>{data.title}</a>
                                             </Link>
                                         </h3>
 
                                         <div className="product-price">
-                                            <span className="new-price">${data.price}</span>
+                                            <span className="new-price">€{data.price}</span>
                                         </div>
 
                                         <div className="rating">
@@ -146,8 +146,8 @@ class BestSeller extends Component {
                         </OwlCarousel> : ''}
                     </div>
                 </div>
-                { modalOpen ? <QuickView 
-                    closeModal={this.closeModal} 
+                { modalOpen ? <QuickView
+                    closeModal={this.closeModal}
                     modalData={this.state.modalData}
                 /> : '' }
             </section>

@@ -76,9 +76,9 @@ class CartContent extends Component {
                                     <h3>Cart Totals</h3>
 
                                     <ul>
-                                        <li>Subtotal <span>${this.props.total}</span></li>
-                                        <li>Shipping <span>${this.props.shipping}</span></li>
-                                        <li>Total <span><b>${this.props.total + this.props.shipping}</b></span></li>
+                                        <li>Subtotal <span>€{this.props.total}</span></li>
+                                        <li>Shipping <span>€{this.props.shipping}</span></li>
+                                        <li>Total <span><b>€{this.props.total + this.props.shipping}</b></span></li>
                                     </ul>
 
                                     <Link href="/checkout">

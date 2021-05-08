@@ -11,7 +11,7 @@ import {
 } from 'store/actions/action-types/action-names'
 
 import {
-    products,
+    productsCollectionShoes,
     productsCollectionPillows,
     productsCollectionWomanDress,
     productsCollectionLinens,
@@ -25,7 +25,7 @@ import {
 } from 'store/json-data/products';
 
 const initialState = {
-    products: products,
+    productsCollectionShoes: productsCollectionShoes,
     productsCollectionPillows: productsCollectionPillows,
     productsCollectionWomanDress: productsCollectionWomanDress,
     productsCollectionLinens: productsCollectionLinens,
@@ -45,7 +45,7 @@ const initialState = {
 const otherReducer = (state = initialState, action) => {
 
   if(action.type === ADD_TO_CART){
-      let addedItem = state.products.find(item => item.id === action.id)
+      let addedItem = state.productsCollectionShoes.find(item => item.id === action.id)
       || state.productsCollectionPillows.find(item => item.id === action.id)
       || state.productsCollectionWomanDress.find(item => item.id === action.id)
       || state.productsCollectionLinens.find(item => item.id === action.id)
@@ -79,7 +79,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if(action.type === ADD_TO_COMPARE){
-      let addedItemToCompare = state.products.find(item => item.id === action.id)
+      let addedItemToCompare = state.productsCollectionShoes.find(item => item.id === action.id)
       || state.productsCollectionPillows.find(item => item.id === action.id)
       || state.productsCollectionWomanDress.find(item => item.id === action.id)
       || state.productsCollectionLinens.find(item => item.id === action.id)
@@ -100,7 +100,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if(action.type === ADD_QUANTITY_WITH_NUMBER){
-      let addedItem = state.products.find(item => item.id === action.id)
+      let addedItem = state.productsCollectionShoes.find(item => item.id === action.id)
       //check if the action id exists in the addedItems
       let existed_item = state.addedItems.find(item=> action.id === item.id)
       if(existed_item)
@@ -148,7 +148,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if(action.type === ADD_QUANTITY){
-      let addedItem = state.products.find(item=> item.id === action.id)
+      let addedItem = state.productsCollectionShoes.find(item=> item.id === action.id)
       addedItem.quantity += 1
       let newTotal = state.total + addedItem.price
       return {
@@ -158,7 +158,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if(action.type === SUB_QUANTITY){
-      let addedItem = state.products.find(item=> item.id === action.id)
+      let addedItem = state.productsCollectionShoes.find(item=> item.id === action.id)
       //if the qt == 0 then it should be removed
       if(addedItem.quantity === 1){
           let new_items = state.addedItems.filter(item=>item.id !== action.id)

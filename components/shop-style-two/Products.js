@@ -81,7 +81,7 @@ class Products extends Component {
     }
 
     render() {
-        let { products, productsCollectionLinens, productsCollectionBathrobe } = this.props;
+        let { productsCollectionWomanDress, productsCollectionLinens, productsCollectionBathrobe } = this.props;
         const { modalOpen } = this.state;
         return (
             <section className="all-products-area pb-60">
@@ -125,7 +125,7 @@ class Products extends Component {
                                             className="all-products-slides owl-carousel owl-theme"
                                             {...options}
                                         >
-                                            {products.map((data, idx) => (
+                                            {productsCollectionWomanDress.map((data, idx) => (
                                                 <div className="col-lg-12 col-md-12" key={idx}>
                                                     <div className="single-product-box">
                                                         <div className="product-image">
@@ -171,14 +171,14 @@ class Products extends Component {
                                                         </div>
 
                                                         <div className="product-content">
-                                                            <h3>
+                                                            <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                                                 <Link href="/product/[id]" as={`/product/${data.id}`}>
                                                                     <a>{data.title}</a>
                                                                 </Link>
                                                             </h3>
 
                                                             <div className="product-price">
-                                                                <span className="new-price">${data.price}</span>
+                                                                <span className="new-price">€{data.price}</span>
                                                             </div>
 
                                                             <div className="rating">
@@ -250,14 +250,14 @@ class Products extends Component {
                                                         </div>
 
                                                         <div className="product-content">
-                                                            <h3>
+                                                            <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                                                 <Link href="/product/[id]" as={`/product/${data.id}`}>
                                                                     <a>{data.title}</a>
                                                                 </Link>
                                                             </h3>
 
                                                             <div className="product-price">
-                                                                <span className="new-price">${data.price}</span>
+                                                                <span className="new-price">€{data.price}</span>
                                                             </div>
 
                                                             <div className="rating">
@@ -329,14 +329,14 @@ class Products extends Component {
                                                         </div>
 
                                                         <div className="product-content">
-                                                            <h3>
+                                                            <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                                                 <Link href="/product/[id]" as={`/product/${data.id}`}>
                                                                     <a>{data.title}</a>
                                                                 </Link>
                                                             </h3>
 
                                                             <div className="product-price">
-                                                                <span className="new-price">${data.price}</span>
+                                                                <span className="new-price">€{data.price}</span>
                                                             </div>
 
                                                             <div className="rating">

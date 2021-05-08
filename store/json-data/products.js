@@ -1,130 +1,98 @@
-export const products = [
+export const productsCollectionShoes = [
     {
         id: 1,
-        title: "Black Mini Dress with Shirring Hang",
-        price: 24.99,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Black Suede Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/1810.jpeg"),
+        imageHover: require("../../images/shoes-image/1810-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 2,
-        title: "Neck empire sleeve t-shirts",
-        price: 120,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "White Colored Heeled Shoes with Double Strap and Belted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2400-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2400-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 3,
-        title: "Mermaid pencil midi lace",
-        price: 160,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Powder Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 4,
-        title: "Criss-cross V neck bodycon",
-        price: 130,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "Red Suede Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/2525-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2525-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 5,
-        title: "The cosmic cornucopia",
-        price: 90,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Nude Colored Patent Leather Heeled Shoes with Banded and Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/1815-1.jpeg"),
+        imageHover: require("../../images/shoes-image/1815-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 6,
-        title: "Tenku remastered",
-        price: 180,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "Red Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-5.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-6.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 7,
-        title: "Women's sherpa lined hoodie",
-        price: 330,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Nude Colored Heeled Shoes with Open Toe and Side Straps",
+        price: 28.00,
+        image: require("../../images/shoes-image/1810-3.jpeg"),
+        imageHover: require("../../images/shoes-image/1810-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 8,
-        title: "Belted chino trousers polo",
-        price: 140,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "White Colored Heeled Shoes with Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/2600-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2600-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 9,
-        title: "The cosmic cornucopia",
-        price: 430,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
+        title: "Black Colored Heeled Shoes with T-band and Belt",
+        price: 28.00,
+        image: require("../../images/shoes-image/2540-1.jpeg"),
+        imageHover: require("../../images/shoes-image/2540-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 10,
-        title: "Tenku remastered",
-        price: 650,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
+        title: "White Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-7.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-8.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 11,
-        title: "Women's sherpa lined hoodie",
-        price: 230,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
+        title: "Tan Colored Heeled Shoes with Croco Print",
+        price: 28.00,
+        image: require("../../images/shoes-image/2600-3.jpeg"),
+        imageHover: require("../../images/shoes-image/2600-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 12,
-        title: "Linen crochet trim t-shirt",
-        price: 670,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 13,
-        title: "Neck empire sleeve t-shirts",
-        price: 120,
-        image: require("../../images/landing-image/red-shoes-1.jpeg"),
-        imageHover: require("../../images/landing-image/red-shoes-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 14,
-        title: "Mermaid pencil midi lace",
-        price: 540,
-        image: require("../../images/landing-image/shoes-siyah-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-siyah-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 15,
-        title: "Criss-cross V neck bodycon",
-        price: 230,
-        image: require("../../images/landing-image/shoes-hardal-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-hardal-3.jpeg"),
-        quickView: require("../../images/quick-view-img.jpg")
-    },
-    {
-        id: 16,
-        title: "Belted chino trousers polo",
-        price: 530,
-        image: require("../../images/landing-image/shoes-pudra-1.jpeg"),
-        imageHover: require("../../images/landing-image/shoes-pudra-3.jpeg"),
+        title: "Mustard Colored Heeled Shoes with Crossed Multi-Band and Spotted",
+        price: 28.00,
+        image: require("../../images/shoes-image/2430-3.jpeg"),
+        imageHover: require("../../images/shoes-image/2430-4.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     }
 ]
@@ -132,32 +100,32 @@ export const products = [
 export const productsCollectionPillows = [
     {
         id: 17,
-        title: "Linen crochet trim",
-        price: 190,
+        title: "Double Side Printed Leaf Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-1.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 18,
-        title: "Neck empire sleeve",
-        price: 120,
+        title: "Double Side Printed Cactus Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-11.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-12.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 19,
-        title: "Mermaid pencil midi",
-        price: 160,
+        title: "Double Side Printed Face Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-21.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-22.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 20,
-        title: "Linen crochet trim",
-        price: 190,
+        title: "Double Side Printed Peony Patterned 4-piece Suede Cushion Cover",
+        price: 21,
         image: require("../../images/landing-image/kirlent-cicekli-1.jpeg"),
         imageHover: require("../../images/landing-image/kirlent-cicekli-2.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
@@ -167,34 +135,98 @@ export const productsCollectionPillows = [
 export const productsCollectionWomanDress = [
     {
         id: 20,
-        title: "Linen Crochet Trim",
-        price: 190,
-        image: require("../../images/landing-image/dekolteli-kirmizi.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-kirmizi-mirror.jpeg"),
+        title: "Green Speckled Fabric Mini Dress",
+        price: 23.5,
+        image: require("../../images/dress-image/58395.jpeg"),
+        imageHover: require("../../images/dress-image/58395-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 21,
-        title: "Heartland Alabama",
-        price: 300,
-        image: require("../../images/landing-image/dekolteli-mavi.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-mavi-mirror.jpeg"),
+        title: "Yellow Viscose Fabric Floral Dress",
+        price: 23.32,
+        image: require("../../images/dress-image/581380-2.jpeg"),
+        imageHover: require("../../images/dress-image/581380-2-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 22,
-        title: "Mermaid pencil midi",
-        price: 250,
-        image: require("../../images/landing-image/dekolteli-mor.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-mor-mirror.jpeg"),
+        title: "Red Viscose Fabric Gathered Crop Blouse",
+        price: 18.97,
+        image: require("../../images/dress-image/581409-2.jpeg"),
+        imageHover: require("../../images/dress-image/581409-2-mirror.jpg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 23,
-        title: "Criss-cross",
-        price: 160,
-        image: require("../../images/landing-image/dekolteli-siyah.jpeg"),
-        imageHover: require("../../images/landing-image/dekolteli-siyah-miror.jpeg"),
+        title: "Black Atlas Fabric Short Dress with Balloon Long Sleeve",
+        price: 23.50,
+        image: require("../../images/dress-image/581478.jpeg"),
+        imageHover: require("../../images/dress-image/581478-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Red Crepe Fabric low-cut Mini Dress",
+        price: 24.50,
+        image: require("../../images/dress-image/dekolteli-kirmizi.jpeg"),
+        imageHover: require("../../images/dress-image/dekolteli-kirmizi-mirror.jpeg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Blue Viscose Fabric Floral Dress",
+        price: 23.32,
+        image: require("../../images/dress-image/581380.jpeg"),
+        imageHover: require("../../images/dress-image/581380-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Camisole Long Dress",
+        price: 23.50,
+        image: require("../../images/dress-image/581640.jpeg"),
+        imageHover: require("../../images/dress-image/581640-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Red Viscose Fabric Floral Long Dress",
+        price: 22.78,
+        image: require("../../images/dress-image/581384.jpeg"),
+        imageHover: require("../../images/dress-image/581384-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Purple Viscose Fabric Gathered Crop Blouse",
+        price: 18.97,
+        image: require("../../images/dress-image/581409.jpeg"),
+        imageHover: require("../../images/dress-image/581409-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Crepe Fabric Mini Dress",
+        price: 24.5,
+        image: require("../../images/dress-image/581637.jpeg"),
+        imageHover: require("../../images/dress-image/581637-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Black Crepe Fabric Asymmetric Dress",
+        price: 24.99,
+        image: require("../../images/dress-image/58788.jpeg"),
+        imageHover: require("../../images/dress-image/58788-mirror.jpg"),
+        quickView: require("../../images/quick-view-img.jpg")
+    },
+    {
+        id: 23,
+        title: "Purple Crepe Fabric low-cut Mini Dress",
+        price: 24.50,
+        image: require("../../images/dress-image/dekolteli-mor.jpeg"),
+        imageHover: require("../../images/dress-image/dekolteli-mor-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
 ]
@@ -202,40 +234,40 @@ export const productsCollectionWomanDress = [
 export const productsCollectionLinens = [
     {
         id: 28,
-        title: "Linen Crochet Trim",
-        price: 190,
+        title: "Blue Navy Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-1.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-1-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 29,
-        title: "Heartland Alabama",
-        price: 300,
+        title: "Pink Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-2.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-2-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 30,
-        title: "Mermaid Pencil Midi",
-        price: 250,
+        title: "Red Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-3.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-3-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 31,
-        title: "Criss-cross",
-        price: 160,
+        title: "Grey Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-4.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-4-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 32,
-        title: "Vneck Bodycon",
-        price: 214,
+        title: "Milky Brown Almond Double Duet Cover Set",
+        price: 42,
         image: require("../../images/landing-image/nevresim-5.jpeg"),
         imageHover: require("../../images/landing-image/nevresim-5-mirror.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
@@ -245,30 +277,34 @@ export const productsCollectionLinens = [
 export const productsCollectionBathrobe = [
     {
         id: 36,
-        title: "Linen Crochet Trim",
-        price: 190,
+        title: "White Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-beyaz.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-beyaz.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 37,
-        title: "Heartland Alabama",
-        price: 300,
+        title: "Grey Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-gri.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-gri.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 38,
-        title: "Mermaid Pencil Midi",
-        price: 250,
+        title: "Burgundy Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-bordo.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-bordo.jpeg"),
         quickView: require("../../images/quick-view-img.jpg")
     },
     {
         id: 39,
-        title: "Criss-cross",
-        price: 160,
+        title: "Powder Soft Cotton Plus Size Bathrobe",
+        price: 32,
         image: require("../../images/landing-image/bornoz-pudra.jpeg"),
+        imageHover: require("../../images/landing-image/bornoz-pudra.jpeg"),
     }
 ]
 
