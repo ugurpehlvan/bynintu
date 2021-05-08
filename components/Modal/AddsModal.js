@@ -9,7 +9,7 @@ class AddsModal extends Component {
 
     componentDidMount(){
         this.setState({
-            open: true
+            open: false
         });
     }
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
-import AddsModal from '../components/Modal/AddsModal';
 import Banner from '../components/shop-style-two/Banner';
 import OfferArea from '../components/shop-style-two/OfferArea';
 import Products from '../components/shop-style-two/Products';
@@ -59,7 +58,6 @@ const Index = () => {
 
             <Footer />
 
-            <AddsModal />
         </>
     );
 }

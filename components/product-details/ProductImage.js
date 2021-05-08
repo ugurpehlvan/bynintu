@@ -10,7 +10,7 @@ class ProductImage extends Component {
           nav2: null
         };
       }
-    
+
       componentDidMount() {
         this.setState({
           nav1: this.slider1,
@@ -19,11 +19,11 @@ class ProductImage extends Component {
       }
 
     renderSliderMainImages = () => {
-        return DEFAULT_PROPS.map(({id, image}) => {
+        return this.props.product && this.props?.product?.allImages?.map((data) => {
             return (
-                <div key={id}>
+                <div key={data.id}>
                     <div className="item">
-                        <img src={image} alt="image" />
+                        <img src={data.img} alt="image" />
                     </div>
                 </div>
             )
@@ -31,11 +31,11 @@ class ProductImage extends Component {
     }
 
     renderSliderSubImages = () => {
-        return DEFAULT_PROPS.map(({id, image}) => {
+        return this.props.product && this.props?.product?.allImages?.map((data) => {
             return (
-                <div key={id}>
+                <div key={data.id}>
                     <div className="item">
-                        <img src={image} alt="image" />
+                        <img src={data.img} alt="image" />
                     </div>
                 </div>
             )
@@ -81,36 +81,5 @@ class ProductImage extends Component {
         );
     }
 }
-
-const DEFAULT_PROPS = [
-    {
-        id: 1,
-        image: require('../../images/product-details/1.jpg')
-    },
-    {
-        id: 2,
-        image: require('../../images/product-details/2.jpg')
-    },
-    {
-        id: 3,
-        image: require('../../images/product-details/3.jpg')
-    },
-    {
-        id: 4,
-        image: require('../../images/product-details/4.jpg')
-    },
-    {
-        id: 5,
-        image: require('../../images/product-details/5.jpg')
-    },
-    {
-        id: 6,
-        image: require('../../images/product-details/6.jpg')
-    },
-    {
-        id: 7,
-        image: require('../../images/product-details/7.jpg')
-    }
-];
 
 export default ProductImage;

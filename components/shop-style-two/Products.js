@@ -172,7 +172,7 @@ class Products extends Component {
 
                                                         <div className="product-content">
                                                             <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                                                <Link href="/product/[id]" as={`/product/${data.id}`}>
+                                                                <Link href={`/product/${data.id}`} as={`/product/${data.id}`}>
                                                                     <a>{data.title}</a>
                                                                 </Link>
                                                             </h3>

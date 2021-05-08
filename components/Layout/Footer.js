@@ -85,19 +85,19 @@ class Footer extends Component {
 
                                 <ul className="footer-contact-info">
                                     <li>
-                                        <i className="fas fa-map-marker-alt"></i> 
-                                        Location: 2750 Quadra Street <br /> Victoria, Canada
+                                        <i className="fas fa-map-marker-alt"></i>
+                                        Location: Kattenkruidweg 35 3541RT <br /> Utrecht, Netherlands
                                     </li>
                                     <li>
-                                        <i className="fas fa-phone"></i> 
+                                        <i className="fas fa-phone"></i>
                                         Call Us: <a href="tel:(+123) 456-7898">(+123) 456-7898</a>
                                     </li>
                                     <li>
-                                        <i className="far fa-envelope"></i> 
+                                        <i className="far fa-envelope"></i>
                                         Email Us: <a href="mailto:support@Bynintu.com">support@Bynintu.com</a>
                                     </li>
                                     <li>
-                                        <i className="fas fa-fax"></i> 
+                                        <i className="fas fa-fax"></i>
                                         Fax: <a href="tel:+123456">+123456</a>
                                     </li>
                                 </ul>

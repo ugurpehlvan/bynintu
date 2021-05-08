@@ -14,9 +14,39 @@ const Product = () => {
     const router = useRouter()
     const { id } = router.query
 
-    const product = useSelector((state) => state.other.products.find(item => item.id === parseInt(id)));
+    const product = useSelector((state) => {
+        const {
+            productsCollectionShoes,
+            productsCollectionPillows,
+            productsCollectionWomanDress,
+            productsCollectionLinens,
+            productsCollectionBathrobe,
+            productsCollectionTen,
+            productsCollectionEleven,
+            productsCovid19,
+            productsGrocery,
+            productsElectronics,
+            productsFurniture,
+        } = state.other;
 
-    const products = useSelector((state) => state.other.products)
+        const allProducts = [
+            ...productsCollectionShoes,
+            ...productsCollectionPillows,
+            ...productsCollectionWomanDress,
+            ...productsCollectionLinens,
+            ...productsCollectionBathrobe,
+            ...productsCollectionTen,
+            ...productsCollectionEleven,
+            ...productsCovid19,
+            ...productsGrocery,
+            ...productsElectronics,
+            ...productsFurniture,
+         ];
+
+        return allProducts.find(item => item.id === parseInt(id))
+    });
+
+    const products = useSelector((state) => state.other.productsCollectionWomanDress);
     const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
     return (
         <>
@@ -27,7 +57,7 @@ const Product = () => {
                 <div className="container">
                     <div className="row">
 
-                        <ProductImage />
+                        <ProductImage product={product} />
 
                         <ProductContent product={product} />
 
