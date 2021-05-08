@@ -4,12 +4,17 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
 //reducers
-import authReducer from "store/reducers/authReducer";
-import otherReducer from "store/reducers/otherReducer";
+import authReducer, { initialState as authInitialState } from "store/reducers/authReducer";
+import otherReducer, { initialState as otherInitialState } from "store/reducers/otherReducer";
+
+const initialState = {
+    ...authInitialState,
+    ...otherInitialState
+};
 
 let store
 
-const initStore = (preloadedState = {}) => {
+const initStore = (preloadedState = initialState) => {
     return createStore(
         combineReducers({
             auth: authReducer,

@@ -24,7 +24,7 @@ import {
     productsFurniture
 } from 'store/json-data/products';
 
-const initialState = {
+export const initialState = {
     productsCollectionShoes: productsCollectionShoes,
     productsCollectionPillows: productsCollectionPillows,
     productsCollectionWomanDress: productsCollectionWomanDress,
@@ -40,6 +40,7 @@ const initialState = {
     addedItemsToCompare:[],
     total: 0,
     shipping: 0,
+    products: []
 }
 
 const otherReducer = (state = initialState, action) => {
