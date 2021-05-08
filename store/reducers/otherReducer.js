@@ -24,7 +24,7 @@ import {
     productsFurniture
 } from 'store/json-data/products';
 
-export const initialState = {
+const initialState = {
     productsCollectionShoes: productsCollectionShoes,
     productsCollectionPillows: productsCollectionPillows,
     productsCollectionWomanDress: productsCollectionWomanDress,

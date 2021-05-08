@@ -2,7 +2,7 @@ import {
   AUTH_SUCCESS
 } from 'store/actions/action-types/action-names'
 
-export const initialState = {
+const initialState = {
   user: null,
   isSignedIn: null,
   userId: null
