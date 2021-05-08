@@ -94,3 +94,14 @@ export const signUp = (formValues) => async (dispatch) => {
         dispatch({ type: AUTH_ERROR, payload: response?.error });
     }
 };
+
+export const forgetPassword = (formValues) => async (dispatch) => {
+    const response = (await axiosClient.post(apiURL.forgetPassword, formValues)).data;
+    console.log('response', response);
+    // if (response.success) {
+    //     dispatch({ type: AUTH_SUCCESS, payload: response });
+
+    // } else {
+    //     dispatch({ type: AUTH_ERROR, payload: response?.error });
+    // }
+};
