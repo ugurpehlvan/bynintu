@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Breadcrumb from '../components/Common/Breadcrumb';
@@ -9,58 +9,59 @@ import ProductsFilterOptions from '../components/Common/ProductsFilterOptions';
 import ProductsCard from '../components/products/ProductsCard';
 
 const hookClass = (props) => {
-    const products = useSelector((state) => state.other.products)
-    const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
-    return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />
-}
+  const products = useSelector((state) => state.other.products);
+  const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+  return <Index {...props} products={products} CompareProducts={addedItemsToCompare} />;
+};
 
 class Index extends Component {
+  state = {
+    gridClass: '',
+  };
 
-    state = {
-        gridClass: ''
-    }
+  handleGrid = (e) => {
+    this.setState({
+      gridClass: e,
+    });
+  };
 
-    handleGrid = (e) => {
-        this.setState({
-            gridClass: e
-        });
-    }
+  render() {
+    let { gridClass } = this.state;
+    let { products, CompareProducts } = this.props;
+    return (
+      <>
+        <Navbar />
 
-    render() {
-        let { gridClass } = this.state;
-        let { products, CompareProducts } = this.props;
-        return (
-            <>
-                <Navbar />
+        <Breadcrumb title="Women's" />
 
-                <Breadcrumb title="Women's" />
+        <section className='products-collections-area ptb-60'>
+          <div className='container'>
+            <div className='section-title'>
+              <h2>
+                <span className='dot'></span> Women's
+              </h2>
+            </div>
 
-                <section className="products-collections-area ptb-60">
-                    <div className="container">
-                        <div className="section-title">
-                            <h2><span className="dot"></span> Women's</h2>
-                        </div>
+            <div className='row'>
+              <LeftSidebar />
 
-                        <div className="row">
-                            <LeftSidebar />
+              <div className='col-lg-8 col-md-12'>
+                <ProductsFilterOptions onClick={this.handleGrid} />
 
-                            <div className="col-lg-8 col-md-12">
-                                <ProductsFilterOptions onClick={this.handleGrid} />
+                <div id='products-filter' className={`products-collections-listing row ${gridClass}`}>
+                  <ProductsCard products={products} CompareProducts={CompareProducts} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                                <div id="products-filter" className={`products-collections-listing row ${gridClass}`}>
-                                    <ProductsCard products={products} CompareProducts={CompareProducts} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <Facility />
 
-                <Facility />
-
-                <Footer />
-            </>
-        );
-    }
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default hookClass;

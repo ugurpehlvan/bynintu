@@ -6,21 +6,21 @@ import Breadcrumb from '../components/Common/Breadcrumb';
 import DetailsContentThree from '../components/blog/DetailsContentThree';
 
 class BlogDetailsThree extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <Breadcrumb title="Styling White Jeans after Labor Day" />
+        <Breadcrumb title='Styling White Jeans after Labor Day' />
 
-                <DetailsContentThree />
+        <DetailsContentThree />
 
-                <Facility />
-                
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default BlogDetailsThree;

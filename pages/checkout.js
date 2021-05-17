@@ -6,21 +6,21 @@ import Breadcrumb from '../components/Common/Breadcrumb';
 import CheckoutForm from '../components/checkout/CheckoutForm';
 
 class Index extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
-                
-                <Breadcrumb title="Checkout" />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <CheckoutForm />
+        <Breadcrumb title='Checkout' />
 
-                <Facility />
+        <CheckoutForm />
 
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Index;

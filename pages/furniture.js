@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import AddsModal from '../components/Modal/AddsModal';
@@ -16,39 +16,39 @@ import Subscribe from '../components/Common/Subscribe';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
 const Furniture = () => {
-    const products = useSelector((state) => state.productsFurniture)
-    const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
-    return (
-        <>
-            <Navbar />
+  const products = useSelector((state) => state.productsFurniture);
+  const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+  return (
+    <>
+      <Navbar />
 
-            <Banner />
+      <Banner />
 
-            <RecentProducts products={products} CompareProducts={addedItemsToCompare} />
-            
-            <ProductOffer />
+      <RecentProducts products={products} CompareProducts={addedItemsToCompare} />
 
-            <TrendingProducts products={products} CompareProducts={addedItemsToCompare} />
-            
-            <Facility />
+      <ProductOffer />
 
-            <BestSeller products={products} CompareProducts={addedItemsToCompare} />
-            
-            <Partner />
+      <TrendingProducts products={products} CompareProducts={addedItemsToCompare} />
 
-            <TestimonialsTwo />
+      <Facility />
 
-            <News />
+      <BestSeller products={products} CompareProducts={addedItemsToCompare} />
 
-            <Subscribe />
+      <Partner />
 
-            <InstagramPhoto />
+      <TestimonialsTwo />
 
-            <Footer />
-            
-            <AddsModal />
-        </>
-    );
-}
+      <News />
+
+      <Subscribe />
+
+      <InstagramPhoto />
+
+      <Footer />
+
+      <AddsModal />
+    </>
+  );
+};
 
 export default Furniture;

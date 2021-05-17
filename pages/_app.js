@@ -19,17 +19,17 @@ import { Provider } from 'react-redux';
 import { useStore } from '../store/reducers/reducers';
 
 const MyApp = ({ Component, pageProps }) => {
-    const store = useStore(pageProps.initialReduxState)
-    return (
-        <>
-            <ToastContainer />
-            <Layout>
-                <Provider store={store}>
-                    <Component {...pageProps} />
-                </Provider>
-            </Layout>
-        </>
-    );
-}
+  const store = useStore(pageProps.initialReduxState);
+  return (
+    <>
+      <ToastContainer />
+      <Layout>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </Layout>
+    </>
+  );
+};
 
-export default MyApp
+export default MyApp;

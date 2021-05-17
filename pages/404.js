@@ -6,34 +6,36 @@ import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
 
 class Custom404 extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <Breadcrumb title="404 Not Found" />
+        <Breadcrumb title='404 Not Found' />
 
-                <section className="error-area ptb-60">
-                    <div className="container">
-                        <div className="error-content">
-                            <img src={require("../images/404.png")} alt="error" />
+        <section className='error-area ptb-60'>
+          <div className='container'>
+            <div className='error-content'>
+              <img src={require('../images/404.png')} alt='error' />
 
-                            <h3>{this.props.statusCode} Page Not Found</h3>
-                            <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+              <h3>{this.props.statusCode} Page Not Found</h3>
+              <p>
+                The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+              </p>
 
-                            <Link href="/">
-                                <a className="btn btn-light">Go to Home</a>
-                            </Link>
-                        </div>
-                    </div>
-                </section>
+              <Link href='/'>
+                <a className='btn btn-light'>Go to Home</a>
+              </Link>
+            </div>
+          </div>
+        </section>
 
-                <Facility />
-                
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Custom404;

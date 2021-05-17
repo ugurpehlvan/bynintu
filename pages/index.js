@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Banner from '../components/shop-style-two/Banner';
@@ -16,50 +16,49 @@ import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
 const Index = () => {
-    const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes)
-    const productsCollectionPillows = useSelector((state) => state.other.productsCollectionPillows);
-    const productsCollectionWomanDress = useSelector((state) => state.other.productsCollectionWomanDress);
-    const productsCollectionLinens = useSelector((state) => state.other.productsCollectionLinens);
-    const productsCollectionBathrobe = useSelector((state) => state.other.productsCollectionBathrobe);
+  const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes);
+  const productsCollectionPillows = useSelector((state) => state.other.productsCollectionPillows);
+  const productsCollectionWomanDress = useSelector((state) => state.other.productsCollectionWomanDress);
+  const productsCollectionLinens = useSelector((state) => state.other.productsCollectionLinens);
+  const productsCollectionBathrobe = useSelector((state) => state.other.productsCollectionBathrobe);
 
-    const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare)
-    return (
-        <>
-            <Navbar />
+  const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare);
+  return (
+    <>
+      <Navbar />
 
-            <Banner />
+      <Banner />
 
-            <OfferArea />
+      <OfferArea />
 
-            <Products
-                productsCollectionWomanDress={productsCollectionWomanDress}
-                productsCollectionBathrobe={productsCollectionBathrobe}
-                productsCollectionLinens={productsCollectionLinens}
-                CompareProducts={addedItemsToCompare}
-            />
+      <Products
+        productsCollectionWomanDress={productsCollectionWomanDress}
+        productsCollectionBathrobe={productsCollectionBathrobe}
+        productsCollectionLinens={productsCollectionLinens}
+        CompareProducts={addedItemsToCompare}
+      />
 
-            <CategoryProducts />
+      <CategoryProducts />
 
-            <TrendingProducts products={productsCollectionPillows} CompareProducts={addedItemsToCompare} />
+      <TrendingProducts products={productsCollectionPillows} CompareProducts={addedItemsToCompare} />
 
-            <BestSeller products={productsCollectionShoes} CompareProducts={addedItemsToCompare} />
+      <BestSeller products={productsCollectionShoes} CompareProducts={addedItemsToCompare} />
 
-            <Facility />
+      <Facility />
 
-            <Testimonials />
+      <Testimonials />
 
-            <News />
+      <News />
 
-            <Subscribe />
+      <Subscribe />
 
-            <Partner />
+      <Partner />
 
-            <InstagramPhoto />
+      <InstagramPhoto />
 
-            <Footer />
-
-        </>
-    );
-}
+      <Footer />
+    </>
+  );
+};
 
 export default Index;

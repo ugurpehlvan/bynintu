@@ -6,21 +6,21 @@ import Breadcrumb from '../components/Common/Breadcrumb';
 import BlogGrid from '../components/blog/BlogGrid';
 
 class Blog extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <Breadcrumb title="Blog" />
+        <Breadcrumb title='Blog' />
 
-                <BlogGrid />
+        <BlogGrid />
 
-                <Facility />
-                
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Blog;

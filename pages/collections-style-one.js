@@ -6,17 +6,17 @@ import ProductsCollections from '../components/collections-styles/ProductsCollec
 import Facility from '../components/Common/Facility';
 
 class Index extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <Breadcrumb title="Collections Type 1" />
-                <ProductsCollections />
-                <Facility />
-                <Footer />
-            </React.Fragment>
-        );
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
+        <Breadcrumb title='Collections Type 1' />
+        <ProductsCollections />
+        <Facility />
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
 export default Index;

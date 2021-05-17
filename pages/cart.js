@@ -6,21 +6,21 @@ import Breadcrumb from '../components/Common/Breadcrumb';
 import CartContent from '../components/cart/CartContent';
 
 class Index extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <Breadcrumb title="Cart" />
+        <Breadcrumb title='Cart' />
 
-                <CartContent />
+        <CartContent />
 
-                <Facility />
-                
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Index;

@@ -8,30 +8,30 @@ import InstagramPhoto from 'components/Common/InstagramPhoto';
 import Footer from 'components/Layout/Footer';
 
 const ThankYou = () => {
-    return (
-        <>
-            <Navbar />
+  return (
+    <>
+      <Navbar />
 
-            <div className="thank-you-area">
-                <div className="container">
-                    <h1>Thank You</h1>
-                    <Link href="/">
-                        <a className="btn btn-primary">Go Home</a>
-                    </Link>
-                </div>
-            </div>
+      <div className='thank-you-area'>
+        <div className='container'>
+          <h1>Thank You</h1>
+          <Link href='/'>
+            <a className='btn btn-primary'>Go Home</a>
+          </Link>
+        </div>
+      </div>
 
-            <Facility />
+      <Facility />
 
-            <Subscribe />
+      <Subscribe />
 
-            <Partner />
+      <Partner />
 
-            <InstagramPhoto />
+      <InstagramPhoto />
 
-            <Footer />
-        </>
-    );
-}
+      <Footer />
+    </>
+  );
+};
 
 export default ThankYou;

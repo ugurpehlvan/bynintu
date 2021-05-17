@@ -6,21 +6,21 @@ import ProductsCollectionsTwo from '../components/collections-styles/ProductsCol
 import Facility from '../components/Common/Facility';
 
 class Index extends Component {
-    render() {
-        return (
-            <>
-                <Navbar />
+  render() {
+    return (
+      <>
+        <Navbar />
 
-                <Breadcrumb title="Collections Type 2" />
+        <Breadcrumb title='Collections Type 2' />
 
-                <ProductsCollectionsTwo />
-                
-                <Facility />
+        <ProductsCollectionsTwo />
 
-                <Footer />
-            </>
-        );
-    }
+        <Facility />
+
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Index;

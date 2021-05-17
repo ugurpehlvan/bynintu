@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import AddsModal from '../components/Modal/AddsModal';
@@ -15,37 +15,37 @@ import Subscribe from '../components/Common/Subscribe';
 import InstagramPhoto from '../components/Covid19/InstagramPhoto';
 
 const Covid19 = () => {
-    const products = useSelector((state) => state.productsCovid19)
-    const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare)
-    return (
-        <>
-            <Navbar />
+  const products = useSelector((state) => state.productsCovid19);
+  const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+  return (
+    <>
+      <Navbar />
 
-            <Banner />
+      <Banner />
 
-            <RecentProducts products={products} CompareProducts={addedItemsToCompare} />
+      <RecentProducts products={products} CompareProducts={addedItemsToCompare} />
 
-            <ProductOffer />
+      <ProductOffer />
 
-            <TrendingProducts products={products} CompareProducts={addedItemsToCompare} />
+      <TrendingProducts products={products} CompareProducts={addedItemsToCompare} />
 
-            <Facility />
+      <Facility />
 
-            <BestSeller products={products} CompareProducts={addedItemsToCompare} />
+      <BestSeller products={products} CompareProducts={addedItemsToCompare} />
 
-            <Partner />
+      <Partner />
 
-            <News />
+      <News />
 
-            <Subscribe />
+      <Subscribe />
 
-            <InstagramPhoto />
+      <InstagramPhoto />
 
-            <Footer />
-            
-            <AddsModal />
-        </>
-    );
-}
+      <Footer />
+
+      <AddsModal />
+    </>
+  );
+};
 
 export default Covid19;

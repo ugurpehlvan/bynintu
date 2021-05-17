@@ -1,11 +1,9 @@
-import {
-  AUTH_SUCCESS
-} from 'store/actions/action-types/action-names'
+import { AUTH_SUCCESS } from 'store/actions/action-types/action-names';
 
 const initialState = {
   user: null,
   isSignedIn: null,
-  userId: null
+  userId: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -13,8 +11,8 @@ const authReducer = (state = initialState, action) => {
     case AUTH_SUCCESS:
       return {
         ...state,
-        user: action.payload
-      }
+        user: action.payload,
+      };
     default:
       return state;
   }
