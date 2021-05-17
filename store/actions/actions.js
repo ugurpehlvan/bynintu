@@ -10,6 +10,8 @@ import {
   REMOVE_ITEM_FROM_COMPARE,
   AUTH_SUCCESS,
   AUTH_ERROR,
+  VALIDATE_ERROR,
+  VALIDATE_SUCCESS,
 } from './action-types/action-names';
 
 //add cart action
@@ -73,23 +75,39 @@ export const removeItemFromCompare = (id) => {
 };
 
 //sign in action
-export const signIn = (formValues) => async (dispatch, getState) => {
+export const signIn = (formValues, router) => async (dispatch, getState) => {
   const response = (await axiosClient.post(apiURL.signIn, formValues)).data;
   if (response.success) {
     dispatch({ type: AUTH_SUCCESS, payload: response });
+    localStorage.setItem('token', response.token);
+    router('/');
   } else {
     dispatch({ type: AUTH_ERROR, payload: response?.error });
   }
 };
 
-export const signUp = (formValues) => async (dispatch) => {
+export const validateAccount = (token, route) => async (dispatch, getState) => {
+  console.log('validate account action icine geldi');
+  const response = (await axiosClient.post(apiURL.validateAccount, token)).data;
+  if (response?.result === 'OK') {
+    dispatch({ type: VALIDATE_SUCCESS, payload: response });
+  } else {
+    dispatch({ type: VALIDATE_ERROR, payload: response?.error });
+    route('/signup');
+  }
+};
+
+export const signUp = (formValues, notify) => async (dispatch) => {
   console.log('signiuop');
   const response = (await axiosClient.post(apiURL.signUp, formValues)).data;
   console.log('response', response);
-  if (response.success) {
+  if (response.id) {
     dispatch({ type: AUTH_SUCCESS, payload: response });
+    localStorage.setItem('token', response.token);
+    notify(true);
   } else {
     dispatch({ type: AUTH_ERROR, payload: response?.error });
+    notify(false);
   }
 };
 
@@ -116,7 +134,13 @@ export const resetPassword = (formValues) => async (dispatch) => {
 };
 
 export const updatePassword = (formValues) => async (dispatch) => {
-  const response = (await axiosClient.put(apiURL.updatePassword, formValues)).data;
+  const response = (
+    await axiosClient.put(apiURL.updatePassword, formValues, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+  ).data;
   console.log('response', response);
   // if (response.success) {
   //     dispatch({ type: AUTH_SUCCESS, payload: response });

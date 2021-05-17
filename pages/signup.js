@@ -29,19 +29,23 @@ const Signup = ({ signUp, user }) => {
 
   const handleSubmit = useCallback(
     (e) => {
-      console.log('asdasda');
       e.preventDefault();
       const isEmailValid = isEmail(email);
-      console.log('2');
+
       if (!isEmailValid) {
         notify('error', 'Please type an valid email');
         return;
       }
-      console.log('3');
-      signUp({
-        email,
-        password,
-      });
+
+      signUp(
+        {
+          email,
+          password,
+        },
+        (type) => {
+          type ? notify('success', 'Go to email screen') : notify('error', 'Error');
+        }
+      );
     },
     [email, password]
   );
@@ -65,6 +69,7 @@ const Signup = ({ signUp, user }) => {
               <div className='form-group'>
                 <label>Email</label>
                 <input
+                  value={email}
                   type='email'
                   onChange={handleEmailChange}
                   className='form-control'
@@ -77,6 +82,7 @@ const Signup = ({ signUp, user }) => {
               <div className='form-group'>
                 <label>Password</label>
                 <input
+                  value={password}
                   type='password'
                   onChange={handlePasswordChange}
                   className='form-control'

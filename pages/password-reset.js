@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
 
 // components
 import Navbar from 'components/Layout/Navbar';
@@ -15,17 +16,20 @@ import { resetPassword } from 'store/actions/actions';
 import notify from 'utils/notify';
 
 const PasswordReset = ({ resetPassword }) => {
+  const router = useRouter();
+  const { token } = router.query;
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handlePasswordChange = useCallback((e) => {
-    setPassword(e.target.value);
+    setPassword(e.target.value.trim());
   }, []);
 
   const handleConfirmPasswordChange = useCallback((e) => {
-    setConfirmPassword(e.target.value);
+    setConfirmPassword(e.target.value.trim());
   }, []);
-
+  console.log('token1', token);
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -33,9 +37,9 @@ const PasswordReset = ({ resetPassword }) => {
         notify('error', 'Passwords should match');
         return;
       }
-
+      console.log('token2', token);
       resetPassword({
-        token: '',
+        token,
         password,
       });
     },

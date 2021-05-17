@@ -1,8 +1,8 @@
-import { AUTH_SUCCESS } from 'store/actions/action-types/action-names';
+import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from 'store/actions/action-types/action-names';
 
 const initialState = {
   user: null,
-  isSignedIn: null,
+  isSignedIn: false,
   userId: null,
 };
 
@@ -12,6 +12,21 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        isSignedIn: true,
+      };
+    case AUTH_ERROR:
+      return {
+        ...state,
+        user: null,
+      };
+    case VALIDATE_SUCCESS:
+      return {
+        ...state,
+      };
+    case VALIDATE_ERROR:
+      return {
+        ...state,
+        isSignedIn: false,
       };
     default:
       return state;

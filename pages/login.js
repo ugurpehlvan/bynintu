@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
 
 import { signIn } from '../store/actions/actions';
 import Link from 'next/link';
@@ -11,6 +12,8 @@ import isEmail from '../utils/isEmail';
 import notify from '../utils/notify';
 
 const Login = ({ signIn, user }) => {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,10 +34,13 @@ const Login = ({ signIn, user }) => {
         return;
       }
 
-      signIn({
-        email,
-        password,
-      });
+      signIn(
+        {
+          email,
+          password,
+        },
+        (route) => router.push(route)
+      );
     },
     [email, password]
   );

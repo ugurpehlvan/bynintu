@@ -3,7 +3,8 @@ const apiUrl = {
   signUp: 'api/api/v1/customer/auth:signup',
   forgetPassword: 'api/api/v1/customer/password:forgot',
   resetPassword: 'api/api/v1/customer/password:reset',
-  updatePassword: 'api/api/v1/customer/password:update',
+  updatePassword: 'api/api/v1/customer/password',
+  validateAccount: 'api/api/v1/customer/validateAccount',
 };
 
 export default apiUrl;

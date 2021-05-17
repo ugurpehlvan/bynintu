@@ -20,15 +20,15 @@ const PasswordUpdate = ({ updatePassword }) => {
   const [confirmNewPassword, setNewConfirmPassword] = useState('');
 
   const handleCurrentPasswordChange = useCallback((e) => {
-    setCurrentPassword(e.target.value);
+    setCurrentPassword(e.target.value.trim());
   }, []);
 
   const handleNewPasswordChange = useCallback((e) => {
-    setNewPassword(e.target.value);
+    setNewPassword(e.target.value.trim());
   }, []);
 
   const handleNewConfirmPasswordChange = useCallback((e) => {
-    setNewConfirmPassword(e.target.value);
+    setNewConfirmPassword(e.target.value.trim());
   }, []);
 
   const handleSubmit = useCallback(
