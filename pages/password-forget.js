@@ -1,4 +1,3 @@
-
 import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
@@ -16,66 +15,77 @@ import { forgetPassword } from 'store/actions/actions';
 import isEmail from 'utils/isEmail';
 import notify from 'utils/notify';
 
-const PasswordForget = ({forgetPassword, user}) => {
-    const [email, setEmail] = useState('');
+const PasswordForget = ({ forgetPassword, user }) => {
+  const [email, setEmail] = useState('');
 
-    const handleEmailChange = useCallback((e) => {
-        setEmail(e.target.value);
-    }, []);
+  const handleEmailChange = useCallback((e) => {
+    setEmail(e.target.value);
+  }, []);
 
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        const isEmailValid = isEmail(email);
-        if (!isEmailValid) {
-            notify('error', 'Please type an valid email');
-            return;
-        }
-        
-        forgetPassword({email});
-    }, [email]);
-    
-    return (
-        <>
-            <Navbar />
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const isEmailValid = isEmail(email);
+      if (!isEmailValid) {
+        notify('error', 'Please type an valid email');
+        return;
+      }
 
-            <Breadcrumb title="Signup" />
+      forgetPassword({ email });
+    },
+    [email]
+  );
 
-            <section className="signup-area ptb-60">
-                <div className="container">
-                    <div className="signup-content">
-                        <div className="section-title">
-                            <h2><span className="dot"></span>Password Reset</h2>
-                        </div>
+  return (
+    <>
+      <Navbar />
 
-                        <form className="signup-form">
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input type="email" onChange={handleEmailChange} className="form-control" placeholder="Enter your email" id="name" name="email" />
-                            </div>
+      <Breadcrumb title='Signup' />
 
-                            <button onClick={handleSubmit} type="submit" className="btn btn-primary">Reset Password</button>
-                            <Link href="/">
-                                <a className="return-store">or Return to Store</a>
-                            </Link>
-                        </form>
-                    </div>
-                </div>
-            </section>
+      <section className='signup-area ptb-60'>
+        <div className='container'>
+          <div className='signup-content'>
+            <div className='section-title'>
+              <h2>
+                <span className='dot'></span>Password Reset
+              </h2>
+            </div>
 
-            <Facility />
+            <form className='signup-form'>
+              <div className='form-group'>
+                <label>Email</label>
+                <input
+                  type='email'
+                  onChange={handleEmailChange}
+                  className='form-control'
+                  placeholder='Enter your email'
+                  id='name'
+                  name='email'
+                />
+              </div>
 
-            <Footer />
-        </>
-    );
-}
+              <button onClick={handleSubmit} type='submit' className='btn btn-primary'>
+                Reset Password
+              </button>
+              <Link href='/'>
+                <a className='return-store'>or Return to Store</a>
+              </Link>
+            </form>
+          </div>
+        </div>
+      </section>
 
-const mapStateToProps = ({auth}) => {
-    return {
-        user: auth.user,
-    }
-}
+      <Facility />
 
-export default connect(
-    mapStateToProps,
-    { forgetPassword }
-)(PasswordForget);
+      <Footer />
+    </>
+  );
+};
+
+const mapStateToProps = ({ auth }) => {
+  return {
+    user: auth.user,
+  };
+};
+
+export default connect(mapStateToProps, { forgetPassword })(PasswordForget);

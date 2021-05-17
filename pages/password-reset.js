@@ -21,66 +21,83 @@ const PasswordReset = ({ resetPassword }) => {
   const handlePasswordChange = useCallback((e) => {
     setPassword(e.target.value);
   }, []);
-  
+
   const handleConfirmPasswordChange = useCallback((e) => {
     setConfirmPassword(e.target.value);
   }, []);
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = useCallback(
+    (e) => {
       e.preventDefault();
       if (password !== confirmPassword) {
-          notify('error', 'Passwords should match');
-          return;
+        notify('error', 'Passwords should match');
+        return;
       }
 
-    resetPassword({
-      token: '',  
-      password
-    });
-
-  }, [confirmPassword, password]);
-  
-  return (
-      <>
-          <Navbar />
-
-          <Breadcrumb title="Signup" />
-
-          <section className="signup-area ptb-60">
-              <div className="container">
-                  <div className="signup-content">
-                      <div className="section-title">
-                          <h2><span className="dot"></span>Reset Password</h2>
-                      </div>
-
-                      <form className="signup-form">
-                          <div className="form-group">
-                              <label>Password</label>
-                              <input type="password" onChange={handlePasswordChange} className="form-control" placeholder="Enter your password" id="password" name="password" />
-                          </div>
-              
-                          <div className="form-group">
-                              <label>Confirm Password</label>
-                              <input type="password" onChange={handleConfirmPasswordChange} className="form-control" placeholder="Enter your password again" id="confirm-password" name="confirmPassword" />
-                          </div>
-
-                          <button onClick={handleSubmit} type="submit" className="btn btn-primary">Save</button>
-                          <Link href="/">
-                              <a className="return-store">or Return to Store</a>
-                          </Link>
-                      </form>
-                  </div>
-              </div>
-          </section>
-
-          <Facility />
-
-          <Footer />
-      </>
+      resetPassword({
+        token: '',
+        password,
+      });
+    },
+    [confirmPassword, password]
   );
-}
 
-export default connect(
-  null,
-  { resetPassword }
-)(PasswordReset);
+  return (
+    <>
+      <Navbar />
+
+      <Breadcrumb title='Signup' />
+
+      <section className='signup-area ptb-60'>
+        <div className='container'>
+          <div className='signup-content'>
+            <div className='section-title'>
+              <h2>
+                <span className='dot'></span>Reset Password
+              </h2>
+            </div>
+
+            <form className='signup-form'>
+              <div className='form-group'>
+                <label>Password</label>
+                <input
+                  type='password'
+                  onChange={handlePasswordChange}
+                  className='form-control'
+                  placeholder='Enter your password'
+                  id='password'
+                  name='password'
+                />
+              </div>
+
+              <div className='form-group'>
+                <label>Confirm Password</label>
+                <input
+                  type='password'
+                  onChange={handleConfirmPasswordChange}
+                  className='form-control'
+                  placeholder='Enter your password again'
+                  id='confirm-password'
+                  name='confirmPassword'
+                />
+              </div>
+
+              <button onClick={handleSubmit} type='submit' className='btn btn-primary'>
+                Save
+              </button>
+              <Link href='/'>
+                <a className='return-store'>or Return to Store</a>
+              </Link>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <Facility />
+
+      <Footer />
+    </>
+  );
+};
+
+export default connect(null, { resetPassword })(PasswordReset);
