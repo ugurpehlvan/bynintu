@@ -60,6 +60,7 @@ const Login = ({ signIn, user }) => {
                   <div className='form-group'>
                     <label>Email</label>
                     <input
+                      value={email}
                       type='email'
                       onChange={handleEmailChange}
                       className='form-control'
@@ -72,6 +73,7 @@ const Login = ({ signIn, user }) => {
                   <div className='form-group'>
                     <label>Password</label>
                     <input
+                      value={password}
                       type='password'
                       onChange={handlePasswordChange}
                       className='form-control'
