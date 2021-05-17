@@ -105,3 +105,25 @@ export const forgetPassword = (formValues) => async (dispatch) => {
     //     dispatch({ type: AUTH_ERROR, payload: response?.error });
     // }
 };
+
+export const resetPassword = (formValues) => async (dispatch) => {
+    const response = (await axiosClient.put(apiURL.resetPassword, formValues)).data;
+    console.log('response', response);
+    // if (response.success) {
+    //     dispatch({ type: AUTH_SUCCESS, payload: response });
+
+    // } else {
+    //     dispatch({ type: AUTH_ERROR, payload: response?.error });
+    // }
+};
+
+export const updatePassword = (formValues) => async (dispatch) => {
+    const response = (await axiosClient.put(apiURL.updatePassword, formValues)).data;
+    console.log('response', response);
+    // if (response.success) {
+    //     dispatch({ type: AUTH_SUCCESS, payload: response });
+
+    // } else {
+    //     dispatch({ type: AUTH_ERROR, payload: response?.error });
+    // }
+};

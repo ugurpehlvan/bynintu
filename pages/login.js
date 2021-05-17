@@ -64,7 +64,7 @@ const Login = ({ signIn, user }) => {
 
                                     <button onClick={handleSubmit} className="btn btn-primary">Login</button>
 
-                                    <Link href="/passwordForget">
+                                    <Link href="/password-forget">
                                         <a className="forgot-password">Lost your password?</a>
                                     </Link>
                                 </form>
