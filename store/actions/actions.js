@@ -122,6 +122,22 @@ export const forgetPassword = (formValues) => async (dispatch) => {
   // }
 };
 
+export const getCustomer = () => async (dispatch) => {
+  const response = (
+    await axiosClient.get(apiURL.customer, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+  ).data;
+
+  if (!response.error) {
+    dispatch({ type: AUTH_SUCCESS, payload: response });
+  } else {
+    dispatch({ type: AUTH_ERROR, payload: response?.error });
+  }
+};
+
 export const resetPassword = (formValues) => async (dispatch) => {
   const response = (await axiosClient.put(apiURL.resetPassword, formValues)).data;
   console.log('response', response);

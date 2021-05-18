@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 // actions
 import { validateAccount } from 'store/actions/actions';
+import { getCustomer } from 'store/actions/actions';
 
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
@@ -20,7 +21,7 @@ import Subscribe from '../components/Common/Subscribe';
 import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
-const Index = ({ validateAccount, isSignedIn }) => {
+const Index = ({ validateAccount, getCustomer, isSignedIn, user }) => {
   const router = useRouter();
 
   const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes);
@@ -38,9 +39,15 @@ const Index = ({ validateAccount, isSignedIn }) => {
     token && validateAccount({ token }, (route) => router.push(route));
   }, [token]);
 
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      getCustomer();
+    }
+  }, []); //eslint-disable-line
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} />
 
       <Banner />
 
@@ -79,7 +86,8 @@ const Index = ({ validateAccount, isSignedIn }) => {
 const mapStateToProps = ({ auth }) => {
   return {
     isSignedIn: auth.isSignedIn,
+    user: auth.user,
   };
 };
 
-export default connect(mapStateToProps, { validateAccount })(Index);
+export default connect(mapStateToProps, { validateAccount, getCustomer })(Index);

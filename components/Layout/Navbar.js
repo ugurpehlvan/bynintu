@@ -4,17 +4,18 @@ import TopHeader from './TopHeader';
 import MegaMenu from './MegaMenu';
 
 class Navbar extends Component {
-    render() {
-        return (
-            <>
-                <TopPanel />
+  render() {
+    const { user } = this.props;
+    return (
+      <>
+        <TopPanel />
 
-                <TopHeader />
+        <TopHeader />
 
-                <MegaMenu />
-            </>
-        );
-    }
+        <MegaMenu user={user} />
+      </>
+    );
+  }
 }
 
 export default Navbar;

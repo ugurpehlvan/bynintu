@@ -5,6 +5,7 @@ const apiUrl = {
   resetPassword: 'api/api/v1/customer/password:reset',
   updatePassword: 'api/api/v1/customer/password',
   validateAccount: 'api/api/v1/customer/validateAccount',
+  customer: 'api/api/v1/customer',
 };
 
 export default apiUrl;

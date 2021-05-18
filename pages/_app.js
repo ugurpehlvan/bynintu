@@ -12,6 +12,7 @@ import '../public/assets/styles/responsive.css';
 
 // styles
 import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css';
 
 import Layout from '../components/_App/Layout';
 import { Provider } from 'react-redux';
