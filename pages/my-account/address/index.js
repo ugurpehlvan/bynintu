@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MyAccountContainer from 'components/Layout/MyAccountContainer';
 
 // components
 import AddressCard from 'components/address-card';
+import AddressDialog from 'components/dialogs/address-dialog';
 
 import styles from './address.module.css';
 
 const index = () => {
+  const [addressDialogVisible, setAddressDialogVisible] = useState(false);
+
+  const handleAddNewAddressClick = () => {
+    setAddressDialogVisible(true);
+  };
+
+  const handleClose = () => {
+    setAddressDialogVisible(false);
+  };
+
   return (
     <MyAccountContainer>
       <div className={styles.container}>
         <div className={styles.header}>
           <h3 className={styles.header_text}>Address Infos</h3>
-          <p className={styles.add_address}>
+          <p onClick={handleAddNewAddressClick} className={styles.add_address}>
             <i style={{ marginRight: '6px' }} className='fas fa-plus'></i>
             Add New Address
           </p>
@@ -29,6 +40,7 @@ const index = () => {
           </div>
         </div>
       </div>
+      <AddressDialog visible={addressDialogVisible} onClose={handleClose} />
     </MyAccountContainer>
   );
 };
