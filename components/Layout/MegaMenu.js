@@ -89,9 +89,7 @@ class MegaMenu extends Component {
       collapseBlogItems,
     } = this.state;
     const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
-    const classTwo = collapsed
-      ? 'navbar-toggler navbar-toggler-right collapsed'
-      : 'navbar-toggler navbar-toggler-right';
+    const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
     let { products, user } = this.props;
 
@@ -1118,10 +1116,7 @@ class MegaMenu extends Component {
                         }}
                       ></i>
 
-                      <i
-                        onClick={this.handleSearchForm}
-                        className={`close-btn fas fa-times ${this.state.searchForm ? 'active' : ''}`}
-                      ></i>
+                      <i onClick={this.handleSearchForm} className={`close-btn fas fa-times ${this.state.searchForm ? 'active' : ''}`}></i>
 
                       <div
                         className='search-overlay search-popup'
@@ -1181,6 +1176,7 @@ const mapStateToProps = (state) => {
   return {
     products: state.other.addedItems,
     isSignedIn: state.auth.isSignedIn,
+    user: state.auth.user,
   };
 };
 

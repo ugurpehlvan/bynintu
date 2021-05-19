@@ -21,7 +21,7 @@ import Subscribe from '../components/Common/Subscribe';
 import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
-const Index = ({ validateAccount, getCustomer, isSignedIn, user }) => {
+const Index = ({ validateAccount, getCustomer }) => {
   const router = useRouter();
 
   const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes);
@@ -34,8 +34,6 @@ const Index = ({ validateAccount, getCustomer, isSignedIn, user }) => {
   const { token } = router.query;
 
   useEffect(() => {
-    console.log('///////// token //////////', token);
-    console.log('///////// isSignedIn //////////', isSignedIn);
     token && validateAccount({ token }, (route) => router.push(route));
   }, [token]);
 
@@ -47,7 +45,7 @@ const Index = ({ validateAccount, getCustomer, isSignedIn, user }) => {
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar />
 
       <Banner />
 
@@ -83,11 +81,4 @@ const Index = ({ validateAccount, getCustomer, isSignedIn, user }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => {
-  return {
-    isSignedIn: auth.isSignedIn,
-    user: auth.user,
-  };
-};
-
-export default connect(mapStateToProps, { validateAccount, getCustomer })(Index);
+export default connect(null, { validateAccount, getCustomer })(Index);

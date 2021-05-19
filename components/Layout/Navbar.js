@@ -5,14 +5,13 @@ import MegaMenu from './MegaMenu';
 
 class Navbar extends Component {
   render() {
-    const { user } = this.props;
     return (
       <>
         <TopPanel />
 
         <TopHeader />
 
-        <MegaMenu user={user} />
+        <MegaMenu />
       </>
     );
   }
