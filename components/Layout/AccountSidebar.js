@@ -16,25 +16,23 @@ const AccountSidebar = () => {
       <ul style={{ listStyle: 'none', padding: '0px' }}>
         <li style={listIteStyle}>
           <Link href='/my-account/my-orders'>
-            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
-              My Orders
-            </a>
+            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }}>My Orders</a>
           </Link>
         </li>
         <li style={listIteStyle}>
-          <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
-            Account Infos
-          </a>
+          <Link href='/my-account/user-info'>
+            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }}>Account Infos</a>
+          </Link>
         </li>
         <li style={listIteStyle}>
-          <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
-            Address
-          </a>
+          <Link href='/my-account/address'>
+            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }}>Address</a>
+          </Link>
         </li>
         <li style={listIteStyle}>
-          <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
-            Help
-          </a>
+          <Link href='/my-account/address'>
+            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }}>Help</a>
+          </Link>
         </li>
       </ul>
     </div>
