@@ -6,6 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 //reducers
 import authReducer from 'store/reducers/authReducer';
 import otherReducer from 'store/reducers/otherReducer';
+import countryReducer from 'store/reducers/countryReducer';
 
 let store;
 
@@ -14,6 +15,7 @@ const initStore = (preloadedState) => {
     combineReducers({
       auth: authReducer,
       other: otherReducer,
+      country: countryReducer,
     }),
     preloadedState,
     composeWithDevTools(applyMiddleware(thunkMiddleware))

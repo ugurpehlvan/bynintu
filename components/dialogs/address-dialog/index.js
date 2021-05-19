@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+// action
+import { fetchCounries } from 'store/actions/actions';
+import { createAddress } from 'store/actions/actions';
 
 // component
 import Dialog from 'reusables/modal/index';
 
-const index = ({ visible, onClose }) => {
+const AddressDialog = ({ visible, onClose, fetchCounries, createAddress }) => {
+  const handleSaveClick = () => {
+    createAddress({
+      userId: 1,
+      name: 'Ev adresim',
+      firstName: 'Ayhan',
+      lastName: 'Eryılmaz',
+      type: 1,
+      isDefault: false,
+      countryId: 233,
+      postalCode: '41200',
+      city: 'Kocaeli',
+      street: 'ali güven',
+      addressLine1: 'max 50 character',
+      addressLine2: 'max 50 character',
+      phone: 'zorunlu değil',
+      doorNumber: '23',
+    });
+  };
+
+  useEffect(() => {
+    fetchCounries();
+  }, []);
+
   return (
     <Dialog visible={visible} onClose={onClose} title='Create New Address' size='small'>
       <form className='login-form' style={{ flex: '1 1 0px', padding: '0px', display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -53,13 +81,13 @@ const index = ({ visible, onClose }) => {
             </div>
 
             <div style={{ flex: '1 1 0px' }}>
-              <label>Zip Code *</label>
+              <label>Country *</label>
               <input
                 // value={password}
                 // type='password'
                 // onChange={handlePasswordChange}
                 className='form-control'
-                placeholder='Zip Code'
+                placeholder='Country'
                 // id='password'
                 // name='password'
               />
@@ -83,13 +111,13 @@ const index = ({ visible, onClose }) => {
             </div>
 
             <div style={{ flex: '1 1 0px' }}>
-              <label>Country *</label>
+              <label>Zip Code *</label>
               <input
                 // value={password}
                 // type='password'
                 // onChange={handlePasswordChange}
                 className='form-control'
-                placeholder='Country'
+                placeholder='Zip Code'
                 // id='password'
                 // name='password'
               />
@@ -98,7 +126,7 @@ const index = ({ visible, onClose }) => {
         </div>
 
         <div className='form-group'>
-          <label>Address</label>
+          <label>Address *</label>
           <input
             // value={password}
             // type='password'
@@ -111,7 +139,7 @@ const index = ({ visible, onClose }) => {
         </div>
 
         <div className='form-group'>
-          <label>Address Title</label>
+          <label>Address Title *</label>
           <input
             // value={password}
             // type='password'
@@ -124,10 +152,26 @@ const index = ({ visible, onClose }) => {
         </div>
         <div style={{ display: 'flex', flex: '1 1 0px' }} />
 
-        <button className='btn btn-primary'>Save</button>
+        <button onClick={handleSaveClick} className='btn btn-primary'>
+          Save
+        </button>
       </form>
     </Dialog>
   );
 };
 
-export default index;
+const mapStateToProps = (state) => {
+  console.log('state', state);
+  return {
+    countries: state.country,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCounries: () => dispatch(fetchCounries()),
+    createAddress: (payload) => dispatch(createAddress(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddressDialog);

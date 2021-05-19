@@ -12,6 +12,8 @@ import {
   AUTH_ERROR,
   VALIDATE_ERROR,
   VALIDATE_SUCCESS,
+  FETCH_COUNTRIES,
+  FETCH_COUNTRIES_ERROR,
 } from './action-types/action-names';
 
 //add cart action
@@ -87,7 +89,6 @@ export const signIn = (formValues, router) => async (dispatch, getState) => {
 };
 
 export const validateAccount = (token, route) => async (dispatch, getState) => {
-  console.log('validate account action icine geldi');
   const response = (await axiosClient.post(apiURL.validateAccount, token)).data;
   if (response?.result === 'OK') {
     dispatch({ type: VALIDATE_SUCCESS, payload: response });
@@ -98,9 +99,8 @@ export const validateAccount = (token, route) => async (dispatch, getState) => {
 };
 
 export const signUp = (formValues, notify) => async (dispatch) => {
-  console.log('signiuop');
   const response = (await axiosClient.post(apiURL.signUp, formValues)).data;
-  console.log('response', response);
+
   if (response.id) {
     dispatch({ type: AUTH_SUCCESS, payload: response });
     localStorage.setItem('token', response.token);
@@ -113,7 +113,7 @@ export const signUp = (formValues, notify) => async (dispatch) => {
 
 export const forgetPassword = (formValues) => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.forgetPassword, formValues)).data;
-  console.log('response', response);
+
   // if (response.success) {
   //     dispatch({ type: AUTH_SUCCESS, payload: response });
 
@@ -140,7 +140,7 @@ export const getCustomer = () => async (dispatch) => {
 
 export const resetPassword = (formValues) => async (dispatch) => {
   const response = (await axiosClient.put(apiURL.resetPassword, formValues)).data;
-  console.log('response', response);
+
   // if (response.success) {
   //     dispatch({ type: AUTH_SUCCESS, payload: response });
 
@@ -157,11 +157,51 @@ export const updatePassword = (formValues) => async (dispatch) => {
       },
     })
   ).data;
-  console.log('response', response);
+
   // if (response.success) {
   //     dispatch({ type: AUTH_SUCCESS, payload: response });
 
   // } else {
   //     dispatch({ type: AUTH_ERROR, payload: response?.error });
+  // }
+};
+
+export const fetchCounries = () => async (dispatch) => {
+  const response = (
+    await axiosClient.post(
+      apiURL.countries,
+      {},
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }
+    )
+  ).data;
+  console.log('response', response);
+  if (response.success) {
+    dispatch({ type: FETCH_COUNTRIES, payload: response });
+  } else {
+    dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
+  }
+};
+
+export const createAddress = () => async (dispatch) => {
+  const response = (
+    await axiosClient.post(
+      apiURL.createAddress,
+      {},
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }
+    )
+  ).data;
+  console.log('response', response);
+  // if (response.success) {
+  //   dispatch({ type: FETCH_COUNTRIES, payload: response });
+  // } else {
+  //   dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
   // }
 };
