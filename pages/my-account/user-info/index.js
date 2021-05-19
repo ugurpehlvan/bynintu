@@ -1,5 +1,6 @@
 import React from 'react';
 import MyAccountContainer from 'components/Layout/MyAccountContainer';
+import PasswordUpdate from 'components/auths/password-update';
 
 // styles
 import styles from './user-info.module.css';
@@ -9,11 +10,16 @@ const UserInfo = () => {
     <MyAccountContainer>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h3 className={styles.header_text}>User Info</h3>
+          <h3 className={styles.header_text}>Account Infos</h3>
         </div>
         <div className={styles.content}>
           <div className={styles.content_1}>
             <form className='login-form' style={{ flex: '1 1 0px', padding: '0px' }}>
+              <div className='section-title'>
+                <h2>
+                  <span className='dot'></span>User Info
+                </h2>
+              </div>
               <div className='form-group'>
                 <div style={{ display: 'flex' }}>
                   <div style={{ flex: '1 1 0px', marginRight: '8px' }}>
@@ -168,32 +174,7 @@ const UserInfo = () => {
           </div>
 
           <div className={styles.content_2}>
-            <form className='login-form'>
-              <div className='form-group'>
-                <label>Ad</label>
-                <input
-                  // value={password}
-                  // type='password'
-                  // onChange={handlePasswordChange}
-                  className='form-control'
-                  placeholder='Enter your password'
-                  // id='password'
-                  // name='password'
-                />
-              </div>
-              <div className='form-group'>
-                <label>Soyad</label>
-                <input
-                  // value={password}
-                  // type='password'
-                  // onChange={handlePasswordChange}
-                  className='form-control'
-                  placeholder='Enter your password'
-                  // id='password'
-                  // name='password'
-                />
-              </div>
-            </form>
+            <PasswordUpdate />
           </div>
         </div>
       </div>
