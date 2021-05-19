@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const AccountSidebar = () => {
   const listIteStyle = {
@@ -14,9 +15,11 @@ const AccountSidebar = () => {
       <h2 style={{ margin: '10px 0 15px', fontSize: '24px', color: '#000', fontWeight: '400' }}>My Account</h2>
       <ul style={{ listStyle: 'none', padding: '0px' }}>
         <li style={listIteStyle}>
-          <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
-            My Orders
-          </a>
+          <Link href='/my-account/my-orders'>
+            <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
+              My Orders
+            </a>
+          </Link>
         </li>
         <li style={listIteStyle}>
           <a style={{ padding: '10px 0px', color: '#262626', fontSize: '13px' }} href='/'>
