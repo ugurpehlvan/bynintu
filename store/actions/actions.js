@@ -12,7 +12,10 @@ import {
   AUTH_ERROR,
   VALIDATE_ERROR,
   VALIDATE_SUCCESS,
+  CHANGE_APP_LANGUAGE,
 } from './action-types/action-names';
+
+import { supportedLanguages } from 'resources/strings';
 
 //add cart action
 export const addToCart = (id) => {
@@ -164,4 +167,12 @@ export const updatePassword = (formValues) => async (dispatch) => {
   // } else {
   //     dispatch({ type: AUTH_ERROR, payload: response?.error });
   // }
+};
+
+export const changeAppLanguage = (language) => (dispatch) => {
+  if (supportedLanguages.indexOf(language.toLowerCase()) >= 0) {
+    dispatch({ type: CHANGE_APP_LANGUAGE, payload: language });
+    localStorage.setItem('appLanguage', language);
+    localStorage.setItem('languageSetted', true);
+  }
 };

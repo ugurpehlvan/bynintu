@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu, Dropdown } from 'antd';
 import Link from 'next/link';
+
+// actions
+// import { changeAppLanguage } from 'store/actions/actions';
+
+// helpers
+import { translations } from 'resources';
+
 import Cart from '../Modal/Cart';
 
 class MegaMenu extends Component {
@@ -91,7 +98,7 @@ class MegaMenu extends Component {
     const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
     const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
-    let { products, user } = this.props;
+    let { products, user, language } = this.props;
 
     const menu = (
       <Menu style={{ width: '200px' }}>
@@ -105,7 +112,7 @@ class MegaMenu extends Component {
         )}
         <Menu.Item>
           <Link href='/my-account/user-info'>
-            <a>User Info</a>
+            <a>{translations[language]['g1']}</a>
           </Link>
         </Menu.Item>
         <Menu.Item>
@@ -1177,6 +1184,7 @@ const mapStateToProps = (state) => {
     products: state.other.addedItems,
     isSignedIn: state.auth.isSignedIn,
     user: state.auth.user,
+    language: state.language.appLanguage,
   };
 };
 
