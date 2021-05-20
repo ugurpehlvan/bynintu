@@ -251,8 +251,8 @@ export const updateCustomerProfile = (payload) => async (dispatch) => {
   ).data;
 
   if (!response.error) {
-    dispatch({ type: FETCH_CUSTOMER, payload: response });
+    dispatch({ type: AUTH_SUCCESS, payload: response });
   } else {
-    dispatch({ type: FETCH_CUSTOMER_ERROR, payload: response?.error });
+    dispatch({ type: AUTH_SUCCESS_ERROR, payload: response?.error });
   }
 };

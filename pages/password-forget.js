@@ -86,7 +86,7 @@ const PasswordForget = ({ forgetPassword, language, user }) => {
 
 const mapStateToProps = ({ auth, language }) => {
   return {
-    user: auth.user,
+    user: auth.customer,
     language: language.appLanguage,
   };
 };

@@ -299,7 +299,7 @@ const UserInfo = ({ user, phoneCodes, getPhoneCodes, updateCustomerProfile }) =>
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    user: state.auth.customer,
     phoneCodes: state.country.phoneCodes,
   };
 };

@@ -134,7 +134,7 @@ const Login = ({ signIn, language }) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    user: state.auth.customer,
     language: state.language.appLanguage,
   };
 };

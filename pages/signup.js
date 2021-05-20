@@ -113,7 +113,7 @@ const Signup = ({ signUp, user }) => {
 
 const mapStateToProps = ({ auth }) => {
   return {
-    user: auth.user,
+    user: auth.customer,
   };
 };
 
