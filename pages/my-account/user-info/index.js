@@ -1,11 +1,113 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+
 import MyAccountContainer from 'components/Layout/MyAccountContainer';
 import PasswordUpdate from 'components/auths/password-update';
 
+// actions
+import { getPhoneCodes, updateCustomerProfile } from 'store/actions/actions';
+
 // styles
 import styles from './user-info.module.css';
+import { connect } from 'react-redux';
 
-const UserInfo = () => {
+const UserInfo = ({ user, phoneCodes, getPhoneCodes, updateCustomerProfile }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneCode, setPhoneCode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [birthDay, setBirthDay] = useState('');
+  const [birthMonth, setBirthMonth] = useState('');
+  const [birthYear, setBirthYear] = useState('');
+  const [isMale, setIsMale] = useState(false);
+  const [isFemale, setIsFemale] = useState(false);
+
+  const handleChange = (e) => {
+    if (e.target.name === 'firstName') {
+      setFirstName(e.target.value);
+    } else if (e.target.name === 'lastName') {
+      setLastName(e.target.value);
+    } else if (e.target.name === 'phoneCode') {
+      setPhoneCode(e.target.value);
+    } else if (e.target.name === 'phone') {
+      setPhone(e.target.value);
+    } else if (e.target.name === 'birthDay') {
+      setBirthDay(e.target.value);
+    } else if (e.target.name === 'birthMonth') {
+      setBirthMonth(e.target.value);
+    } else if (e.target.name === 'birthYear') {
+      setBirthYear(e.target.value);
+    } else if (e.target.name === 'male') {
+      setIsMale((prevState) => !prevState);
+      setIsFemale(false);
+    } else if (e.target.name === 'female') {
+      setIsFemale((prevState) => !prevState);
+      setIsMale(false);
+    }
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    let gender = '';
+    if (isFemale && !isMale) {
+      gender = 'female';
+    } else if (!isFemale && isMale) {
+      gender = 'male';
+    } else {
+      gender = '';
+    }
+
+    updateCustomerProfile({
+      id: user.id,
+      firstName: firstName,
+      lastName: lastName,
+      email: user.email,
+      nationalId: '',
+      isCorporate: false,
+      phone: `${phoneCode}/${phone}`,
+      birthDate: `${birthYear}-${birthMonth}-${birthDay}`,
+      gender: gender,
+    });
+  };
+
+  useEffect(() => {
+    getPhoneCodes();
+  }, []);
+
+  useEffect(() => {
+    if (!user) return;
+    setFirstName(user?.firstName);
+    setLastName(user?.lastName);
+    setPhoneCode(user.PhoneCode);
+    setPhone(user?.phone);
+
+    const day = moment(user.birthDate).format('DD');
+    const month = moment(user.birthDate).format('MM');
+    const year = moment(user.birthDate).format('YYYY');
+
+    const phoneNumber = user.phone.split('/');
+    setPhoneCode(phoneNumber[0]);
+    setPhone(phoneNumber[1]);
+
+    setBirthDay(Number(day));
+    setBirthMonth(Number(month));
+    setBirthYear(Number(year));
+
+    if (user?.gender === 'male') {
+      setIsMale(true);
+    } else if (user?.gender === 'female') {
+      setIsFemale(true);
+    } else {
+      setIsMale(false);
+      setIsFemale(false);
+    }
+  }, [user]);
+
+  const days = new Array(31).fill(0).map((el, index) => index + 1);
+  const months = new Array(12).fill(0).map((el, index) => index + 1);
+  const years = new Array(121).fill(0).map((el, index) => 2021 - index);
+
   return (
     <MyAccountContainer>
       <div className={styles.container}>
@@ -25,26 +127,25 @@ const UserInfo = () => {
                   <div style={{ flex: '1 1 0px', marginRight: '8px' }}>
                     <label>First Name</label>
                     <input
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                      value={firstName}
+                      type='text'
+                      onChange={handleChange}
                       className='form-control'
                       placeholder='First Name'
-                      // id='password'
-                      // name='password'
+                      id='firstName'
+                      name='firstName'
                     />
                   </div>
-
                   <div style={{ flex: '1 1 0px' }}>
                     <label>Last Name</label>
                     <input
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                      value={lastName}
+                      type='text'
+                      onChange={handleChange}
                       className='form-control'
                       placeholder='Last Name'
-                      // id='password'
-                      // name='password'
+                      id='lastName'
+                      name='lastName'
                     />
                   </div>
                 </div>
@@ -52,42 +153,40 @@ const UserInfo = () => {
 
               <div className='form-group'>
                 <label>E-mail</label>
-                <input
-                  // value={password}
-                  // type='password'
-                  // onChange={handlePasswordChange}
-                  className='form-control'
-                  placeholder='E-mail'
-                  // id='password'
-                  // name='password'
-                />
+                <input disabled defaultValue={user?.email} type='email' className='form-control' id='email' />
               </div>
 
               <div className='form-group'>
                 <div style={{ display: 'flex' }}>
                   <div style={{ marginRight: '8px', width: '90px' }}>
                     <label>Phone</label>
-                    <input
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                    <select
+                      value={phoneCode}
+                      type='text'
+                      onChange={handleChange}
                       className='form-control'
                       placeholder='code'
-                      // id='password'
-                      // name='password'
-                    />
+                      id='phoneCode'
+                      name='phoneCode'
+                    >
+                      {phoneCodes?.map((el) => (
+                        <option className={styles.select_option} key={el.dialCode} value={el.dialCode}>
+                          {el.dialCode}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div style={{ flex: '1 1 0px' }}>
                     <label>&nbsp;</label>
                     <input
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                      value={phone}
+                      type='text'
+                      onChange={handleChange}
                       className='form-control'
                       placeholder='444 ***00'
-                      // id='password'
-                      // name='password'
+                      id='phone'
+                      name='phone'
                     />
                   </div>
                 </div>
@@ -98,40 +197,58 @@ const UserInfo = () => {
                   <div style={{ marginRight: '8px', flex: '1 1 0px' }}>
                     <label>Birth Date</label>
                     <select
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
-                      className='form-control'
+                      value={birthDay}
+                      type='text'
+                      onChange={handleChange}
+                      className={`form-control ${styles.select}`}
                       placeholder='code'
-                      // id='password'
-                      // name='password'
-                    />
+                      id='birthDay'
+                      name='birthDay'
+                    >
+                      {days.map((el) => (
+                        <option className={styles.select_option} key={el} value={el}>
+                          {el}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div style={{ marginRight: '8px', flex: '1 1 0px' }}>
                     <label>&nbsp;</label>
                     <select
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
-                      className='form-control'
+                      value={birthMonth}
+                      type='text'
+                      onChange={handleChange}
+                      className={`form-control ${styles.select}`}
                       placeholder='444 ***00'
-                      // id='password'
-                      // name='password'
-                    />
+                      id='birthMonth'
+                      name='birthMonth'
+                    >
+                      {months.map((el) => (
+                        <option className={styles.select_option} key={el} value={el}>
+                          {el}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div style={{ flex: '1 1 0px' }}>
                     <label>&nbsp;</label>
                     <select
-                      //   value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
-                      className='form-control'
+                      value={birthYear}
+                      type='text'
+                      onChange={handleChange}
+                      className={`form-control ${styles.select}`}
                       placeholder='444 ***00'
-                      // id='password'
-                      // name='password'
-                    />
+                      id='birthYear'
+                      name='birthYear'
+                    >
+                      {years.map((el) => (
+                        <option className={styles.select_option} key={el} value={el}>
+                          {el}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -142,13 +259,11 @@ const UserInfo = () => {
                   <div style={{ marginRight: '8px', display: 'flex', alignItems: 'center' }}>
                     <input
                       type='checkbox'
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                      checked={isFemale && !isMale}
+                      // value={gender}
+                      onChange={handleChange}
                       className={styles.check_input}
-                      placeholder='code'
-                      // id='password'
-                      // name='password'
+                      name='female'
                     />
                     <div>Women</div>
                   </div>
@@ -156,20 +271,20 @@ const UserInfo = () => {
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <input
                       type='checkbox'
-                      // value={password}
-                      // type='password'
-                      // onChange={handlePasswordChange}
+                      checked={isMale && !isFemale}
+                      // value={!gender}
+                      onChange={handleChange}
                       className={styles.check_input}
-                      placeholder='444 ***00'
-                      // id='password'
-                      // name='password'
+                      name='male'
                     />
                     <div>Men</div>
                   </div>
                 </div>
               </div>
 
-              <button className='btn btn-primary'>Save</button>
+              <button onClick={handleSave} className='btn btn-primary'>
+                Save
+              </button>
             </form>
           </div>
 
@@ -182,4 +297,18 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    phoneCodes: state.country.phoneCodes,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPhoneCodes: () => dispatch(getPhoneCodes()),
+    updateCustomerProfile: (payload) => dispatch(updateCustomerProfile(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);

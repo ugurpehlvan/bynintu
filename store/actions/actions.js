@@ -16,6 +16,10 @@ import {
   FETCH_COUNTRIES,
   FETCH_COUNTRIES_ERROR,
   GET_LANGUAGES,
+  FETCH_PHONE_CODES,
+  FETCH_PHONE_CODES_ERROR,
+  FETCH_CUSTOMER,
+  FETCH_CUSTOMER_ERROR,
 } from './action-types/action-names';
 
 import { supportedLanguages } from 'resources/strings';
@@ -226,5 +230,38 @@ export const getLanguages = () => async (dispatch) => {
     dispatch({ type: GET_LANGUAGES, payload: response });
   } else {
     //dispatch({ type: AUTH_ERROR, payload: response?.error });
+export const getPhoneCodes = () => async (dispatch) => {
+  const response = (
+    await axiosClient.post(
+      apiURL.getPhoneCodes,
+      {},
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }
+    )
+  ).data;
+
+  if (!response.error) {
+    dispatch({ type: FETCH_PHONE_CODES, payload: response });
+  } else {
+    dispatch({ type: FETCH_PHONE_CODES_ERROR, payload: response?.error });
+  }
+};
+
+export const updateCustomerProfile = (payload) => async (dispatch) => {
+  const response = (
+    await axiosClient.put(apiURL.customer, payload, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+  ).data;
+
+  if (!response.error) {
+    dispatch({ type: FETCH_CUSTOMER, payload: response });
+  } else {
+    dispatch({ type: FETCH_CUSTOMER_ERROR, payload: response?.error });
   }
 };
