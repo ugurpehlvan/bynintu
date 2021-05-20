@@ -14,8 +14,9 @@ import { forgetPassword } from 'store/actions/actions';
 // helpers
 import isEmail from 'utils/isEmail';
 import notify from 'utils/notify';
+import { translations } from 'resources';
 
-const PasswordForget = ({ forgetPassword, user }) => {
+const PasswordForget = ({ forgetPassword, language, user }) => {
   const [email, setEmail] = useState('');
 
   const handleEmailChange = useCallback((e) => {
@@ -27,7 +28,7 @@ const PasswordForget = ({ forgetPassword, user }) => {
       e.preventDefault();
       const isEmailValid = isEmail(email);
       if (!isEmailValid) {
-        notify('error', 'Please type an valid email');
+        notify('error', translations[language]['g40']);
         return;
       }
 
@@ -47,28 +48,29 @@ const PasswordForget = ({ forgetPassword, user }) => {
           <div className='signup-content'>
             <div className='section-title'>
               <h2>
-                <span className='dot'></span>Password Reset
+                <span className='dot'></span>
+                {translations[language]['g49']}
               </h2>
             </div>
 
             <form className='signup-form'>
               <div className='form-group'>
-                <label>Email</label>
+                <label>{translations[language]['g24']}</label>
                 <input
                   type='email'
                   onChange={handleEmailChange}
                   className='form-control'
-                  placeholder='Enter your email'
+                  placeholder={translations[language]['g42']}
                   id='name'
                   name='email'
                 />
               </div>
 
               <button onClick={handleSubmit} type='submit' className='btn btn-primary'>
-                Reset Password
+                {translations[language]['g50']}
               </button>
               <Link href='/'>
-                <a className='return-store'>or Return to Store</a>
+                <a className='return-store'>{translations[language]['g51']}</a>
               </Link>
             </form>
           </div>
@@ -82,9 +84,10 @@ const PasswordForget = ({ forgetPassword, user }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, language }) => {
   return {
     user: auth.user,
+    language: language.appLanguage,
   };
 };
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Facility from '../components/Common/Facility';
