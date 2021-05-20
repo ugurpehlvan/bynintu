@@ -17,8 +17,6 @@ import {
   FETCH_COUNTRIES_ERROR,
   FETCH_PHONE_CODES,
   FETCH_PHONE_CODES_ERROR,
-  FETCH_CUSTOMER,
-  FETCH_CUSTOMER_ERROR,
 } from './action-types/action-names';
 
 import { supportedLanguages } from 'resources/strings';
