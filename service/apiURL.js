@@ -6,6 +6,7 @@ const apiUrl = {
   updatePassword: '/api/api/v1/customer/password',
   validateAccount: '/api/api/v1/customer/validateAccount',
   customer: '/api/api/v1/customer',
+  language: '/api/api/v1/language',
   countries: '/api/api/v1/country/search',
   createAddress: '/api/api/v1/address',
   getPhoneCodes: '/api/api/v1/country/getPhoneCodes',

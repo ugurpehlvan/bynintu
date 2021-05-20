@@ -15,6 +15,7 @@ import {
   CHANGE_APP_LANGUAGE,
   FETCH_COUNTRIES,
   FETCH_COUNTRIES_ERROR,
+  GET_LANGUAGES,
   FETCH_PHONE_CODES,
   FETCH_PHONE_CODES_ERROR,
 } from './action-types/action-names';
@@ -217,6 +218,17 @@ export const createAddress = () => async (dispatch) => {
   // } else {
   //   dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
   // }
+};
+
+export const getLanguages = () => async (dispatch) => {
+  const response = (await axiosClient.get(apiURL.language, {})).data;
+
+  console.log('response', response);
+  if (!response.error) {
+    dispatch({ type: GET_LANGUAGES, payload: response });
+  } else {
+    //dispatch({ type: AUTH_ERROR, payload: response?.error });
+  }
 };
 
 export const getPhoneCodes = () => async (dispatch) => {
