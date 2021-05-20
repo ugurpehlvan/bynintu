@@ -10,6 +10,7 @@ import 'react-image-lightbox/style.css';
 import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
 
+import { getCustomer } from 'store/actions/actions';
 // styles
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/antd.css';
@@ -21,6 +22,9 @@ import { useStore } from '../store/reducers/reducers';
 
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
+
+  store.dispatch(getCustomer());
+
   return (
     <>
       <ToastContainer />
