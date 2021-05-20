@@ -1,7 +1,7 @@
 import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from 'store/actions/action-types/action-names';
 
 const initialState = {
-  user: null,
+  customer: null,
   isSignedIn: false,
   userId: null,
 };
@@ -11,13 +11,13 @@ const authReducer = (state = initialState, action) => {
     case AUTH_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        customer: action.payload,
         isSignedIn: true,
       };
     case AUTH_ERROR:
       return {
         ...state,
-        user: null,
+        customer: null,
       };
     case VALIDATE_SUCCESS:
       return {

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import '../public/assets/styles/bootstrap.min.css';
 import '../public/assets/styles/fontawesome.min.css';
@@ -23,7 +24,11 @@ import { useStore } from '../store/reducers/reducers';
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
 
-  store.dispatch(getCustomer());
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.dispatch(getCustomer());
+    }
+  }, []); //eslint-disable-line
 
   return (
     <>

@@ -1183,7 +1183,7 @@ const mapStateToProps = (state) => {
   return {
     products: state.other.addedItems,
     isSignedIn: state.auth.isSignedIn,
-    user: state.auth.user,
+    user: state.auth.customer,
     language: state.language.appLanguage,
   };
 };

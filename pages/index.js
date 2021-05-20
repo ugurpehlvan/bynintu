@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 
 // actions
 import { validateAccount } from 'store/actions/actions';
-import { getCustomer } from 'store/actions/actions';
 
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
@@ -21,7 +20,7 @@ import Subscribe from '../components/Common/Subscribe';
 import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
-const Index = ({ validateAccount, getCustomer }) => {
+const Index = ({ validateAccount }) => {
   const router = useRouter();
 
   const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes);
@@ -36,12 +35,6 @@ const Index = ({ validateAccount, getCustomer }) => {
   useEffect(() => {
     token && validateAccount({ token }, (route) => router.push(route));
   }, [token]);
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      getCustomer();
-    }
-  }, []); //eslint-disable-line
 
   return (
     <>
@@ -81,4 +74,4 @@ const Index = ({ validateAccount, getCustomer }) => {
   );
 };
 
-export default connect(null, { validateAccount, getCustomer })(Index);
+export default connect(null, { validateAccount })(Index);
