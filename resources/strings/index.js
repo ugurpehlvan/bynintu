@@ -11,7 +11,6 @@ const translations = {
 export const languageCode = { current: 'tr' };
 export const en = 'en';
 export const tr = 'tr';
-export const ar = 'ar';
 
 export const setLanguageCode = (code) => (languageCode.current = code);
 

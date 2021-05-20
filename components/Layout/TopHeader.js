@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 import Wishlist from '../Modal/Wishlist';
 
+// helpers
+import { translations } from 'resources';
+
+// actions
+import { changeAppLanguage } from 'store/actions/actions';
 class TopHeader extends Component {
   state = {
     display: false,
@@ -16,6 +22,8 @@ class TopHeader extends Component {
   };
 
   render() {
+    const { language, changeAppLanguage } = this.props;
+
     return (
       <>
         <div className='top-header'>
@@ -71,10 +79,9 @@ class TopHeader extends Component {
                   </li>
                   <li>
                     <div className='languages-list'>
-                      <select>
-                        <option value='1'>Eng</option>
-                        <option value='2'>Ger</option>
-                        <option value='3'>Span</option>
+                      <select onChange={(e) => changeAppLanguage(e.target.value)}>
+                        <option value='en'>EngLish</option>
+                        <option value='tr'>Turkish</option>
                       </select>
                     </div>
                   </li>
@@ -90,4 +97,10 @@ class TopHeader extends Component {
   }
 }
 
-export default TopHeader;
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.appLanguage,
+  };
+};
+
+export default connect(mapStateToProps, { changeAppLanguage })(TopHeader);
