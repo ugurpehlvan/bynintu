@@ -5,8 +5,12 @@ import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
 import Testimonials from '../components/Common/Testimonials';
 
+// helpers
+import { translations } from 'resources';
 class Index extends Component {
   render() {
+    const { language } = this.props;
+
     return (
       <>
         <Navbar />
@@ -18,22 +22,21 @@ class Index extends Component {
             <div className='row align-items-center'>
               <div className='col-lg-6 col-md-12'>
                 <div className='about-content'>
-                  <h2>About Our Store</h2>
+                  <h2>{translations[language]['g15']}</h2>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
                   </p>
 
                   <p>
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
+                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                   </p>
 
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
                   </p>
 
                   <div className='signature mb-0'>
@@ -63,4 +66,10 @@ class Index extends Component {
   }
 }
 
-export default Index;
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.appLanguage,
+  };
+};
+
+export default connect(mapStateToProps)(Index);

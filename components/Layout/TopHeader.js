@@ -33,22 +33,22 @@ class TopHeader extends Component {
                 <ul className='top-header-nav'>
                   <li>
                     <Link href='/about'>
-                      <a>About</a>
+                      <a>{translations[language]['g7']}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/'>
-                      <a>Our Stores</a>
+                      <a>{translations[language]['g8']}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/faq'>
-                      <a>FAQ's</a>
+                      <a>{translations[language]['g9']}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/contact-us'>
-                      <a>Contact</a>
+                      <a>{translations[language]['g10']}</a>
                     </Link>
                   </li>
                 </ul>
@@ -66,22 +66,22 @@ class TopHeader extends Component {
                           this.handleWishlist();
                         }}
                       >
-                        Wishlist <i className='far fa-heart'></i>
+                        {translations[language]['g11']} <i className='far fa-heart'></i>
                       </a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/compare'>
                       <a>
-                        Compare <i className='fas fa-balance-scale'></i>
+                        {translations[language]['g12']} <i className='fas fa-balance-scale'></i>
                       </a>
                     </Link>
                   </li>
                   <li>
                     <div className='languages-list'>
                       <select onChange={(e) => changeAppLanguage(e.target.value)}>
-                        <option value='en'>EngLish</option>
-                        <option value='tr'>Turkish</option>
+                        <option value='en'>{translations[language]['g13']}</option>
+                        <option value='tr'>{translations[language]['g14']}</option>
                       </select>
                     </div>
                   </li>
