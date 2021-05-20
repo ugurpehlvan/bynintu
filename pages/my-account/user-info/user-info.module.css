@@ -46,3 +46,11 @@
 .check_input {
   margin-right: 6px;
 }
+
+.select {
+  position: relative;
+  height: 44px;
+}
+
+.select_option {
+}

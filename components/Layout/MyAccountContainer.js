@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+// actions
+import { getCustomer } from 'store/actions/actions';
 
 // components
 import Navbar from 'components/Layout/Navbar';
@@ -6,7 +10,13 @@ import AccountSideBar from 'components/Layout/AccountSidebar';
 import Footer from 'components/Layout/Footer';
 import Facility from 'components/Common/Facility';
 
-const MyAccountContainer = ({ children }) => {
+const MyAccountContainer = ({ children, getCustomer }) => {
+  useEffect(() => {
+    if (getCustomer) {
+      getCustomer();
+    }
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -30,4 +40,10 @@ const MyAccountContainer = ({ children }) => {
   );
 };
 
-export default MyAccountContainer;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCustomer: () => dispatch(getCustomer()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(MyAccountContainer);
