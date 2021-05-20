@@ -14,8 +14,9 @@ import { resetPassword } from 'store/actions/actions';
 
 // helpers
 import notify from 'utils/notify';
+import { translations } from 'resources';
 
-const PasswordReset = ({ resetPassword }) => {
+const PasswordReset = ({ resetPassword, language }) => {
   const router = useRouter();
   const { token } = router.query;
 
@@ -29,15 +30,15 @@ const PasswordReset = ({ resetPassword }) => {
   const handleConfirmPasswordChange = useCallback((e) => {
     setConfirmPassword(e.target.value.trim());
   }, []);
-  console.log('token1', token);
+
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (password !== confirmPassword) {
-        notify('error', 'Passwords should match');
+        notify('error', translations[language]['g52']);
         return;
       }
-      console.log('token2', token);
+
       resetPassword({
         token,
         password,
@@ -50,47 +51,48 @@ const PasswordReset = ({ resetPassword }) => {
     <>
       <Navbar />
 
-      <Breadcrumb title='Signup' />
+      <Breadcrumb title={translations[language]['g54']} />
 
       <section className='signup-area ptb-60'>
         <div className='container'>
           <div className='signup-content'>
             <div className='section-title'>
               <h2>
-                <span className='dot'></span>Reset Password
+                <span className='dot'></span>
+                {translations[language]['g54']}
               </h2>
             </div>
 
             <form className='signup-form'>
               <div className='form-group'>
-                <label>Password</label>
+                <label>{translations[language]['g43']}</label>
                 <input
                   type='password'
                   onChange={handlePasswordChange}
                   className='form-control'
-                  placeholder='Enter your password'
+                  placeholder={translations[language]['g44']}
                   id='password'
                   name='password'
                 />
               </div>
 
               <div className='form-group'>
-                <label>Confirm Password</label>
+                <label>{translations[language]['g55']}</label>
                 <input
                   type='password'
                   onChange={handleConfirmPasswordChange}
                   className='form-control'
-                  placeholder='Enter your password again'
+                  placeholder={translations[language]['g56']}
                   id='confirm-password'
                   name='confirmPassword'
                 />
               </div>
 
               <button onClick={handleSubmit} type='submit' className='btn btn-primary'>
-                Save
+                {translations[language]['g57']}
               </button>
               <Link href='/'>
-                <a className='return-store'>or Return to Store</a>
+                <a className='return-store'>{translations[language]['g51']}</a>
               </Link>
             </form>
           </div>
@@ -104,4 +106,10 @@ const PasswordReset = ({ resetPassword }) => {
   );
 };
 
-export default connect(null, { resetPassword })(PasswordReset);
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.appLanguage,
+  };
+};
+
+export default connect(mapStateToProps, { resetPassword })(PasswordReset);

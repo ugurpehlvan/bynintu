@@ -14,6 +14,7 @@ import { signUp } from 'store/actions/actions';
 // helpers
 import isEmail from 'utils/isEmail';
 import notify from 'utils/notify';
+import { translations } from 'resources';
 
 const Signup = ({ signUp, user }) => {
   const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ const Signup = ({ signUp, user }) => {
       const isEmailValid = isEmail(email);
 
       if (!isEmailValid) {
-        notify('error', 'Please type an valid email');
+        notify('error', translations[language]['g40']);
         return;
       }
 
@@ -43,60 +44,60 @@ const Signup = ({ signUp, user }) => {
           password,
         },
         (type) => {
-          type ? notify('success', 'Go to email screen') : notify('error', 'Error');
+          type ? notify('success', translations[language]['g58']) : notify('error', 'Error');
         }
       );
     },
     [email, password]
   );
-  console.log('user', user);
+
   return (
     <>
       <Navbar />
 
-      <Breadcrumb title='Signup' />
+      <Breadcrumb title={translations[language]['g53']} />
 
       <section className='signup-area ptb-60'>
         <div className='container'>
           <div className='signup-content'>
             <div className='section-title'>
               <h2>
-                <span className='dot'></span> Create an Account
+                <span className='dot'></span> {translations[language]['g47']}
               </h2>
             </div>
 
             <form className='signup-form'>
               <div className='form-group'>
-                <label>Email</label>
+                <label>{translations[language]['g24']}</label>
                 <input
                   value={email}
                   type='email'
                   onChange={handleEmailChange}
                   className='form-control'
-                  placeholder='Enter your email'
+                  placeholder={translations[language]['g42']}
                   id='name'
                   name='email'
                 />
               </div>
 
               <div className='form-group'>
-                <label>Password</label>
+                <label>{translations[language]['g43']}</label>
                 <input
                   value={password}
                   type='password'
                   onChange={handlePasswordChange}
                   className='form-control'
-                  placeholder='Enter your password'
+                  placeholder={translations[language]['g44']}
                   id='password'
                   name='password'
                 />
               </div>
 
               <button onClick={handleSubmit} type='submit' className='btn btn-primary'>
-                Signup
+                {translations[language]['g53']}
               </button>
               <Link href='/'>
-                <a className='return-store'>or Return to Store</a>
+                <a className='return-store'>{translations[language]['g51']}</a>
               </Link>
             </form>
           </div>

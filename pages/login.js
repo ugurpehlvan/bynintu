@@ -1,17 +1,23 @@
 import React, { useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
-
-import { signIn } from '../store/actions/actions';
 import Link from 'next/link';
+
+// actions
+import { signIn } from '../store/actions/actions';
+
+// components
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
-import isEmail from '../utils/isEmail';
-import notify from '../utils/notify';
 
-const Login = ({ signIn, user }) => {
+// helpers
+import { translations } from 'resources';
+import notify from '../utils/notify';
+import isEmail from '../utils/isEmail';
+
+const Login = ({ signIn, language }) => {
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -30,7 +36,7 @@ const Login = ({ signIn, user }) => {
       e.preventDefault();
       const isEmailValid = isEmail(email);
       if (!isEmailValid) {
-        notify('error', 'Please type an valid email');
+        notify('error', translations[language]['g40']);
         return;
       }
 
@@ -49,7 +55,7 @@ const Login = ({ signIn, user }) => {
     <>
       <Navbar />
 
-      <Breadcrumb title='Login' />
+      <Breadcrumb title={translations[language]['g41']} />
 
       <section className='login-area ptb-60'>
         <div className='container'>
@@ -58,43 +64,43 @@ const Login = ({ signIn, user }) => {
               <div className='login-content'>
                 <div className='section-title'>
                   <h2>
-                    <span className='dot'></span> Login
+                    <span className='dot'></span> {translations[language]['g41']}
                   </h2>
                 </div>
 
                 <form className='login-form'>
                   <div className='form-group'>
-                    <label>Email</label>
+                    <label>{translations[language]['g24']}</label>
                     <input
                       value={email}
                       type='email'
                       onChange={handleEmailChange}
                       className='form-control'
-                      placeholder='Enter your name'
+                      placeholder={translations[language]['g42']}
                       id='name'
                       name='name'
                     />
                   </div>
 
                   <div className='form-group'>
-                    <label>Password</label>
+                    <label>{translations[language]['g43']}</label>
                     <input
                       value={password}
                       type='password'
                       onChange={handlePasswordChange}
                       className='form-control'
-                      placeholder='Enter your password'
+                      placeholder={translations[language]['g44']}
                       id='password'
                       name='password'
                     />
                   </div>
 
                   <button onClick={handleSubmit} className='btn btn-primary'>
-                    Login
+                    {translations[language]['g41']}
                   </button>
 
                   <Link href='/password-forget'>
-                    <a className='forgot-password'>Lost your password?</a>
+                    <a className='forgot-password'>{translations[language]['g45']}</a>
                   </Link>
                 </form>
               </div>
@@ -104,17 +110,14 @@ const Login = ({ signIn, user }) => {
               <div className='new-customer-content'>
                 <div className='section-title'>
                   <h2>
-                    <span className='dot'></span> New Customer
+                    <span className='dot'></span> {translations[language]['g46']}
                   </h2>
                 </div>
 
-                <span>Create a Account</span>
-                <p>
-                  Sign up for a free account at our store. Registration is quick and easy. It allows you to be able to
-                  order from our shop. To start shopping click register.
-                </p>
+                <span>{translations[language]['g47']}</span>
+                <p>{translations[language]['g48']}</p>
                 <Link href='/signup'>
-                  <a className='btn btn-light'>Create A Account</a>
+                  <a className='btn btn-light'>{translations[language]['g47']}</a>
                 </Link>
               </div>
             </div>
@@ -132,6 +135,7 @@ const Login = ({ signIn, user }) => {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    language: state.language.appLanguage,
   };
 };
 

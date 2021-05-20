@@ -80,8 +80,8 @@ class TopHeader extends Component {
                   <li>
                     <div className='languages-list'>
                       <select onChange={(e) => changeAppLanguage(e.target.value)}>
-                        <option value='en'>{translations[language]['g13']}</option>
-                        <option value='tr'>{translations[language]['g14']}</option>
+                        <option value='en'>English</option>
+                        <option value='tr'>Tükçe</option>
                       </select>
                     </div>
                   </li>

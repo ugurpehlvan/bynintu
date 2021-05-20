@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import Facility from '../components/Common/Facility';
 import Breadcrumb from '../components/Common/Breadcrumb';
 
+// helpers
+import { translations } from 'resources';
 class Index extends Component {
   render() {
+    const { language } = this.props;
+
     return (
       <>
         <Navbar />
@@ -16,28 +22,28 @@ class Index extends Component {
           <div className='container'>
             <div className='section-title'>
               <h2>
-                <span className='dot'></span> Contact Us
+                <span className='dot'></span> {translations[language]['g19']}
               </h2>
             </div>
 
             <div className='row'>
               <div className='col-lg-5 col-md-12'>
                 <div className='contact-info'>
-                  <h3>Here to Help</h3>
-                  <p>Have a question? You may find an answer in our FAQs. But you can also contact us.</p>
+                  <h3>{translations[language]['g20']}</h3>
+                  <p>{translations[language]['g21']}</p>
 
                   <ul className='contact-list'>
                     <li>
-                      <i className='fas fa-map-marker-alt'></i> Location: 2750 Quadra Street Victoria, Canada
+                      <i className='fas fa-map-marker-alt'></i> {translations[language]['g22']}: 2750 Quadra Street Victoria, Canada
                     </li>
                     <li>
-                      <i className='fas fa-phone'></i> Call Us: <a href='#'>(+123) 456-7898</a>
+                      <i className='fas fa-phone'></i> {translations[language]['g23']}: <a href='#'>(+123) 456-7898</a>
                     </li>
                     <li>
-                      <i className='far fa-envelope'></i> Email Us: <a href='#'>support@comero.com</a>
+                      <i className='far fa-envelope'></i> {translations[language]['g24']}: <a href='#'>support@comero.com</a>
                     </li>
                     <li>
-                      <i className='fas fa-fax'></i> Fax: <a href='#'>+123456</a>
+                      <i className='fas fa-fax'></i> {translations[language]['g25']}: <a href='#'>+123456</a>
                     </li>
                   </ul>
 
@@ -60,7 +66,7 @@ class Index extends Component {
                     </li>
                   </ul>
 
-                  <h3>Follow Us:</h3>
+                  <h3>{translations[language]['g26']}:</h3>
                   <ul className='social'>
                     <li>
                       <a href='#'>
@@ -103,18 +109,15 @@ class Index extends Component {
 
               <div className='col-lg-7 col-md-12'>
                 <div className='contact-form'>
-                  <h3>Drop Us A Line</h3>
-                  <p>
-                    We’re happy to answer any questions you have or provide you with an estimate. Just send us a message
-                    in the form below with any questions you may have.
-                  </p>
+                  <h3>{translations[language]['g27']}</h3>
+                  <p>{translations[language]['g28']}</p>
 
                   <form id='contactForm'>
                     <div className='row'>
                       <div className='col-lg-12 col-md-12'>
                         <div className='form-group'>
                           <label>
-                            Name <span>(required)*</span>
+                            {translations[language]['g29']} <span>{translations[language]['g30']}*</span>
                           </label>
                           <input
                             type='text'
@@ -132,7 +135,7 @@ class Index extends Component {
                       <div className='col-lg-12 col-md-12'>
                         <div className='form-group'>
                           <label>
-                            Email <span>(required)*</span>
+                            {translations[language]['g24']} <span>{translations[language]['g30']}*</span>
                           </label>
                           <input
                             type='email'
@@ -150,7 +153,7 @@ class Index extends Component {
                       <div className='col-lg-12 col-md-12'>
                         <div className='form-group'>
                           <label>
-                            Phone Number <span>(required)*</span>
+                            {translations[language]['g31']} <span>{translations[language]['g30']}*</span>
                           </label>
                           <input
                             type='text'
@@ -168,7 +171,7 @@ class Index extends Component {
                       <div className='col-lg-12 col-md-12'>
                         <div className='form-group'>
                           <label>
-                            Your Message <span>(required)*</span>
+                            {translations[language]['g32']} <span>{translations[language]['g30']}*</span>
                           </label>
                           <textarea
                             name='message'
@@ -186,7 +189,7 @@ class Index extends Component {
 
                       <div className='col-lg-12 col-md-12'>
                         <button type='submit' className='btn btn-primary'>
-                          Send Message
+                          {translations[language]['g33']}
                         </button>
                         <div id='msgSubmit' className='h3 text-center hidden'></div>
                         <div className='clearfix'></div>
@@ -207,4 +210,10 @@ class Index extends Component {
   }
 }
 
-export default Index;
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.appLanguage,
+  };
+};
+
+export default connect(mapStateToProps)(Index);
