@@ -230,6 +230,9 @@ export const getLanguages = () => async (dispatch) => {
     dispatch({ type: GET_LANGUAGES, payload: response });
   } else {
     //dispatch({ type: AUTH_ERROR, payload: response?.error });
+  }
+};
+
 export const getPhoneCodes = () => async (dispatch) => {
   const response = (
     await axiosClient.post(
