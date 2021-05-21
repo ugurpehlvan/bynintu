@@ -1,4 +1,8 @@
 .container {
+  align-items: center;
+  /* justify-content: center; */
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -37,4 +41,5 @@
   background-color: #fff;
   border: solid 1px #e6e6e6;
   flex: 1 1 0px;
+  width: 100%;
 }

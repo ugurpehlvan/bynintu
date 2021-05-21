@@ -18,6 +18,8 @@ import {
   GET_LANGUAGES,
   FETCH_PHONE_CODES,
   FETCH_PHONE_CODES_ERROR,
+  CREATE_ADDRESS,
+  CREATE_ADDRESS_ERROR,
 } from './action-types/action-names';
 
 import { supportedLanguages } from 'resources/strings';
@@ -192,32 +194,28 @@ export const fetchCounries = () => async (dispatch) => {
       }
     )
   ).data;
-  console.log('response', response);
-  if (response.success) {
+
+  if (!response.error) {
     dispatch({ type: FETCH_COUNTRIES, payload: response });
   } else {
     dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
   }
 };
 
-export const createAddress = () => async (dispatch) => {
+export const createAddress = (payload) => async (dispatch) => {
   const response = (
-    await axiosClient.post(
-      apiURL.createAddress,
-      {},
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      }
-    )
+    await axiosClient.post(apiURL.createAddress, payload, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
   ).data;
-  console.log('response', response);
-  // if (response.success) {
-  //   dispatch({ type: FETCH_COUNTRIES, payload: response });
-  // } else {
-  //   dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
-  // }
+
+  if (!response.error) {
+    dispatch({ type: CREATE_ADDRESS, payload: response });
+  } else {
+    dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
+  }
 };
 
 export const getLanguages = () => async (dispatch) => {

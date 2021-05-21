@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MyAccountContainer from 'components/Layout/MyAccountContainer';
+import { connect } from 'react-redux';
+
+// actions
+import { searchAddress } from 'store/actions/country-actions';
 
 // components
 import AddressCard from 'components/address-card';
@@ -7,7 +11,7 @@ import AddressDialog from 'components/dialogs/address-dialog';
 
 import styles from './address.module.css';
 
-const index = () => {
+const index = ({ searchAddress, addresses }) => {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
 
   const handleAddNewAddressClick = () => {
@@ -17,6 +21,14 @@ const index = () => {
   const handleClose = () => {
     setAddressDialogVisible(false);
   };
+
+  useEffect(() => {
+    if (searchAddress) {
+      searchAddress();
+    }
+  }, []);
+
+  console.log('addresses', addresses);
 
   return (
     <MyAccountContainer>
@@ -29,15 +41,13 @@ const index = () => {
           </p>
         </div>
         <div className={`${styles.content} row`}>
-          <div className='col-lg-3 col-sm-6'>
-            <AddressCard />
-          </div>
-          <div className='col-lg-3 col-sm-6'>
-            <AddressCard />
-          </div>
-          <div className='col-lg-3 col-sm-6'>
-            <AddressCard />
-          </div>
+          {addresses.map((address) => {
+            return (
+              <div className='col-lg-4 col-sm-6'>
+                <AddressCard address={address} />
+              </div>
+            );
+          })}
         </div>
       </div>
       <AddressDialog visible={addressDialogVisible} onClose={handleClose} />
@@ -45,4 +55,16 @@ const index = () => {
   );
 };
 
-export default index;
+const mapStateToProps = (state) => {
+  return {
+    addresses: state.country.addresses,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchAddress: () => dispatch(searchAddress()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);

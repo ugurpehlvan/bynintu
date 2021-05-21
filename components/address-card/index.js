@@ -2,17 +2,22 @@ import React from 'react';
 
 import styles from './address-card.module.css';
 
-const AddressCard = () => {
+const AddressCard = ({ address }) => {
   return (
     <div className={styles.address_card}>
       <div className={styles.card_title}>
-        <div>Evim</div>
+        <div>{address?.name}</div>
       </div>
       <div className={styles.card_detail}>
-        <div>Ugur Pehlivan</div>
-        <div>Binevler mahallesi</div>
-        <div>Batikent / Ankara</div>
-        <div>506 092 27 00</div>
+        <div>
+          {address?.firstName} {address?.lastName}
+        </div>
+        <div className={styles.address_line}>{address?.addressLine1}</div>
+        <div className={styles.address_line}>{address?.addressLine2}</div>
+        <div>
+          {address?.postalCode}, {address?.city}, {address?.country}
+        </div>
+        <div>{address?.phone}</div>
       </div>
       <div className={styles.card_action}>
         <div className={styles.card_action_delete}>

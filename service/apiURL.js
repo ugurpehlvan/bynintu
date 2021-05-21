@@ -10,6 +10,7 @@ const apiUrl = {
   countries: '/api/api/v1/country/search',
   createAddress: '/api/api/v1/address',
   getPhoneCodes: '/api/api/v1/country/getPhoneCodes',
+  searchCountries: '/api/api/v1/address/search',
 };
 
 export default apiUrl;
