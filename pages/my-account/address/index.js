@@ -28,8 +28,6 @@ const index = ({ searchAddress, addresses }) => {
     }
   }, []);
 
-  console.log('addresses', addresses);
-
   return (
     <MyAccountContainer>
       <div className={styles.container}>
@@ -43,14 +41,14 @@ const index = ({ searchAddress, addresses }) => {
         <div className={`${styles.content} row`}>
           {addresses.map((address) => {
             return (
-              <div className='col-lg-4 col-sm-6'>
+              <div key={address.id} className='col-lg-4 col-sm-6'>
                 <AddressCard address={address} />
               </div>
             );
           })}
         </div>
       </div>
-      <AddressDialog visible={addressDialogVisible} onClose={handleClose} />
+      <AddressDialog searchAddress={searchAddress} visible={addressDialogVisible} onClose={handleClose} />
     </MyAccountContainer>
   );
 };

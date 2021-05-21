@@ -182,27 +182,23 @@ export const changeAppLanguage = (language) => (dispatch) => {
   }
 };
 
-export const fetchCounries = () => async (dispatch) => {
+export const fetchCounries = (payload) => async (dispatch) => {
   const response = (
-    await axiosClient.post(
-      apiURL.countries,
-      {},
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      }
-    )
+    await axiosClient.post(apiURL.countries, payload, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
   ).data;
 
   if (!response.error) {
-    dispatch({ type: FETCH_COUNTRIES, payload: response });
+    dispatch({ type: FETCH_COUNTRIES, payload: response.data });
   } else {
     dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
   }
 };
 
-export const createAddress = (payload) => async (dispatch) => {
+export const createAddress = (payload, callback) => async (dispatch) => {
   const response = (
     await axiosClient.post(apiURL.createAddress, payload, {
       headers: {
@@ -213,8 +209,10 @@ export const createAddress = (payload) => async (dispatch) => {
 
   if (!response.error) {
     dispatch({ type: CREATE_ADDRESS, payload: response });
+    callback(response);
   } else {
     dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
+    callback(response);
   }
 };
 

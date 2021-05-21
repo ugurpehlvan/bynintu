@@ -7,8 +7,12 @@ import { createAddress } from 'store/actions/actions';
 
 // component
 import Dialog from 'reusables/modal/index';
+import notify from 'utils/notify';
 
-const AddressDialog = ({ visible, onClose, fetchCounries, createAddress, user, countries }) => {
+// styles
+import styles from './address-dialog.module.css';
+
+const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createAddress, user, countries }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -31,8 +35,9 @@ const AddressDialog = ({ visible, onClose, fetchCounries, createAddress, user, c
       const phone = e.target.value;
       setPhone(phone);
     }
+
     if (e.target.name === 'country') {
-      const country = e.target.value;
+      const country = Number(e.target.value);
       setCountry(country);
     }
     if (e.target.name === 'city') {
@@ -56,25 +61,85 @@ const AddressDialog = ({ visible, onClose, fetchCounries, createAddress, user, c
   const handleSaveClick = (e) => {
     e.preventDefault();
 
-    createAddress({
-      userId: user?.id,
-      name: addressTitle,
-      firstName: firstName,
-      lastName: lastName,
-      type: 1,
-      isDefault: false,
-      countryId: 233,
-      postalCode: zipCode,
-      city: city,
-      addressLine1: address?.substring(0, 50),
-      addressLine2: address?.substring(50, 100),
-      phone: phone,
-    });
+    if (!firstName) {
+      notify('error', 'Name field can not be empty!');
+      return;
+    }
+
+    if (!lastName) {
+      notify('error', 'Name field can not be empty!');
+      return;
+    }
+
+    if (!addressTitle) {
+      notify('error', 'Please name your address!');
+      return;
+    }
+
+    if (!country) {
+      notify('error', 'Please select a country!');
+      return;
+    }
+
+    if (!zipCode) {
+      notify('error', 'Please enter your zip code!');
+      return;
+    }
+
+    if (!city) {
+      notify('error', 'Please enter your city!');
+      return;
+    }
+
+    if (!address) {
+      notify('error', 'Please type your address!');
+      return;
+    }
+
+    if (!phone) {
+      notify('error', 'Please type your phone!');
+      return;
+    }
+
+    createAddress(
+      {
+        userId: user?.id,
+        name: addressTitle,
+        firstName: firstName,
+        lastName: lastName,
+        type: 1,
+        isDefault: false,
+        countryId: country,
+        postalCode: zipCode,
+        city: city,
+        addressLine1: address?.substring(0, 50),
+        addressLine2: address?.substring(50, 100),
+        phone: phone,
+      },
+      (res) => {
+        if (!res.error) {
+          if (onClose) {
+            onClose();
+            searchAddress();
+            notify('success', 'Address successfully saved!');
+          }
+        }
+      }
+    );
   };
 
   useEffect(() => {
-    fetchCounries();
-  }, []);
+    fetchCounries({
+      filter: {
+        fields: [{ condition: 'equal', value: true, dataField: 'euMember' }],
+        page: {
+          size: 30,
+          number: 1,
+        },
+        sort: 'name',
+      },
+    });
+  }, [fetchCounries]);
 
   return (
     <Dialog visible={visible} onClose={onClose} title='Create New Address' size='small'>
@@ -116,7 +181,20 @@ const AddressDialog = ({ visible, onClose, fetchCounries, createAddress, user, c
 
             <div style={{ flex: '1 1 0px' }}>
               <label>Country *</label>
-              <input value={country} type='text' onChange={handleChange} className='form-control' placeholder='Country' name='country' />
+              <select
+                value={country}
+                type='text'
+                onChange={handleChange}
+                className={`form-control ${styles.select}`}
+                placeholder='Country'
+                name='country'
+              >
+                {countries?.map((el) => (
+                  <option className={styles.select_option} key={el.id} value={el.id}>
+                    {el.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
@@ -163,15 +241,15 @@ const AddressDialog = ({ visible, onClose, fetchCounries, createAddress, user, c
 
 const mapStateToProps = (state) => {
   return {
-    countries: state.country,
+    countries: state.country.countries,
     user: state.auth.customer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCounries: () => dispatch(fetchCounries()),
-    createAddress: (payload) => dispatch(createAddress(payload)),
+    fetchCounries: (payload) => dispatch(fetchCounries(payload)),
+    createAddress: (payload, callback) => dispatch(createAddress(payload, callback)),
   };
 };
 
