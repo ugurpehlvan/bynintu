@@ -16,7 +16,7 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState(-1);
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [address, setAddress] = useState('');
@@ -128,6 +128,20 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
     );
   };
 
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+      setFirstName('');
+      setLastName('');
+      setPhone('');
+      setCountry('');
+      setCity('');
+      setZipCode('');
+      setAddress('');
+      setAddressTitle('');
+    }
+  };
+
   useEffect(() => {
     fetchCounries({
       filter: {
@@ -142,7 +156,7 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
   }, [fetchCounries]);
 
   return (
-    <Dialog visible={visible} onClose={onClose} title='Create New Address' size='small'>
+    <Dialog visible={visible} onClose={handleClose} title='Create New Address' size='small'>
       <form className='login-form' style={{ flex: '1 1 0px', padding: '0px', display: 'flex', flexDirection: 'column', height: '100%' }}>
         <div className='form-group'>
           <div style={{ display: 'flex' }}>
@@ -181,14 +195,8 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
 
             <div style={{ flex: '1 1 0px' }}>
               <label>Country *</label>
-              <select
-                value={country}
-                type='text'
-                onChange={handleChange}
-                className={`form-control ${styles.select}`}
-                placeholder='Country'
-                name='country'
-              >
+              <select value={country} type='text' onChange={handleChange} className={`form-control ${styles.select}`} name='country'>
+                <option value={-1} style={{ display: 'none' }}></option>
                 {countries?.map((el) => (
                   <option className={styles.select_option} key={el.id} value={el.id}>
                     {el.name}
