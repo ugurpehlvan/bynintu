@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 // action
-import { fetchCounries } from 'store/actions/actions';
-import { createAddress } from 'store/actions/actions';
+import { fetchCountries, createAddress } from 'store/actions/actions';
 
 // component
 import Dialog from 'reusables/modal/index';
@@ -12,7 +11,7 @@ import notify from 'utils/notify';
 // styles
 import styles from './address-dialog.module.css';
 
-const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createAddress, user, countries }) => {
+const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, createAddress, user, countries }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -143,7 +142,7 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
   };
 
   useEffect(() => {
-    fetchCounries({
+    fetchCountries({
       filter: {
         fields: [{ condition: 'equal', value: true, dataField: 'euMember' }],
         page: {
@@ -153,7 +152,7 @@ const AddressDialog = ({ visible, onClose, fetchCounries, searchAddress, createA
         sort: 'name',
       },
     });
-  }, [fetchCounries]);
+  }, [fetchCountries]);
 
   return (
     <Dialog visible={visible} onClose={handleClose} title='Create New Address' size='small'>
@@ -256,7 +255,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCounries: (payload) => dispatch(fetchCounries(payload)),
+    fetchCountries: (payload) => dispatch(fetchCountries(payload)),
     createAddress: (payload, callback) => dispatch(createAddress(payload, callback)),
   };
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'antd';
 
 const Dialog = ({ closable = true, title = '', actions, viewHeight, children, size = '', visible, onClose, onOpen }) => {

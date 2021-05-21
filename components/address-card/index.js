@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './address-card.module.css';
 
-const AddressCard = ({ address }) => {
+const AddressCard = ({ address, onDelete, onEdit }) => {
   return (
     <div className={styles.address_card}>
       <div className={styles.card_title}>
@@ -20,11 +20,13 @@ const AddressCard = ({ address }) => {
         <div>{address?.phone}</div>
       </div>
       <div className={styles.card_action}>
-        <div className={styles.card_action_delete}>
+        <div onClick={() => onDelete(address.id)} className={styles.card_action_delete}>
           <i style={{ marginRight: '6px' }} className='far fa-trash-alt'></i>
           <a>Delete</a>
         </div>
-        <button className='btn btn-primary'>Edit</button>
+        <button onClick={() => onEdit(address.id)} className='btn btn-primary'>
+          Edit
+        </button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import { getPhoneCodes, updateCustomerProfile } from 'store/actions/actions';
 import styles from './user-info.module.css';
 import { connect } from 'react-redux';
 
-const UserInfo = ({ user, phoneCodes, getPhoneCodes, updateCustomerProfile }) => {
+const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneCode, setPhoneCode] = useState('');
@@ -79,16 +79,18 @@ const UserInfo = ({ user, phoneCodes, getPhoneCodes, updateCustomerProfile }) =>
     if (!user) return;
     setFirstName(user?.firstName);
     setLastName(user?.lastName);
-    setPhoneCode(user.PhoneCode);
+    setPhoneCode(user?.PhoneCode);
     setPhone(user?.phone);
 
-    const day = moment(user.birthDate).format('DD');
-    const month = moment(user.birthDate).format('MM');
-    const year = moment(user.birthDate).format('YYYY');
+    const day = moment(user?.birthDate).format('DD');
+    const month = moment(user?.birthDate).format('MM');
+    const year = moment(user?.birthDate).format('YYYY');
 
-    const phoneNumber = user.phone.split('/');
-    setPhoneCode(phoneNumber[0]);
-    setPhone(phoneNumber[1]);
+    const phoneNumber = user?.phone?.split('/');
+    if (phoneNumber) {
+      setPhoneCode(phoneNumber[0]);
+      setPhone(phoneNumber[1]);
+    }
 
     setBirthDay(Number(day));
     setBirthMonth(Number(month));

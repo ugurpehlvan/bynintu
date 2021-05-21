@@ -182,7 +182,7 @@ export const changeAppLanguage = (language) => (dispatch) => {
   }
 };
 
-export const fetchCounries = (payload) => async (dispatch) => {
+export const fetchCountries = (payload) => async (dispatch) => {
   const response = (
     await axiosClient.post(apiURL.countries, payload, {
       headers: {

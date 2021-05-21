@@ -10,8 +10,8 @@ import {
 } from 'store/actions/action-types/action-names';
 
 const initialState = {
-  countries: null,
-  phoneCodes: null,
+  countries: [],
+  phoneCodes: [],
   addresses: [],
   address: null,
 };
