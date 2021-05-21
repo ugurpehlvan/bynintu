@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Modal } from 'antd';
 
 // actions
-import { searchAddress, deleteAddress } from 'store/actions/country-actions';
+import { searchAddress, deleteAddress, getAddress } from 'store/actions/country-actions';
 
 // components
 import AddressCard from 'components/address-card';
@@ -13,7 +13,7 @@ import notify from 'utils/notify';
 
 import styles from './address.module.css';
 
-const index = ({ searchAddress, addresses, deleteAddress }) => {
+const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [addressID, setAddressID] = useState(false);
@@ -40,7 +40,7 @@ const index = ({ searchAddress, addresses, deleteAddress }) => {
   };
 
   const handleEditClick = (id) => {
-    console.log('id', id);
+    getAddress(id);
   };
 
   const handleAddNewAddressClick = () => {
@@ -95,6 +95,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     searchAddress: () => dispatch(searchAddress()),
     deleteAddress: (id, callback) => dispatch(deleteAddress(id, callback)),
+    getAddress: (id) => dispatch(getAddress(id)),
   };
 };
 

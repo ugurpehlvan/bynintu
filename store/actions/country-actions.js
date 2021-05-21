@@ -23,7 +23,7 @@ export const searchAddress = () => async (dispatch) => {
 
 export const deleteAddress = (id, callback) => async (dispatch) => {
   const response = (
-    await axiosClient.delete(`${apiURL.deleteAddress}/${id}`, {
+    await axiosClient.delete(`${apiURL.address}/${id}`, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
@@ -34,5 +34,23 @@ export const deleteAddress = (id, callback) => async (dispatch) => {
     callback(response);
   } else {
     callback(response);
+  }
+};
+
+export const getAddress = (id) => async (dispatch) => {
+  const response = (
+    await axiosClient.get(`${apiURL.address}/${id}`, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+  ).data;
+
+  console.log('getAddress', response);
+
+  if (!response.error) {
+    dispatch({ type: CREATE_ADDRESS, payload: response.data });
+  } else {
+    dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
   }
 };

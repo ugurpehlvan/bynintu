@@ -11,7 +11,7 @@ const apiUrl = {
   createAddress: '/api/api/v1/address',
   getPhoneCodes: '/api/api/v1/country/getPhoneCodes',
   searchAddress: '/api/api/v1/address/search',
-  deleteAddress: '/api/api/v1/address',
+  address: '/api/api/v1/address',
 };
 
 export default apiUrl;

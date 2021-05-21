@@ -26,7 +26,7 @@ const countryReducer = (state = initialState, action) => {
     case FETCH_COUNTRIES_ERROR:
       return {
         ...state,
-        countries: action,
+        countries: [],
       };
     case FETCH_PHONE_CODES:
       return {

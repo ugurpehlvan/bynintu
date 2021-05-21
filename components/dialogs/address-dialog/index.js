@@ -11,7 +11,7 @@ import notify from 'utils/notify';
 // styles
 import styles from './address-dialog.module.css';
 
-const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, createAddress, user, countries }) => {
+const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, createAddress, user, countries = [] }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');

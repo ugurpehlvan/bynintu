@@ -16,7 +16,7 @@ import isEmail from 'utils/isEmail';
 import notify from 'utils/notify';
 import { translations } from 'resources';
 
-const Signup = ({ signUp, user }) => {
+const Signup = ({ signUp, user, language }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -111,9 +111,10 @@ const Signup = ({ signUp, user }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, language }) => {
   return {
     user: auth.customer,
+    language: language.appLanguage,
   };
 };
 
