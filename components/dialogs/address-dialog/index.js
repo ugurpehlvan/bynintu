@@ -293,7 +293,16 @@ const AddressDialog = ({
 
         <div className='form-group'>
           <label>Address *</label>
-          <input value={address} type='text' onChange={handleChange} className='form-control' placeholder='Address' name='addres' />
+          <textarea
+            value={address}
+            type='text'
+            style={{ padding: '15px', height: '65px' }}
+            maxLength='100'
+            onChange={handleChange}
+            className='form-control'
+            placeholder='Address'
+            name='addres'
+          />
         </div>
 
         <div className='form-group'>
