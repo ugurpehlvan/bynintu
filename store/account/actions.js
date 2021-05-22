@@ -8,6 +8,7 @@ import {
   SEARCH_ADDRESSES_ERROR,
   CREATE_ADDRESS,
   CREATE_ADDRESS_ERROR,
+  RESET_ADDRESS,
 } from './keys';
 
 export const searchAddress = () => async (dispatch) => {
@@ -56,7 +57,7 @@ export const getAddress = (id) => async (dispatch) => {
   ).data;
 
   if (!response.error) {
-    dispatch({ type: CREATE_ADDRESS, payload: response.data });
+    dispatch({ type: CREATE_ADDRESS, payload: response });
   } else {
     dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
   }
@@ -115,3 +116,27 @@ export const getPhoneCodes = () => async (dispatch) => {
     dispatch({ type: FETCH_PHONE_CODES_ERROR, payload: response?.error });
   }
 };
+
+export const resetAddressState = () => async (dispatch) => {
+  dispatch({ type: RESET_ADDRESS });
+};
+
+export const updateAddress =
+  ({ id, payload, callback }) =>
+  async (dispatch) => {
+    const response = (
+      await axiosClient.put(`${apiURL.address}/${id}`, payload, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      })
+    ).data;
+
+    if (!response.error) {
+      dispatch({ type: CREATE_ADDRESS, payload: response });
+      callback(response);
+    } else {
+      dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
+      callback(response);
+    }
+  };

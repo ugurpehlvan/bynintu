@@ -13,7 +13,7 @@ import notify from 'utils/notify';
 
 import styles from './address.module.css';
 
-const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
+const index = ({ searchAddress, address, addresses, deleteAddress, getAddress }) => {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [addressID, setAddressID] = useState(false);
@@ -41,6 +41,7 @@ const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
 
   const handleEditClick = (id) => {
     getAddress(id);
+    setAddressDialogVisible(true);
   };
 
   const handleAddNewAddressClick = () => {
@@ -77,7 +78,7 @@ const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
           })}
         </div>
       </div>
-      <AddressDialog searchAddress={searchAddress} visible={addressDialogVisible} onClose={handleClose} />
+      <AddressDialog cardData={address} searchAddress={searchAddress} visible={addressDialogVisible} onClose={handleClose} />
       <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         Are you sure you want to delete this address?
       </Modal>
@@ -88,6 +89,7 @@ const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
 const mapStateToProps = (state) => {
   return {
     addresses: state.account.addresses,
+    address: state.account.address,
   };
 };
 

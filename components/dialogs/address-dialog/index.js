@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 // action
-import { fetchCountries, createAddress } from 'store/account/actions';
+import { fetchCountries, createAddress, resetAddressState, updateAddress } from 'store/account/actions';
 
 // component
 import Dialog from 'reusables/modal/index';
@@ -11,7 +11,18 @@ import notify from 'utils/notify';
 // styles
 import styles from './address-dialog.module.css';
 
-const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, createAddress, user, countries = [] }) => {
+const AddressDialog = ({
+  cardData,
+  visible,
+  onClose,
+  fetchCountries,
+  searchAddress,
+  createAddress,
+  user,
+  countries = [],
+  resetAddressState,
+  updateAddress,
+}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -100,31 +111,60 @@ const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, create
       return;
     }
 
-    createAddress(
-      {
-        userId: user?.id,
-        name: addressTitle,
-        firstName: firstName,
-        lastName: lastName,
-        type: 1,
-        isDefault: false,
-        countryId: country,
-        postalCode: zipCode,
-        city: city,
-        addressLine1: address?.substring(0, 50),
-        addressLine2: address?.substring(50, 100),
-        phone: phone,
-      },
-      (res) => {
-        if (!res.error) {
-          if (onClose) {
-            onClose();
-            searchAddress();
-            notify('success', 'Address successfully saved!');
+    if (!cardData) {
+      createAddress(
+        {
+          userId: user?.id,
+          name: addressTitle,
+          firstName: firstName,
+          lastName: lastName,
+          type: 1,
+          isDefault: false,
+          countryId: country,
+          postalCode: zipCode,
+          city: city,
+          addressLine1: address?.substring(0, 50),
+          addressLine2: address?.substring(50, 100),
+          phone: phone,
+        },
+        (res) => {
+          if (!res.error) {
+            if (onClose) {
+              onClose();
+              searchAddress();
+              notify('success', 'Address successfully saved!');
+            }
           }
         }
-      }
-    );
+      );
+    } else {
+      updateAddress({
+        id: cardData.id,
+        payload: {
+          userId: user?.id,
+          name: addressTitle,
+          firstName: firstName,
+          lastName: lastName,
+          type: 1,
+          isDefault: false,
+          countryId: country,
+          postalCode: zipCode,
+          city: city,
+          addressLine1: address?.substring(0, 50),
+          addressLine2: address?.substring(50, 100),
+          phone: phone,
+        },
+        callback: (res) => {
+          if (!res.error) {
+            if (onClose) {
+              onClose();
+              searchAddress();
+              notify('success', 'Address successfully updated!');
+            }
+          }
+        },
+      });
+    }
   };
 
   const handleClose = () => {
@@ -138,6 +178,7 @@ const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, create
       setZipCode('');
       setAddress('');
       setAddressTitle('');
+      resetAddressState();
     }
   };
 
@@ -153,6 +194,19 @@ const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, create
       },
     });
   }, [fetchCountries]);
+
+  useEffect(() => {
+    if (cardData) {
+      setFirstName(cardData?.firstName);
+      setLastName(cardData?.lastName);
+      setPhone(cardData?.phone);
+      setCountry(cardData?.countryId);
+      setCity(cardData?.city);
+      setZipCode(cardData?.postalCode);
+      setAddress(cardData?.addressLine1 + ' ' + cardData?.addressLine2);
+      setAddressTitle(cardData?.name);
+    }
+  }, [cardData]);
 
   return (
     <Dialog visible={visible} onClose={handleClose} title='Create New Address' size='small'>
@@ -257,6 +311,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCountries: (payload) => dispatch(fetchCountries(payload)),
     createAddress: (payload, callback) => dispatch(createAddress(payload, callback)),
+    resetAddressState: () => dispatch(resetAddressState()),
+    updateAddress: (payload) => dispatch(updateAddress(payload)),
   };
 };
 
