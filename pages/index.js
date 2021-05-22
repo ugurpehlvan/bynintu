@@ -3,7 +3,7 @@ import { useSelector, connect } from 'react-redux';
 import { useRouter } from 'next/router';
 
 // actions
-import { validateAccount } from 'store/actions/actions';
+import { validateAccount } from 'store/auth/actions';
 
 import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';

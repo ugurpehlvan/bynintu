@@ -4,10 +4,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
 //reducers
-import authReducer from 'store/reducers/authReducer';
 import otherReducer from 'store/reducers/otherReducer';
-import languageReducer from 'store/reducers/languageReducer';
+import authReducer from 'store/auth/reducer';
 import accountReducer from 'store/account/reducer';
+import languageReducer from 'store/language/reducer';
 
 let store;
 

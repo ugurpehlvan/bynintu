@@ -7,7 +7,7 @@ import Wishlist from '../Modal/Wishlist';
 import { translations } from 'resources';
 
 // actions
-import { changeAppLanguage } from 'store/actions/actions';
+import { changeAppLanguage } from 'store/language/actions';
 class TopHeaderTwo extends Component {
   state = {
     display: false,

@@ -9,7 +9,7 @@ import Facility from 'components/Common/Facility';
 import Breadcrumb from 'components/Common/Breadcrumb';
 
 // actions
-import { signUp } from 'store/actions/actions';
+import { signUp } from 'store/auth/actions';
 
 // helpers
 import isEmail from 'utils/isEmail';

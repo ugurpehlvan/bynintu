@@ -1,5 +1,19 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
+import { Provider } from 'react-redux';
+// import withRedux from 'next-redux-wrapper';
+
+// components
+import Layout from '../components/_App/Layout';
+
+// redux
+import { getCustomer } from 'store/auth/actions';
+import { getLanguages } from 'store/language/actions';
+import { useStore } from '../store/reducers/reducers';
+
+// styles
+import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css';
 import '../public/assets/styles/bootstrap.min.css';
 import '../public/assets/styles/fontawesome.min.css';
 import '../public/assets/styles/animate.min.css';
@@ -11,20 +25,12 @@ import 'react-image-lightbox/style.css';
 import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
 
-import { getCustomer } from 'store/actions/actions';
-// styles
-import 'react-toastify/dist/ReactToastify.css';
-import 'antd/dist/antd.css';
-
-import Layout from '../components/_App/Layout';
-import { Provider } from 'react-redux';
-// import withRedux from 'next-redux-wrapper';
-import { useStore } from '../store/reducers/reducers';
-
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
 
   useEffect(() => {
+    store.dispatch(getLanguages());
+
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
     }

@@ -6,7 +6,7 @@ import PasswordUpdate from 'components/auths/password-update';
 
 // actions
 import { getPhoneCodes } from 'store/account/actions';
-import { updateCustomerProfile } from 'store/actions/actions';
+import { updateCustomerProfile } from 'store/auth/actions';
 
 // styles
 import styles from './user-info.module.css';

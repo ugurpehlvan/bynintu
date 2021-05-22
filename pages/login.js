@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 // actions
-import { signIn } from '../store/actions/actions';
+import { signIn } from 'store/auth/actions';
 
 // components
 import Navbar from '../components/Layout/Navbar';
