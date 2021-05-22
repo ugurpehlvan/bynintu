@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu, Dropdown } from 'antd';
 import Link from 'next/link';
+import Router from 'next/router';
 
 // actions
 // import { changeAppLanguage } from 'store/language/actions';
@@ -31,6 +32,10 @@ class MegaMenu extends Component {
         display: !prevState.display,
       };
     });
+  };
+
+  handleMyAccountClick = () => {
+    Router.push('/my-account/my-orders');
   };
 
   handleItemClick = (e, key) => {
@@ -1145,7 +1150,9 @@ class MegaMenu extends Component {
                     <div className='option-item'>
                       {user ? (
                         <Dropdown overlay={menu} placement='bottomCenter' arrow>
-                          <a>My Account</a>
+                          <div style={{ cursor: 'pointer' }} onClick={this.handleMyAccountClick}>
+                            My Account
+                          </div>
                         </Dropdown>
                       ) : (
                         <Link href='/login'>
