@@ -7,7 +7,7 @@ import {
   CREATE_ADDRESS_ERROR,
   SEARCH_ADDRESSES,
   SEARCH_ADDRESSES_ERROR,
-} from 'store/actions/action-types/action-names';
+} from './keys';
 
 const initialState = {
   countries: [],

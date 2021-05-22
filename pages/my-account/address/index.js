@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Modal } from 'antd';
 
 // actions
-import { searchAddress, deleteAddress, getAddress } from 'store/actions/country-actions';
+import { searchAddress, deleteAddress, getAddress } from 'store/account/actions';
 
 // components
 import AddressCard from 'components/address-card';

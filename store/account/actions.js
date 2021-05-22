@@ -1,5 +1,5 @@
 import { apiURL, axiosClient } from '../../service';
-import { SEARCH_ADDRESSES, SEARCH_ADDRESSES_ERROR } from './action-types/action-names';
+import { SEARCH_ADDRESSES, SEARCH_ADDRESSES_ERROR, CREATE_ADDRESS, CREATE_ADDRESS_ERROR } from './keys';
 
 export const searchAddress = () => async (dispatch) => {
   const response = (
