@@ -87,7 +87,7 @@ const index = ({ searchAddress, addresses, deleteAddress, getAddress }) => {
 
 const mapStateToProps = (state) => {
   return {
-    addresses: state.country.addresses,
+    addresses: state.account.addresses,
   };
 };
 

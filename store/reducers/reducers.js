@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import authReducer from 'store/reducers/authReducer';
 import otherReducer from 'store/reducers/otherReducer';
 import languageReducer from 'store/reducers/languageReducer';
-import countryReducer from 'store/account/reducer';
+import accountReducer from 'store/account/reducer';
 
 let store;
 
@@ -17,7 +17,7 @@ const initStore = (preloadedState) => {
       auth: authReducer,
       other: otherReducer,
       language: languageReducer,
-      country: countryReducer,
+      account: accountReducer,
     }),
     preloadedState,
     composeWithDevTools(applyMiddleware(thunkMiddleware))

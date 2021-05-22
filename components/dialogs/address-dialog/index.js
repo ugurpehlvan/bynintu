@@ -248,7 +248,7 @@ const AddressDialog = ({ visible, onClose, fetchCountries, searchAddress, create
 
 const mapStateToProps = (state) => {
   return {
-    countries: state.country.countries,
+    countries: state.account.countries,
     user: state.auth.customer,
   };
 };
