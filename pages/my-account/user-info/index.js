@@ -5,7 +5,8 @@ import MyAccountContainer from 'components/Layout/MyAccountContainer';
 import PasswordUpdate from 'components/auths/password-update';
 
 // actions
-import { getPhoneCodes, updateCustomerProfile } from 'store/actions/actions';
+import { getPhoneCodes } from 'store/account/actions';
+import { updateCustomerProfile } from 'store/actions/actions';
 
 // styles
 import styles from './user-info.module.css';

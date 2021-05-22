@@ -13,13 +13,7 @@ import {
   VALIDATE_ERROR,
   VALIDATE_SUCCESS,
   CHANGE_APP_LANGUAGE,
-  FETCH_COUNTRIES,
-  FETCH_COUNTRIES_ERROR,
   GET_LANGUAGES,
-  FETCH_PHONE_CODES,
-  FETCH_PHONE_CODES_ERROR,
-  CREATE_ADDRESS,
-  CREATE_ADDRESS_ERROR,
 } from './action-types/action-names';
 
 import { supportedLanguages } from 'resources/strings';
@@ -182,68 +176,13 @@ export const changeAppLanguage = (language) => (dispatch) => {
   }
 };
 
-export const fetchCountries = (payload) => async (dispatch) => {
-  const response = (
-    await axiosClient.post(apiURL.countries, payload, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
-
-  if (!response.error) {
-    dispatch({ type: FETCH_COUNTRIES, payload: response.data });
-  } else {
-    dispatch({ type: FETCH_COUNTRIES_ERROR, payload: response?.error });
-  }
-};
-
-export const createAddress = (payload, callback) => async (dispatch) => {
-  const response = (
-    await axiosClient.post(apiURL.createAddress, payload, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
-
-  if (!response.error) {
-    dispatch({ type: CREATE_ADDRESS, payload: response });
-    callback(response);
-  } else {
-    dispatch({ type: CREATE_ADDRESS_ERROR, payload: response?.error });
-    callback(response);
-  }
-};
-
 export const getLanguages = () => async (dispatch) => {
   const response = (await axiosClient.get(apiURL.language, {})).data;
 
-  console.log('response', response);
   if (!response.error) {
     dispatch({ type: GET_LANGUAGES, payload: response });
   } else {
     //dispatch({ type: AUTH_ERROR, payload: response?.error });
-  }
-};
-
-export const getPhoneCodes = () => async (dispatch) => {
-  const response = (
-    await axiosClient.post(
-      apiURL.getPhoneCodes,
-      {},
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      }
-    )
-  ).data;
-
-  if (!response.error) {
-    dispatch({ type: FETCH_PHONE_CODES, payload: response });
-  } else {
-    dispatch({ type: FETCH_PHONE_CODES_ERROR, payload: response?.error });
   }
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 // action
-import { fetchCountries, createAddress } from 'store/actions/actions';
+import { fetchCountries, createAddress } from 'store/account/actions';
 
 // component
 import Dialog from 'reusables/modal/index';
