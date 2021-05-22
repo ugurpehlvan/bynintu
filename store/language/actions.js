@@ -1,3 +1,4 @@
+import { apiURL, axiosClient } from '../../service';
 import { CHANGE_APP_LANGUAGE, GET_LANGUAGES } from './keys';
 
 import { supportedLanguages } from 'resources/strings';
@@ -12,7 +13,7 @@ export const changeAppLanguage = (language) => (dispatch) => {
 
 export const getLanguages = () => async (dispatch) => {
   const response = (await axiosClient.get(apiURL.language, {})).data;
-
+  console.log('response', response);
   if (!response.error) {
     dispatch({ type: GET_LANGUAGES, payload: response });
   } else {
