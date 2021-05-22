@@ -111,6 +111,23 @@ const AddressDialog = ({
       return;
     }
 
+    let _address = address.split(' ');
+
+    let fullAddress = [];
+    let calcStr = '';
+
+    for (let a = 0; a < _address?.length; a++) {
+      calcStr += ' ' + _address[a];
+
+      if (calcStr.length > 50) {
+        const str = calcStr.replace(_address[a], '');
+        fullAddress.push(str);
+        calcStr = _address[a];
+      } else if (calcStr.length && a === _address.length - 1) {
+        fullAddress.push(calcStr);
+      }
+    }
+
     if (!cardData) {
       createAddress(
         {
@@ -123,8 +140,8 @@ const AddressDialog = ({
           countryId: country,
           postalCode: zipCode,
           city: city,
-          addressLine1: address?.substring(0, 50),
-          addressLine2: address?.substring(50, 100),
+          addressLine1: fullAddress[0],
+          addressLine2: fullAddress[1],
           phone: phone,
         },
         (res) => {
@@ -150,8 +167,8 @@ const AddressDialog = ({
           countryId: country,
           postalCode: zipCode,
           city: city,
-          addressLine1: address?.substring(0, 50),
-          addressLine2: address?.substring(50, 100),
+          addressLine1: fullAddress[0],
+          addressLine2: fullAddress[1],
           phone: phone,
         },
         callback: (res) => {
