@@ -4,7 +4,7 @@ import { Menu, Dropdown } from 'antd';
 import Link from 'next/link';
 
 // actions
-// import { changeAppLanguage } from 'store/actions/actions';
+// import { changeAppLanguage } from 'store/language/actions';
 
 // helpers
 import { translations } from 'resources';

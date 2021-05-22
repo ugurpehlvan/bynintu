@@ -11,7 +11,7 @@ import 'react-image-lightbox/style.css';
 import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
 
-import { getCustomer } from 'store/actions/actions';
+import { getCustomer } from 'store/auth/actions';
 // styles
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/antd.css';

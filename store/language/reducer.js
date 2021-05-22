@@ -1,4 +1,4 @@
-import { CHANGE_APP_LANGUAGE } from 'store/actions/action-types/action-names';
+import { CHANGE_APP_LANGUAGE } from './keys';
 
 export const initialState = {
   appLanguage: 'en',

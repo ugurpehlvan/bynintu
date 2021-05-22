@@ -9,7 +9,7 @@ import Facility from 'components/Common/Facility';
 import Breadcrumb from 'components/Common/Breadcrumb';
 
 // actions
-import { updatePassword } from 'store/actions/actions';
+import { updatePassword } from 'store/auth/actions';
 
 // helpers
 import notify from 'utils/notify';

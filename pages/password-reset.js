@@ -10,7 +10,7 @@ import Facility from 'components/Common/Facility';
 import Breadcrumb from 'components/Common/Breadcrumb';
 
 // actions
-import { resetPassword } from 'store/actions/actions';
+import { resetPassword } from 'store/auth/actions';
 
 // helpers
 import notify from 'utils/notify';

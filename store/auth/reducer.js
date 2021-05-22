@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from 'store/actions/action-types/action-names';
+import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from './keys';
 
 const initialState = {
   customer: null,
