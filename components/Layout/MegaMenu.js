@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu, Dropdown } from 'antd';
 import Link from 'next/link';
+import Router from 'next/router';
 
 // actions
 // import { changeAppLanguage } from 'store/language/actions';
@@ -31,6 +32,10 @@ class MegaMenu extends Component {
         display: !prevState.display,
       };
     });
+  };
+
+  handleMyAccountClick = () => {
+    Router.push('/my-account/my-orders');
   };
 
   handleItemClick = (e, key) => {
@@ -105,25 +110,32 @@ class MegaMenu extends Component {
         {user?.firstName && user?.lastName && (
           <>
             <Menu.Item>
-              {user?.firstName} {user?.lastName}
+              <div style={{ color: '#8d0000', fontWeight: '500', fontSize: '15px' }}>
+                {user?.firstName} {user?.lastName}
+              </div>
             </Menu.Item>
             <Menu.Divider />
           </>
         )}
         <Menu.Item>
           <Link href='/my-account/user-info'>
-            <a>{translations[language]['g1']}</a>
+            <a>
+              <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-user' /> {translations[language]['g1']}
+            </a>
           </Link>
         </Menu.Item>
         <Menu.Item>
           <Link href='/my-account/help'>
             <a target='_blank' rel='noopener noreferrer'>
+              <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-question-circle' />
               Help
             </a>
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <a>Log Out</a>
+          <a>
+            <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-sign-out-alt'></i> Log Out
+          </a>
         </Menu.Item>
       </Menu>
     );
@@ -1145,7 +1157,9 @@ class MegaMenu extends Component {
                     <div className='option-item'>
                       {user ? (
                         <Dropdown overlay={menu} placement='bottomCenter' arrow>
-                          <a>My Account</a>
+                          <div style={{ cursor: 'pointer' }} onClick={this.handleMyAccountClick}>
+                            My Account
+                          </div>
                         </Dropdown>
                       ) : (
                         <Link href='/login'>

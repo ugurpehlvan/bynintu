@@ -7,6 +7,7 @@ import {
   CREATE_ADDRESS_ERROR,
   SEARCH_ADDRESSES,
   SEARCH_ADDRESSES_ERROR,
+  RESET_ADDRESS,
 } from './keys';
 
 const initialState = {
@@ -57,6 +58,11 @@ const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         addresses: null,
+      };
+    case RESET_ADDRESS:
+      return {
+        ...state,
+        address: null,
       };
     default:
       return state;
