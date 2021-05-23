@@ -1,4 +1,6 @@
 import { apiURL, axiosClient } from '../../service';
+import authHeader from 'utils/authHeader';
+
 import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from './keys';
 
 export const signIn = (formValues, router) => async (dispatch, getState) => {
@@ -47,13 +49,7 @@ export const forgetPassword = (formValues) => async (dispatch) => {
 };
 
 export const getCustomer = () => async (dispatch) => {
-  const response = (
-    await axiosClient.get(apiURL.customer, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.get(apiURL.customer, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: AUTH_SUCCESS, payload: response });
@@ -74,13 +70,7 @@ export const resetPassword = (formValues) => async (dispatch) => {
 };
 
 export const updatePassword = (formValues) => async (dispatch) => {
-  const response = (
-    await axiosClient.put(apiURL.updatePassword, formValues, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.put(apiURL.updatePassword, formValues, authHeader())).data;
 
   // if (response.success) {
   //     dispatch({ type: AUTH_SUCCESS, payload: response });
@@ -91,13 +81,7 @@ export const updatePassword = (formValues) => async (dispatch) => {
 };
 
 export const updateCustomerProfile = (payload) => async (dispatch) => {
-  const response = (
-    await axiosClient.put(apiURL.customer, payload, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.put(apiURL.customer, payload, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: AUTH_SUCCESS, payload: response });

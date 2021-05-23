@@ -1,11 +1,10 @@
-import english from 'resources/strings/translations/en.json';
-import turkish from 'resources/strings/translations/tr.json';
-import arabish from 'resources/strings/translations/ar.json';
-
 const translations = {
-  en: english,
-  tr: turkish,
-  ar: arabish,
+  en: require('resources/strings/translations/en.json'),
+  tr: require('resources/strings/translations/tr.json'),
+  ar: require('resources/strings/translations/ar.json'),
+  nl: require('resources/strings/translations/nl.json'),
+  de: require('resources/strings/translations/de.json'),
+  fr: require('resources/strings/translations/fr.json'),
 };
 
 export const languageCode = { current: 'tr' };

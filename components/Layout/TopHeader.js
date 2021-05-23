@@ -22,7 +22,7 @@ class TopHeader extends Component {
   };
 
   render() {
-    const { language, changeAppLanguage } = this.props;
+    const { language, languages, changeAppLanguage } = this.props;
 
     return (
       <>
@@ -80,8 +80,15 @@ class TopHeader extends Component {
                   <li>
                     <div className='languages-list'>
                       <select onChange={(e) => changeAppLanguage(e.target.value)}>
-                        <option value='en'>English</option>
-                        <option value='tr'>Tükçe</option>
+                        {languages?.map((language) => {
+                          const lang = JSON.stringify(language);
+
+                          return (
+                            <option key={language.id} value={lang}>
+                              {language.name}
+                            </option>
+                          );
+                        })}
                       </select>
                     </div>
                   </li>
@@ -97,9 +104,10 @@ class TopHeader extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ language }) => {
   return {
-    language: state.language.appLanguage,
+    language: language.appLanguage,
+    languages: language.languages,
   };
 };
 

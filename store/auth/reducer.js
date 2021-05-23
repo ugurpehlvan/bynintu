@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from './keys';
+import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS, CHANGE_APP_LANGUAGE } from './keys';
 
 const initialState = {
   customer: null,

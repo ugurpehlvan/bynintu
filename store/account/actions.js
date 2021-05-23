@@ -1,4 +1,5 @@
 import { apiURL, axiosClient } from '../../service';
+import authHeader from 'utils/authHeader';
 import {
   FETCH_PHONE_CODES,
   FETCH_PHONE_CODES_ERROR,
@@ -11,17 +12,7 @@ import {
 } from './keys';
 
 export const searchAddress = () => async (dispatch) => {
-  const response = (
-    await axiosClient.post(
-      apiURL.searchAddress,
-      {},
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      }
-    )
-  ).data;
+  const response = (await axiosClient.post(apiURL.searchAddress, {}, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: SEARCH_ADDRESSES, payload: response.data });
@@ -31,13 +22,7 @@ export const searchAddress = () => async (dispatch) => {
 };
 
 export const deleteAddress = (id, callback) => async (dispatch) => {
-  const response = (
-    await axiosClient.delete(`${apiURL.address}/${id}`, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.delete(`${apiURL.address}/${id}`, authHeader())).data;
 
   if (!response.error) {
     callback(response);
@@ -47,13 +32,7 @@ export const deleteAddress = (id, callback) => async (dispatch) => {
 };
 
 export const getAddress = (id) => async (dispatch) => {
-  const response = (
-    await axiosClient.get(`${apiURL.address}/${id}`, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.get(`${apiURL.address}/${id}`, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: CREATE_ADDRESS, payload: response.data });
@@ -63,13 +42,7 @@ export const getAddress = (id) => async (dispatch) => {
 };
 
 export const fetchCountries = (payload) => async (dispatch) => {
-  const response = (
-    await axiosClient.post(apiURL.countries, payload, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.post(apiURL.countries, payload, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: FETCH_COUNTRIES, payload: response.data });
@@ -79,13 +52,7 @@ export const fetchCountries = (payload) => async (dispatch) => {
 };
 
 export const createAddress = (payload, callback) => async (dispatch) => {
-  const response = (
-    await axiosClient.post(apiURL.createAddress, payload, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    })
-  ).data;
+  const response = (await axiosClient.post(apiURL.createAddress, payload, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: CREATE_ADDRESS, payload: response });
@@ -97,17 +64,7 @@ export const createAddress = (payload, callback) => async (dispatch) => {
 };
 
 export const getPhoneCodes = () => async (dispatch) => {
-  const response = (
-    await axiosClient.post(
-      apiURL.getPhoneCodes,
-      {},
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      }
-    )
-  ).data;
+  const response = (await axiosClient.post(apiURL.getPhoneCodes, {}, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: FETCH_PHONE_CODES, payload: response });

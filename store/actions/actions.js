@@ -1,4 +1,3 @@
-import { apiURL, axiosClient } from '../../service';
 import {
   ADD_TO_CART,
   REMOVE_ITEM,
