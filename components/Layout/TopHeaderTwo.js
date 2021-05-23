@@ -23,7 +23,7 @@ class TopHeaderTwo extends Component {
 
   render() {
     const { language } = this.props;
-    console.log('language', language);
+
     return (
       <>
         <div className='top-header'>

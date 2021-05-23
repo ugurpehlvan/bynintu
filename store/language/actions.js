@@ -12,7 +12,6 @@ export const changeAppLanguage = (language) => async (dispatch, getState) => {
 
   if (supportedLanguages.indexOf(lang.code.toLowerCase()) >= 0) {
     const response = (await axiosClient.put(apiURL.updateLanguage, { id: userId, languageId: lang.id }, authHeader())).data;
-    console.log('updateLang', response);
 
     dispatch({ type: CHANGE_APP_LANGUAGE, payload: lang });
     localStorage.setItem('appLanguage', lang.code.toLowerCase());
