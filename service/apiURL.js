@@ -13,6 +13,7 @@ const apiUrl = {
   getPhoneCodes: '/api/api/v1/country/getPhoneCodes',
   searchAddress: '/api/api/v1/address/search',
   address: '/api/api/v1/address',
+  searchProduct: '/api/api/v1/product/search',
 };
 
 export default apiUrl;
