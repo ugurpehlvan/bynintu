@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 // components
 import Navbar from 'components/Layout/Navbar';
