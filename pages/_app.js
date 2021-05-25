@@ -24,6 +24,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import 'react-image-lightbox/style.css';
 import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
+import '../public/assets/styles/my-account-container.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
