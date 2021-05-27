@@ -1,6 +1,6 @@
 import React from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import Navbar from '../../components/Layout/Navbar';
 import Breadcrumb from '../../components/Common/Breadcrumb';
 import Footer from '../../components/Layout/Footer';
@@ -10,42 +10,27 @@ import DetailsTab from '../../components/product-details/DetailsTab';
 import RelatedProducts from '../../components/product-details/RelatedProducts';
 import Facility from '../../components/shop-style-two/Facility';
 
-const Product = () => {
-  const router = useRouter();
-  const { id } = router.query;
+export const getServerSideProps = async (context) => {
+  const id = context.params.id;
 
-  const product = useSelector((state) => {
-    const {
-      productsCollectionShoes,
-      productsCollectionPillows,
-      productsCollectionWomanDress,
-      productsCollectionLinens,
-      productsCollectionBathrobe,
-      productsCollectionTen,
-      productsCollectionEleven,
-      productsCovid19,
-      productsGrocery,
-      productsElectronics,
-      productsFurniture,
-    } = state.other;
+  const response = await axios.get('https://test.bynintu.com/api/v1/product/' + id);
 
-    const allProducts = [
-      ...productsCollectionShoes,
-      ...productsCollectionPillows,
-      ...productsCollectionWomanDress,
-      ...productsCollectionLinens,
-      ...productsCollectionBathrobe,
-      ...productsCollectionTen,
-      ...productsCollectionEleven,
-      ...productsCovid19,
-      ...productsGrocery,
-      ...productsElectronics,
-      ...productsFurniture,
-    ];
+  const product = response.data;
 
-    return allProducts.find((item) => item.id === parseInt(id));
-  });
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
 
+  return {
+    props: {
+      product,
+    },
+  };
+};
+
+const Product = ({ product }) => {
   const products = useSelector((state) => state.other.productsCollectionWomanDress);
   const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
   return (

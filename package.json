@@ -28,6 +28,7 @@
         "react-image-lightbox": "^5.1.1",
         "react-owl-carousel3": "^2.2.5",
         "react-redux": "^7.2.3",
+        "react-responsive-carousel": "^3.2.18",
         "react-slick": "^0.24.0",
         "react-stripe-checkout": "^2.6.3",
         "react-toastify": "^7.0.4",
