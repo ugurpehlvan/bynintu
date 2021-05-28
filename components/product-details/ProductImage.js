@@ -23,7 +23,7 @@ class ProductImage extends Component {
       this.props.product &&
       this.props?.product?.imageUrls?.map((data) => {
         return (
-          <div style={{ display: 'inline-block' }} key={data.id}>
+          <div key={data.id}>
             <div className='item'>
               <img src={data.url} alt='image' />
             </div>
@@ -54,9 +54,10 @@ class ProductImage extends Component {
         <div className='products-page-gallery'>
           <div className='product-page-gallery-main'>
             <div>
-              <Carousel autoPlay showArrows={true}>
+              <Carousel showThumbs={true} showArrows={true}>
                 {this.renderSliderMainImages()}
               </Carousel>
+              <div style={{ height: '210px' }}></div>
               {/* <Slider asNavFor={this.state.nav2} ref={(slider) => (this.slider1 = slider)}>
                 {this.renderSliderMainImages()}
               </Slider> */}
