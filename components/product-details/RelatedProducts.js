@@ -10,7 +10,6 @@ const options = {
   nav: true,
   dots: true,
   autoplayHoverPause: true,
-  margin: 16,
   autoplay: true,
   navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
   responsive: {
@@ -27,7 +26,7 @@ const options = {
       items: 3,
     },
     1200: {
-      items: 4,
+      items: 6,
     },
   },
 };
@@ -75,8 +74,8 @@ class RelatedProducts extends Component {
                 <OwlCarousel className='offer-slides owl-carousel owl-theme' {...options}>
                   {products.map((data, idx) => (
                     <div className='col-lg-12 col-md-12' key={idx}>
-                      <div className='single-product-box'>
-                        <div className='product-image'>
+                      <div style={{ width: '198px' }} className='single-product-box'>
+                        <div style={{ height: '300px', width: '198px', margin: 'auto' }} className='product-image'>
                           <Link href='/product/[id]' as={`/product/${data.id}`}>
                             <a>
                               <img src={data.image} alt='image' />
