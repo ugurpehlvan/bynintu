@@ -18,27 +18,19 @@ class ProductImage extends Component {
     });
   }
 
-  renderSliderMainImages = () => {
-    return (
-      this.props.product &&
-      this.props?.product?.imageUrls?.map((data) => {
-        return (
-          <div key={data.id}>
-            <div className='item'>
-              <img src={data.url} alt='image' />
-            </div>
-          </div>
-        );
-      })
-    );
-  };
+  // renderSliderMainImages = () => {
+  //   return (
+  //     this.props.product &&
+
+  //   );
+  // };
 
   renderSliderSubImages = () => {
     return (
       this.props.product &&
-      this.props?.product?.imageUrls?.map((data) => {
+      this.props?.product?.imageUrls?.map((data, index) => {
         return (
-          <div key={data.id}>
+          <div key={`sub-images-${index}`}>
             <div className='item'>
               <img src={data.url} alt='image' />
             </div>
@@ -49,34 +41,22 @@ class ProductImage extends Component {
   };
 
   render() {
+    const { product } = this.props;
     return (
       <div className='col-lg-6 col-md-6'>
         <div className='products-page-gallery'>
           <div className='product-page-gallery-main'>
             <div>
               <Carousel showThumbs={true} showArrows={true}>
-                {this.renderSliderMainImages()}
+                {product?.imageUrls?.map((data, index) => {
+                  return (
+                    <div key={`main-images${index}`}>
+                      <img alt='' src={data.url} />
+                    </div>
+                  );
+                })}
               </Carousel>
-              <div style={{ height: '210px' }}></div>
-              {/* <Slider asNavFor={this.state.nav2} ref={(slider) => (this.slider1 = slider)}>
-                {this.renderSliderMainImages()}
-              </Slider> */}
-            </div>
-          </div>
-
-          <div className='product-page-gallery-preview'>
-            <div>
-              {/* <Slider
-                asNavFor={this.state.nav1}
-                // ref={(slider) => (this.slider2 = slider)}
-                slidesToShow={5}
-                swipeToSlide={true}
-                focusOnSelect={true}
-                arrows={false}
-                dots={false}
-              >
-                <div style={{ display: 'flex' }}>{this.renderSliderSubImages()}</div>
-              </Slider> */}
+              <div style={{ height: '90px' }}></div>
             </div>
           </div>
         </div>
