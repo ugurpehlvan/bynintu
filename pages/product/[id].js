@@ -33,6 +33,7 @@ export const getServerSideProps = async (context) => {
 const Product = ({ product }) => {
   const products = useSelector((state) => state.other.productsCollectionWomanDress);
   const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+
   return (
     <>
       <Navbar />
@@ -45,7 +46,7 @@ const Product = ({ product }) => {
 
             <ProductContent product={product} />
 
-            <DetailsTab />
+            <DetailsTab product={product} />
           </div>
         </div>
 
