@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 // actions
 import { getProducts } from 'store/product/actions';
@@ -13,16 +14,34 @@ import LeftSidebar from 'components/Sidebar/LeftSidebar';
 import ProductsFilterOptions from 'components/Common/ProductsFilterOptions';
 import ProductsCard from 'components/products/ProductsCard';
 
+export const getServerSideProps = async () => {
+  const response = await axios.post('https://test.bynintu.com/api/v1/product/listSearch', {});
+
+  const products = response.data;
+
+  if (!products.length) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
 const hookClass = ({ products, CompareProducts, getProducts }) => {
   const [gridClass, setGridClass] = useState('');
-
+  console.log('products', products);
   const handleGrid = (e) => {
     setGridClass(e);
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   return (
     <>
@@ -61,7 +80,7 @@ const hookClass = ({ products, CompareProducts, getProducts }) => {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.searchedProducts.searchedProducts,
+    //products: state.searchedProducts.searchedProducts,
     CompareProducts: state.addedItemsToCompare,
   };
 };
