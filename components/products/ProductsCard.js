@@ -51,14 +51,14 @@ class ProductsCard extends Component {
     const { modalOpen } = this.state;
     return (
       <>
-        {products.map((data, idx) => (
+        {products?.map((data, idx) => (
           <div className='col-lg-4 col-sm-6 col-md-4 col-6 products-col-item' key={idx}>
             <div className='single-product-box'>
-              <div className='product-image'>
+              <div style={{ height: '194px' }} className='product-image'>
                 <Link href='/product/[id]' as={`/product/${data.id}`}>
-                  <a>
-                    <img src={data.image} alt='image' />
-                    <img src={data.imageHover} alt='image' />
+                  <a style={{ height: '100%' }}>
+                    <img style={{ height: '100%' }} src={data?.imageUrls[0]?.url} alt='image' />
+                    <img style={{ height: '100%' }} src={data?.imageUrls[0]?.url} alt='image' />
                   </a>
                 </Link>
 
@@ -90,14 +90,14 @@ class ProductsCard extends Component {
               </div>
 
               <div className='product-content'>
-                <h3>
+                <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                     <a>{data.title}</a>
                   </Link>
                 </h3>
 
                 <div className='product-price'>
-                  <span className='new-price'>€{data.price}</span>
+                  <span className='new-price'>€{data.sellPrice}</span>
                 </div>
 
                 <div className='rating'>
