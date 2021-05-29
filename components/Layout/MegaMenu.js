@@ -35,7 +35,7 @@ class MegaMenu extends Component {
   };
 
   handleMyAccountClick = () => {
-    Router.push('/my-account/my-orders');
+    Router.push('/account/orders');
   };
 
   handleItemClick = (e, key) => {
@@ -118,14 +118,14 @@ class MegaMenu extends Component {
           </>
         )}
         <Menu.Item>
-          <Link href='/my-account/user-info'>
+          <Link href='/account/user-info'>
             <a>
               <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-user' /> {translations[language]['g1']}
             </a>
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link href='/my-account/help'>
+          <Link href='/account/help'>
             <a target='_blank' rel='noopener noreferrer'>
               <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-question-circle' />
               Help
@@ -1158,7 +1158,7 @@ class MegaMenu extends Component {
                       {user ? (
                         <Dropdown overlay={menu} placement='bottomCenter' arrow>
                           <div style={{ cursor: 'pointer' }} onClick={this.handleMyAccountClick}>
-                            My Account
+                            Account
                           </div>
                         </Dropdown>
                       ) : (

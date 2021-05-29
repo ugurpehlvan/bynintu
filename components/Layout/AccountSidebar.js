@@ -48,33 +48,33 @@ const AccountSidebar = ({ language }) => {
       <h2 style={{ margin: '10px 0 15px', fontSize: '24px', color: '#000', fontWeight: '400' }}>{translations[language]['g2']}</h2>
       <ul style={{ listStyle: 'none', padding: '0px' }}>
         <li style={listIteStyle}>
-          <Link href='/my-account/my-orders'>
-            <div style={router.pathname === '/my-account/my-orders' ? active : unActive}>
-              <i style={router.pathname === '/my-account/my-orders' ? activeIcon : unActiveIcon} className='fas fa-box-open'></i>
+          <Link href='/account/orders'>
+            <div style={router.pathname === '/account/orders' ? active : unActive}>
+              <i style={router.pathname === '/account/orders' ? activeIcon : unActiveIcon} className='fas fa-box-open'></i>
               <a>{translations[language]['g3']}</a>
             </div>
           </Link>
         </li>
         <li style={listIteStyle}>
-          <Link href='/my-account/user-info'>
-            <div style={router.pathname === '/my-account/user-info' ? active : unActive}>
-              <i style={router.pathname === '/my-account/user-info' ? activeIcon : unActiveIcon} className='fas fa-user'></i>
+          <Link href='/account/user-info'>
+            <div style={router.pathname === '/account/user-info' ? active : unActive}>
+              <i style={router.pathname === '/account/user-info' ? activeIcon : unActiveIcon} className='fas fa-user'></i>
               <a>{translations[language]['g4']}</a>
             </div>
           </Link>
         </li>
         <li style={listIteStyle}>
-          <Link href='/my-account/address'>
-            <div style={router.pathname === '/my-account/address' ? active : unActive}>
-              <i style={router.pathname === '/my-account/address' ? activeIcon : unActiveIcon} className='fas fa-map-marker-alt'></i>
+          <Link href='/account/address'>
+            <div style={router.pathname === '/account/address' ? active : unActive}>
+              <i style={router.pathname === '/account/address' ? activeIcon : unActiveIcon} className='fas fa-map-marker-alt'></i>
               <a>{translations[language]['g5']}</a>
             </div>
           </Link>
         </li>
         <li style={listIteStyle}>
-          <Link href='/my-account/help'>
-            <div style={router.pathname === '/my-account/help' ? active : unActive}>
-              <i style={router.pathname === '/my-account/help' ? activeIcon : unActiveIcon} className='fas fa-question-circle'></i>
+          <Link href='/account/help'>
+            <div style={router.pathname === '/account/help' ? active : unActive}>
+              <i style={router.pathname === '/account/help' ? activeIcon : unActiveIcon} className='fas fa-question-circle'></i>
               <a>{translations[language]['g6']}</a>
             </div>
           </Link>
