@@ -107,7 +107,6 @@ class MegaMenu extends Component {
     const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
     let { products, user, language, categories } = this.props;
-    console.log('categoreis', categories);
 
     const menu = (
       <Menu style={{ width: '200px' }}>
@@ -217,9 +216,9 @@ class MegaMenu extends Component {
                     </div>
                   </div>
                   <ul className='navbar-nav'>
-                    {categories?.map((category) => {
+                    {categories?.map((category, index) => {
                       return (
-                        <li className='nav-item megamenu'>
+                        <li key={index} className='nav-item megamenu'>
                           <Link href='#'>
                             <a className='nav-link' onClick={(e) => this.handleItemClick(e, 'women')}>
                               {category?.name} <i className='fas fa-chevron-down'></i>
@@ -230,15 +229,15 @@ class MegaMenu extends Component {
                               <li className='nav-item'>
                                 <div className='container'>
                                   <div className='row'>
-                                    {category?.subCategories.map((subCategory1) => {
+                                    {category?.subCategories.map((subCategory1, ind) => {
                                       return (
-                                        <div className='col'>
+                                        <div key={`subCategories-${ind}`} className='col'>
                                           <h6 className='submenu-title'>{subCategory1?.name}</h6>
 
                                           <ul className='megamenu-submenu'>
-                                            {subCategory1.subCategories.map((subCategory2) => {
+                                            {subCategory1.subCategories.map((subCategory2, index) => {
                                               return (
-                                                <li>
+                                                <li key={`subCategory2-4${index}`}>
                                                   <Link href='/category-without-sidebar-fullwidth'>
                                                     <a>{subCategory2.name}</a>
                                                   </Link>
