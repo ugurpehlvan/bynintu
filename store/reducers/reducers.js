@@ -9,6 +9,7 @@ import authReducer from 'store/auth/reducer';
 import accountReducer from 'store/account/reducer';
 import languageReducer from 'store/language/reducer';
 import searchedProductReducer from 'store/product/reducer';
+import categoryReducer from 'store/category/reducer';
 
 let store;
 
@@ -20,6 +21,7 @@ const initStore = (preloadedState) => {
       language: languageReducer,
       account: accountReducer,
       searchedProducts: searchedProductReducer,
+      category: categoryReducer,
     }),
     preloadedState,
     composeWithDevTools(applyMiddleware(thunkMiddleware))
