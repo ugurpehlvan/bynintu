@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
 import { Carousel } from 'react-responsive-carousel';
 
 class ProductImage extends Component {
@@ -18,66 +17,32 @@ class ProductImage extends Component {
     });
   }
 
-  renderSliderMainImages = () => {
-    return (
-      this.props.product &&
-      this.props?.product?.imageUrls?.map((data) => {
-        return (
-          <div key={data.id}>
-            <div className='item'>
-              <img src={data.url} alt='image' />
-            </div>
-          </div>
-        );
-      })
-    );
-  };
-
-  renderSliderSubImages = () => {
-    return (
-      this.props.product &&
-      this.props?.product?.imageUrls?.map((data) => {
-        return (
-          <div key={data.id}>
-            <div className='item'>
-              <img src={data.url} alt='image' />
-            </div>
-          </div>
-        );
-      })
-    );
-  };
-
   render() {
+    const { product } = this.props;
     return (
       <div className='col-lg-6 col-md-6'>
         <div className='products-page-gallery'>
           <div className='product-page-gallery-main'>
-            <div>
-              <Carousel showThumbs={true} showArrows={true}>
-                {this.renderSliderMainImages()}
-              </Carousel>
-              <div style={{ height: '210px' }}></div>
-              {/* <Slider asNavFor={this.state.nav2} ref={(slider) => (this.slider1 = slider)}>
-                {this.renderSliderMainImages()}
-              </Slider> */}
-            </div>
-          </div>
-
-          <div className='product-page-gallery-preview'>
-            <div>
-              {/* <Slider
-                asNavFor={this.state.nav1}
-                // ref={(slider) => (this.slider2 = slider)}
-                slidesToShow={5}
-                swipeToSlide={true}
-                focusOnSelect={true}
-                arrows={false}
-                dots={false}
-              >
-                <div style={{ display: 'flex' }}>{this.renderSliderSubImages()}</div>
-              </Slider> */}
-            </div>
+            <Carousel swipeable={true} thumbWidth={110} showArrows={true} showIndicators={false}>
+              {product?.imageUrls?.map((data, index) => {
+                return (
+                  <div
+                    style={{
+                      height: '600px',
+                      width: '396px',
+                      margin: 'auto',
+                      justifyContent: 'center',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                    key={`main-images${index}`}
+                  >
+                    <img alt='' src={data.url} />
+                  </div>
+                );
+              })}
+            </Carousel>
+            <div style={{ height: '90px' }}></div>
           </div>
         </div>
       </div>
