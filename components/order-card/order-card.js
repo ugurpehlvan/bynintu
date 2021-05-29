@@ -1,8 +1,16 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import styles from './order-card.module.css';
 
 const OrderCard = () => {
+  const router = useRouter();
+
+  const handleOrderDetailClick = () => {
+    const orderID = '2212412';
+    router.push(`/account/orders/${orderID}`);
+  };
+
   return (
     <div className={styles.container}>
       <div className={`${styles.order_header} row`}>
@@ -19,7 +27,7 @@ const OrderCard = () => {
           <div className={styles.header_description}>Ugur Pehlivan</div>
         </div>
         <div className='col-lg-3 col-md-6'>
-          <button className={`btn btn-primary`} type='button'>
+          <button onClick={handleOrderDetailClick} className={`btn btn-primary`} type='button'>
             Order Details
           </button>
         </div>
