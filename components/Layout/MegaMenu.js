@@ -221,25 +221,27 @@ class MegaMenu extends Component {
                         <li key={index} className='nav-item megamenu'>
                           <Link href='#'>
                             <a className='nav-link' onClick={(e) => this.handleItemClick(e, 'women')}>
-                              {category?.name} <i className='fas fa-chevron-down'></i>
+                              {category?.name}
                             </a>
                           </Link>
                           {(collapseWomenItems || collapsed) && (
-                            <ul className='dropdown-menu'>
-                              <li className='nav-item'>
+                            <div className='dropdown-menu'>
+                              <div className='nav-item'>
                                 <div className='container'>
-                                  <div className='row'>
-                                    {category?.subCategories.map((subCategory1, ind) => {
+                                  <div style={{ display: 'block', width: '100%' }}>
+                                    {category?.subCategories.map((subCategory1) => {
                                       return (
-                                        <div key={`subCategories-${ind}`} className='col'>
-                                          <h6 className='submenu-title'>{subCategory1?.name}</h6>
+                                        <div style={{ width: '20%', display: 'inline-block', float: 'left' }}>
+                                          <h6 style={{ marginBottom: '10px' }} className='submenu-title'>
+                                            {subCategory1?.name}
+                                          </h6>
 
                                           <ul className='megamenu-submenu'>
                                             {subCategory1.subCategories.map((subCategory2, index) => {
                                               return (
-                                                <li key={`subCategory2-4${index}`}>
+                                                <li style={{ marginTop: '4px' }}>
                                                   <Link href='/category-without-sidebar-fullwidth'>
-                                                    <a>{subCategory2.name}</a>
+                                                    <a style={{ fontSize: '13px' }}>{subCategory2.name}</a>
                                                   </Link>
                                                 </li>
                                               );
@@ -276,8 +278,8 @@ class MegaMenu extends Component {
                                     </div>
                                   </div>
                                 </div>
-                              </li>
-                            </ul>
+                              </div>
+                            </div>
                           )}
                         </li>
                       );
