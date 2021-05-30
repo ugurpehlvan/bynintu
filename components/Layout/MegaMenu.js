@@ -36,7 +36,7 @@ class MegaMenu extends Component {
   };
 
   handleMyAccountClick = () => {
-    Router.push('/my-account/my-orders');
+    Router.push('/account/orders');
   };
 
   handleItemClick = (e, key) => {
@@ -107,7 +107,6 @@ class MegaMenu extends Component {
     const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
     let { products, user, language, categories } = this.props;
-    console.log('categoreis', categories);
 
     const menu = (
       <Menu style={{ width: '200px' }}>
@@ -122,14 +121,14 @@ class MegaMenu extends Component {
           </>
         )}
         <Menu.Item>
-          <Link href='/my-account/user-info'>
+          <Link href='/account/user-info'>
             <a>
               <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-user' /> {translations[language]['g1']}
             </a>
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link href='/my-account/help'>
+          <Link href='/account/help'>
             <a target='_blank' rel='noopener noreferrer'>
               <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-question-circle' />
               Help
@@ -193,7 +192,7 @@ class MegaMenu extends Component {
                       {user ? (
                         <Dropdown overlay={menu} placement='bottomCenter' arrow>
                           <div style={{ cursor: 'pointer' }} onClick={this.handleMyAccountClick}>
-                            My Account
+                            Account
                           </div>
                         </Dropdown>
                       ) : (
@@ -217,9 +216,9 @@ class MegaMenu extends Component {
                     </div>
                   </div>
                   <ul className='navbar-nav'>
-                    {categories?.map((category) => {
+                    {categories?.map((category, index) => {
                       return (
-                        <li className='nav-item megamenu'>
+                        <li key={index} className='nav-item megamenu'>
                           <Link href='#'>
                             <a className='nav-link' onClick={(e) => this.handleItemClick(e, 'women')}>
                               {category?.name}
@@ -238,7 +237,7 @@ class MegaMenu extends Component {
                                           </h6>
 
                                           <ul className='megamenu-submenu'>
-                                            {subCategory1.subCategories.map((subCategory2) => {
+                                            {subCategory1.subCategories.map((subCategory2, index) => {
                                               return (
                                                 <li style={{ marginTop: '4px' }}>
                                                   <Link href='/category-without-sidebar-fullwidth'>
