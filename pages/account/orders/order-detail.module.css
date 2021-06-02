@@ -26,8 +26,6 @@
 
 .content {
   border-radius: 6px;
-  height: 100%;
-  min-height: 400px;
   justify-content: center;
   display: flex;
   background-color: #fff;
@@ -40,12 +38,14 @@
   flex: 1 1 0px;
   padding: 20px;
   border-right: solid 1px #e6e6e6;
+  flex-direction: column;
 }
 
 .content_2 {
   display: flex;
   flex: 1 1 0px;
   padding: 20px;
+  flex-direction: column;
 }
 
 .header_title {
@@ -63,4 +63,123 @@
   color: #333;
   width: 130px;
   font-weight: 400;
+}
+
+.address {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 417px;
+}
+
+.spacer {
+  height: 1px;
+  width: 100%;
+  margin: 4px 0px;
+  background: lightgrey;
+}
+
+.price_container {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2.5;
+}
+
+.delivery_detail {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  justify-content: center;
+  display: flex;
+  background-color: #fff;
+  border: solid 1px #e6e6e6;
+  flex: 1 1 0px;
+  margin: 16px 0px;
+}
+
+.delivery_detail_header {
+  height: 66px;
+  border-radius: 6px 6px 0 0;
+  border-bottom: solid 1px #e2e2e2;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px 0 15px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.delivery_detail_content {
+  padding: 20px;
+}
+
+.delivery_no {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.delivery_no_label {
+  color: #333333;
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+.delivery_cargo_company {
+  margin-bottom: 16px;
+}
+
+.delivery_card {
+  border-radius: 6px;
+  border: solid 1px #e6e6e6;
+  background-color: #ffffff;
+  height: 170px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  flex-direction: row;
+  transition: 0.7s;
+  display: flex;
+  text-decoration: none;
+  color: #333333;
+}
+
+.delivery_card_image_container {
+  width: 90px;
+  height: 100%;
+  border-radius: 6px;
+  border: solid 1px #e6e6e6;
+  transition: 0.7s;
+}
+
+.delivery_card_content {
+  display: flex;
+  font-size: 12px;
+  flex: 1;
+  margin-left: 15px;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 12px 0px;
+}
+
+.delivery_card_label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delivery_card_price_container {
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+
+.delivery_card_price {
+  color: #8d0000;
+  font-size: 14px;
+  font-weight: 600;
+  align-self: flex-end;
 }
