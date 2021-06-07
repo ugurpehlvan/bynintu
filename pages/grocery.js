@@ -15,8 +15,8 @@ import Subscribe from '../components/Common/Subscribe';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 
 const Grocery = () => {
-  const products = useSelector((state) => state.productsGrocery);
-  const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+  const products = useSelector((state) => state.other.productsGrocery);
+  const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare);
   return (
     <>
       <Navbar />

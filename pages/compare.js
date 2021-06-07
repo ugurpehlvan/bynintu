@@ -11,7 +11,7 @@ import Content from '../components/compare/Content';
 import { translations } from 'resources';
 
 const Compare = () => {
-  const products = useSelector((state) => state.addedItemsToCompare);
+  const products = useSelector((state) => state.other.addedItemsToCompare);
   const language = useSelector((state) => state.language.appLanguage);
 
   return (

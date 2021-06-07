@@ -15,8 +15,8 @@ import Subscribe from '../components/Common/Subscribe';
 import InstagramPhoto from '../components/Covid19/InstagramPhoto';
 
 const Covid19 = () => {
-  const products = useSelector((state) => state.productsCovid19);
-  const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
+  const products = useSelector((state) => state.other.productsCovid19);
+  const addedItemsToCompare = useSelector((state) => state.other.addedItemsToCompare);
   return (
     <>
       <Navbar />
