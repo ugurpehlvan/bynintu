@@ -111,7 +111,7 @@ class ProductContent extends Component {
                 <span>Availability:</span>{' '}
                 <Link href='#'>
                   <a>
-                    {product.quantity ? 'In stock' : 'Out of stock'} ({`${product.quantity}`} items)
+                    {product?.quantity ? 'In stock' : 'Out of stock'} ({`${product?.quantity}`} items)
                   </a>
                 </Link>
               </li>

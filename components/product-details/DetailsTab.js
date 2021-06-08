@@ -96,7 +96,7 @@ class DetailsTab extends Component {
               <div className='tab_content'>
                 <div id='tab1' className='tabs_item'>
                   <div className='products-details-tab-content'>
-                    <p>{product.description}</p>
+                    <p>{product?.description}</p>
 
                     <div className='row'>
                       {/* <div className='col-lg-6 col-md-6'>
