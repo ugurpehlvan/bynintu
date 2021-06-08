@@ -34,7 +34,7 @@ export const getServerSideProps = async () => {
 
 const hookClass = ({ products, CompareProducts, getProducts }) => {
   const [gridClass, setGridClass] = useState('');
-  console.log('products', products);
+
   const handleGrid = (e) => {
     setGridClass(e);
   };
