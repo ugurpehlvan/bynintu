@@ -1,0 +1,47 @@
+.address_card {
+  position: relative;
+  float: left;
+  cursor: pointer;
+  width: 200px;
+  margin: 20px 13px 10px 0;
+  height: 150px;
+}
+
+.address_container {
+  display: flex;
+  padding: 10px 5px 10px 10px;
+  flex-direction: column;
+  line-height: 24px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  height: 90%;
+  width: 90%;
+  overflow: hidden;
+}
+
+.address_actions {
+  padding: 0px 16px 8px 0px;
+}
+
+.radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 160px;
+}
+.address_line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.edit_icon {
+  width: 15px;
+  height: 16px;
+}
