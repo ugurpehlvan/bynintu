@@ -9,6 +9,7 @@ import Layout from '../components/_App/Layout';
 // redux
 import { getCustomer } from 'store/auth/actions';
 import { getLanguages } from 'store/language/actions';
+import { createDefaultCart } from 'store/actions/actions';
 import { useStore } from '../store/reducers/reducers';
 
 // styles
@@ -34,6 +35,9 @@ const MyApp = ({ Component, pageProps }) => {
 
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
+    } else {
+      const cart = JSON.parse(localStorage.getItem('localCart'));
+      store.dispatch(createDefaultCart(cart));
     }
   }, []); //eslint-disable-line
 

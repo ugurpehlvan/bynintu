@@ -8,6 +8,7 @@ import {
   RESET_CART,
   ADD_TO_COMPARE,
   REMOVE_ITEM_FROM_COMPARE,
+  CREATE_DEFAULT_CART,
 } from 'store/actions/action-types/action-names';
 
 import {
@@ -70,12 +71,28 @@ const otherReducer = (state = initialState, action) => {
       //calculating the total
       let newTotal = state.total + addedItem.price;
 
+      let cart = {
+        addedItems: [...state.addedItems, addedItem],
+        total: newTotal,
+      };
+
+      localStorage.setItem('localCart', JSON.stringify(cart));
+
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
         total: newTotal,
       };
     }
+  }
+
+  if (action.type === CREATE_DEFAULT_CART) {
+    console.log('action.payload', action.payload);
+    return {
+      ...state,
+      addedItems: action.payload.addedItems,
+      total: action.payload.total,
+    };
   }
 
   if (action.type === ADD_TO_COMPARE) {

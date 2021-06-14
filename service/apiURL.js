@@ -16,6 +16,8 @@ const apiUrl = {
   searchProduct: '/api/api/v1/product/search',
   makeSearch: '/api/api/v1/search',
   getCategoryTree: '/api/api/v1/category/tree?languageCode=',
+  getCategoryTree: '/api/api/v1/category/tree?languageCode=',
+  checkProductQuantity: '/api/api/v1/card/checkProductQuantity',
 };
 
 export default apiUrl;

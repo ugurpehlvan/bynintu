@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  ADD_TO_CART_ERROR,
   REMOVE_ITEM,
   SUB_QUANTITY,
   ADD_QUANTITY,
@@ -7,13 +8,27 @@ import {
   RESET_CART,
   ADD_TO_COMPARE,
   REMOVE_ITEM_FROM_COMPARE,
+  CREATE_DEFAULT_CART,
 } from './action-types/action-names';
 
+import { apiURL, axiosClient } from 'service';
+import authHeader from 'utils/authHeader';
+
 //add cart action
-export const addToCart = (id) => {
+export const addToCart = (id) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: id, amount: 1 })).data;
+  console.log('response', response);
+  if (!response.error) {
+    dispatch({ type: ADD_TO_CART, id });
+  } else {
+    dispatch({ type: ADD_TO_CART_ERROR });
+  }
+};
+
+export const createDefaultCart = (cart) => {
   return {
-    type: ADD_TO_CART,
-    id,
+    type: CREATE_DEFAULT_CART,
+    payload: cart,
   };
 };
 //remove item action
