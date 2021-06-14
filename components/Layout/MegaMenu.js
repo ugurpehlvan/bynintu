@@ -7,6 +7,7 @@ import Router from 'next/router';
 
 // actions
 import { getCategoryTree } from 'store/category/actions';
+import { makeSearch } from 'store/product/actions';
 
 // helpers
 import { translations } from 'resources';
@@ -25,6 +26,7 @@ class MegaMenu extends Component {
     collapseTodayItems: false,
     collapsePagesItems: false,
     collapseBlogItems: false,
+    searchText: '',
   };
 
   handleCart = () => {
@@ -70,6 +72,16 @@ class MegaMenu extends Component {
         searchForm: !prevState.searchForm,
       };
     });
+  };
+
+  handleSearchClick = (e) => {
+    e.preventDefault();
+
+    if (this.state.searchText) {
+      this.props.makeSearch({ searchText: this.state.searchText, page: 1 }, () => {
+        Router.push('/category-left-sidebar');
+      });
+    }
   };
 
   toggleNavbar = () => {
@@ -178,9 +190,15 @@ class MegaMenu extends Component {
                         className='search-overlay search-popup'
                       >
                         <div className='search-box'>
-                          <form className='search-form'>
-                            <input className='search-input' name='search' placeholder='Search' type='text' />
-                            <button className='search-button' type='submit'>
+                          <form onSubmit={this.handleSearchClick} className='search-form'>
+                            <input
+                              onChange={({ target }) => this.setState({ searchText: target.value })}
+                              className='search-input'
+                              name='search'
+                              placeholder='Search'
+                              type='text'
+                            />
+                            <button onClick={this.handleSearchClick} className='search-button' type='submit'>
                               <i className='fas fa-search'></i>
                             </button>
                           </form>
@@ -307,4 +325,4 @@ const mapStateToProps = ({ other, auth, language, category }) => {
   };
 };
 
-export default connect(mapStateToProps, { getCategoryTree })(MegaMenu);
+export default connect(mapStateToProps, { getCategoryTree, makeSearch })(MegaMenu);

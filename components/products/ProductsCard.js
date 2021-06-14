@@ -57,8 +57,8 @@ class ProductsCard extends Component {
               <div style={{ height: '194px' }} className='product-image'>
                 <Link href='/product/[id]' as={`/product/${data.id}`}>
                   <a style={{ height: '100%' }}>
-                    <img style={{ height: '100%' }} src={data?.imageUrls[0]?.url} alt='image' />
-                    <img style={{ height: '100%' }} src={data?.imageUrls[0]?.url} alt='image' />
+                    <img style={{ height: '100%' }} src={data?.imageUrl} alt='image' />
+                    <img style={{ height: '100%' }} src={data?.imageUrl} alt='image' />
                   </a>
                 </Link>
 

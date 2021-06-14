@@ -14,25 +14,25 @@ import LeftSidebar from 'components/Sidebar/LeftSidebar';
 import ProductsFilterOptions from 'components/Common/ProductsFilterOptions';
 import ProductsCard from 'components/products/ProductsCard';
 
-export const getServerSideProps = async () => {
-  const response = await axios.post('https://test.bynintu.com/api/v1/product/listSearch', {});
+// export const getServerSideProps = async () => {
+//   const response = await axios.post('https://test.bynintu.com/api/v1/product/listSearch', {});
 
-  const products = response.data;
+//   const products = response.data;
 
-  if (!products.length) {
-    return {
-      notFound: true,
-    };
-  }
+//   if (!products.length) {
+//     return {
+//       notFound: true,
+//     };
+//   }
 
-  return {
-    props: {
-      products,
-    },
-  };
-};
+//   return {
+//     props: {
+//       products,
+//     },
+//   };
+// };
 
-const hookClass = ({ products, CompareProducts, getProducts }) => {
+const hookClass = ({ searchedProducts, CompareProducts, getProducts }) => {
   const [gridClass, setGridClass] = useState('');
 
   const handleGrid = (e) => {
@@ -42,7 +42,7 @@ const hookClass = ({ products, CompareProducts, getProducts }) => {
   // useEffect(() => {
   //   getProducts();
   // }, []);
-
+  console.log('products', searchedProducts);
   return (
     <>
       <Navbar />
@@ -64,7 +64,7 @@ const hookClass = ({ products, CompareProducts, getProducts }) => {
               <ProductsFilterOptions onClick={handleGrid} />
 
               <div id='products-filter' className={`products-collections-listing row ${gridClass}`}>
-                <ProductsCard products={products} CompareProducts={CompareProducts} />
+                <ProductsCard products={searchedProducts} CompareProducts={CompareProducts} />
               </div>
             </div>
           </div>
@@ -82,6 +82,7 @@ const mapStateToProps = (state) => {
   return {
     //products: state.searchedProducts.searchedProducts,
     CompareProducts: state.addedItemsToCompare,
+    searchedProducts: state.product.searchedProducts,
   };
 };
 

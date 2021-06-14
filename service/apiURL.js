@@ -14,6 +14,7 @@ const apiUrl = {
   searchAddress: '/api/api/v1/address/search',
   address: '/api/api/v1/address',
   searchProduct: '/api/api/v1/product/search',
+  makeSearch: '/api/api/v1/search',
   getCategoryTree: '/api/api/v1/category/tree?languageCode=',
 };
 
