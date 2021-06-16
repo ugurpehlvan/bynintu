@@ -646,9 +646,9 @@ Navbar Area CSS
           left: 0;
           width: 250px;
           z-index: 99;
-          display: block;
+          display: none;
           opacity: 0;
-          visibility: hidden;
+          /* visibility: hidden; */
           border-radius: 0;
           transition: all 0.3s ease-in-out;
           padding: {
@@ -693,7 +693,8 @@ Navbar Area CSS
               left: 220px;
               top: 0;
               opacity: 0;
-              visibility: hidden;
+              display: none;
+              /* visibility: hidden; */
 
               li {
                 a {
@@ -731,7 +732,8 @@ Navbar Area CSS
                   right: 240px;
                   top: 0;
                   opacity: 0;
-                  visibility: hidden;
+                  display: none;
+                  /* visibility: hidden; */
 
                   li {
                     a {
@@ -754,7 +756,8 @@ Navbar Area CSS
                 &:hover {
                   .dropdown-menu {
                     opacity: 1;
-                    visibility: visible;
+                    display: block;
+                    /* visibility: visible; */
                     top: -15px;
                   }
                 }
@@ -768,7 +771,8 @@ Navbar Area CSS
             &:hover {
               .dropdown-menu {
                 opacity: 1;
-                visibility: visible;
+                display: block;
+                /* visibility: visible; */
                 top: -15px;
               }
             }
@@ -777,7 +781,8 @@ Navbar Area CSS
         &:hover {
           .dropdown-menu {
             opacity: 1;
-            visibility: visible;
+            display: block;
+            /* visibility: visible; */
             top: 100%;
           }
         }

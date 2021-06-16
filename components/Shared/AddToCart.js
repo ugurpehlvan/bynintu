@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addToCart } from 'store/actions/actions';
+import { addToCart, addLocalCartToDataBase } from 'store/actions/actions';
 
-const AddToCart = ({ addToCart, id }) => {
+const AddToCart = ({ addToCart, addLocalCartToDataBase, id }) => {
   const handleAddToCart = () => {
-    if (!localStorage.getItem('token')) {
-      addToCart(id);
-    } else {
-    }
+    addToCart(id);
+
+    // if (localStorage.getItem('token')){
+    //   addLocalCartToDataBase();
+    // }
 
     toast.success('Added to the cart', {
       position: 'bottom-left',
@@ -35,4 +36,4 @@ const AddToCart = ({ addToCart, id }) => {
   );
 };
 
-export default connect(null, { addToCart })(AddToCart);
+export default connect(null, { addToCart, addLocalCartToDataBase })(AddToCart);

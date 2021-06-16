@@ -75,7 +75,6 @@ const otherReducer = (state = initialState, action) => {
         addedItems: [...state.addedItems, addedItem],
         total: newTotal,
       };
-
       localStorage.setItem('localCart', JSON.stringify(cart));
 
       return {

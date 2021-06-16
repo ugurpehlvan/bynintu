@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Menu, Dropdown } from 'antd';
 import Link from 'next/link';
 import Router from 'next/router';
+import Masonry from 'react-masonry-css';
 
 // actions
 import { getCategoryTree } from 'store/category/actions';
@@ -246,10 +247,10 @@ class MegaMenu extends Component {
                             <div className='dropdown-menu'>
                               <div className='nav-item'>
                                 <div className='container'>
-                                  <div style={{ display: 'block', width: '100%' }}>
+                                  <Masonry breakpointCols={7} className='my-masonry-grid' columnClassName='my-masonry-grid_column'>
                                     {category?.subCategories.map((subCategory1) => {
                                       return (
-                                        <div style={{ width: '20%', display: 'inline-block', float: 'left' }}>
+                                        <div>
                                           <h6 style={{ marginBottom: '10px' }} className='submenu-title'>
                                             {subCategory1?.name}
                                           </h6>
@@ -269,7 +270,7 @@ class MegaMenu extends Component {
                                       );
                                     })}
 
-                                    <div className='col'>
+                                    {/* <div className='col'>
                                       <ul className='megamenu-submenu'>
                                         <li>
                                           <div className='aside-trending-products'>
@@ -293,8 +294,8 @@ class MegaMenu extends Component {
                                           </div>
                                         </li>
                                       </ul>
-                                    </div>
-                                  </div>
+                                    </div> */}
+                                  </Masonry>
                                 </div>
                               </div>
                             </div>

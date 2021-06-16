@@ -17,6 +17,26 @@ import authHeader from 'utils/authHeader';
 //add cart action
 export const addToCart = (id) => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: id, amount: 1 })).data;
+
+  if (!response.error) {
+    dispatch({ type: ADD_TO_CART, id });
+  } else {
+    dispatch({ type: ADD_TO_CART_ERROR });
+  }
+};
+
+export const viewCartPage = (id) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.cardPage, {})).data;
+
+  // if (!response.error) {
+  //   dispatch({ type: ADD_TO_CART, id });
+  // } else {
+  //   dispatch({ type: ADD_TO_CART_ERROR });
+  // }
+};
+
+export const addLocalCartToDataBase = (id) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.createCardForLogin, { productId: id, amount: 1 })).data;
   console.log('response', response);
   if (!response.error) {
     dispatch({ type: ADD_TO_CART, id });
