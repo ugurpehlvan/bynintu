@@ -1,15 +1,20 @@
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addToCart, addLocalCartToDataBase } from 'store/actions/actions';
+import { addToCart, addCartToDatabase } from 'store/actions/actions';
 
-const AddToCart = ({ addToCart, addLocalCartToDataBase, id }) => {
+const AddToCart = ({ addToCart, addCartToDatabase, id }) => {
   const handleAddToCart = () => {
     addToCart(id);
 
-    // if (localStorage.getItem('token')){
-    //   addLocalCartToDataBase();
-    // }
+    if (!localStorage.getItem('token')) {
+      localStorage.setItem('cartWithoutLogin', 'cartWithoutLogin');
+    } else {
+      addCartToDatabase({
+        productId: id,
+        amount: 1,
+      });
+    }
 
     toast.success('Added to the cart', {
       position: 'bottom-left',
@@ -36,4 +41,4 @@ const AddToCart = ({ addToCart, addLocalCartToDataBase, id }) => {
   );
 };
 
-export default connect(null, { addToCart, addLocalCartToDataBase })(AddToCart);
+export default connect(null, { addToCart, addCartToDatabase })(AddToCart);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import Router from 'next/router';
+import { toast } from 'react-toastify';
 
 class Cart extends Component {
   state = {

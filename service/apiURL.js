@@ -20,6 +20,7 @@ const apiUrl = {
   checkProductQuantity: '/api/api/v1/card/checkProductQuantity',
   createCardForLogin: '/api/api/v1/card/createCardForLogin',
   cardPage: '/api/api/v1/card/cardPage',
+  createIteminCart: '/api/api/v1/card',
 };
 
 export default apiUrl;

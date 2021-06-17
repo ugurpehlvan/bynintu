@@ -35,14 +35,24 @@ export const viewCartPage = (id) => async (dispatch) => {
   // }
 };
 
-export const addLocalCartToDataBase = (id) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.createCardForLogin, { productId: id, amount: 1 })).data;
-  console.log('response', response);
-  if (!response.error) {
-    dispatch({ type: ADD_TO_CART, id });
-  } else {
-    dispatch({ type: ADD_TO_CART_ERROR });
-  }
+export const addLocalCartToDataBase = (cart) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.createCardForLogin, cart)).data;
+  console.log('response32', response);
+  // if (!response.error) {
+  //   dispatch({ type: ADD_TO_CART, id });
+  // } else {
+  //   dispatch({ type: ADD_TO_CART_ERROR });
+  // }
+};
+
+export const addCartToDatabase = (product) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.createIteminCart, product)).data;
+  console.log('response123', response);
+  // if (!response.error) {
+  //   dispatch({ type: ADD_TO_CART, id });
+  // } else {
+  //   dispatch({ type: ADD_TO_CART_ERROR });
+  // }
 };
 
 export const createDefaultCart = (cart) => {
