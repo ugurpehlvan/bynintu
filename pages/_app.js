@@ -34,13 +34,13 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     store.dispatch(getLanguages());
 
+    const cart = JSON.parse(localStorage.getItem('localCart'));
+    store.dispatch(createDefaultCart(cart));
+
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
-    } else {
-      const cart = JSON.parse(localStorage.getItem('localCart'));
-      store.dispatch(createDefaultCart(cart));
     }
-  }, []); //eslint-disable-line
+  }); //eslint-disable-line
 
   return (
     <>
