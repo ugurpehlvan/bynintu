@@ -27,6 +27,7 @@ import '../public/assets/styles/style.css';
 import '../public/assets/styles/responsive.css';
 import '../public/assets/styles/my-account-container.scss';
 import '../public/assets/styles/mega-menu.scss';
+import '../public/assets/styles/product-content.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);

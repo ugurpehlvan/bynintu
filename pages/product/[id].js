@@ -37,8 +37,6 @@ export async function getStaticPaths() {
     params: { id: product?.id?.toString() },
   }));
 
-  // fallback: false means pages that don’t have the
-  // correct id will 404.
   return { paths, fallback: true };
 }
 

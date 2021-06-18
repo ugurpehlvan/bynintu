@@ -100,6 +100,10 @@ class ProductContent extends Component {
               </span>
             </div>
 
+            <div className='ship-price'>
+              <span className='title'>Ship-price:</span> <span className='price'>€ 20</span>
+            </div>
+
             <ul className='product-info'>
               {/* <li>
                 <span>Vendor:</span>{' '}
@@ -178,6 +182,15 @@ class ProductContent extends Component {
                     <a>XXL</a>
                   </Link>
                 </li>
+              </ul>
+            </div>
+
+            <div className='warehouse-info-wrapper'>
+              <h4>Shipped from:</h4>
+
+              <ul>
+                <li className='active'>Germany</li>
+                <li>Netherland</li>
               </ul>
             </div>
 
