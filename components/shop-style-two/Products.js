@@ -191,7 +191,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  <AddToCart {...data} />
+                                  {/* <AddToCart {...data} /> */}
                                 </div>
                               </div>
                             </div>
@@ -270,7 +270,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  <AddToCart {...data} />
+                                  {/* <AddToCart {...data} /> */}
                                 </div>
                               </div>
                             </div>
@@ -349,7 +349,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  <AddToCart {...data} />
+                                  {/* <AddToCart {...data} /> */}
                                 </div>
                               </div>
                             </div>

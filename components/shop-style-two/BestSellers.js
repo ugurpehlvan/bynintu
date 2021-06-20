@@ -133,7 +133,7 @@ class BestSeller extends Component {
                           <i className='fas fa-star'></i>
                           <i className='far fa-star'></i>
                         </div>
-                        <AddToCart {...data} />
+                        {/* <AddToCart {...data} /> */}
                       </div>
                     </div>
                   </div>
