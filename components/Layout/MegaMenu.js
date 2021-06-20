@@ -229,7 +229,7 @@ class MegaMenu extends Component {
                             this.handleCart();
                           }}
                         >
-                          Cart({products.length}) <i className='fas fa-shopping-bag'></i>
+                          Cart({products?.length}) <i className='fas fa-shopping-bag'></i>
                         </a>
                       </Link>
                     </div>

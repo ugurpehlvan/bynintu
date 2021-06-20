@@ -89,8 +89,8 @@ const otherReducer = (state = initialState, action) => {
     console.log('action.payload', action.payload);
     return {
       ...state,
-      addedItems: action.payload.addedItems,
-      total: action.payload.total,
+      addedItems: action.payload?.addedItems,
+      total: action.payload?.total,
     };
   }
 
