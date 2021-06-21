@@ -831,8 +831,12 @@ Navbar Area CSS
   position: absolute;
   top: auto;
   left: 0;
-  margin-top: 23px;
-  width: 100%;
+  right: 0px;
+  margin: 23px auto;
+  width: 80%;
+  overflow: scroll;
+  padding-bottom: 16px;
+  height: 320px;
 }
 
 .comero-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title {
