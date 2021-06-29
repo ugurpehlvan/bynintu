@@ -20,10 +20,12 @@ const AddressCard = ({ address, onDelete, onEdit }) => {
         <div>{address?.phone}</div>
       </div>
       <div className={styles.card_action}>
-        <div onClick={() => onDelete(address.id)} className={styles.card_action_delete}>
-          <i style={{ marginRight: '6px' }} className='far fa-trash-alt'></i>
-          <a>Delete</a>
-        </div>
+        {onDelete && (
+          <div onClick={() => onDelete(address.id)} className={styles.card_action_delete}>
+            <i style={{ marginRight: '6px' }} className='far fa-trash-alt'></i>
+            <a>Delete</a>
+          </div>
+        )}
         <button onClick={() => onEdit(address.id)} className='btn btn-primary'>
           Edit
         </button>

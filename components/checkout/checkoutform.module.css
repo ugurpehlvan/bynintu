@@ -1,3 +1,31 @@
+.header {
+  margin-bottom: 15px;
+  border-radius: 6px;
+  width: 100%;
+  padding: 22px;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #fff;
+  border: solid 1px #e6e6e6;
+  justify-content: space-between;
+}
+
+.header_text {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.add_address {
+  cursor: pointer;
+}
+
+.add_address:hover {
+  text-decoration: underline;
+}
+
 .address_card {
   position: relative;
   float: left;

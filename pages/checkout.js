@@ -6,11 +6,11 @@ import { useRouter } from 'next/router';
 import { addLocalCartToDataBase } from 'store/actions/actions';
 
 // components
-import Navbar from '../components/Layout/Navbar';
-import Footer from '../components/Layout/Footer';
-import Facility from '../components/Common/Facility';
-import Breadcrumb from '../components/Common/Breadcrumb';
-import CheckoutForm from '../components/checkout/CheckoutForm';
+import Navbar from 'components/Layout/Navbar';
+import Footer from 'components/Layout/Footer';
+import Facility from 'components/Common/Facility';
+import Breadcrumb from 'components/Common/Breadcrumb';
+import CheckoutForm from 'components/checkout/CheckoutForm';
 
 // helpers
 import { translations } from 'resources';

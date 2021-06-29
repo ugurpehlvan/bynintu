@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
+import { EditOutlined } from '@ant-design/icons';
+
+// components
 import OrderSummary from './OrderSummary';
 import Payment from '../payments/Payment';
 import useForm from './userForm';
+import AddressDialog from 'components/dialogs/address-dialog';
+import AddressCard from 'components/address-card';
 
-import { EditOutlined } from '@ant-design/icons';
+// actions
+import { searchAddress, getAddress } from 'store/account/actions';
 
 // styles
 import styles from './checkoutform.module.css';
 
-function CheckoutForm({ total, shipping }) {
+function CheckoutForm({ total, shipping, searchAddress, getAddress, address, addresses }) {
+  const [addressDialogVisible, setAddressDialogVisible] = useState(false);
+
+  const handleEditClick = (id) => {
+    getAddress(id);
+    setAddressDialogVisible(true);
+  };
+
+  const handleAddNewAddressClick = () => {
+    setAddressDialogVisible(true);
+  };
+
+  const handleClose = () => {
+    setAddressDialogVisible(false);
+  };
+
   function handleSubmit() {
     console.log('Form submitted.');
   }
@@ -99,6 +120,12 @@ function CheckoutForm({ total, shipping }) {
     fontSize: '13px',
   };
 
+  useEffect(() => {
+    if (searchAddress) {
+      searchAddress();
+    }
+  }, []);
+
   return (
     <section className='checkout-area ptb-60'>
       <div className='container'>
@@ -117,32 +144,38 @@ function CheckoutForm({ total, shipping }) {
           <div className='row'>
             <div className='col-lg-6 col-md-12'>
               <div className='billing-details'>
-                <h3 className='title'>Billing Address</h3>
+                <div className={styles.header}>
+                  <h3 className={styles.header_text}>Billing Address</h3>
+                  <p onClick={handleAddNewAddressClick} className={styles.add_address}>
+                    <i style={{ marginRight: '6px' }} className='fas fa-plus'></i>
+                    Add New Address
+                  </p>
+                </div>
 
-                <div className='row'>
-                  <div className={styles.address_card}>
-                    <div className={styles.address_actions}>
-                      <div className={styles.radio}>
-                        <input type='radio' id='address' name='address' value='address' />
-                        <EditOutlined className={styles.edit_icon} />
+                {/* <h3 className='title'>Billing Address</h3> */}
+
+                <div className={`${styles.content} row`}>
+                  {addresses?.map((address) => {
+                    return (
+                      <div key={address.id} className='col-lg-4 col-sm-6'>
+                        <div className={styles.address_actions}>
+                          <div className={styles.radio}>
+                            <input type='radio' id='address' name='address' value='address' />
+                          </div>
+                        </div>
+                        <AddressCard address={address} onEdit={handleEditClick} />
                       </div>
-                    </div>
-                    <div className={styles.address_container}>
-                      <span className={styles.name}>Ugur Pehlivan</span>
-                      <span>506*****00</span>
-                      <span className={styles.address_line}>
-                        Binevler Mah Binevler mahallesi 81052 nolu sokak, No: 39 Kardelen Apt. Giris kat, daire 2 sahinbey/ Gaziantep
-                      </span>
-                      <span>Şahinbey/ Gaziantep </span>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             <div className='col-lg-6 col-md-12'>
               <div className='order-details'>
-                <h3 className='title'>Your Order</h3>
+                <div className={styles.header}>
+                  <h3 className={styles.header_text}>Your Order</h3>
+                </div>
 
                 <OrderSummary />
 
@@ -169,6 +202,7 @@ function CheckoutForm({ total, shipping }) {
           </div>
         </form>
       </div>
+      <AddressDialog cardData={address} searchAddress={searchAddress} visible={addressDialogVisible} onClose={handleClose} />
     </section>
   );
 }
@@ -177,7 +211,9 @@ const mapStateToProps = (state) => {
   return {
     total: state.other.total,
     shipping: state.other.shipping,
+    address: state.account.address,
+    addresses: state.account.addresses,
   };
 };
 
-export default connect(mapStateToProps)(CheckoutForm);
+export default connect(mapStateToProps, { searchAddress, getAddress })(CheckoutForm);
