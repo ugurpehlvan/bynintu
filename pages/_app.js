@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
+import { useRouter } from 'next/router';
+
 // import withRedux from 'next-redux-wrapper';
 
 // components
@@ -9,7 +11,7 @@ import Layout from '../components/_App/Layout';
 // redux
 import { getCustomer } from 'store/auth/actions';
 import { getLanguages } from 'store/language/actions';
-import { createDefaultCart } from 'store/actions/actions';
+import { createDefaultCard } from 'store/actions/actions';
 import { useStore } from '../store/reducers/reducers';
 
 // styles
@@ -31,15 +33,18 @@ import '../public/assets/styles/product-content.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
+  const router = useRouter();
 
   useEffect(() => {
     store.dispatch(getLanguages());
 
-    const cart = JSON.parse(localStorage.getItem('localCart'));
-    store.dispatch(createDefaultCart(cart));
-
+    const card = JSON.parse(localStorage.getItem('localCard'));
+    store.dispatch(createDefaultCard(card));
+    console.log('location.pathname', location.pathname);
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
+    } else if (location.pathname.startsWith('/account')) {
+      router.push('/');
     }
   }); //eslint-disable-line
 

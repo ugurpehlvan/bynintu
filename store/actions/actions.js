@@ -14,18 +14,20 @@ import {
 import { apiURL, axiosClient } from 'service';
 import authHeader from 'utils/authHeader';
 
-//add cart action
-export const addToCart = (id) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: id, amount: 1 })).data;
+//add card action
+export const addToCard =
+  (product, qty = 1) =>
+  async (dispatch) => {
+    const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty })).data;
 
-  if (!response.error) {
-    dispatch({ type: ADD_TO_CART, id });
-  } else {
-    dispatch({ type: ADD_TO_CART_ERROR });
-  }
-};
+    if (!response.error) {
+      dispatch({ type: ADD_TO_CART, product, qty });
+    } else {
+      dispatch({ type: ADD_TO_CART_ERROR });
+    }
+  };
 
-export const viewCartPage = (id) => async (dispatch) => {
+export const viewCardPage = (id) => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.cardPage, {})).data;
 
   // if (!response.error) {
@@ -35,8 +37,8 @@ export const viewCartPage = (id) => async (dispatch) => {
   // }
 };
 
-export const addLocalCartToDataBase = (cart) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.createCardForLogin, cart)).data;
+export const addLocalCardToDataBase = (card) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.createCardForLogin, card)).data;
   console.log('response32', response);
   // if (!response.error) {
   //   dispatch({ type: ADD_TO_CART, id });
@@ -45,8 +47,8 @@ export const addLocalCartToDataBase = (cart) => async (dispatch) => {
   // }
 };
 
-export const addCartToDatabase = (product) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.createIteminCart, product)).data;
+export const addCardToDatabase = (product) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.createIteminCard, product)).data;
   console.log('response123', response);
   // if (!response.error) {
   //   dispatch({ type: ADD_TO_CART, id });
@@ -55,45 +57,36 @@ export const addCartToDatabase = (product) => async (dispatch) => {
   // }
 };
 
-export const createDefaultCart = (cart) => {
+export const createDefaultCard = (card) => {
   return {
     type: CREATE_DEFAULT_CART,
-    payload: cart,
+    payload: card,
   };
 };
 //remove item action
-export const removeItem = (id) => {
+export const removeItem = (product) => {
   return {
     type: REMOVE_ITEM,
-    id,
+    product,
   };
 };
 //subtract qt action
-export const subtractQuantity = (id) => {
+export const subtractQuantity = (product) => {
   return {
     type: SUB_QUANTITY,
-    id,
+    product,
   };
 };
 //add qt action
-export const addQuantity = (id) => {
+export const addQuantity = (product) => {
   return {
     type: ADD_QUANTITY,
-    id,
+    product,
   };
 };
 
-//add qt action with quantity number
-export const addQuantityWithNumber = (id, qty) => {
-  return {
-    type: ADD_QUANTITY_WITH_NUMBER,
-    id,
-    qty,
-  };
-};
-
-// Reset cart after form submit
-export const resetCart = () => {
+// Reset card after form submit
+export const resetCard = () => {
   return {
     type: RESET_CART,
   };

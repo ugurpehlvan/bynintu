@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import QuickView from '../Modal/QuickView';
 import dynamic from 'next/dynamic';
-import AddToCart from 'components/Shared/AddToCart';
+import AddToCard from 'components/Shared/AddToCard';
 const OwlCarousel = dynamic(import('react-owl-carousel3'));
 
 const options = {
@@ -191,7 +191,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  {/* <AddToCart {...data} /> */}
+                                  {/*  <AddToCard product={product} /> */}
                                 </div>
                               </div>
                             </div>
@@ -270,7 +270,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  {/* <AddToCart {...data} /> */}
+                                  {/*  <AddToCard product={product} /> */}
                                 </div>
                               </div>
                             </div>
@@ -349,7 +349,7 @@ class Products extends Component {
                                     <i className='far fa-star'></i>
                                   </div>
 
-                                  {/* <AddToCart {...data} /> */}
+                                  {/*  <AddToCard product={product} /> */}
                                 </div>
                               </div>
                             </div>

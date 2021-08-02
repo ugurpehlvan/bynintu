@@ -3,7 +3,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const OwlCarousel = dynamic(import('react-owl-carousel3'));
 import QuickView from '../Modal/QuickView';
-import AddToCart from '../Shared/AddToCart';
+import AddToCard from '../Shared/AddToCard';
 
 const options = {
   loop: true,
@@ -72,14 +72,14 @@ class RelatedProducts extends Component {
             <div className='row'>
               {this.state.display ? (
                 <OwlCarousel className='offer-slides owl-carousel owl-theme' {...options}>
-                  {products.map((data, idx) => (
+                  {products.map((product, idx) => (
                     <div className='col-lg-12 col-md-12' key={idx}>
                       <div style={{ width: '198px' }} className='single-product-box'>
                         <div style={{ height: '300px', width: '198px', margin: 'auto' }} className='product-image'>
-                          <Link href='/product/[id]' as={`/product/${data.id}`}>
+                          <Link href='/product/[id]' as={`/product/${product.id}`}>
                             <a>
-                              <img src={data.image} alt='image' />
-                              <img src={data.imageHover} alt='image' />
+                              <img src={product.imageUrls[0].url} alt='image' />
+                              <img src={product.imageHover} alt='image' />
                             </a>
                           </Link>
 
@@ -92,7 +92,7 @@ class RelatedProducts extends Component {
                                   onClick={(e) => {
                                     e.preventDefault();
                                     this.openModal();
-                                    this.handleModalData(data);
+                                    this.handleModalData(product);
                                   }}
                                 >
                                   <i className='far fa-eye'></i>
@@ -118,13 +118,13 @@ class RelatedProducts extends Component {
 
                         <div className='product-content'>
                           <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            <Link href='/product/[id]' as={`/product/${data.id}`}>
-                              <a>{data.title}</a>
+                            <Link href='/product/[id]' as={`/product/${product.id}`}>
+                              <a>{product.title}</a>
                             </Link>
                           </h3>
 
                           <div className='product-price'>
-                            <span className='new-price'>€{data.price}</span>
+                            <span className='new-price'>€{product.sellPrice}</span>
                           </div>
 
                           <div className='rating'>
@@ -134,7 +134,7 @@ class RelatedProducts extends Component {
                             <i className='fas fa-star'></i>
                             <i className='far fa-star'></i>
                           </div>
-                          <AddToCart {...data} />
+                          <AddToCard product={product} />
                         </div>
                       </div>
                     </div>

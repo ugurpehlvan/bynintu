@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import QuickView from '../Modal/QuickView';
-import AddToCart from '../Shared/AddToCart';
+import AddToCard from '../Shared/AddToCard';
 import AddToCompare from '../Shared/AddToCompare';
 
 class ProductsCard extends Component {
@@ -108,7 +108,7 @@ class ProductsCard extends Component {
                   <i className='far fa-star'></i>
                 </div>
 
-                <AddToCart {...data} />
+                <AddToCard product={product} />
               </div>
             </div>
           </div>

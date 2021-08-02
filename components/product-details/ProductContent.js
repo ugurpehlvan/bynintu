@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
-import { addQuantityWithNumber } from '../../store/actions/actions';
+import { addToCard } from '../../store/actions/actions';
 import SizeGuide from './SizeGuide';
 import Shipping from './Shipping';
 
@@ -15,10 +15,10 @@ class ProductContent extends Component {
     shipModal: false,
   };
 
-  handleAddToCartFromView = () => {
-    this.props.addQuantityWithNumber(this.props.product.id, this.state.qty);
+  handleAddToCardFromView = () => {
+    this.props.addToCard(this.props.product, this.state.qty, this.props.product);
 
-    toast.success('Added to the cart', {
+    toast.success('Added to the card', {
       position: 'bottom-left',
       autoClose: 5000,
       hideProgressBar: false,
@@ -223,7 +223,7 @@ class ProductContent extends Component {
               </Link>
             </div>
 
-            <div style={{ display: 'flex' }} className='product-add-to-cart'>
+            <div style={{ display: 'flex' }} className='product-add-to-card'>
               <div className='input-counter'>
                 <span className='minus-btn' onClick={this.DecreaseItem}>
                   <i className='fas fa-minus'></i>
@@ -240,8 +240,8 @@ class ProductContent extends Component {
                 </span>
               </div>
 
-              <button type='submit' className='btn btn-primary' onClick={this.handleAddToCartFromView}>
-                <i className='fas fa-cart-plus'></i> Add to Cart
+              <button type='submit' className='btn btn-primary' onClick={this.handleAddToCardFromView}>
+                <i className='fas fa-card-plus'></i> Add to Card
               </button>
 
               <div style={{ marginLeft: '10px' }}>
@@ -319,8 +319,8 @@ class ProductContent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addQuantityWithNumber: (id, qty) => {
-      dispatch(addQuantityWithNumber(id, qty));
+    addToCard: (product, qty) => {
+      dispatch(addToCard(product, qty));
     },
   };
 };

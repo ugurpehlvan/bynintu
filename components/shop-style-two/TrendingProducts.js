@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import QuickView from '../Modal/QuickView';
 import dynamic from 'next/dynamic';
-import AddToCart from '../Shared/AddToCart';
+import AddToCard from '../Shared/AddToCard';
 const OwlCarousel = dynamic(import('react-owl-carousel3'));
 
 const options = {
@@ -72,14 +72,14 @@ class TrendingProducts extends Component {
           <div className='row'>
             {this.state.display ? (
               <OwlCarousel className='trending-products-slides owl-carousel owl-theme' {...options}>
-                {products.map((data, idx) => (
+                {products.map((product, idx) => (
                   <div className='col-lg-12 col-md-12' key={idx}>
                     <div className='single-product-box'>
                       <div className='product-image'>
-                        <Link href='/product/[id]' as={`/product/${data.id}`}>
+                        <Link href='/product/[id]' as={`/product/${product.id}`}>
                           <a>
-                            <img src={data.image} alt='image' />
-                            <img src={data.imageHover} alt='image' />
+                            <img src={product.image} alt='image' />
+                            <img src={product.imageHover} alt='image' />
                           </a>
                         </Link>
 
@@ -92,7 +92,7 @@ class TrendingProducts extends Component {
                                 onClick={(e) => {
                                   e.preventDefault();
                                   this.openModal();
-                                  this.handleModalData(data);
+                                  this.handleModalData(product);
                                 }}
                               >
                                 <i className='far fa-eye'></i>
@@ -118,13 +118,13 @@ class TrendingProducts extends Component {
 
                       <div className='product-content'>
                         <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          <Link href='/product/[id]' as={`/product/${data.id}`}>
-                            <a>{data.title}</a>
+                          <Link href='/product/[id]' as={`/product/${product.id}`}>
+                            <a>{product.title}</a>
                           </Link>
                         </h3>
 
                         <div className='product-price'>
-                          <span className='new-price'>€{data.price}</span>
+                          <span className='new-price'>€{product.sellPrice}</span>
                         </div>
 
                         <div className='rating'>
@@ -134,7 +134,7 @@ class TrendingProducts extends Component {
                           <i className='fas fa-star'></i>
                           <i className='far fa-star'></i>
                         </div>
-                        {/* <AddToCart {...data} /> */}
+                        {/*  <AddToCard product={product} /> */}
                       </div>
                     </div>
                   </div>

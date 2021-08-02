@@ -37,7 +37,7 @@ const initialState = {
   productsGrocery: productsGrocery,
   productsElectronics: productsElectronics,
   productsFurniture: productsFurniture,
-  addedItems: [],
+  cardItems: [],
   addedItemsToCompare: [],
   total: 0,
   shipping: 0,
@@ -46,51 +46,37 @@ const initialState = {
 
 const otherReducer = (state = initialState, action) => {
   if (action.type === ADD_TO_CART) {
-    let addedItem =
-      state.productsCollectionShoes.find((item) => item.id === action.id) ||
-      state.productsCollectionPillows.find((item) => item.id === action.id) ||
-      state.productsCollectionWomanDress.find((item) => item.id === action.id) ||
-      state.productsCollectionLinens.find((item) => item.id === action.id) ||
-      state.productsCollectionBathrobe.find((item) => item.id === action.id) ||
-      state.productsCollectionTen.find((item) => item.id === action.id) ||
-      state.productsCollectionEleven.find((item) => item.id === action.id) ||
-      state.productsCovid19.find((item) => item.id === action.id) ||
-      state.productsGrocery.find((item) => item.id === action.id) ||
-      state.productsElectronics.find((item) => item.id === action.id) ||
-      state.productsFurniture.find((item) => item.id === action.id);
-    //check if the action id exists in the addedItems
-    let existed_item = state.addedItems.find((item) => action.id === item.id);
-    if (existed_item) {
-      addedItem.quantity += 1;
-      return {
-        ...state,
-        total: state.total + addedItem.price,
+    const { product, qty } = action;
+    let existingCardData = state.cardItems.find((item) => product.id === item.product.id);
+    let newCard;
+    console.log('state.total', state.total);
+    console.log('product.sellPrice * qty', product.sellPrice * qty);
+    if (existingCardData) {
+      existingCardData.qty += qty;
+      newCard = {
+        cardItems: [...state.cardItems],
+        total: state.total + product.sellPrice * qty,
       };
     } else {
-      addedItem.quantity = 1;
-      //calculating the total
-      let newTotal = state.total + addedItem.price;
-
-      let cart = {
-        addedItems: [...state.addedItems, addedItem],
-        total: newTotal,
-      };
-      localStorage.setItem('localCart', JSON.stringify(cart));
-
-      return {
-        ...state,
-        addedItems: [...state.addedItems, addedItem],
-        total: newTotal,
+      newCard = {
+        cardItems: [...state.cardItems, { product, qty }],
+        total: state.total + product.sellPrice * qty,
       };
     }
+    localStorage.setItem('localCard', JSON.stringify(newCard));
+
+    return {
+      ...state,
+      ...newCard,
+    };
   }
 
   if (action.type === CREATE_DEFAULT_CART) {
     console.log('action.payload', action.payload);
     return {
       ...state,
-      addedItems: action.payload?.addedItems,
-      total: action.payload?.total,
+      cardItems: action.payload?.cardItems || [],
+      total: action.payload?.total || 0,
     };
   }
 
@@ -116,39 +102,16 @@ const otherReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === ADD_QUANTITY_WITH_NUMBER) {
-    let addedItem = state.productsCollectionShoes.find((item) => item.id === action.id);
-    //check if the action id exists in the addedItems
-    let existed_item = state.addedItems.find((item) => action.id === item.id);
-    if (existed_item) {
-      addedItem.quantity += action.qty;
-      return {
-        ...state,
-        total: state.total + addedItem.price * action.qty,
-      };
-    } else {
-      addedItem.quantity = action.qty;
-      //calculating the total
-      let newTotal = state.total + addedItem.price * action.qty;
-
-      return {
-        ...state,
-        addedItems: [...state.addedItems, addedItem],
-        total: newTotal,
-      };
-    }
-  }
-
   if (action.type === REMOVE_ITEM) {
-    let itemToRemove = state.addedItems.find((item) => action.id === item.id);
-    let new_items = state.addedItems.filter((item) => action.id !== item.id);
+    let itemToRemove = state.cardItems.find((item) => action.product.id === item.product.id);
+    let new_items = state.cardItems.filter((item) => action.product.id !== item.product.id);
 
     //calculating the total
-    let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
+    let newTotal = state.total - itemToRemove.product.sellPrice * itemToRemove.qty;
 
     return {
       ...state,
-      addedItems: new_items,
+      cardItems: new_items || [],
       total: newTotal,
     };
   }
@@ -163,32 +126,37 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if (action.type === ADD_QUANTITY) {
-    let addedItem = state.productsCollectionShoes.find((item) => item.id === action.id);
-    addedItem.quantity += 1;
+    const { product } = action;
+    const cardItem = state.cardItems.find((item) => item.product.id !== product.id);
+    cardItem.qty += 1;
     let newTotal = state.total + addedItem.price;
     return {
       ...state,
       total: newTotal,
+      cardItems: [...state.cardItems],
     };
   }
 
   if (action.type === SUB_QUANTITY) {
-    let addedItem = state.productsCollectionShoes.find((item) => item.id === action.id);
+    const { product } = action;
+    const cardItem = state.cardItems.find((item) => item.product.id !== product.id);
+
     //if the qt == 0 then it should be removed
-    if (addedItem.quantity === 1) {
-      let new_items = state.addedItems.filter((item) => item.id !== action.id);
-      let newTotal = state.total - addedItem.price;
+    if (cardItem.qty === 1) {
+      let new_items = state.cardItems.filter((item) => item.product.id !== product.id);
+      let newTotal = state.total - product.sellPrice;
       return {
         ...state,
-        addedItems: new_items,
+        cardItems: new_items,
         total: newTotal,
       };
     } else {
-      addedItem.quantity -= 1;
-      let newTotal = state.total - addedItem.price;
+      cardItem.qty -= 1;
+      let newTotal = state.total - product.sellPrice;
       return {
         ...state,
         total: newTotal,
+        cardItems: [...state.cardItems],
       };
     }
   }
@@ -210,7 +178,7 @@ const otherReducer = (state = initialState, action) => {
   if (action.type === RESET_CART) {
     return {
       ...state,
-      addedItems: [],
+      cardItems: [],
       total: 0,
       shipping: 0,
     };

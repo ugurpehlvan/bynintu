@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 
 // actions
-import { addLocalCartToDataBase } from 'store/actions/actions';
+import { addLocalCardToDataBase } from 'store/actions/actions';
 
 // components
 import Navbar from 'components/Layout/Navbar';
@@ -15,31 +15,31 @@ import CheckoutForm from 'components/checkout/CheckoutForm';
 // helpers
 import { translations } from 'resources';
 
-const Index = ({ language, addLocalCartToDataBase }) => {
+const Index = ({ language, addLocalCardToDataBase }) => {
   const router = useRouter();
 
-  const createCartItems = () => {
-    const cart = JSON.parse(localStorage.getItem('localCart'));
+  const createCardItems = () => {
+    const card = JSON.parse(localStorage.getItem('localCard'));
 
     let data = [];
-    cart?.addedItems?.forEach((product) => {
-      console.log('cart2', cart);
+    card?.cardItems?.forEach((product) => {
+      console.log('card2', card);
       data.push({
         productId: product.id,
         amount: 1,
       });
     });
 
-    addLocalCartToDataBase({
-      products: cart.addedItems,
+    addLocalCardToDataBase({
+      products: card.addedItems,
     });
   };
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       router.push('/');
-    } else if (localStorage.getItem('cartWithoutLogin')) {
-      createCartItems();
+    } else if (localStorage.getItem('cardWithoutLogin')) {
+      createCardItems();
     }
   }, []);
 
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addLocalCartToDataBase })(Index);
+export default connect(mapStateToProps, { addLocalCardToDataBase })(Index);

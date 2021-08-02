@@ -44,7 +44,7 @@ This files table contents are outlined below>>>>>
 ** - Products Details Area CSS
 ** - Pagination Area CSS
 ** - Sidebar Area CSS
-** - Cart Area CSS
+** - Card Area CSS
 ** - Checkout Area CSS
 ** - Compare Area CSS
 ** - Login Area CSS
@@ -1027,7 +1027,7 @@ Navbar Area CSS
 /*================================================
 Modal CSS
 =================================================*/
-.shoppingCartModal {
+.shoppingCardModal {
   &.modal.right {
     .modal-dialog {
       position: fixed;
@@ -1064,10 +1064,10 @@ Modal CSS
         text-transform: uppercase;
         margin-bottom: 25px;
       }
-      .product-cart-content {
+      .product-card-content {
         color: $paragraph-color;
 
-        .product-cart {
+        .product-card {
           position: relative;
           border-bottom: 1px dashed #eeeeee;
           margin-bottom: 15px;
@@ -1119,7 +1119,7 @@ Modal CSS
           }
         }
       }
-      .product-cart-subtotal {
+      .product-card-subtotal {
         overflow: hidden;
         margin-bottom: 15px;
         margin-top: 15px;
@@ -1134,7 +1134,7 @@ Modal CSS
           }
         }
       }
-      .product-cart-btn {
+      .product-card-btn {
         .btn {
           display: block;
 
@@ -1430,8 +1430,8 @@ Modal CSS
         text-transform: uppercase;
         margin-bottom: 25px;
       }
-      .product-cart-content {
-        .product-cart {
+      .product-card-content {
+        .product-card {
           position: relative;
           border-bottom: 1px dashed #eeeeee;
           margin-bottom: 15px;
@@ -1477,7 +1477,7 @@ Modal CSS
           }
         }
       }
-      .product-cart-btn {
+      .product-card-btn {
         .btn {
           display: block;
 
@@ -2641,7 +2641,7 @@ Products QuickView Modal Area CSS
           }
         }
       }
-      .product-add-to-cart {
+      .product-add-to-card {
         .input-counter {
           max-width: 130px;
           min-width: 130px;
@@ -5920,7 +5920,7 @@ Products Details Area CSS
       }
     }
   }
-  .product-add-to-cart {
+  .product-add-to-card {
     .input-counter {
       max-width: 130px;
       min-width: 130px;
@@ -7032,9 +7032,9 @@ Sidebar Area CSS
 }
 
 /*================================================
-Cart Area CSS
+Card Area CSS
 =================================================*/
-.cart-table {
+.card-table {
   table {
     margin-bottom: 0;
 
@@ -7181,7 +7181,7 @@ Cart Area CSS
     }
   }
 }
-.cart-buttons {
+.card-buttons {
   margin-top: 30px;
   border-bottom: 1px solid #eaedff;
   padding-bottom: 30px;
@@ -7196,7 +7196,7 @@ Cart Area CSS
     }
   }
 }
-.cart-totals {
+.card-totals {
   background: $white-color;
   padding: 40px;
   max-width: 600px;

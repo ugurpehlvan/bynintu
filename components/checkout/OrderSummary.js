@@ -15,23 +15,23 @@ class OrderSummary extends Component {
           </thead>
 
           <tbody>
-            {this.props.products.map((data, idx) => (
+            {this.props.items.map((item, idx) => (
               <tr key={idx}>
                 <td className='product-name'>
                   <Link href='#'>
-                    <a>{data.title}</a>
+                    <a>{item.product.title}</a>
                   </Link>
                 </td>
 
                 <td className='product-total'>
-                  <span className='subtotal-amount'>€{data.price * data.quantity}</span>
+                  <span className='subtotal-amount'>€{item.product.sellPrice * item.qty}</span>
                 </td>
               </tr>
             ))}
 
             <tr>
               <td className='order-subtotal'>
-                <span>Cart Subtotal</span>
+                <span>Card Subtotal</span>
               </td>
 
               <td className='order-subtotal-price'>
@@ -67,7 +67,7 @@ class OrderSummary extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.other.addedItems,
+    items: state.other.cardItems,
     total: state.other.total,
     shipping: state.other.shipping,
   };

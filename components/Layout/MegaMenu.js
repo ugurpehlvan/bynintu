@@ -13,7 +13,7 @@ import { makeSearch } from 'store/product/actions';
 // helpers
 import { translations } from 'resources';
 
-import Cart from '../Modal/Cart';
+import Card from '../Modal/Card';
 
 class MegaMenu extends Component {
   state = {
@@ -30,7 +30,7 @@ class MegaMenu extends Component {
     searchText: '',
   };
 
-  handleCart = () => {
+  handleCard = () => {
     this.setState((prevState) => {
       return {
         display: !prevState.display,
@@ -119,7 +119,7 @@ class MegaMenu extends Component {
     const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
     const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
 
-    let { products, user, language, categories } = this.props;
+    let { items, user, language, categories } = this.props;
 
     const menu = (
       <Menu style={{ width: '200px' }}>
@@ -149,7 +149,7 @@ class MegaMenu extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <a>
+          <a onClick={() => localStorage.setItem('token', '') || location.reload()}>
             <i style={{ color: '#999', marginRight: '6px' }} className='fas fa-sign-out-alt'></i> Log Out
           </a>
         </Menu.Item>
@@ -226,10 +226,10 @@ class MegaMenu extends Component {
                         <a
                           onClick={(e) => {
                             e.preventDefault();
-                            this.handleCart();
+                            this.handleCard();
                           }}
                         >
-                          Cart({products?.length}) <i className='fas fa-shopping-bag'></i>
+                          Card({items?.length}) <i className='fas fa-shopping-bag'></i>
                         </a>
                       </Link>
                     </div>
@@ -310,7 +310,7 @@ class MegaMenu extends Component {
           </div>
         </div>
 
-        {this.state.display ? <Cart onClick={this.handleCart} /> : ''}
+        {this.state.display ? <Card onClick={this.handleCard} /> : ''}
       </>
     );
   }
@@ -318,7 +318,7 @@ class MegaMenu extends Component {
 
 const mapStateToProps = ({ other, auth, language, category }) => {
   return {
-    products: other.addedItems,
+    items: other.cardItems,
     isSignedIn: auth.isSignedIn,
     user: auth.customer,
     language: language.appLanguage,

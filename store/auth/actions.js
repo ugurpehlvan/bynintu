@@ -5,8 +5,8 @@ import { AUTH_SUCCESS, AUTH_ERROR, VALIDATE_ERROR, VALIDATE_SUCCESS } from './ke
 
 export const signIn = (formValues, router) => async (dispatch, getState) => {
   const response = (await axiosClient.post(apiURL.signIn, formValues)).data;
-  if (response.success) {
-    dispatch({ type: AUTH_SUCCESS, payload: response });
+  if (response.user) {
+    dispatch({ type: AUTH_SUCCESS, payload: response.user });
     localStorage.setItem('token', response.token);
     router('/');
   } else {
@@ -24,12 +24,13 @@ export const validateAccount = (token, route) => async (dispatch, getState) => {
   }
 };
 
-export const signUp = (formValues, notify) => async (dispatch) => {
+export const signUp = (formValues, router, notify) => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.signUp, formValues)).data;
 
-  if (response.id) {
-    dispatch({ type: AUTH_SUCCESS, payload: response });
+  if (response.user) {
+    dispatch({ type: AUTH_SUCCESS, payload: response.user });
     localStorage.setItem('token', response.token);
+    router('/');
     notify(true);
   } else {
     dispatch({ type: AUTH_ERROR, payload: response?.error });

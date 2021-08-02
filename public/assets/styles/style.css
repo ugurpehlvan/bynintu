@@ -44,7 +44,7 @@ This files table contents are outlined below>>>>>
 ** - Products Details Area CSS
 ** - Pagination Area CSS
 ** - Sidebar Area CSS
-** - Cart Area CSS
+** - Card Area CSS
 ** - Checkout Area CSS
 ** - Compare Area CSS
 ** - Login Area CSS
@@ -1084,7 +1084,7 @@ Navbar Area CSS
 /*================================================
 Modal CSS
 =================================================*/
-.shoppingCartModal.modal.right .modal-dialog {
+.shoppingCardModal.modal.right .modal-dialog {
   position: fixed;
   margin: auto;
   width: 320px;
@@ -1093,41 +1093,41 @@ Modal CSS
   transform: translate3d(0%, 0, 0);
 }
 
-.shoppingCartModal.modal.right .modal-content {
+.shoppingCardModal.modal.right .modal-content {
   height: 100%;
   overflow-y: auto;
 }
 
-.shoppingCartModal.modal.right.fade .modal-dialog {
+.shoppingCardModal.modal.right.fade .modal-dialog {
   right: -420px;
   -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
   transition: opacity 0.3s linear, right 0.3s ease-out;
 }
 
-.shoppingCartModal.modal.right.fade.show .modal-dialog {
+.shoppingCardModal.modal.right.fade.show .modal-dialog {
   right: 0;
 }
 
-.shoppingCartModal .modal-content {
+.shoppingCardModal .modal-content {
   border-radius: 0;
   border: none;
 }
 
-.shoppingCartModal .modal-content .modal-body {
+.shoppingCardModal .modal-content .modal-body {
   padding: 25px 15px;
 }
 
-.shoppingCartModal .modal-content .modal-body h3 {
+.shoppingCardModal .modal-content .modal-body h3 {
   font-size: 17px;
   text-transform: uppercase;
   margin-bottom: 25px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content {
+.shoppingCardModal .modal-content .modal-body .product-card-content {
   color: #666666;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card {
   position: relative;
   border-bottom: 1px dashed #eeeeee;
   margin-bottom: 15px;
@@ -1135,72 +1135,72 @@ Modal CSS
   padding-bottom: 15px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-image {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-image {
   position: absolute;
   left: 0;
   top: 0;
   width: 50px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content h3 {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content h3 {
   font-size: 13px;
   text-transform: initial;
   margin-bottom: 5px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content h3 a {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content h3 a {
   color: #222222;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content span {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content span {
   font-size: 12px;
   display: block;
   margin-bottom: 3px;
   color: #666666;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content .product-price span {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content .product-price span {
   display: inline-block;
   margin-bottom: 0;
   font-size: 12px;
   color: #666666;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content .product-price span.price {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content .product-price span.price {
   font-size: 14px;
   color: #222222;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-content .product-cart .product-content .product-price span:nth-child(2) {
+.shoppingCardModal .modal-content .modal-body .product-card-content .product-card .product-content .product-price span:nth-child(2) {
   margin-left: 2px;
   margin-right: 2px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-subtotal {
+.shoppingCardModal .modal-content .modal-body .product-card-subtotal {
   overflow: hidden;
   margin-bottom: 15px;
   margin-top: 15px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-subtotal span {
+.shoppingCardModal .modal-content .modal-body .product-card-subtotal span {
   text-transform: uppercase;
   display: inline-block;
   font-size: 15px;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-subtotal span.subtotal {
+.shoppingCardModal .modal-content .modal-body .product-card-subtotal span.subtotal {
   float: right;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-btn .btn {
+.shoppingCardModal .modal-content .modal-body .product-card-btn .btn {
   display: block;
 }
 
-.shoppingCartModal .modal-content .modal-body .product-cart-btn .btn.btn-light {
+.shoppingCardModal .modal-content .modal-body .product-card-btn .btn.btn-light {
   margin-top: 12px;
 }
 
-.shoppingCartModal .close {
+.shoppingCardModal .close {
   color: #222222;
   font-size: 30px;
   outline: 0 !important;
@@ -1215,8 +1215,8 @@ Modal CSS
   z-index: 1;
 }
 
-.shoppingCartModal .close:not(:disabled):not(.disabled):hover,
-.shoppingCartModal .close:not(:disabled):not(.disabled):focus {
+.shoppingCardModal .close:not(:disabled):not(.disabled):hover,
+.shoppingCardModal .close:not(:disabled):not(.disabled):focus {
   color: #222222;
   text-decoration: none;
   opacity: 1;
@@ -1512,7 +1512,7 @@ Modal CSS
   margin-bottom: 25px;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card {
   position: relative;
   border-bottom: 1px dashed #eeeeee;
   margin-bottom: 15px;
@@ -1520,47 +1520,47 @@ Modal CSS
   padding-bottom: 15px;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-image {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-image {
   position: absolute;
   left: 0;
   top: 0;
   width: 50px;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-content h3 {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-content h3 {
   font-size: 13px;
   text-transform: initial;
   margin-bottom: 5px;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-content h3 a {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-content h3 a {
   color: #222222;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-content span {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-content span {
   font-size: 12px;
   display: block;
   margin-bottom: 3px;
   color: #666666;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-content .product-price span {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-content .product-price span {
   display: inline-block;
   margin-bottom: 0;
   font-size: 12px;
   color: #666666;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-content .product-cart .product-content .product-price span.price {
+.shoppingWishlistModal .modal-content .modal-body .product-card-content .product-card .product-content .product-price span.price {
   font-size: 14px;
   color: #222222;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-btn .btn {
+.shoppingWishlistModal .modal-content .modal-body .product-card-btn .btn {
   display: block;
 }
 
-.shoppingWishlistModal .modal-content .modal-body .product-cart-btn .btn.btn-light {
+.shoppingWishlistModal .modal-content .modal-body .product-card-btn .btn.btn-light {
   margin-top: 15px;
 }
 
@@ -2773,7 +2773,7 @@ Products QuickView Modal Area CSS
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter {
   max-width: 130px;
   min-width: 130px;
   margin-right: 10px;
@@ -2782,7 +2782,7 @@ Products QuickView Modal Area CSS
   position: relative;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter span {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter span {
   position: absolute;
   top: 0;
   background-color: transparent;
@@ -2795,19 +2795,19 @@ Products QuickView Modal Area CSS
   transition: 0.5s;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter span.minus-btn {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter span.minus-btn {
   left: 0;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter span.plus-btn {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter span.plus-btn {
   right: 0;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter span:hover {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter span:hover {
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter input {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter input {
   height: 45px;
   color: #222222;
   outline: 0;
@@ -2820,29 +2820,29 @@ Products QuickView Modal Area CSS
   font-weight: 600;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter input::-webkit-input-placeholder {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter input::-webkit-input-placeholder {
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter input:-ms-input-placeholder {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter input:-ms-input-placeholder {
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter input::-ms-input-placeholder {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter input::-ms-input-placeholder {
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .input-counter input::placeholder {
+.productQuickView .modal-content .product-content .product-add-to-card .input-counter input::placeholder {
   color: #222222;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .btn {
+.productQuickView .modal-content .product-content .product-add-to-card .btn {
   height: 45px;
   top: -2px;
   position: relative;
 }
 
-.productQuickView .modal-content .product-content .product-add-to-cart .btn i {
+.productQuickView .modal-content .product-content .product-add-to-card .btn i {
   margin-right: 2px;
 }
 
@@ -6078,7 +6078,7 @@ Products Details Area CSS
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .input-counter {
+.product-details-content .product-add-to-card .input-counter {
   max-width: 130px;
   min-width: 130px;
   margin-right: 10px;
@@ -6087,7 +6087,7 @@ Products Details Area CSS
   position: relative;
 }
 
-.product-details-content .product-add-to-cart .input-counter span {
+.product-details-content .product-add-to-card .input-counter span {
   position: absolute;
   top: 0;
   background-color: transparent;
@@ -6100,19 +6100,19 @@ Products Details Area CSS
   transition: 0.5s;
 }
 
-.product-details-content .product-add-to-cart .input-counter span.minus-btn {
+.product-details-content .product-add-to-card .input-counter span.minus-btn {
   left: 0;
 }
 
-.product-details-content .product-add-to-cart .input-counter span.plus-btn {
+.product-details-content .product-add-to-card .input-counter span.plus-btn {
   right: 0;
 }
 
-.product-details-content .product-add-to-cart .input-counter span:hover {
+.product-details-content .product-add-to-card .input-counter span:hover {
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .input-counter input {
+.product-details-content .product-add-to-card .input-counter input {
   height: 45px;
   color: #222222;
   outline: 0;
@@ -6125,29 +6125,29 @@ Products Details Area CSS
   font-weight: 600;
 }
 
-.product-details-content .product-add-to-cart .input-counter input::-webkit-input-placeholder {
+.product-details-content .product-add-to-card .input-counter input::-webkit-input-placeholder {
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .input-counter input:-ms-input-placeholder {
+.product-details-content .product-add-to-card .input-counter input:-ms-input-placeholder {
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .input-counter input::-ms-input-placeholder {
+.product-details-content .product-add-to-card .input-counter input::-ms-input-placeholder {
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .input-counter input::placeholder {
+.product-details-content .product-add-to-card .input-counter input::placeholder {
   color: #222222;
 }
 
-.product-details-content .product-add-to-cart .btn {
+.product-details-content .product-add-to-card .btn {
   height: 45px;
   top: -2px;
   position: relative;
 }
 
-.product-details-content .product-add-to-cart .btn i {
+.product-details-content .product-add-to-card .btn i {
   margin-right: 2px;
 }
 
@@ -7403,13 +7403,13 @@ Sidebar Area CSS
 }
 
 /*================================================
-Cart Area CSS
+Card Area CSS
 =================================================*/
-.cart-table table {
+.card-table table {
   margin-bottom: 0;
 }
 
-.cart-table table thead tr th {
+.card-table table thead tr th {
   border-bottom-width: 0px;
   vertical-align: middle;
   padding: 15px 0;
@@ -7419,7 +7419,7 @@ Cart Area CSS
   font-size: 15px;
 }
 
-.cart-table table tbody tr td {
+.card-table table tbody tr td {
   vertical-align: middle;
   color: #666666;
   padding-left: 0;
@@ -7429,58 +7429,58 @@ Cart Area CSS
   border-right: none;
 }
 
-.cart-table table tbody tr td.product-thumbnail a {
+.card-table table tbody tr td.product-thumbnail a {
   display: block;
 }
 
-.cart-table table tbody tr td.product-thumbnail a img {
+.card-table table tbody tr td.product-thumbnail a img {
   width: 100px;
 }
 
-.cart-table table tbody tr td.product-name a {
+.card-table table tbody tr td.product-name a {
   color: #666666;
   font-weight: 600;
   display: inline-block;
   font-size: 15px;
 }
 
-.cart-table table tbody tr td.product-name a:hover {
+.card-table table tbody tr td.product-name a:hover {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-name ul {
+.card-table table tbody tr td.product-name ul {
   padding-left: 0;
   margin-top: 10px;
   margin-bottom: 0;
   list-style-type: none;
 }
 
-.cart-table table tbody tr td.product-name ul li {
+.card-table table tbody tr td.product-name ul li {
   color: #858585;
   font-size: 12px;
   margin-bottom: 5px;
 }
 
-.cart-table table tbody tr td.product-name ul li:last-child {
+.card-table table tbody tr td.product-name ul li:last-child {
   margin-bottom: 0;
 }
 
-.cart-table table tbody tr td.product-name ul li strong {
+.card-table table tbody tr td.product-name ul li strong {
   font-weight: 600;
 }
 
-.cart-table table tbody tr td.product-price span {
+.card-table table tbody tr td.product-price span {
   font-weight: 600;
 }
 
-.cart-table table tbody tr td.product-subtotal .remove {
+.card-table table tbody tr td.product-subtotal .remove {
   color: red;
   float: right;
   position: relative;
   top: -1px;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter {
+.card-table table tbody tr td.product-quantity .input-counter {
   max-width: 130px;
   min-width: 130px;
   margin-right: 10px;
@@ -7489,7 +7489,7 @@ Cart Area CSS
   position: relative;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter span {
+.card-table table tbody tr td.product-quantity .input-counter span {
   position: absolute;
   top: 0;
   background-color: transparent;
@@ -7502,19 +7502,19 @@ Cart Area CSS
   transition: 0.5s;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter span.minus-btn {
+.card-table table tbody tr td.product-quantity .input-counter span.minus-btn {
   left: 0;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter span.plus-btn {
+.card-table table tbody tr td.product-quantity .input-counter span.plus-btn {
   right: 0;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter span:hover {
+.card-table table tbody tr td.product-quantity .input-counter span:hover {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter input {
+.card-table table tbody tr td.product-quantity .input-counter input {
   height: 45px;
   color: #222222;
   outline: 0;
@@ -7527,47 +7527,47 @@ Cart Area CSS
   font-weight: 600;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter input::-webkit-input-placeholder {
+.card-table table tbody tr td.product-quantity .input-counter input::-webkit-input-placeholder {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter input:-ms-input-placeholder {
+.card-table table tbody tr td.product-quantity .input-counter input:-ms-input-placeholder {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter input::-ms-input-placeholder {
+.card-table table tbody tr td.product-quantity .input-counter input::-ms-input-placeholder {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-quantity .input-counter input::placeholder {
+.card-table table tbody tr td.product-quantity .input-counter input::placeholder {
   color: #222222;
 }
 
-.cart-table table tbody tr td.product-subtotal {
+.card-table table tbody tr td.product-subtotal {
   overflow: hidden;
 }
 
-.cart-table table tbody tr td.product-subtotal span {
+.card-table table tbody tr td.product-subtotal span {
   font-weight: 600;
 }
 
-.cart-buttons {
+.card-buttons {
   margin-top: 30px;
   border-bottom: 1px solid #eaedff;
   padding-bottom: 30px;
 }
 
-.cart-buttons label {
+.card-buttons label {
   margin-bottom: 0;
 }
 
-.cart-buttons label input {
+.card-buttons label input {
   position: relative;
   top: 1px;
   margin-right: 4px;
 }
 
-.cart-totals {
+.card-totals {
   background: #ffffff;
   padding: 40px;
   max-width: 600px;
@@ -7577,18 +7577,18 @@ Cart Area CSS
   margin: 45px auto 0;
 }
 
-.cart-totals h3 {
+.card-totals h3 {
   margin-bottom: 20px;
   font-size: 19px;
 }
 
-.cart-totals ul {
+.card-totals ul {
   padding: 0;
   margin: 0 0 25px;
   list-style-type: none;
 }
 
-.cart-totals ul li {
+.card-totals ul li {
   border: 1px solid #eaedff;
   padding: 10px 15px;
   color: #222222;
@@ -7596,21 +7596,21 @@ Cart Area CSS
   overflow: hidden;
 }
 
-.cart-totals ul li:first-child {
+.card-totals ul li:first-child {
   border-bottom: none;
 }
 
-.cart-totals ul li:last-child {
+.card-totals ul li:last-child {
   border-top: none;
 }
 
-.cart-totals ul li span {
+.card-totals ul li span {
   float: right;
   color: #666666;
   font-weight: normal;
 }
 
-.cart-totals ul li span b {
+.card-totals ul li span b {
   font-weight: 600;
 }
 

@@ -45,12 +45,22 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       product: (await axios.get('https://test.bynintu.com/api/v1/product/' + params.id)).data,
+      relatedProducts: (
+        await axios.post('https://test.bynintu.com/api/v1/product/listSearch/', {
+          filter: {
+            page: {
+              size: 10,
+              number: 2,
+            },
+          },
+        })
+      ).data,
     },
     revalidate: 10,
   };
 }
 
-const Product = ({ product = {} }) => {
+const Product = ({ product = {}, relatedProducts = [] }) => {
   const products = useSelector((state) => state.other.productsCollectionWomanDress);
   const addedItemsToCompare = useSelector((state) => state.addedItemsToCompare);
 
@@ -70,7 +80,7 @@ const Product = ({ product = {} }) => {
           </div>
         </div>
 
-        <RelatedProducts products={products} CompareProducts={addedItemsToCompare} />
+        <RelatedProducts products={relatedProducts} CompareProducts={addedItemsToCompare} />
 
         <Facility />
       </section>

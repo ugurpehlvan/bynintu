@@ -14,9 +14,11 @@ import { signUp } from 'store/auth/actions';
 // helpers
 import isEmail from 'utils/isEmail';
 import notify from 'utils/notify';
+import { useRouter } from 'next/router';
 import { translations } from 'resources';
 
 const Signup = ({ signUp, user, language }) => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,6 +45,7 @@ const Signup = ({ signUp, user, language }) => {
           email,
           password,
         },
+        (route) => router.push(route),
         (type) => {
           type ? notify('success', translations[language]['g58']) : notify('error', 'Error');
         }
