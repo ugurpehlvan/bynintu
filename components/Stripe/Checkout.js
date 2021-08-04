@@ -73,11 +73,11 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
     return (
       // <div className={styles['sr-field-success']}>
       <div className={'sr-field-success'}>
-        <h1>Your test payment succeeded</h1>
+        <h1 className={'sr-bynintu-h1'}>Your test payment succeeded</h1>
         <p>View PaymentIntent response:</p>
         {/* <pre className={styles['sr-callout']}> */}
-        <pre className={'sr-callout'}>
-          <code>{JSON.stringify(metadata, null, 2)}</code>
+        <pre className={'sr-callout sr-callout-code'}>
+          <code className={'sr-callout-code'} >{JSON.stringify(metadata, null, 2)}</code>
         </pre>
       </div>
     );
@@ -105,7 +105,7 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
 
     return (
       <form>
-        <h1>
+        <h1 className={'sr-bynintu-h1'}>
           {currency.toLocaleUpperCase()} {amount / 100}
         </h1>
 
