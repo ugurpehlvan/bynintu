@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { EditOutlined } from '@ant-design/icons';
+
+// import { Elements } from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 
 // components
 import OrderSummary from './OrderSummary';
@@ -15,9 +19,13 @@ import { searchAddress, getAddress } from 'store/account/actions';
 
 // styles
 import styles from './checkoutform.module.css';
+import authHeader from 'utils/authHeader';
+import { apiURL, axiosClient } from 'service';
+import Stripe from 'components/Stripe/Stripe';
 
 function CheckoutForm({ total, shipping, searchAddress, getAddress, address, addresses }) {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState('');
 
   const handleEditClick = (id) => {
     getAddress(id);
@@ -160,7 +168,13 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
                       <div key={address.id} className='col-lg-4 col-sm-6'>
                         <div className={styles.address_actions}>
                           <div className={styles.radio}>
-                            <input type='radio' id='address' name='address' value='address' />
+                            <input
+                              onClick={() => setSelectedAddress(address.id)}
+                              type='radio'
+                              id='address'
+                              name='address'
+                              value='address'
+                            />
                           </div>
                         </div>
                         <AddressCard address={address} onEdit={handleEditClick} />
@@ -179,24 +193,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
 
                 <OrderSummary />
 
-                <div className='payment-method'>
-                  <p>
-                    <input type='radio' id='direct-bank-transfer' name='radio-group' defaultChecked={true} />
-                    <label htmlFor='direct-bank-transfer'>Direct Bank Transfer</label>
-                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not
-                    be shipped until the funds have cleared in our account.
-                  </p>
-                  <p>
-                    <input type='radio' id='paypal' name='radio-group' />
-                    <label htmlFor='paypal'>PayPal</label>
-                  </p>
-                  <p>
-                    <input type='radio' id='cash-on-delivery' name='radio-group' />
-                    <label htmlFor='cash-on-delivery'>Cash on Delivery</label>
-                  </p>
-                </div>
-
-                <Payment amount={totalAmount * 100} disabled={disable} />
+                {selectedAddress && <Stripe total={total} address={selectedAddress} />}
               </div>
             </div>
           </div>
@@ -209,6 +206,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
 
 const mapStateToProps = (state) => {
   return {
+    items: state.other.cardItems,
     total: state.other.total,
     shipping: state.other.shipping,
     address: state.account.address,

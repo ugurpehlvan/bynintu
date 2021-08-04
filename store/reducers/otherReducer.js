@@ -176,6 +176,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if (action.type === RESET_CART) {
+    localStorage.setItem('localCard', '');
     return {
       ...state,
       cardItems: [],

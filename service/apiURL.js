@@ -21,6 +21,8 @@ const apiUrl = {
   createCardForLogin: '/api/api/v1/card/createCardForLogin',
   cardPage: '/api/api/v1/card/cardPage',
   createIteminCard: '/api/api/v1/card',
+  stripeCheckoutIntent: '/api/api/v1/checkout/stripe/intent',
+  stripeCheckoutSuccess: '/api/api/v1/checkout/stripe/success',
 };
 
 export default apiUrl;
