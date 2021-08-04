@@ -15,13 +15,12 @@ import CheckoutForm from 'components/checkout/CheckoutForm';
 // helpers
 import { translations } from 'resources';
 
-
-
-const Index = ({  language, addLocalCardToDataBase }) => {
+const Index = ({ language, addLocalCardToDataBase }) => {
   const router = useRouter();
 
   const createCardItems = () => {
-    const card = JSON.parse(localStorage.getItem('localCard'));
+    let card;
+    if (localStorage.getItem('localCard')) card = JSON.parse(localStorage.getItem('localCard'));
 
     let data = [];
     card?.cardItems?.forEach((product) => {

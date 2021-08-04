@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { resetCard } from 'store/actions/actions';
+import notify from 'utils/notify';
+import Router from 'next/router';
+import { translations } from 'resources';
 
 // import './index.css';
 
@@ -9,7 +12,7 @@ import { axiosClient } from 'service';
 import authHeader from 'utils/authHeader';
 import apiUrl from 'service/apiURL';
 
-function Checkout({ total, address, currency, items, resetCard }) {
+function Checkout({ total, address, currency, items, resetCard, language }) {
   const [clientSecret, setClientSecret] = useState(null);
   const [error, setError] = useState(null);
   const [metadata, setMetadata] = useState(null);
@@ -51,6 +54,8 @@ function Checkout({ total, address, currency, items, resetCard }) {
       setMetadata(payload.paymentIntent);
       await axiosClient.post(apiUrl.stripeCheckoutSuccess, { paymentData: payload.paymentIntent, items, address }, authHeader());
       resetCard();
+      notify('success', translations[language]['g59']);
+      Router.push('/');
       //ödeme tamamlandı yönlendirme yapılacak
       //test kartı 4000 0027 6000 3184 hertürlü  tarih ce ccv yi kabul eder
     }
@@ -139,6 +144,7 @@ const mapStateToProps = (state) => {
     items: state.other.cardItems,
     shipping: state.other.shipping,
     addresses: state.account.addresses,
+    language: state.language.appLanguage,
   };
 };
 

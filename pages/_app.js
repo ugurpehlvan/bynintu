@@ -38,9 +38,10 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(() => {
     store.dispatch(getLanguages());
-
-    const card = JSON.parse(localStorage.getItem('localCard'));
-    store.dispatch(createDefaultCard(card));
+    if (localStorage.getItem('localCard')) {
+      const card = JSON.parse(localStorage.getItem('localCard'));
+      store.dispatch(createDefaultCard(card));
+    }
     console.log('location.pathname', location.pathname);
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
