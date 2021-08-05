@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MyAccountContainer from 'components/Layout/MyAccountContainer';
+import { useRouter } from 'next/router';
 
 import styles from './order-detail.module.css';
+import apiUrl from 'service/apiURL';
+import { axiosClient } from 'service';
+import authHeader from 'utils/authHeader';
 
-const OrderDetailHeader = () => {
+const OrderDetailHeader = (order) => {
   return (
     <div className={styles.header}>
       <div className={`${styles.header_content} row`}>
@@ -12,38 +16,39 @@ const OrderDetailHeader = () => {
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order Date</div>
-          <div className={styles.header_description}>14 July</div>
+          <div className={styles.header_description}>{order.date}</div>
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order No</div>
-          <div className={styles.header_description}>1423123</div>
+          <div className={styles.header_description}>{order.code}</div>
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order Summary</div>
-          <div className={styles.header_description}>1 Delivery, 1 Product</div>
+          <div className={styles.header_description}>{order?.details?.reduce((p, c) => (p += c.quantity), 0)} Product</div>
         </div>
       </div>
     </div>
   );
 };
 
-const DeliveryCard = () => {
+const DeliveryCard = (detail) => {
   return (
     <div className={styles.delivery_card}>
       <div className={styles.delivery_card_image_container}>
-        <img src='https://cdn.dsmcdn.com/assets/product/media/images/20190924/11/257972/56895471/1/1_org_zoom.jpg' alt='' />
+        <img src={detail?.product?.imagesUrls?.[0]?.url} alt='' />
       </div>
       <div className={styles.delivery_card_content}>
         <div>
-          <div className={styles.delivery_card_label}>Moov</div>
-          <div className={styles.delivery_card_desc}>Moov SIMONE Oyuncu ve Gece Sürüş Gözlüğü</div>
+          <div className={styles.delivery_card_label}>{detail?.product?.title}</div>
+          <div className={styles.delivery_card_desc}>{detail?.product?.subTitle}</div>
         </div>
         <div className={styles.delivery_card_quantity}>
-          <strong>Size:</strong> Mat Sıyah , Tek Ebat - Adet: 1
+          {/* <strong>Size:</strong> Mat Sıyah , Tek Ebat - Adet: 1 */}
+          {'Qty:' + detail.quantity}
         </div>
         <div className={styles.delivery_card_price_container}>
-          <div className={styles.delivery_card_price}>440 TL</div>
-          <button className='btn btn-primary'>Rate Product</button>
+          <div className={styles.delivery_card_price}>{detail?.totalAmount + ' €'}</div>
+          {/* <button className='btn btn-primary'>Rate Product</button> */}
         </div>
       </div>
     </div>
@@ -51,9 +56,21 @@ const DeliveryCard = () => {
 };
 
 const OrderDetails = () => {
+  const [order, setOrder] = useState({});
+  const id = useRouter().query?.id;
+  const getOrder = async () => {
+    const resp = await axiosClient.get(apiUrl.fetchOrder + id, authHeader()).data;
+    if (resp) setOrder(resp);
+  };
+  useEffect(() => {
+    if (id) {
+      getOrder();
+      console.log('id', id);
+    }
+  }, [id]);
   return (
     <MyAccountContainer>
-      <OrderDetailHeader />
+      {OrderDetailHeader(order)}
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.content_1}>
@@ -63,7 +80,7 @@ const OrderDetails = () => {
               </h2>
             </div>
             <div>
-              <div>Ugur Pehlivan</div>
+              <div>{order.customerName}</div>
               <div className={styles.address}>Binevler Mah Binevler mahallesi 81052 nolu sokak, No: 39 Kardelen Apt. Giris kat daire 2</div>
               <div>Şahinbey / Gaziantep</div>
             </div>
@@ -76,35 +93,35 @@ const OrderDetails = () => {
             </div>
             <div className={styles.price_container}>
               <div>List Price</div>
-              <div>30 €</div>
+              <div>{order.totalAmount + '€'} </div>
             </div>
             <div className={styles.spacer} />
             <div className={styles.price_container}>
               <div>Shipping Price</div>
-              <div>4 €</div>
+              <div>0 €</div>
             </div>
             <div className={styles.spacer} />
             <div className={styles.price_container}>
               <div>Total</div>
-              <div>34 €</div>
+              <div>{order.totalAmount + '€'}</div>
             </div>
           </div>
         </div>
         <div className={styles.delivery_detail}>
           <div className={styles.delivery_detail_header}>
             <div>
-              <div className={styles.delivery_no_label}>Teslimat No:</div>
+              <div className={styles.delivery_no_label}>Delivery No:</div>
               <div className={styles.delivery_no}>#601042584</div>
             </div>
           </div>
           <div className={styles.delivery_detail_content}>
             <div className={styles.delivery_info}>
               <div className={styles.progress_bar}></div>
-              <div className={styles.delivery_status}>This product delivered on 1/4/2021.</div>
-              <div className={styles.delivery_cargo_company}>
+              {/* <div className={styles.delivery_status}>This product delivered on 1/4/2021.</div> */}
+              {/* <div className={styles.delivery_cargo_company}>
                 <div>Cargo Company: DHL</div>
-              </div>
-              <DeliveryCard />
+              </div> */}
+              {order?.details?.map?.((el) => DeliveryCard(el))}
             </div>
           </div>
         </div>

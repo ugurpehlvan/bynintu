@@ -3,12 +3,11 @@ import { useRouter } from 'next/router';
 
 import styles from './order-card.module.css';
 
-const OrderCard = () => {
+const OrderCard = ({ order }) => {
   const router = useRouter();
 
   const handleOrderDetailClick = () => {
-    const orderID = '2212412';
-    router.push(`/account/orders/${orderID}`);
+    router.push(`/account/orders/${order.id}`);
   };
 
   return (
@@ -16,15 +15,15 @@ const OrderCard = () => {
       <div className={`${styles.order_header} row`}>
         <div className='col-lg-3 col-md-6'>
           <div className={styles.header_title}>Order Date</div>
-          <div className={styles.header_description}>14 July 11:04</div>
+          <div className={styles.header_description}>{new Date(order?.date).toLocaleDateString()}</div>
         </div>
         <div className='col-lg-3 col-md-6'>
           <div className={styles.header_title}>Order Summary</div>
-          <div className={styles.header_description}>1 Delivery, 1 Product</div>
+          <div className={styles.header_description}>{order?.details?.reduce((p, c) => (p += c.quantity), 0)} Product</div>
         </div>
         <div className='col-lg-3 col-md-6'>
           <div className={styles.header_title}>Reciver</div>
-          <div className={styles.header_description}>Ugur Pehlivan</div>
+          <div className={styles.header_description}>{order?.customerName}</div>
         </div>
         <div className='col-lg-3 col-md-6'>
           <button onClick={handleOrderDetailClick} className={`btn btn-primary`} type='button'>

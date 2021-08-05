@@ -12,6 +12,8 @@ const apiUrl = {
   createAddress: '/api/api/v1/address',
   getPhoneCodes: '/api/api/v1/country/getPhoneCodes',
   searchAddress: '/api/api/v1/address/search',
+  searchOrders: '/api/api/v1/order/search',
+  fetchOrder: '/api/api/v1/order/',
   address: '/api/api/v1/address',
   searchProduct: '/api/api/v1/product/search',
   makeSearch: '/api/api/v1/search',
