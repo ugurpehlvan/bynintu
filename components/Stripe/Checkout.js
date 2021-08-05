@@ -24,15 +24,20 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
 
   const stripeIntent = async () => {
     const response = await axiosClient.post(apiUrl.stripeCheckoutIntent, { amount, currency, items, address }, authHeader());
+
+    if (response?.data?.error) {
+      alert(response?.data?.error?.message);
+      return;
+    }
+
     setClientSecret(response.data.client_secret);
   };
 
   useEffect(() => {
     stripeIntent();
   }, []);
-  console.log('clientSecret', clientSecret);
+
   const confirmPayment = async () => {
-    console.log('clientSecret', clientSecret);
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
