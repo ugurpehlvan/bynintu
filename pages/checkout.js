@@ -24,7 +24,7 @@ const Index = ({ language, addLocalCardToDataBase }) => {
 
     let data = [];
     card?.cardItems?.forEach((product) => {
-      console.log('card2', card);
+
       data.push({
         productId: product.id,
         amount: 1,

@@ -21,7 +21,6 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
   const stripe = useStripe();
   const elements = useElements();
   const amount = total * 100;
-  console.log('amount', amount);
 
   const stripeIntent = async () => {
     const response = await axiosClient.post(apiUrl.stripeCheckoutIntent, { amount, currency, items, address }, authHeader());
@@ -31,7 +30,7 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
   useEffect(() => {
     stripeIntent();
   }, []);
-
+  console.log('clientSecret', clientSecret);
   const confirmPayment = async () => {
     console.log('clientSecret', clientSecret);
     const payload = await stripe.confirmCardPayment(clientSecret, {

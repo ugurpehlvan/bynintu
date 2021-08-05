@@ -42,7 +42,7 @@ const MyApp = ({ Component, pageProps }) => {
       const card = JSON.parse(localStorage.getItem('localCard'));
       store.dispatch(createDefaultCard(card));
     }
-    console.log('location.pathname', location.pathname);
+
     if (localStorage.getItem('token')) {
       store.dispatch(getCustomer());
     } else if (location.pathname.startsWith('/account')) {

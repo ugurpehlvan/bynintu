@@ -49,8 +49,7 @@ const otherReducer = (state = initialState, action) => {
     const { product, qty } = action;
     let existingCardData = state.cardItems.find((item) => product.id === item.product.id);
     let newCard;
-    console.log('state.total', state.total);
-    console.log('product.sellPrice * qty', product.sellPrice * qty);
+
     if (existingCardData) {
       existingCardData.qty += qty;
       newCard = {
@@ -72,7 +71,7 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if (action.type === CREATE_DEFAULT_CART) {
-    console.log('action.payload', action.payload);
+
     return {
       ...state,
       cardItems: action.payload?.cardItems || [],
