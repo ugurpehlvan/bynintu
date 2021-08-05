@@ -20,11 +20,10 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
   const [processing, setProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  const amount = total * 100;
+  const amount = ((total).toFixed(2) * 100);
 
   const stripeIntent = async () => {
     const response = await axiosClient.post(apiUrl.stripeCheckoutIntent, { amount, currency, items, address }, authHeader());
-
     if (response?.data?.error) {
       alert(response?.data?.error?.message);
       return;

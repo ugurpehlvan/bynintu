@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  GET_CARD_LIST,
   REMOVE_ITEM,
   SUB_QUANTITY,
   ADD_QUANTITY,
@@ -38,6 +39,7 @@ const initialState = {
   productsElectronics: productsElectronics,
   productsFurniture: productsFurniture,
   cardItems: [],
+  cardList: [],
   addedItemsToCompare: [],
   total: 0,
   shipping: 0,
@@ -76,6 +78,13 @@ const otherReducer = (state = initialState, action) => {
       ...state,
       cardItems: action.payload?.cardItems || [],
       total: action.payload?.total || 0,
+    };
+  }
+
+  if (action.type === GET_CARD_LIST) {
+    return {
+      ...state,
+      cardList: action.payload || [],
     };
   }
 

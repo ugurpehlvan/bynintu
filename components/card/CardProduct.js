@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { removeItem, addQuantity, subtractQuantity } from '../../store/actions/actions';
+import { removeItem, addQuantity, subtractQuantity, viewCardPage } from '../../store/actions/actions';
 import { toast } from 'react-toastify';
 
 class CardProduct extends Component {
+
+  componentDidMount() {
+    this.props.viewCardPage();
+  };
+
   handleRemove = (id) => {
     this.props.removeItem(id);
 
@@ -130,6 +135,7 @@ class CardProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     items: state.other.cardItems,
+    cardList: state.other.cardList,
     total: state.other.total,
   };
 };
@@ -138,6 +144,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     removeItem: (product) => {
       dispatch(removeItem(product));
+    },
+    viewCardPage: () => {
+      dispatch(viewCardPage());
     },
     addQuantity: (product) => {
       dispatch(addQuantity(product));

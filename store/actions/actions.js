@@ -4,6 +4,7 @@ import {
   REMOVE_ITEM,
   SUB_QUANTITY,
   ADD_QUANTITY,
+  GET_CARD_LIST,
   ADD_QUANTITY_WITH_NUMBER,
   RESET_CART,
   ADD_TO_COMPARE,
@@ -27,14 +28,14 @@ export const addToCard =
     }
   };
 
-export const viewCardPage = (id) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.cardPage, {})).data;
+export const viewCardPage = () => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.cardPage, {}, authHeader())).data;
 
-  // if (!response.error) {
-  //   dispatch({ type: ADD_TO_CART, id });
-  // } else {
-  //   dispatch({ type: ADD_TO_CART_ERROR });
-  // }
+  if (!response.error) {
+    dispatch({ type: GET_CARD_LIST, payload: response });
+  } else {
+    dispatch({ type: GET_CARD_LIST });
+  }
 };
 
 export const addLocalCardToDataBase = (card) => async (dispatch) => {
