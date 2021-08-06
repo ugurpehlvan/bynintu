@@ -16,7 +16,9 @@ import { apiURL, axiosClient } from 'service';
 import authHeader from 'utils/authHeader';
 
 //add card action
-export const addToCard = (product, qty = 1, warehouseId) => async (dispatch) => {
+export const addToCard =
+  (product, qty = 1, warehouseId) =>
+  async (dispatch) => {
     const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty, warehouseId })).data;
     // get product
     if (!response.error) {
@@ -24,7 +26,7 @@ export const addToCard = (product, qty = 1, warehouseId) => async (dispatch) => 
     } else {
       dispatch({ type: ADD_TO_CART_ERROR });
     }
-};
+  };
 
 export const viewCardPage = () => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.cardPage, {}, authHeader())).data;
@@ -47,7 +49,7 @@ export const addLocalCardToDataBase = (card) => async (dispatch) => {
 };
 
 export const addCardToDatabase = (product) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.createIteminCard, product)).data;
+  const response = (await axiosClient.post(apiURL.createIteminCard, product, authHeader())).data;
   console.log('response123', response);
   // if (!response.error) {
   //   dispatch({ type: ADD_TO_CART, id });
