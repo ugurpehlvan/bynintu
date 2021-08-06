@@ -24,7 +24,7 @@ class ProductsCard extends Component {
   render() {
     let { products } = this.props;
     const { modalOpen } = this.state;
-    console.log('product.imageUrls[0].url', product.imageUrls[0].url);
+
     return (
       <>
         {products.map((product, idx) => (

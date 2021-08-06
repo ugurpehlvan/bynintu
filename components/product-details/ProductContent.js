@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
-import { addToCard } from '../../store/actions/actions';
+import { addToCard, addCardToDatabase } from '../../store/actions/actions';
 import SizeGuide from './SizeGuide';
 import Shipping from './Shipping';
 
@@ -13,32 +13,58 @@ class ProductContent extends Component {
     min: 1,
     sizeGuide: false,
     shipModal: false,
+	selectedWarehouse: null
   };
 
   handleAddToCardFromView = () => {
-    this.props.addToCard(this.props.product, this.state.qty, this.props.product);
+
+	if (!this.state.selectedWarehouse) {
+		alert('Please select a warehouse');
+		return;
+	};
+
+	if (!this.state.qty) {
+		alert('Please select at least on quantity');
+		return;
+	};
+
+    this.props.addToCard(this.props.product, this.state.qty, this.state.selectedWarehouse.warehouseId);
+
+	if (!localStorage.getItem('token')) {
+		localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
+	} else {
+		this.props.addCardToDatabase({
+			productId: this.props.product.id,
+			amount: this.state.qty,
+			warehouseId: this.state.selectedWarehouse.warehouseId
+		});
+	}
 
     toast.success('Added to the card', {
-      position: 'bottom-left',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-  };
+		position: 'bottom-left',
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		});
+  	};
 
   IncrementItem = () => {
     this.setState((prevState) => {
-      if (prevState.qty < 10) {
-        return {
-          qty: prevState.qty + 1,
-        };
-      } else {
-        return null;
-      }
+		if (prevState.qty < 10) {
+			return {
+			qty: prevState.qty + 1,
+			};
+		} else {
+			return null;
+		}
     });
   };
+
+  handleWarehouseClick = (warehouse) => {
+	  this.setState({ selectedWarehouse: warehouse });
+  }
 
   DecreaseItem = () => {
     this.setState((prevState) => {
@@ -69,8 +95,9 @@ class ProductContent extends Component {
   };
 
   render() {
-    const { sizeGuide, shipModal } = this.state;
+    const { sizeGuide, shipModal, selectedWarehouse } = this.state;
     const { product } = this.props;
+	console.log({ product })
     return (
       <>
         <div className='col-lg-6 col-md-6'>
@@ -187,10 +214,24 @@ class ProductContent extends Component {
 
             <div className='warehouse-info-wrapper'>
               <h4>Shipped from:</h4>
-
               <ul>
-                <li className='active'>Germany</li>
-                <li>Netherland</li>
+				  {
+					  product?.warehouses?.map(warehouse => {
+						  if (warehouse.quantity > 0) {
+							  return (
+								<li
+									key={warehouse.id}
+									className={selectedWarehouse?.id === warehouse.id ? 'active' : ''}
+									onClick={() => this.handleWarehouseClick(warehouse)}
+								>
+									{warehouse['tbl_warehouse.name']}
+								</li>
+							  )
+						  } else {
+							  return null;
+						  }
+					  })
+				  }
               </ul>
             </div>
 
@@ -319,8 +360,11 @@ class ProductContent extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCard: (product, qty) => {
-      dispatch(addToCard(product, qty));
+    addToCard: (product, qty, warehouseId) => {
+      dispatch(addToCard(product, qty, warehouseId));
+    },
+    addCardToDatabase: (product, qty, warehouseId) => {
+      dispatch(addCardToDatabase(product, qty, warehouseId));
     },
   };
 };

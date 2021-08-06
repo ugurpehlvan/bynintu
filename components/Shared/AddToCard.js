@@ -4,11 +4,13 @@ import { toast } from 'react-toastify';
 import { addToCard, addCardToDatabase } from 'store/actions/actions';
 
 const AddToCard = ({ addToCard, addCardToDatabase, product }) => {
+
   const { id } = product;
+
   const handleAddToCard = () => {
     console.log('addtocard');
     addToCard(product);
-    console.log('addtocard2');
+
     if (!localStorage.getItem('token')) {
       localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
     } else {

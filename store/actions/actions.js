@@ -16,17 +16,15 @@ import { apiURL, axiosClient } from 'service';
 import authHeader from 'utils/authHeader';
 
 //add card action
-export const addToCard =
-  (product, qty = 1) =>
-  async (dispatch) => {
-    const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty })).data;
-
+export const addToCard = (product, qty = 1, warehouseId) => async (dispatch) => {
+    const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty, warehouseId })).data;
+    // get product
     if (!response.error) {
       dispatch({ type: ADD_TO_CART, product, qty });
     } else {
       dispatch({ type: ADD_TO_CART_ERROR });
     }
-  };
+};
 
 export const viewCardPage = () => async (dispatch) => {
   const response = (await axiosClient.post(apiURL.cardPage, {}, authHeader())).data;

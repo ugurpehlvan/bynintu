@@ -47,6 +47,7 @@ const initialState = {
 };
 
 const otherReducer = (state = initialState, action) => {
+
   if (action.type === ADD_TO_CART) {
     const { product, qty } = action;
     let existingCardData = state.cardItems.find((item) => product.id === item.product.id);
