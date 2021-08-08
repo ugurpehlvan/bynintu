@@ -2,8 +2,10 @@ import {
   ADD_TO_CART,
   ADD_TO_CART_ERROR,
   REMOVE_ITEM,
-  SUB_QUANTITY,
-  ADD_QUANTITY,
+  UPDATE_QUANTITY,
+  UPDATE_QUANTITY_ERROR,
+  UNAUTH_UPDATE_QUANTITY,
+  // ADD_QUANTITY,
   GET_CARD_LIST,
   ADD_QUANTITY_WITH_NUMBER,
   RESET_CART,
@@ -71,19 +73,22 @@ export const removeItem = (product) => {
     product,
   };
 };
+
 //subtract qt action
-export const subtractQuantity = (product) => {
-  return {
-    type: SUB_QUANTITY,
-    product,
-  };
-};
-//add qt action
-export const addQuantity = (product) => {
-  return {
-    type: ADD_QUANTITY,
-    product,
-  };
+export const updateQuantity = ({ product, type }) => async (dispatch) => {
+  let isAuthenticated = localStorage.getItem('token');
+  if (isAuthenticated) {
+    const response = (await axiosClient.put(apiURL.createIteminCard + `/${product.id}`, { product, type } , authHeader())).data;
+
+    if (!response.error) {
+      dispatch({ type: UPDATE_QUANTITY, response: { cardList: response } });
+    } else {
+      dispatch({ type: UPDATE_QUANTITY_ERROR });
+      alert("You can't update product quantity");
+    }
+  } else {
+    dispatch({ type: UNAUTH_UPDATE_QUANTITY, response: { product, type } });
+  }
 };
 
 // Reset card after form submit

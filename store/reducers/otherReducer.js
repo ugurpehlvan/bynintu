@@ -2,7 +2,9 @@ import {
   ADD_TO_CART,
   GET_CARD_LIST,
   REMOVE_ITEM,
-  SUB_QUANTITY,
+  UPDATE_QUANTITY,
+  UPDATE_QUANTITY_ERROR,
+  UNAUTH_UPDATE_QUANTITY,
   ADD_QUANTITY,
   ADD_SHIPPING,
   ADD_QUANTITY_WITH_NUMBER,
@@ -146,28 +148,57 @@ const otherReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === SUB_QUANTITY) {
-    const { product } = action;
-    const cardItem = state.cardItems.find((item) => item.product.id !== product.id);
+  if (action.type === UNAUTH_UPDATE_QUANTITY) {
+    const { product, type } = action.response;
 
-    //if the qt == 0 then it should be removed
-    if (cardItem.qty === 1) {
-      let new_items = state.cardItems.filter((item) => item.product.id !== product.id);
-      let newTotal = state.total - product.sellPrice;
-      return {
-        ...state,
-        cardItems: new_items,
-        total: newTotal,
-      };
+    if (type === 'dec') {
+      if (product?.amount > 1) {
+        let newTotal = state.total - product['tbl_product.sellPrice'];
+        return {
+          ...state,
+          total: newTotal,
+          cardList: state.cardList.map(item => {
+            if (item.productId === product.productId) {
+              return {
+                ...item,
+                amount: item.amount - 1
+              }
+            }
+
+            return item;
+          }),
+        };
+      }
     } else {
-      cardItem.qty -= 1;
-      let newTotal = state.total - product.sellPrice;
+
+      let newTotal = state.total + product['tbl_product.sellPrice'];
       return {
         ...state,
         total: newTotal,
-        cardItems: [...state.cardItems],
+        cardList: state.cardList.map(item => {
+          if (item.productId === product.productId) {
+            return {
+              ...item,
+              amount: item.amount + 1
+            }
+          }
+
+          return item;
+        }),
       };
     }
+  }
+  // UPDATE_QUANTITY,
+  // UPDATE_QUANTITY_ERROR,
+  if (action.type === UPDATE_QUANTITY) {
+    const { cardList } = action.response;
+    const newTotal = cardList.reduce((item, total) => total += (item.amount * item['tbl_product.sellPrice']));
+
+      return {
+        ...state,
+        total: newTotal,
+        cardList,
+      };
   }
 
   if (action.type === ADD_SHIPPING) {
