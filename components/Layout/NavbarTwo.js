@@ -4,21 +4,19 @@ import TopHeaderTwo from './TopHeaderTwo';
 import MegaMenuTwo from './MegaMenuTwo';
 
 class NavbarTwo extends Component {
-    render() {
-        return (
-            <>
-                <TopPanel />
-                
-                <div className="header-area">
+  render() {
+    return (
+      <>
+        {/* <TopPanel /> */}
 
-                    <TopHeaderTwo />
+        <div className='header-area'>
+          <TopHeaderTwo />
 
-                    <MegaMenuTwo />
-                    
-                </div>
-            </>
-        );
-    }
+          <MegaMenuTwo />
+        </div>
+      </>
+    );
+  }
 }
 
 export default NavbarTwo;

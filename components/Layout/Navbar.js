@@ -7,7 +7,7 @@ class Navbar extends Component {
   render() {
     return (
       <>
-        <TopPanel />
+        {/* <TopPanel /> */}
 
         <TopHeader />
 
