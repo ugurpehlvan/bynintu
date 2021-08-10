@@ -17,7 +17,7 @@ class Footer extends Component {
                                     </Link>
                                 </div>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                                <p>The Most Famous Brands, Sign Up with Big Discounts. Experience the Special Shopping Difference. Hurry, Don't Miss Opportunities. New season. Up to 80% Discounts. Free Shipping Deal. Secure shopping. Famous Fashion Brands. Big Discounts.</p>
                             </div>
                         </div>
 
@@ -90,16 +90,16 @@ class Footer extends Component {
                                     </li>
                                     <li>
                                         <i className="fas fa-phone"></i>
-                                        Call Us: <a href="tel:(+123) 456-7898">(+123) 456-7898</a>
+                                        Call Us: <a href="tel:(+31) 639-339497">(+31) 639-339497</a>
                                     </li>
                                     <li>
                                         <i className="far fa-envelope"></i>
-                                        Email Us: <a href="mailto:support@Bynintu.com">support@Bynintu.com</a>
+                                        Email Us: <a href="mailto:sales@bynintu.com">sales@bynintu.com</a>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <i className="fas fa-fax"></i>
                                         Fax: <a href="tel:+123456">+123456</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </div>
