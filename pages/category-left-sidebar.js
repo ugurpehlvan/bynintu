@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -32,16 +32,13 @@ import ProductsCard from 'components/products/ProductsCard';
 //   };
 // };
 
-const hookClass = ({ searchedProducts, CompareProducts, getProducts }) => {
+const hookClass = ({ searchedProducts, CompareProducts, searchedProductsTotalCount }) => {
   const [gridClass, setGridClass] = useState('');
 
   const handleGrid = (e) => {
     setGridClass(e);
   };
 
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
   console.log('products', searchedProducts);
   return (
     <>
@@ -61,7 +58,7 @@ const hookClass = ({ searchedProducts, CompareProducts, getProducts }) => {
             <LeftSidebar />
 
             <div className='col-lg-8 col-md-12'>
-              <ProductsFilterOptions onClick={handleGrid} />
+              <ProductsFilterOptions products={searchedProducts} searchedProductsTotalCount={searchedProductsTotalCount} onClick={handleGrid} />
 
               <div id='products-filter' className={`products-collections-listing row ${gridClass}`}>
                 <ProductsCard products={searchedProducts} CompareProducts={CompareProducts} />
@@ -83,6 +80,7 @@ const mapStateToProps = (state) => {
     //products: state.searchedProducts.searchedProducts,
     CompareProducts: state.addedItemsToCompare,
     searchedProducts: state.product.searchedProducts,
+    searchedProductsTotalCount: state.product.searchedProductsTotalCount,
   };
 };
 

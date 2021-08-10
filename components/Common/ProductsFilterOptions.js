@@ -16,6 +16,8 @@ class ProductsFilterOptions extends Component {
     }
 
     render() {
+        const { products = [], searchedProductsTotalCount = 0 } = this.props;
+
         return (
             <div className="products-filter-options">
                 <div className="row align-items-center">
@@ -25,7 +27,7 @@ class ProductsFilterOptions extends Component {
                         <div className="view-list-row">
                             <div className="view-column">
                                 <Link href="#">
-                                    <a 
+                                    <a
                                         className="icon-view-two"
                                         onClick={e => {
                                             e.preventDefault();
@@ -38,7 +40,7 @@ class ProductsFilterOptions extends Component {
                                 </Link>
 
                                 <Link href="#">
-                                    <a 
+                                    <a
                                         className="icon-view-three active"
                                         onClick={e => {
                                             e.preventDefault();
@@ -52,7 +54,7 @@ class ProductsFilterOptions extends Component {
                                 </Link>
 
                                 <Link href="#">
-                                    <a 
+                                    <a
                                         className="icon-view-four"
                                         onClick={e => {
                                             e.preventDefault();
@@ -67,7 +69,7 @@ class ProductsFilterOptions extends Component {
                                 </Link>
 
                                 <Link href="#">
-                                    <a 
+                                    <a
                                         className="view-grid-switch"
                                         onClick={e => {
                                             e.preventDefault();
@@ -83,26 +85,26 @@ class ProductsFilterOptions extends Component {
                     </div>
 
                     <div className="col d-flex justify-content-center">
-                        <p>Showing 22 of 102 results</p>
+                        <p>Showing {products?.length} of {searchedProductsTotalCount} results</p>
                     </div>
 
                     <div className="col d-flex">
-                        <span>Show:</span>
+                        {/* <span>Show:</span> */}
 
                         <div className="show-products-number">
-                            <select>
+                            {/* <select>
                                 <option value="1">22</option>
                                 <option value="2">32</option>
                                 <option value="3">42</option>
                                 <option value="4">52</option>
                                 <option value="5">62</option>
-                            </select>
+                            </select> */}
                         </div>
 
-                        <span>Sort:</span>
+                        {/* <span>Sort:</span> */}
 
                         <div className="products-ordering-list">
-                            <select>
+                            {/* <select>
                                 <option value="1">Featured</option>
                                 <option value="2">Best Selling</option>
                                 <option value="3">Price Ascending</option>
@@ -111,7 +113,7 @@ class ProductsFilterOptions extends Component {
                                 <option value="6">Date Descending</option>
                                 <option value="7">Name Ascending</option>
                                 <option value="8">Name Descending</option>
-                            </select>
+                            </select> */}
                         </div>
                     </div>
                 </div>
