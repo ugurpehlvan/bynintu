@@ -181,7 +181,7 @@ class Products extends Component {
                                   </h3>
 
                                   <div className='product-price'>
-                                    <span className='new-price'>€{data.sellPrice}</span>
+                                    <span style={{ color: '#8d0000' }} className='new-price'>€{data.sellPrice}</span>
                                     <span style={{ marginLeft: '12px', textDecoration: 'line-through' }} className='new-price'>
                                       € {data?.listPrice}
                                     </span>
