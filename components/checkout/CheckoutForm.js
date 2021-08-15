@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { EditOutlined } from '@ant-design/icons';
+import Router from 'next/router';
 
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
@@ -26,6 +27,7 @@ import Stripe from 'components/Stripe/Stripe';
 function CheckoutForm({ total, shipping, searchAddress, getAddress, address, addresses }) {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState('');
+  const [token, setToken] = useState('');
 
   const handleEditClick = (id) => {
     getAddress(id);
@@ -132,12 +134,13 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
     if (searchAddress) {
       searchAddress();
     }
+    if (!localStorage.getItem('token')) Router.push('/login');
   }, []);
 
   return (
     <section className='checkout-area ptb-60'>
       <div className='container'>
-        <div className='row'>
+        {/* <div className='row'>
           <div className='col-lg-12 col-md-12'>
             <div className='user-actions'>
               <i className='fas fa-sign-in-alt'></i>
@@ -146,7 +149,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <form onSubmit={handleOnSubmit}>
           <div className='row'>
@@ -206,7 +209,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
 
 const mapStateToProps = (state) => {
   return {
-    items: state.other.cardItems,
+    items: state.other.cardList,
     total: state.other.total,
     shipping: state.other.shipping,
     address: state.account.address,

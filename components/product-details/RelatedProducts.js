@@ -134,7 +134,7 @@ class RelatedProducts extends Component {
                             <i className='fas fa-star'></i>
                             <i className='far fa-star'></i>
                           </div>
-                          <AddToCard product={product} />
+                          {/* <AddToCard product={product} /> */}
                         </div>
                       </div>
                     </div>

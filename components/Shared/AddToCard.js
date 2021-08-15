@@ -12,7 +12,7 @@ const AddToCard = ({ addToCard, addCardToDatabase, product }) => {
     addToCard(product);
 
     if (!localStorage.getItem('token')) {
-      localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
+      // localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
     } else {
       addCardToDatabase({
         productId: id,

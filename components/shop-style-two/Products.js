@@ -77,7 +77,7 @@ class Products extends Component {
   };
 
   render() {
-    let { productsCollectionWomanDress, productsCollectionLinens, productsCollectionBathrobe } = this.props;
+    let { latest, special, featured } = this.props;
     const { modalOpen } = this.state;
     return (
       <section className='all-products-area pb-60'>
@@ -128,14 +128,14 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {productsCollectionWomanDress.map((data, idx) => (
+                          {latest.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div className='product-image'>
                                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                                     <a>
-                                      <img src={data.image} alt='image' />
-                                      <img src={data.imageHover} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
                                     </a>
                                   </Link>
 
@@ -207,14 +207,14 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {productsCollectionLinens.map((data, idx) => (
+                          {special.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div className='product-image'>
                                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                                     <a>
-                                      <img src={data.image} alt='image' />
-                                      <img src={data.imageHover} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
                                     </a>
                                   </Link>
 
@@ -286,14 +286,14 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {productsCollectionBathrobe.map((data, idx) => (
+                          {featured.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div className='product-image'>
                                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                                     <a>
-                                      <img src={data.image} alt='image' />
-                                      <img src={data.imageHover} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
+                                      <img src={data.imageUrl} alt='image' />
                                     </a>
                                   </Link>
 

@@ -8,6 +8,7 @@ export const signIn = (formValues, router) => async (dispatch, getState) => {
   if (response.user) {
     dispatch({ type: AUTH_SUCCESS, payload: response.user });
     localStorage.setItem('token', response.token);
+    
     router('/');
   } else {
     dispatch({ type: AUTH_ERROR, payload: response?.error });

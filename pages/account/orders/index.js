@@ -15,8 +15,10 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
 
   const getOrders = async () => {
-    const resp = await axiosClient.post(apiUrl.searchOrders, {}, authHeader()).data;
-    if (resp) setOrders(resp);
+    const resp = (await axiosClient.post(apiUrl.searchOrders, {}, authHeader())).data;
+    console.log('resp', resp);
+
+    if (resp) setOrders(resp.data);
   };
   useEffect(() => {
     getOrders();

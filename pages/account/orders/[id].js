@@ -16,11 +16,11 @@ const OrderDetailHeader = (order) => {
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order Date</div>
-          <div className={styles.header_description}>{order.date}</div>
+          <div className={styles.header_description}>{new Date(order?.master?.date).toLocaleDateString()}</div>
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order No</div>
-          <div className={styles.header_description}>{order.code}</div>
+          <div className={styles.header_description}>{order?.master?.code}</div>
         </div>
         <div className='col-lg-3'>
           <div className={styles.header_title}>Order Summary</div>
@@ -35,16 +35,16 @@ const DeliveryCard = (detail) => {
   return (
     <div className={styles.delivery_card}>
       <div className={styles.delivery_card_image_container}>
-        <img src={detail?.product?.imagesUrls?.[0]?.url} alt='' />
+        <img src={detail?.imageUrl} alt='' />
       </div>
       <div className={styles.delivery_card_content}>
         <div>
-          <div className={styles.delivery_card_label}>{detail?.product?.title}</div>
-          <div className={styles.delivery_card_desc}>{detail?.product?.subTitle}</div>
+          <div className={styles.delivery_card_label}>{detail?.productTitle}</div>
+          <div className={styles.delivery_card_desc}>{detail?.productSubTitle}</div>
         </div>
         <div className={styles.delivery_card_quantity}>
           {/* <strong>Size:</strong> Mat Sıyah , Tek Ebat - Adet: 1 */}
-          {'Qty:' + detail.quantity}
+          {'Quantity: ' + detail.quantity}
         </div>
         <div className={styles.delivery_card_price_container}>
           <div className={styles.delivery_card_price}>{detail?.totalAmount + ' €'}</div>
@@ -59,7 +59,7 @@ const OrderDetails = () => {
   const [order, setOrder] = useState({});
   const id = useRouter().query?.id;
   const getOrder = async () => {
-    const resp = await axiosClient.get(apiUrl.fetchOrder + id, authHeader()).data;
+    const resp = (await axiosClient.get(apiUrl.fetchOrder + id, authHeader())).data;
     if (resp) setOrder(resp);
   };
   useEffect(() => {
@@ -68,6 +68,10 @@ const OrderDetails = () => {
       console.log('id', id);
     }
   }, [id]);
+
+  useEffect(() => {
+    console.log('order', order);
+  }, [order]);
   return (
     <MyAccountContainer>
       {OrderDetailHeader(order)}
@@ -80,7 +84,7 @@ const OrderDetails = () => {
               </h2>
             </div>
             <div>
-              <div>{order.customerName}</div>
+              <div>{order?.master?.customerName}</div>
               <div className={styles.address}>Binevler Mah Binevler mahallesi 81052 nolu sokak, No: 39 Kardelen Apt. Giris kat daire 2</div>
               <div>Şahinbey / Gaziantep</div>
             </div>
@@ -93,7 +97,7 @@ const OrderDetails = () => {
             </div>
             <div className={styles.price_container}>
               <div>List Price</div>
-              <div>{order.totalAmount + '€'} </div>
+              <div>{order?.master?.totalAmount + '€'} </div>
             </div>
             <div className={styles.spacer} />
             <div className={styles.price_container}>
@@ -103,7 +107,7 @@ const OrderDetails = () => {
             <div className={styles.spacer} />
             <div className={styles.price_container}>
               <div>Total</div>
-              <div>{order.totalAmount + '€'}</div>
+              <div>{order?.master?.totalAmount + '€'}</div>
             </div>
           </div>
         </div>

@@ -56,20 +56,20 @@ class Card extends Component {
                   ? items.map((item, idx) => (
                       <div className='product-card' key={idx}>
                         <div className='product-image'>
-                          <img src={item.product.imageUrls[0].url} alt='image' />
+                          <img src={item.imageUrl} alt='image' />
                         </div>
 
                         <div className='product-content'>
                           <h3>
                             <Link href='#'>
-                              <a>{item.product.title}</a>
+                              <a>{item['tbl_product.title']}</a>
                             </Link>
                           </h3>
                           <span>Blue / XS</span>
                           <div className='product-price'>
-                            <span>{item.qty}</span>
+                            <span>{item.amount}</span>
                             <span>x</span>
-                            <span className='price'>${item.product.sellPrice}</span>
+                            <span className='price'>${item['tbl_product.sellPrice']}</span>
                           </div>
                         </div>
                       </div>
@@ -101,7 +101,7 @@ class Card extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.other.cardItems,
+    items: state.other.cardList,
     total: state.other.total,
   };
 };

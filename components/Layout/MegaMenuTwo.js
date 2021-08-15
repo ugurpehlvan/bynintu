@@ -1133,7 +1133,7 @@ class MegaMenuTwo extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.other.cardItems,
+    items: state.other.cardList,
   };
 };
 

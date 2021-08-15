@@ -40,7 +40,6 @@ const initialState = {
   productsGrocery: productsGrocery,
   productsElectronics: productsElectronics,
   productsFurniture: productsFurniture,
-  cardItems: [],
   cardList: [],
   addedItemsToCompare: [],
   total: 0,
@@ -49,21 +48,33 @@ const initialState = {
 };
 
 const otherReducer = (state = initialState, action) => {
-
   if (action.type === ADD_TO_CART) {
-    const { product, qty } = action;
-    let existingCardData = state.cardItems.find((item) => product.id === item.product.id);
+    const { product, qty, warehouseId } = action;
     let newCard;
+    let existingCardData = state.cardList.find((item) => product.id === item.productId);
+    const cardData = {
+      id: 0,
+      productId: product.id,
+      amount: qty,
+      'tbl_product.title': product.title,
+      'tbl_brand.name': product['tbl_brand.name'],
+      'tbl_product.subTitle': product.subTitle,
+      'tbl_product.sellPrice': product.sellPrice,
+      'tbl_product.listPrice': product.listPrice,
+      warehouseId,
+      'tbl_warehouse.name': product.warehouses.find((el) => el.warehouseId === warehouseId)['tbl_warehouse.name'],
+      imageUrl: product.imageUrls?.[0]?.url,
+    };
 
     if (existingCardData) {
-      existingCardData.qty += qty;
+      existingCardData.amount += qty;
       newCard = {
-        cardItems: [...state.cardItems],
+        cardList: [...state.cardList],
         total: state.total + product.sellPrice * qty,
       };
     } else {
       newCard = {
-        cardItems: [...state.cardItems, { product, qty }],
+        cardList: [...state.cardList, cardData],
         total: state.total + product.sellPrice * qty,
       };
     }
@@ -76,18 +87,19 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if (action.type === CREATE_DEFAULT_CART) {
-
     return {
       ...state,
-      cardItems: action.payload?.cardItems || [],
+      cardList: action.payload?.cardList || [],
       total: action.payload?.total || 0,
     };
   }
 
   if (action.type === GET_CARD_LIST) {
+    const cardList = action.payload || [];
     return {
       ...state,
-      cardList: action.payload || [],
+      cardList,
+      total: cardList.reduce((p, c) => (p += c['tbl_product.sellPrice'] * c.amount), 0),
     };
   }
 
@@ -114,16 +126,21 @@ const otherReducer = (state = initialState, action) => {
   }
 
   if (action.type === REMOVE_ITEM) {
-    let itemToRemove = state.cardItems.find((item) => action.product.id === item.product.id);
-    let new_items = state.cardItems.filter((item) => action.product.id !== item.product.id);
+    let itemToRemove = state.cardList.find((item) => action.product.productId === item.productId);
+    let new_items = state.cardList.filter((item) => action.product.productId !== item.productId);
 
     //calculating the total
-    let newTotal = state.total - itemToRemove.product.sellPrice * itemToRemove.qty;
+    let newTotal = state.total - itemToRemove['tbl_product.sellPrice'] * itemToRemove.amount;
 
+    const newCard = {
+      total: newTotal,
+      cardList: new_items || [],
+    };
+
+    localStorage.setItem('localCard', JSON.stringify(newCard));
     return {
       ...state,
-      cardItems: new_items || [],
-      total: newTotal,
+      ...newCard,
     };
   }
 
@@ -136,69 +153,41 @@ const otherReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === ADD_QUANTITY) {
-    const { product } = action;
-    const cardItem = state.cardItems.find((item) => item.product.id !== product.id);
-    cardItem.qty += 1;
-    let newTotal = state.total + addedItem.price;
-    return {
-      ...state,
-      total: newTotal,
-      cardItems: [...state.cardItems],
-    };
-  }
-
   if (action.type === UNAUTH_UPDATE_QUANTITY) {
     const { product, type } = action.response;
 
-    if (type === 'dec') {
-      if (product?.amount > 1) {
-        let newTotal = state.total - product['tbl_product.sellPrice'];
-        return {
-          ...state,
-          total: newTotal,
-          cardList: state.cardList.map(item => {
-            if (item.productId === product.productId) {
-              return {
-                ...item,
-                amount: item.amount - 1
-              }
-            }
+    let newTotal = state.total + product['tbl_product.sellPrice'];
+    const cardList = state.cardList
+      .map((item) => {
+        if (item.productId === product.productId) return { ...item, amount: type === 'dec' ? item.amount - 1 : item.amount + 1 };
+        return item;
+      })
+      .filter((el) => el.amount > 0);
 
-            return item;
-          }),
-        };
-      }
-    } else {
+    const newCard = {
+      total: newTotal,
+      cardList,
+    };
 
-      let newTotal = state.total + product['tbl_product.sellPrice'];
-      return {
-        ...state,
-        total: newTotal,
-        cardList: state.cardList.map(item => {
-          if (item.productId === product.productId) {
-            return {
-              ...item,
-              amount: item.amount + 1
-            }
-          }
+    localStorage.setItem('localCard', JSON.stringify(newCard));
 
-          return item;
-        }),
-      };
-    }
+    return {
+      ...state,
+      ...newCard,
+    };
   }
   // UPDATE_QUANTITY,
   // UPDATE_QUANTITY_ERROR,
   if (action.type === UPDATE_QUANTITY) {
     const { cardList } = action.response;
-    const newTotal = cardList.reduce((item, total) => total += (item.amount * item['tbl_product.sellPrice']));
+    console.log('action.response', action.response);
+    const newTotal = cardList.reduce((total, item) => (total += item.amount * item['tbl_product.sellPrice']), 0);
 
-      return {
-        ...state,
-        total: newTotal,
-        cardList,
-      };
+    return {
+      ...state,
+      total: newTotal,
+      cardList,
+    };
   }
 
   if (action.type === ADD_SHIPPING) {
@@ -219,7 +208,7 @@ const otherReducer = (state = initialState, action) => {
     localStorage.setItem('localCard', '');
     return {
       ...state,
-      cardItems: [],
+      cardList: [],
       total: 0,
       shipping: 0,
     };

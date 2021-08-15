@@ -18,30 +18,30 @@ import { translations } from 'resources';
 const Index = ({ language, addLocalCardToDataBase }) => {
   const router = useRouter();
 
-  const createCardItems = () => {
-    let card;
-    if (localStorage.getItem('localCard')) card = JSON.parse(localStorage.getItem('localCard'));
+  // const createCardItems = () => {
+  //   let card;
+  //   if (localStorage.getItem('localCard')) card = JSON.parse(localStorage.getItem('localCard'));
 
-    let data = [];
-    card?.cardItems?.forEach((product) => {
+  //   let data = [];
+  //   card?.cardList?.forEach((product) => {
+  //     data.push({
+  //       productId: product.productId,
+  //       amount: 1,
+  //     });
+  //   });
 
-      data.push({
-        productId: product.id,
-        amount: 1,
-      });
-    });
-
-    addLocalCardToDataBase({
-      products: card.addedItems,
-    });
-  };
+  //   addLocalCardToDataBase({
+  //     products: card.addedItems,
+  //   });
+  // };
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       router.push('/');
-    } else if (localStorage.getItem('cardWithoutLogin')) {
-      createCardItems();
-    }
+    } 
+    // else if (localStorage.getItem('cardWithoutLogin')) {
+    //   createCardItems();
+    // }
   }, []);
 
   return (

@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 // actions
 import { signIn } from 'store/auth/actions';
+import { addLocalCardToDataBase } from 'store/actions/actions';
 
 // components
 import Navbar from '../components/Layout/Navbar';
@@ -17,7 +18,7 @@ import { translations } from 'resources';
 import notify from '../utils/notify';
 import isEmail from '../utils/isEmail';
 
-const Login = ({ signIn, language }) => {
+const Login = ({ signIn, language, addLocalCardToDataBase }) => {
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -45,7 +46,10 @@ const Login = ({ signIn, language }) => {
           email,
           password,
         },
-        (route) => router.push(route)
+        (route) => {
+          router.push(route);
+          addLocalCardToDataBase();
+        }
       );
     },
     [email, password]
@@ -139,4 +143,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { signIn })(Login);
+export default connect(mapStateToProps, { signIn, addLocalCardToDataBase })(Login);

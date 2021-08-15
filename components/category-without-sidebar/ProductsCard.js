@@ -90,7 +90,7 @@ class ProductsCard extends Component {
                   <i className='far fa-star'></i>
                 </div>
 
-                <AddToCard product={product} />
+                {/* <AddToCard product={product} /> */}
               </div>
             </div>
           </div>

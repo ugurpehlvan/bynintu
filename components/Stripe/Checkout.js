@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { resetCard } from 'store/actions/actions';
+import { viewCardPage } from 'store/actions/actions';
 import notify from 'utils/notify';
 import Router from 'next/router';
 import { translations } from 'resources';
@@ -12,7 +12,7 @@ import { axiosClient } from 'service';
 import authHeader from 'utils/authHeader';
 import apiUrl from 'service/apiURL';
 
-function Checkout({ total, address, currency, items, resetCard, language }) {
+function Checkout({ total, address, currency, items, viewCardPage, language }) {
   const [clientSecret, setClientSecret] = useState(null);
   const [error, setError] = useState(null);
   const [metadata, setMetadata] = useState(null);
@@ -20,7 +20,7 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
   const [processing, setProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  const amount = ((total).toFixed(2) * 100);
+  const amount = total.toFixed(2) * 100;
 
   const stripeIntent = async () => {
     const response = await axiosClient.post(apiUrl.stripeCheckoutIntent, { amount, currency, items, address }, authHeader());
@@ -54,10 +54,11 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
       setError(null);
       setSucceeded(true);
       setProcessing(false);
-      setMetadata(payload.paymentIntent);
+      // setMetadata(payload.paymentIntent);
       await axiosClient.post(apiUrl.stripeCheckoutSuccess, { paymentData: payload.paymentIntent, items, address }, authHeader());
-      resetCard();
+      // resetCard();
       notify('success', translations[language]['g59']);
+      viewCardPage();
       Router.push('/');
       //ödeme tamamlandı yönlendirme yapılacak
       //test kartı 4000 0027 6000 3184 hertürlü  tarih ce ccv yi kabul eder
@@ -77,11 +78,10 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
       // <div className={styles['sr-field-success']}>
       <div className={'sr-field-success'}>
         <h1 className={'sr-bynintu-h1'}>Your test payment succeeded</h1>
-        <p>View PaymentIntent response:</p>
-        {/* <pre className={styles['sr-callout']}> */}
+        {/* <p>View PaymentIntent response:</p>
         <pre className={'sr-callout sr-callout-code'}>
           <code className={'sr-callout-code'} >{JSON.stringify(metadata, null, 2)}</code>
-        </pre>
+        </pre> */}
       </div>
     );
   };
@@ -144,11 +144,11 @@ function Checkout({ total, address, currency, items, resetCard, language }) {
 const mapStateToProps = (state) => {
   return {
     total: state.other.total,
-    items: state.other.cardItems,
+    items: state.other.cardList,
     shipping: state.other.shipping,
     addresses: state.account.addresses,
     language: state.language.appLanguage,
   };
 };
 
-export default connect(mapStateToProps, { resetCard })(Checkout);
+export default connect(mapStateToProps, {  viewCardPage })(Checkout);

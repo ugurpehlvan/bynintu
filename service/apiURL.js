@@ -25,6 +25,7 @@ const apiUrl = {
   createIteminCard: '/api/api/v1/card',
   stripeCheckoutIntent: '/api/api/v1/checkout/stripe/intent',
   stripeCheckoutSuccess: '/api/api/v1/checkout/stripe/success',
+  homePageData: '/api/api/v1/dashboard',
 };
 
 export default apiUrl;

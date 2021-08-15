@@ -78,8 +78,8 @@ class TrendingProducts extends Component {
                       <div className='product-image'>
                         <Link href='/product/[id]' as={`/product/${product.id}`}>
                           <a>
-                            <img src={product.image} alt='image' />
-                            <img src={product.imageHover} alt='image' />
+                            <img src={product?.imageUrl} alt='image' />
+                            <img src={product?.imageUrl} alt='image' />
                           </a>
                         </Link>
 

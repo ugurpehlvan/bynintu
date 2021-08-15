@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, connect } from 'react-redux';
 import { useRouter } from 'next/router';
 
@@ -19,9 +19,19 @@ import News from '../components/Common/News';
 import Subscribe from '../components/Common/Subscribe';
 import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
+import { axiosClient } from 'service';
+import apiUrl from 'service/apiURL';
+import authHeader from 'utils/authHeader';
 
 const Index = ({ validateAccount }) => {
   const router = useRouter();
+  const [homePageData, setHomePageData] = useState({
+    bestSellers: [],
+    trends: [],
+    last: [],
+    special: [],
+    featured: [],
+  });
 
   const productsCollectionShoes = useSelector((state) => state.other.productsCollectionShoes);
   const productsCollectionPillows = useSelector((state) => state.other.productsCollectionPillows);
@@ -32,7 +42,13 @@ const Index = ({ validateAccount }) => {
 
   const { token } = router.query;
 
+  const getPageData = async () => {
+    const response = await axiosClient.get(apiUrl.homePageData, authHeader());
+    if (response.data) setHomePageData(response.data);
+  };
+
   useEffect(() => {
+    getPageData();
     token && validateAccount({ token }, (route) => router.push(route));
   }, [token]);
 
@@ -45,23 +61,23 @@ const Index = ({ validateAccount }) => {
       <OfferArea />
 
       <Products
-        productsCollectionWomanDress={productsCollectionWomanDress}
-        productsCollectionBathrobe={productsCollectionBathrobe}
-        productsCollectionLinens={productsCollectionLinens}
-        CompareProducts={addedItemsToCompare}
+        latest={homePageData.last}
+        special={homePageData.special}
+        featured={homePageData.featured}
+        // CompareProducts={addedItemsToCompare}
       />
 
       <CategoryProducts />
 
-      <TrendingProducts products={productsCollectionPillows} CompareProducts={addedItemsToCompare} />
+      <TrendingProducts products={homePageData.trends} CompareProducts={addedItemsToCompare} />
 
-      <BestSeller products={productsCollectionShoes} CompareProducts={addedItemsToCompare} />
+      <BestSeller products={homePageData.bestSellers} CompareProducts={addedItemsToCompare} />
 
       <Facility />
 
       <Testimonials />
 
-      <News />
+      {/* <News /> */}
 
       <Subscribe />
 

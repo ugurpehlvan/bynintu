@@ -318,7 +318,7 @@ class MegaMenu extends Component {
 
 const mapStateToProps = ({ other, auth, language, category }) => {
   return {
-    items: other.cardItems,
+    items: other.cardList,
     isSignedIn: auth.isSignedIn,
     user: auth.customer,
     language: language.appLanguage,

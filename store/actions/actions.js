@@ -21,12 +21,34 @@ import authHeader from 'utils/authHeader';
 export const addToCard =
   (product, qty = 1, warehouseId) =>
   async (dispatch) => {
-    const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty, warehouseId })).data;
-    // get product
-    if (!response.error) {
-      dispatch({ type: ADD_TO_CART, product, qty });
+    let token = localStorage.getItem('token');
+    if (!token) {
+      const response = (await axiosClient.post(apiURL.checkProductQuantity, { productId: product.id, amount: qty, warehouseId })).data;
+      // get product
+      if (!response.error) {
+        dispatch({ type: ADD_TO_CART, product, qty, warehouseId });
+      } else {
+        dispatch({ type: ADD_TO_CART_ERROR });
+      }
     } else {
-      dispatch({ type: ADD_TO_CART_ERROR });
+      const response = (
+        await axiosClient.post(
+          apiURL.createIteminCard,
+          {
+            productId: product.id,
+            amount: qty,
+            warehouseId,
+          },
+          authHeader()
+        )
+      ).data;
+
+      if (!response.error) {
+        dispatch({ type: UPDATE_QUANTITY, response: { cardList: response } });
+      } else {
+        dispatch({ type: UPDATE_QUANTITY_ERROR });
+        alert("You can't update product quantity");
+      }
     }
   };
 
@@ -40,14 +62,19 @@ export const viewCardPage = () => async (dispatch) => {
   }
 };
 
-export const addLocalCardToDataBase = (card) => async (dispatch) => {
-  const response = (await axiosClient.post(apiURL.createCardForLogin, card)).data;
-  console.log('response32', response);
-  // if (!response.error) {
-  //   dispatch({ type: ADD_TO_CART, id });
-  // } else {
-  //   dispatch({ type: ADD_TO_CART_ERROR });
-  // }
+export const addLocalCardToDataBase = () => async (dispatch) => {
+  if (localStorage.getItem('localCard')) {
+    const card = JSON.parse(localStorage.getItem('localCard'));
+    const response = (await axiosClient.post(apiURL.createCardForLogin, { products: card.cardList }, authHeader())).data;
+    console.log('response32', response);
+    if (!response.error) {
+      localStorage.removeItem('localCard');
+      dispatch({ type: UPDATE_QUANTITY, response: { cardList: response } });
+    } else {
+      dispatch({ type: UPDATE_QUANTITY_ERROR });
+      alert("You can't update product quantity");
+    }
+  }
 };
 
 export const addCardToDatabase = (product) => async (dispatch) => {
@@ -67,19 +94,11 @@ export const createDefaultCard = (card) => {
   };
 };
 //remove item action
-export const removeItem = (product) => {
-  return {
-    type: REMOVE_ITEM,
-    product,
-  };
-};
-
-//subtract qt action
-export const updateQuantity = ({ product, type }) => async (dispatch) => {
-  let isAuthenticated = localStorage.getItem('token');
-  if (isAuthenticated) {
-    const response = (await axiosClient.put(apiURL.createIteminCard + `/${product.id}`, { product, type } , authHeader())).data;
-
+export const removeItem = (product) => async (dispatch) => {
+  let token = localStorage.getItem('token');
+  if (token) {
+    const response = (await axiosClient.delete(apiURL.createIteminCard + `/${product.id}`, authHeader())).data;
+    console.log('remove response', response);
     if (!response.error) {
       dispatch({ type: UPDATE_QUANTITY, response: { cardList: response } });
     } else {
@@ -87,9 +106,28 @@ export const updateQuantity = ({ product, type }) => async (dispatch) => {
       alert("You can't update product quantity");
     }
   } else {
-    dispatch({ type: UNAUTH_UPDATE_QUANTITY, response: { product, type } });
+    dispatch({ type: REMOVE_ITEM, product });
   }
 };
+
+//subtract qt action
+export const updateQuantity =
+  ({ product, type }) =>
+  async (dispatch) => {
+    let isAuthenticated = localStorage.getItem('token');
+    if (isAuthenticated) {
+      const response = (await axiosClient.put(apiURL.createIteminCard + `/${product.id}`, { product, type }, authHeader())).data;
+
+      if (!response.error) {
+        dispatch({ type: UPDATE_QUANTITY, response: { cardList: response } });
+      } else {
+        dispatch({ type: UPDATE_QUANTITY_ERROR });
+        alert("You can't update product quantity");
+      }
+    } else {
+      dispatch({ type: UNAUTH_UPDATE_QUANTITY, response: { product, type } });
+    }
+  };
 
 // Reset card after form submit
 export const resetCard = () => {

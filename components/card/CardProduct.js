@@ -5,13 +5,12 @@ import { removeItem, updateQuantity, viewCardPage } from '../../store/actions/ac
 import { toast } from 'react-toastify';
 
 class CardProduct extends Component {
-
   componentDidMount() {
-    this.props.viewCardPage();
-  };
+    if (localStorage.getItem('token')) this.props.viewCardPage();
+  }
 
-  handleRemove = (id) => {
-    this.props.removeItem(id);
+  handleRemove = (product) => {
+    this.props.removeItem(product);
 
     toast.error('Removed from card', {
       position: 'bottom-left',
@@ -32,14 +31,13 @@ class CardProduct extends Component {
   };
 
   render() {
-
     // 1- login olunca card list i db den cek
     // 2- login olunca sepete eklenmis urun varsa sepeti veri tabanina yaz temizle
     // 3- Sign in degilsen urunu local storage kaydet ve local storage daki datayla cardList i guncelle
 
-    console.log('cardList', this.props.cardList)
-    console.log('items', this.props.items)
-    let cardItems = this.props.cardList.length ? (
+    console.log('cardList', this.props.cardList);
+    console.log('items', this.props.items);
+    let cardList = this.props.cardList.length ? (
       this.props.cardList.map((item, idx) => {
         return (
           <tr key={idx}>
@@ -102,7 +100,7 @@ class CardProduct extends Component {
                   className='remove'
                   onClick={(e) => {
                     e.preventDefault();
-                    // this.handleRemove(item.product);
+                    this.handleRemove(item);
                   }}
                 >
                   <i className='far fa-trash-alt'></i>
@@ -132,7 +130,7 @@ class CardProduct extends Component {
               <th scope='col'>Total</th>
             </tr>
           </thead>
-          <tbody>{cardItems}</tbody>
+          <tbody>{cardList}</tbody>
         </table>
       </>
     );
@@ -141,7 +139,6 @@ class CardProduct extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.other.cardItems,
     cardList: state.other.cardList,
     total: state.other.total,
   };

@@ -13,58 +13,57 @@ class ProductContent extends Component {
     min: 1,
     sizeGuide: false,
     shipModal: false,
-	selectedWarehouse: null
+    selectedWarehouse: null,
   };
 
   handleAddToCardFromView = () => {
+    if (!this.state.selectedWarehouse) {
+      alert('Please select a warehouse');
+      return;
+    }
 
-	if (!this.state.selectedWarehouse) {
-		alert('Please select a warehouse');
-		return;
-	};
-
-	if (!this.state.qty) {
-		alert('Please select at least on quantity');
-		return;
-	};
-
+    if (!this.state.qty) {
+      alert('Please select at least on quantity');
+      return;
+    }
+    console.log('addtocard');
     this.props.addToCard(this.props.product, this.state.qty, this.state.selectedWarehouse.warehouseId);
 
-	if (!localStorage.getItem('token')) {
-		localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
-	} else {
-		this.props.addCardToDatabase({
-			productId: this.props.product.id,
-			amount: this.state.qty,
-			warehouseId: this.state.selectedWarehouse.warehouseId
-		});
-	}
+    // if (!localStorage.getItem('token')) {
+    //   localStorage.setItem('cardWithoutLogin', 'cardWithoutLogin');
+    // } else {
+    //   this.props.addCardToDatabase({
+    //     productId: this.props.product.id,
+    //     amount: this.state.qty,
+    //     warehouseId: this.state.selectedWarehouse.warehouseId,
+    //   });
+    // }
 
     toast.success('Added to the card', {
-		position: 'bottom-left',
-		autoClose: 5000,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: true,
-		});
-  	};
+      position: 'bottom-left',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
 
   IncrementItem = () => {
     this.setState((prevState) => {
-		if (prevState.qty < 10) {
-			return {
-			qty: prevState.qty + 1,
-			};
-		} else {
-			return null;
-		}
+      if (prevState.qty < 10) {
+        return {
+          qty: prevState.qty + 1,
+        };
+      } else {
+        return null;
+      }
     });
   };
 
   handleWarehouseClick = (warehouse) => {
-	  this.setState({ selectedWarehouse: warehouse });
-  }
+    this.setState({ selectedWarehouse: warehouse });
+  };
 
   DecreaseItem = () => {
     this.setState((prevState) => {
@@ -97,7 +96,13 @@ class ProductContent extends Component {
   render() {
     const { sizeGuide, shipModal, selectedWarehouse } = this.state;
     const { product } = this.props;
-	console.log({ product })
+    console.log('product', product);
+
+    const availableWareHouses = product?.warehouses?.filter?.((el) => el.quantity > 0);
+
+    if (availableWareHouses?.length === 1 && !selectedWarehouse) {
+      this.setState({ selectedWarehouse: availableWareHouses[0] });
+    }
     return (
       <>
         <div className='col-lg-6 col-md-6'>
@@ -142,13 +147,13 @@ class ProductContent extends Component {
                 <span>Availability:</span>{' '}
                 <Link href='#'>
                   <a>
-                    {product?.quantity ? 'In stock' : 'Out of stock'} ({`${product?.quantity}`} items)
+                    {product?.quantity ? 'In stock' : 'Out of stock'} ({`${selectedWarehouse?.quantity}`} items)
                   </a>
                 </Link>
               </li>
             </ul>
 
-            <div className='product-color-switch'>
+            {/* <div className='product-color-switch'>
               <h4>Color:</h4>
 
               <ul>
@@ -210,28 +215,22 @@ class ProductContent extends Component {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className='warehouse-info-wrapper'>
               <h4>Shipped from:</h4>
               <ul>
-				  {
-					  product?.warehouses?.map(warehouse => {
-						  if (warehouse.quantity > 0) {
-							  return (
-								<li
-									key={warehouse.id}
-									className={selectedWarehouse?.id === warehouse.id ? 'active' : ''}
-									onClick={() => this.handleWarehouseClick(warehouse)}
-								>
-									{warehouse['tbl_warehouse.name']}
-								</li>
-							  )
-						  } else {
-							  return null;
-						  }
-					  })
-				  }
+                {availableWareHouses?.map((warehouse) => {
+                  return (
+                    <li
+                      key={warehouse.warehouseId}
+                      className={selectedWarehouse?.warehouseId === warehouse.warehouseId ? 'active' : ''}
+                      onClick={() => this.handleWarehouseClick(warehouse)}
+                    >
+                      {warehouse['tbl_warehouse.name']}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -294,13 +293,13 @@ class ProductContent extends Component {
               </div>
             </div>
 
-            <div className='buy-checkbox-btn'>
+            {/* <div className='buy-checkbox-btn'>
               <div className='item'>
                 <Link href='#'>
                   <a className='btn btn-primary'>Buy it now!</a>
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             <div className='custom-payment-options'>
               <span>Guaranteed safe checkout:</span>
