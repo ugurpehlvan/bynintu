@@ -30,19 +30,19 @@ const options = {
 
 class InstagramPhoto extends Component {
 
-    state = { 
+    state = {
         display: false,
         panel: true
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     render() {
         return (
             <div className="instagram-area">
-                {this.state.display ? <OwlCarousel 
+                {this.state.display ? <OwlCarousel
                     className="instagram-slides owl-carousel owl-theme"
                     {...options}
                 >
@@ -53,7 +53,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -63,7 +63,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -73,7 +73,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -83,7 +83,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -93,7 +93,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -103,7 +103,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -113,7 +113,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -123,7 +123,7 @@ class InstagramPhoto extends Component {
                             <i className="fab fa-instagram"></i>
                         </div>
 
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
 
                     <div className="instagram-box">
@@ -132,7 +132,7 @@ class InstagramPhoto extends Component {
                         <div className="icon">
                             <i className="fab fa-instagram"></i>
                         </div>
-                        <a target="_blank" href="https://www.instagram.com/"></a>
+                        <a target="_blank" href="https://www.instagram.com/bynintucom/"></a>
                     </div>
                 </OwlCarousel> : ''}
             </div>

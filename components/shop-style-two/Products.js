@@ -98,7 +98,7 @@ class Products extends Component {
                     </span>
                   </li>
 
-                  <li
+                  {/* <li
                     onClick={(e) => {
                       e.preventDefault();
                       this.openTabSection(e, 'tab2');
@@ -118,7 +118,7 @@ class Products extends Component {
                     <span className='tabs-nav-text'>
                       <span className='dot'></span> Featured Products
                     </span>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 
@@ -203,163 +203,6 @@ class Products extends Component {
                     </div>
                   </div>
 
-                  <div id='tab2' className='tabs_item'>
-                    <div className='row'>
-                      {this.state.display ? (
-                        <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {productsCollectionLinens.map((data, idx) => (
-                            <div className='col-lg-12 col-md-12' key={idx}>
-                              <div className='single-product-box'>
-                                <div className='product-image'>
-                                  <Link href='/product/[id]' as={`/product/${data.id}`}>
-                                    <a>
-                                      <img src={data.image} alt='image' />
-                                      <img src={data.imageHover} alt='image' />
-                                    </a>
-                                  </Link>
-
-                                  <ul>
-                                    <li>
-                                      <Link href='#'>
-                                        <a
-                                          data-tip='Quick View'
-                                          data-place='left'
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            this.openModal();
-                                            this.handleModalData(data);
-                                          }}
-                                        >
-                                          <i className='far fa-eye'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link href='#'>
-                                        <a data-tip='Add to Wishlist' data-place='left'>
-                                          <i className='far fa-heart'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link href='#'>
-                                        <a data-tip='Add to Compare' data-place='left'>
-                                          <i className='fas fa-sync'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </div>
-
-                                <div className='product-content'>
-                                  <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                    <Link href='/product/[id]' as={`/product/${data.id}`}>
-                                      <a>{data.title}</a>
-                                    </Link>
-                                  </h3>
-
-                                  <div className='product-price'>
-                                    <span className='new-price'>€{data.price}</span>
-                                  </div>
-
-                                  <div className='rating'>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='far fa-star'></i>
-                                  </div>
-
-                                  {/*  <AddToCard product={product} /> */}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </OwlCarousel>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </div>
-
-                  <div id='tab3' className='tabs_item'>
-                    <div className='row'>
-                      {this.state.display ? (
-                        <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {productsCollectionBathrobe.map((data, idx) => (
-                            <div className='col-lg-12 col-md-12' key={idx}>
-                              <div className='single-product-box'>
-                                <div className='product-image'>
-                                  <Link href='/product/[id]' as={`/product/${data.id}`}>
-                                    <a>
-                                      <img src={data.image} alt='image' />
-                                      <img src={data.imageHover} alt='image' />
-                                    </a>
-                                  </Link>
-
-                                  <ul>
-                                    <li>
-                                      <Link href='#'>
-                                        <a
-                                          data-tip='Quick View'
-                                          data-place='left'
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            this.openModal();
-                                            this.handleModalData(data);
-                                          }}
-                                        >
-                                          <i className='far fa-eye'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link href='#'>
-                                        <a data-tip='Add to Wishlist' data-place='left'>
-                                          <i className='far fa-heart'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link href='#'>
-                                        <a data-tip='Add to Compare' data-place='left'>
-                                          <i className='fas fa-sync'></i>
-                                        </a>
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </div>
-
-                                <div className='product-content'>
-                                  <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                    <Link href='/product/[id]' as={`/product/${data.id}`}>
-                                      <a>{data.title}</a>
-                                    </Link>
-                                  </h3>
-
-                                  <div className='product-price'>
-                                    <span className='new-price'>€{data.price}</span>
-                                  </div>
-
-                                  <div className='rating'>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='fas fa-star'></i>
-                                    <i className='far fa-star'></i>
-                                  </div>
-
-                                  {/*  <AddToCard product={product} /> */}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </OwlCarousel>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

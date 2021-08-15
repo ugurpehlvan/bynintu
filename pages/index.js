@@ -15,7 +15,7 @@ import TrendingProducts from '../components/shop-style-two/TrendingProducts';
 import BestSeller from '../components/shop-style-two/BestSellers';
 import Facility from '../components/shop-style-two/Facility';
 import Testimonials from '../components/Common/Testimonials';
-import News from '../components/Common/News';
+// import News from '../components/Common/News';
 import Subscribe from '../components/Common/Subscribe';
 import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
@@ -61,7 +61,7 @@ const Index = ({ validateAccount }) => {
 
       <Testimonials />
 
-      <News />
+      {/* <News /> */}
 
       <Subscribe />
 

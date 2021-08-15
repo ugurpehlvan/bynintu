@@ -11,7 +11,7 @@ class Facility extends Component {
                 <div className='icon'>
                   <i className='fas fa-plane'></i>
                 </div>
-                <h3>Free Shipping World Wide</h3>
+                <h3>Shipping World Wide</h3>
               </div>
             </div>
 

@@ -17,61 +17,44 @@ const options = {
 
 class Testimonials extends Component {
 
-    state = { 
+    state = {
         display: false,
         panel: true
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     render() {
         return (
             <section className="testimonials-area ptb-60">
                 <div className="container">
-                    {this.state.display ? <OwlCarousel 
+                    {this.state.display ? <OwlCarousel
                         className="testimonials-slides owl-carousel owl-theme"
                         {...options}
                     >
                         <div className="single-testimonials">
                             <div className="client-image">
-                                <img src={require("../../images/client1.jpg")} alt="image" />
+                                {/* <img src={require("../../images/client1.jpg")} alt="image" /> */}
                             </div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
                             <div className="client-info">
-                                <h4>Jason Statham</h4>
-                                <span>Founder at Brand</span>
+                                <h4 style={{ fontSize: '28px' }}>What is Bynintu?</h4>
+                                {/* <span>Founder at Brand</span> */}
                             </div>
+                            <p style={{ fontSize: '21px' }}>Bynintu is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet.</p>
                         </div>
 
                         <div className="single-testimonials">
                             <div className="client-image">
-                                <img src={require("../../images/client2.jpg")} alt="image" />
                             </div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
                             <div className="client-info">
-                                <h4>Jason Jisan</h4>
-                                <span>Founder at Brand</span>
+                                <h4 style={{ fontSize: '28px' }}>Strong Support Team</h4>
                             </div>
+                            <p style={{ fontSize: '21px' }}>Your privacy is the highest priority of our dedicated team. And if you ever need assistance, we are always ready to step in for support.</p>
                         </div>
 
-                        <div className="single-testimonials">
-                            <div className="client-image">
-                                <img src={require("../../images/client3.jpg")} alt="image" />
-                            </div>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-
-                            <div className="client-info">
-                                <h4>Jason Shabbir</h4>
-                                <span>Founder at Brand</span>
-                            </div>
-                        </div>
                     </OwlCarousel> : ''}
                 </div>
             </section>
