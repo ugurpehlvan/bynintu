@@ -23,10 +23,9 @@ class ProductContent extends Component {
     }
 
     if (!this.state.qty) {
-      alert('Please select at least on quantity');
+      alert('Please select at least one quantity');
       return;
     }
-    console.log('addtocard');
     this.props.addToCard(this.props.product, this.state.qty, this.state.selectedWarehouse.warehouseId);
 
     // if (!localStorage.getItem('token')) {
@@ -96,7 +95,6 @@ class ProductContent extends Component {
   render() {
     const { sizeGuide, shipModal, selectedWarehouse } = this.state;
     const { product } = this.props;
-    console.log('product', product);
 
     const availableWareHouses = product?.warehouses?.filter?.((el) => el.quantity > 0);
 
