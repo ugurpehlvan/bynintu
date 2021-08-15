@@ -19,18 +19,18 @@ const options = {
 }
 
 class Banner extends Component {
-    state = { 
+    state = {
         display: false,
         panel: true
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
     render() {
         return (
             <>
-                {this.state.display ? <OwlCarousel 
+                {this.state.display ? <OwlCarousel
                     className="home-slides owl-carousel owl-theme"
                     {...options}
                 >
@@ -46,7 +46,7 @@ class Banner extends Component {
                                                         isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'
                                                     }
                                                 >
-                                                    New Inspiration 2020
+                                                    New Inspiration 2021
                                                 </span>
                                                 <h1
                                                     className={
@@ -62,26 +62,26 @@ class Banner extends Component {
                                                 >
                                                     Trending from men and women style collection
                                                 </p>
-                                                
-                                                <Link href="#">
-                                                    <a 
+
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-primary ${isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Women's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
 
-                                                <Link href="#">
-                                                    <a 
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-light ${isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Men's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
                                             </div>
                                         )}
                                     </VisibilitySensor>
@@ -102,7 +102,7 @@ class Banner extends Component {
                                                         isVisible ? "animated fadeInUp slow opacityOne" : 'opacityZero'
                                                     }
                                                 >
-                                                    New Inspiration 2020
+                                                    New Inspiration 2021
                                                 </span>
                                                 <h1
                                                     className={
@@ -118,26 +118,26 @@ class Banner extends Component {
                                                 >
                                                     Trending from men and women style collection
                                                 </p>
-                                                
-                                                <Link href="#">
-                                                    <a 
+
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-primary ${isVisible ? "animated fadeInUp slow opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Women's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
 
-                                                <Link href="#">
-                                                    <a 
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-light ${isVisible ? "animated fadeInUp slow opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Men's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
                                             </div>
                                         )}
                                     </VisibilitySensor>
@@ -158,7 +158,7 @@ class Banner extends Component {
                                                         isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'
                                                     }
                                                 >
-                                                    New Inspiration 2020
+                                                    New Inspiration 2021
                                                 </span>
                                                 <h1
                                                     className={
@@ -174,26 +174,26 @@ class Banner extends Component {
                                                 >
                                                     Trending from men and women style collection
                                                 </p>
-                                                
-                                                <Link href="#">
-                                                    <a 
+
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-primary ${isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Women's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
 
-                                                <Link href="#">
-                                                    <a 
+                                                {/* <Link href="#">
+                                                    <a
                                                         className={
                                                             `btn btn-light ${isVisible ? "animated fadeInUp opacityOne" : 'opacityZero'}`
                                                         }
                                                     >
                                                         Shop Men's
                                                     </a>
-                                                </Link>
+                                                </Link> */}
                                             </div>
                                         )}
                                     </VisibilitySensor>
