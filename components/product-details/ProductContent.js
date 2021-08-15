@@ -103,6 +103,7 @@ class ProductContent extends Component {
     if (availableWareHouses?.length === 1 && !selectedWarehouse) {
       this.setState({ selectedWarehouse: availableWareHouses[0] });
     }
+
     return (
       <>
         <div className='col-lg-6 col-md-6'>
@@ -147,7 +148,7 @@ class ProductContent extends Component {
                 <span>Availability:</span>{' '}
                 <Link href='#'>
                   <a>
-                    {product?.quantity ? 'In stock' : 'Out of stock'} ({`${selectedWarehouse?.quantity}`} items)
+                    {product?.quantity ? 'In stock' : 'Out of stock'} {selectedWarehouse?.quantity ? (`${selectedWarehouse?.quantity} items`) : ''}
                   </a>
                 </Link>
               </li>
