@@ -15,10 +15,10 @@ const Layout = ({ children }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta
           name='description'
-          content='Bynintu is a clean and modern purse React Next JS eCommerce template. This is built on React.js, Next.js, React-Redux, ES6+, Sass and Bootstrap 4.'
+          content="The Most Famous Brands, Sign Up with Big Discounts. Experience the Special Shopping Difference. Hurry, Don't Miss Opportunities. New season. Up to 80% Discounts. Free Shipping Deal. Secure shopping. Famous Fashion Brands. Big Discounts."
         />
-        <meta name='og:title' property='og:title' content='Bynintu - React Next eCommerce Templates'></meta>
-        <meta name='twitter:card' content='Bynintu - React Next eCommerce Templates'></meta>
+        <meta name='og:title' property='og:title' content='Bynintu'></meta>
+        <meta name='twitter:card' content='Bynintu'></meta>
       </Head>
 
       {children}

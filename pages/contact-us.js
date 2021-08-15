@@ -34,16 +34,16 @@ class Index extends Component {
 
                   <ul className='contact-list'>
                     <li>
-                      <i className='fas fa-map-marker-alt'></i> {translations[language]['g22']}: 2750 Quadra Street Victoria, Canada
+                      <i className='fas fa-map-marker-alt'></i> {translations[language]['g22']}: Kattenkruidweg 35 3541RT, Utrecht, Netherlands
                     </li>
                     <li>
-                      <i className='fas fa-phone'></i> {translations[language]['g23']}: <a href='#'>(+123) 456-7898</a>
+                      <i className='fas fa-phone'></i> {translations[language]['g23']}: <a href='#'>(+31) 639-339497</a>
                     </li>
                     <li>
-                      <i className='far fa-envelope'></i> {translations[language]['g24']}: <a href='#'>support@comero.com</a>
+                      <i className='far fa-envelope'></i> {translations[language]['g24']}: <a href="mailto:sales@bynintu.com">sales@bynintu.com</a>
                     </li>
                     <li>
-                      <i className='fas fa-fax'></i> {translations[language]['g25']}: <a href='#'>+123456</a>
+                      {/* <i className='fas fa-fax'></i> {translations[language]['g25']}: <a href='#'>+123456</a> */}
                     </li>
                   </ul>
 

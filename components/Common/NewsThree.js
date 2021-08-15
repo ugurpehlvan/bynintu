@@ -28,13 +28,13 @@ const options = {
 }
 
 class NewsThree extends Component {
-    state = { 
+    state = {
         display: false,
         panel: true
     };
 
-    componentDidMount(){ 
-        this.setState({ display: true }) 
+    componentDidMount(){
+        this.setState({ display: true })
     }
 
     render() {
@@ -45,7 +45,7 @@ class NewsThree extends Component {
                         <h2><span className="dot"></span> Bynintu News</h2>
                     </div>
 
-                    {this.state.display ? <OwlCarousel 
+                    {this.state.display ? <OwlCarousel
                         className="news-slides owl-carousel owl-theme"
                         {...options}
                     >

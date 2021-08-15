@@ -98,7 +98,7 @@ class Products extends Component {
                     </span>
                   </li>
 
-                  <li
+                  {/* <li
                     onClick={(e) => {
                       e.preventDefault();
                       this.openTabSection(e, 'tab2');
@@ -118,7 +118,7 @@ class Products extends Component {
                     <span className='tabs-nav-text'>
                       <span className='dot'></span> Featured Products
                     </span>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 

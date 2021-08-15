@@ -37,7 +37,7 @@ class Payments extends React.Component {
         <div className='order-btn'>
           <StripeCheckout
             name='Bynintu'
-            description='React Next eCommerce Templates'
+            description='Bynintu'
             amount={amount}
             currency='USD'
             token={onToken}

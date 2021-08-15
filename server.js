@@ -28,7 +28,7 @@ app.prepare().then(() => {
         await stripe.charges.create({
             amount: req.body.amount,
             currency: 'usd',
-            description: 'React Next eCommerce Templates',
+            description: 'Bynintu',
             source: req.body.token.id
         });
         res.send({})

@@ -25,19 +25,11 @@ class Index extends Component {
                 <div className='about-content'>
                   <h2>{translations[language]['g15']}</h2>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book.
+                    We were established in 2020 to provide our customers and vendors with a flawless e-commerce experience. Today, we are Netherlands's leading e-commerce company and one of the world's leading platforms.
                   </p>
 
                   <p>
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                  </p>
-
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book.
+                    By digitizing our tradesmen and SMEs, we reach more customers and grow their businesses. We support women's participation in the digital economy, domestic production and producers. Thus, we make a significant contribution to the growth of the country's economy and increase employment.
                   </p>
 
                   <div className='signature mb-0'>

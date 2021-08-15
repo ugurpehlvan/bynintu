@@ -17,9 +17,9 @@ class Footer extends Component {
                   </Link>
                 </div>
 
-                {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p> */}
-              </div>
-            </div>
+                                <p>The Most Famous Brands, Sign Up with Big Discounts. Experience the Special Shopping Difference. Hurry, Don't Miss Opportunities. New season. Up to 80% Discounts. Free Shipping Deal. Secure shopping. Famous Fashion Brands. Big Discounts.</p>
+                            </div>
+                        </div>
 
             <div className='col-lg-3 col-md-6'>
               <div className='single-footer-widget'>
@@ -83,28 +83,28 @@ class Footer extends Component {
               <div className='single-footer-widget'>
                 <h3>Contact Us</h3>
 
-                <ul className='footer-contact-info'>
-                  <li>
-                    <i className='fas fa-map-marker-alt'></i>
-                    Location: Kattenkruidweg 35 3541RT <br /> Utrecht, Netherlands
-                  </li>
-                  <li>
-                    <i className='fas fa-phone'></i>
-                    Call Us: <a href='tel:(+123) 456-7898'>(+123) 456-7898</a>
-                  </li>
-                  <li>
-                    <i className='far fa-envelope'></i>
-                    Email Us: <a href='mailto:support@Bynintu.com'>support@Bynintu.com</a>
-                  </li>
-                  <li>
-                    <i className='fas fa-fax'></i>
-                    Fax: <a href='tel:+123456'>+123456</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+                                <ul className="footer-contact-info">
+                                    <li>
+                                        <i className="fas fa-map-marker-alt"></i>
+                                        Location: Kattenkruidweg 35 3541RT <br /> Utrecht, Netherlands
+                                    </li>
+                                    <li>
+                                        <i className="fas fa-phone"></i>
+                                        Call Us: <a href="tel:(+31) 639-339497">(+31) 639-339497</a>
+                                    </li>
+                                    <li>
+                                        <i className="far fa-envelope"></i>
+                                        Email Us: <a href="mailto:sales@bynintu.com">sales@bynintu.com</a>
+                                    </li>
+                                    {/* <li>
+                                        <i className="fas fa-fax"></i>
+                                        Fax: <a href="tel:+123456">+123456</a>
+                                    </li> */}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         <div className='copyright-area'>
           <div className='container'>
