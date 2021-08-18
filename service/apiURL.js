@@ -25,6 +25,8 @@ const apiUrl = {
   stripeCheckoutIntent: '/api/api/v1/checkout/stripe/intent',
   stripeCheckoutSuccess: '/api/api/v1/checkout/stripe/success',
   homePageData: '/api/api/v1/dashboard',
+  listSearch: '/api/api/v1/product/listSearch',
+  staticProduct: '/api/api/v1/product',
 };
 
 export default apiUrl;
