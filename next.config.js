@@ -6,8 +6,8 @@ module.exports = {
       {
         source: '/api/:path*',
         // destination: 'http://localhost:8094/:path*',
-        destination: 'http://localhost:8072/:path*',
-        // destination: 'https://www.bynintu.com/:path*',
+        // destination: 'http://localhost:8072/:path*',
+        destination: 'https://www.bynintu.com/:path*',
       },
     ];
   },

@@ -1015,11 +1015,11 @@ class MegaMenuTwo extends Component {
                           </Link>
                         </li>
 
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                           <Link href='/404'>
                             <a className='nav-link'>Error 404</a>
                           </Link>
-                        </li>
+                        </li> */}
 
                         <li className='nav-item'>
                           <Link href='/contact-us'>
