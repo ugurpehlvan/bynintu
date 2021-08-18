@@ -31,7 +31,7 @@ import Facility from '../../components/shop-style-two/Facility';
 // };
 
 export async function getStaticPaths() {
-  const products = await axios.post('https://test.bynintu.com/api/v1/product/listSearch', {});
+  const products = await axios.post('https://www.bynintu.com/api/v1/product/listSearch', {});
 
   const paths = products?.data?.map((product) => ({
     params: { id: product?.id?.toString() },
@@ -44,9 +44,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   return {
     props: {
-      product: (await axios.get('https://test.bynintu.com/api/v1/product/' + params.id)).data,
+      product: (await axios.get('https://www.bynintu.com/api/v1/product/' + params.id)).data,
       relatedProducts: (
-        await axios.post('https://test.bynintu.com/api/v1/product/listSearch/', {
+        await axios.post('https://www.bynintu.com/api/v1/product/listSearch/', {
           filter: {
             page: {
               size: 10,
