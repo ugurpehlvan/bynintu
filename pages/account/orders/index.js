@@ -35,7 +35,7 @@ const MyOrders = () => {
         </div>
         <div>
           {/* <OrderCard order={{ id: 2212412, date: Date.now(), customerName: 'test metin', details: [{ quantity: 3 }] }} /> */}
-          {orders.map((el) => {
+          {orders?.map((el) => {
             return <OrderCard order={el} />;
           })}
         </div>

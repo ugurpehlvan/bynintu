@@ -16,7 +16,7 @@ const Content = ({ compare_products }) => {
         <div className='products-compare-table'>
           <div className='row'>
             {compare_products.length ? (
-              compare_products.map((product, idx) => (
+              compare_products?.map((product, idx) => (
                 <div className='col-lg-3 col-md-6 col-sm-6' key={idx}>
                   <RemoveCompare {...product} />
 
@@ -24,8 +24,8 @@ const Content = ({ compare_products }) => {
                     <div className='product-image'>
                       <Link href='#'>
                         <a>
-                          <img src={product.imageUrls[0].url} alt='image' />
-                          <img src={product.imageHover} alt='image' />
+                          <img src={product?.imageUrls[0].url} alt='image' />
+                          <img src={product?.imageHover} alt='image' />
                         </a>
                       </Link>
                     </div>

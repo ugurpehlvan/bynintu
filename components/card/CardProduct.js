@@ -38,13 +38,13 @@ class CardProduct extends Component {
     console.log('cardList', this.props.cardList);
     console.log('items', this.props.items);
     let cardList = this.props.cardList.length ? (
-      this.props.cardList.map((item, idx) => {
+      this.props?.cardList?.map((item, idx) => {
         return (
           <tr key={idx}>
             <td className='product-thumbnail'>
               <Link href='#'>
                 <a>
-                  <img src={item.imageUrl} alt='item' />
+                  <img src={item?.imageUrl} alt='item' />
                 </a>
               </Link>
             </td>

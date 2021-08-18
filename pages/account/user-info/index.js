@@ -208,7 +208,7 @@ const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile 
                       id='birthDay'
                       name='birthDay'
                     >
-                      {days.map((el) => (
+                      {days?.map((el) => (
                         <option className={styles.select_option} key={el} value={el}>
                           {el}
                         </option>
@@ -227,7 +227,7 @@ const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile 
                       id='birthMonth'
                       name='birthMonth'
                     >
-                      {months.map((el) => (
+                      {months?.map((el) => (
                         <option className={styles.select_option} key={el} value={el}>
                           {el}
                         </option>
@@ -246,7 +246,7 @@ const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile 
                       id='birthYear'
                       name='birthYear'
                     >
-                      {years.map((el) => (
+                      {years?.map((el) => (
                         <option className={styles.select_option} key={el} value={el}>
                           {el}
                         </option>

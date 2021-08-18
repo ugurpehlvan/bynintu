@@ -72,7 +72,7 @@ class RelatedProducts extends Component {
             <div className='row'>
               {this.state.display ? (
                 <OwlCarousel className='offer-slides owl-carousel owl-theme' {...options}>
-                  {products.map((product, idx) => (
+                  {products?.map((product, idx) => (
                     <div className='col-lg-12 col-md-12' key={idx}>
                       <div style={{ width: '198px' }} className='single-product-box'>
                         <div style={{ height: '300px', width: '198px', margin: 'auto' }} className='product-image'>

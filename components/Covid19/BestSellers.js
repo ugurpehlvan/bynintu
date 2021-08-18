@@ -59,14 +59,14 @@ class BestSeller extends Component {
           </div>
 
           <div className='row'>
-            {products.map((product, idx) => (
+            {products?.map((product, idx) => (
               <div className='col-lg-4 col-sm-6' key={idx}>
                 <div className='single-product-box single-product-two'>
                   <div className='product-image'>
-                    <Link href='/product/[id]' as={`/product/${product.id}`}>
+                    <Link href='/product/[id]' as={`/product/${product?.id}`}>
                       <a>
-                        <img src={product.image} alt='image' />
-                        <img src={product.imageHover} alt='image' />
+                        <img src={product?.image} alt='image' />
+                        <img src={product?.imageHover} alt='image' />
                       </a>
                     </Link>
 

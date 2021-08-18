@@ -158,7 +158,7 @@ const otherReducer = (state = initialState, action) => {
 
     let newTotal = state.total + product['tbl_product.sellPrice'];
     const cardList = state.cardList
-      .map((item) => {
+      ?.map((item) => {
         if (item.productId === product.productId) return { ...item, amount: type === 'dec' ? item.amount - 1 : item.amount + 1 };
         return item;
       })

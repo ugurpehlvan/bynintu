@@ -15,11 +15,11 @@ class OrderSummary extends Component {
           </thead>
 
           <tbody>
-            {this.props.items.map((item, idx) => (
+            {this.props?.items?.map((item, idx) => (
               <tr key={idx}>
                 <td className='product-name'>
                   <Link href='#'>
-                    <a>{item["tbl_product.title"]}</a>
+                    <a>{item['tbl_product.title']}</a>
                   </Link>
                 </td>
 

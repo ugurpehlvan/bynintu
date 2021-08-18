@@ -53,7 +53,7 @@ class Card extends Component {
 
               <div className='product-card-content'>
                 {items.length > 0
-                  ? items.map((item, idx) => (
+                  ? items?.map((item, idx) => (
                       <div className='product-card' key={idx}>
                         <div className='product-image'>
                           <img src={item.imageUrl} alt='image' />

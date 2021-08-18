@@ -52,7 +52,7 @@ class ProductsCard extends Component {
     const { modalOpen } = this.state;
     return (
       <>
-        {products.map((product, idx) => (
+        {products?.map((product, idx) => (
           <div className='col-lg-2 col-md-6 products-col-item' key={idx}>
             <div className='single-product-box'>
               <div className='product-image'>

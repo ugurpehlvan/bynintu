@@ -72,7 +72,7 @@ class TrendingProducts extends Component {
           <div className='row'>
             {this.state.display ? (
               <OwlCarousel className='trending-products-slides owl-carousel owl-theme' {...options}>
-                {products.map((product, idx) => (
+                {products?.map((product, idx) => (
                   <div className='col-lg-12 col-md-12' key={idx}>
                     <div className='single-product-box'>
                       <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
@@ -124,7 +124,9 @@ class TrendingProducts extends Component {
                         </h3>
 
                         <div className='product-price'>
-                          <span style={{ color: '#8d0000' }} className='new-price'>€{product?.sellPrice}</span>
+                          <span style={{ color: '#8d0000' }} className='new-price'>
+                            €{product?.sellPrice}
+                          </span>
                           <span style={{ marginLeft: '12px', textDecoration: 'line-through' }} className='new-price'>
                             € {product?.listPrice}
                           </span>

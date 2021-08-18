@@ -129,7 +129,7 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {latest.map((data, idx) => (
+                          {latest?.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
@@ -181,7 +181,9 @@ class Products extends Component {
                                   </h3>
 
                                   <div className='product-price'>
-                                    <span style={{ color: '#8d0000' }} className='new-price'>€{data.sellPrice}</span>
+                                    <span style={{ color: '#8d0000' }} className='new-price'>
+                                      €{data.sellPrice}
+                                    </span>
                                     <span style={{ marginLeft: '12px', textDecoration: 'line-through' }} className='new-price'>
                                       € {data?.listPrice}
                                     </span>
@@ -211,7 +213,7 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {special.map((data, idx) => (
+                          {special?.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
@@ -290,7 +292,7 @@ class Products extends Component {
                     <div className='row'>
                       {this.state.display ? (
                         <OwlCarousel className='all-products-slides owl-carousel owl-theme' {...options}>
-                          {featured.map((data, idx) => (
+                          {featured?.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
                                 <div className='product-image'>

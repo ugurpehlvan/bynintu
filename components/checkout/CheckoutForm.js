@@ -168,11 +168,11 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
                 <div className={`${styles.content} row`}>
                   {addresses?.map((address) => {
                     return (
-                      <div key={address.id} className='col-lg-4 col-sm-6'>
+                      <div key={address?.id} className='col-lg-4 col-sm-6'>
                         <div className={styles.address_actions}>
                           <div className={styles.radio}>
                             <input
-                              onClick={() => setSelectedAddress(address.id)}
+                              onClick={() => setSelectedAddress(address?.id)}
                               type='radio'
                               id='address'
                               name='address'

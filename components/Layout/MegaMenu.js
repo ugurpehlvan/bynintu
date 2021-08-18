@@ -248,7 +248,7 @@ class MegaMenu extends Component {
                               <div className='nav-item'>
                                 <div className='container'>
                                   <Masonry breakpointCols={7} className='my-masonry-grid' columnClassName='my-masonry-grid_column'>
-                                    {category?.subCategories.map((subCategory1) => {
+                                    {category?.subCategories?.map((subCategory1) => {
                                       return (
                                         <div>
                                           <h6 style={{ marginBottom: '10px' }} className='submenu-title'>
@@ -256,7 +256,7 @@ class MegaMenu extends Component {
                                           </h6>
 
                                           <ul className='megamenu-submenu'>
-                                            {subCategory1.subCategories.map((subCategory2, index) => {
+                                            {subCategory1?.subCategories?.map((subCategory2, index) => {
                                               return (
                                                 <li style={{ marginTop: '4px' }}>
                                                   <Link href='/category-without-sidebar-fullwidth'>

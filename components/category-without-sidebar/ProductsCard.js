@@ -27,14 +27,14 @@ class ProductsCard extends Component {
 
     return (
       <>
-        {products.map((product, idx) => (
+        {products?.map((product, idx) => (
           <div className='col-lg-3 col-md-6 products-col-item' key={idx}>
             <div className='single-product-box'>
               <div className='product-image'>
                 <Link href='/product/[id]' as={`/product/${product.id}`}>
                   <a>
-                    <img src={product.imageUrls[0].url} alt='image' />
-                    <img src={product.imageHover} alt='image' />
+                    <img src={product?.imageUrls[0].url} alt='image' />
+                    <img src={product?.imageHover} alt='image' />
                   </a>
                 </Link>
 
