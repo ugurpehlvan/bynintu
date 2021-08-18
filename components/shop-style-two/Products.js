@@ -78,6 +78,7 @@ class Products extends Component {
 
   render() {
     let { latest, special, featured } = this.props;
+
     const { modalOpen } = this.state;
     return (
       <section className='all-products-area pb-60'>
@@ -131,11 +132,11 @@ class Products extends Component {
                           {latest.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
-                                <div className='product-image'>
+                                <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
                                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                                     <a>
                                       <img src={data.imageUrl} alt='image' />
-                                      <img src={data.imageUrl} alt='image' />
+                                      <img style={{ top: '50%', transform: 'translateY(-50%)' }} src={data.imageUrl} alt='image' />
                                     </a>
                                   </Link>
 
@@ -180,7 +181,10 @@ class Products extends Component {
                                   </h3>
 
                                   <div className='product-price'>
-                                    <span className='new-price'>€{data.price}</span>
+                                    <span style={{ color: '#8d0000' }} className='new-price'>€{data.sellPrice}</span>
+                                    <span style={{ marginLeft: '12px', textDecoration: 'line-through' }} className='new-price'>
+                                      € {data?.listPrice}
+                                    </span>
                                   </div>
 
                                   <div className='rating'>
@@ -210,11 +214,11 @@ class Products extends Component {
                           {special.map((data, idx) => (
                             <div className='col-lg-12 col-md-12' key={idx}>
                               <div className='single-product-box'>
-                                <div className='product-image'>
+                                <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
                                   <Link href='/product/[id]' as={`/product/${data.id}`}>
                                     <a>
                                       <img src={data.imageUrl} alt='image' />
-                                      <img src={data.imageUrl} alt='image' />
+                                      <img style={{ top: '50%', transform: 'translateY(-50%)' }} src={data.imageUrl} alt='image' />
                                     </a>
                                   </Link>
 

@@ -75,11 +75,11 @@ class TrendingProducts extends Component {
                 {products.map((product, idx) => (
                   <div className='col-lg-12 col-md-12' key={idx}>
                     <div className='single-product-box'>
-                      <div className='product-image'>
+                      <div style={{ height: '452px', display: 'flex', alignItems: 'center' }} className='product-image'>
                         <Link href='/product/[id]' as={`/product/${product.id}`}>
                           <a>
                             <img src={product?.imageUrl} alt='image' />
-                            <img src={product?.imageUrl} alt='image' />
+                            <img style={{ top: '50%', transform: 'translateY(-50%)' }} src={product?.imageUrl} alt='image' />
                           </a>
                         </Link>
 
@@ -119,12 +119,15 @@ class TrendingProducts extends Component {
                       <div className='product-content'>
                         <h3 style={{ height: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           <Link href='/product/[id]' as={`/product/${product.id}`}>
-                            <a>{product.title}</a>
+                            <a>{product?.title}</a>
                           </Link>
                         </h3>
 
                         <div className='product-price'>
-                          <span className='new-price'>€{product.sellPrice}</span>
+                          <span style={{ color: '#8d0000' }} className='new-price'>€{product?.sellPrice}</span>
+                          <span style={{ marginLeft: '12px', textDecoration: 'line-through' }} className='new-price'>
+                            € {product?.listPrice}
+                          </span>
                         </div>
 
                         <div className='rating'>

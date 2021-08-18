@@ -23,10 +23,9 @@ class ProductContent extends Component {
     }
 
     if (!this.state.qty) {
-      alert('Please select at least on quantity');
+      alert('Please select at least one quantity');
       return;
     }
-    console.log('addtocard');
     this.props.addToCard(this.props.product, this.state.qty, this.state.selectedWarehouse.warehouseId);
 
     // if (!localStorage.getItem('token')) {
@@ -96,13 +95,13 @@ class ProductContent extends Component {
   render() {
     const { sizeGuide, shipModal, selectedWarehouse } = this.state;
     const { product } = this.props;
-    console.log('product', product);
 
     const availableWareHouses = product?.warehouses?.filter?.((el) => el.quantity > 0);
 
     if (availableWareHouses?.length === 1 && !selectedWarehouse) {
       this.setState({ selectedWarehouse: availableWareHouses[0] });
     }
+
     return (
       <>
         <div className='col-lg-6 col-md-6'>
@@ -147,7 +146,7 @@ class ProductContent extends Component {
                 <span>Availability:</span>{' '}
                 <Link href='#'>
                   <a>
-                    {product?.quantity ? 'In stock' : 'Out of stock'} ({`${selectedWarehouse?.quantity}`} items)
+                    {product?.quantity ? 'In stock' : 'Out of stock'} {selectedWarehouse?.quantity ? (`${selectedWarehouse?.quantity} items`) : ''}
                   </a>
                 </Link>
               </li>
