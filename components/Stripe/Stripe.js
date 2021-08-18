@@ -5,7 +5,7 @@ import Checkout from 'components/Stripe/Checkout';
 
 function Stripe({ total, address }) {
   const stripePromise = loadStripe(
-    'pk_test_51J2CNhJouClqQSpANjmafjoGyb7hkMyFNEhbjYsL3LD0hsHZRHJvmPI49hy8CRhZaJTYqhQT72LBRMVGdDhC7HYX00sE5zNN7J'
+    'pk_live_51J2CNhJouClqQSpAb3qpcaW0m3GQvk9pfXnHHG2y7ynwZ2JJmHHRw0uAF72I7vsr7MLpCKIsef1n20hks6ZDQVxC001Ik7Pwa3'
   );
 
   console.log('totaltotal', total);

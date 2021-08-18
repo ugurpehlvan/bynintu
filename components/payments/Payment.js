@@ -41,7 +41,7 @@ class Payments extends React.Component {
             amount={amount}
             currency='USD'
             token={onToken}
-            stripeKey='pk_test_ZaZZWZGlvdIn12yFleIqyjSI00G4e18Kf7'
+            stripeKey='pk_live_51J2CNhJouClqQSpAb3qpcaW0m3GQvk9pfXnHHG2y7ynwZ2JJmHHRw0uAF72I7vsr7MLpCKIsef1n20hks6ZDQVxC001Ik7Pwa3'
             billingAddress={false}
             closed={this.handleClick}
           >
