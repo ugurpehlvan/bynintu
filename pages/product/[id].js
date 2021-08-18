@@ -32,7 +32,7 @@ import { apiURL, axiosClient } from '../../service';
 // };
 
 export async function getStaticPaths() {
-  const products = await axiosClient.post(apiURL.listSearch, {});
+  const products = await axios.post('http://localhost:8072/api/v1/product/listSearch', {});
 
   const paths = products?.data?.map((product) => ({
     params: { id: product?.id?.toString() },
@@ -45,9 +45,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   return {
     props: {
-      product: (await axios.get(apiURL.staticProduct + params.id)).data,
+      product: (await axios.get('http://localhost:8072/api/v1/product/' + params.id)).data,
       relatedProducts: (
-        await axios.post(apiURL.listSearch, {
+        await axios.post('http://localhost:8072/api/v1/product/listSearch', {
           filter: {
             page: {
               size: 10,
