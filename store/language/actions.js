@@ -8,10 +8,12 @@ export const changeAppLanguage = (language) => async (dispatch, getState) => {
   const lang = JSON.parse(language);
   const { auth: customer } = getState();
 
-  const userId = customer.customer.id;
+  const userId = customer?.customer?.id;
 
   if (supportedLanguages.indexOf(lang.code.toLowerCase()) >= 0) {
-    const response = (await axiosClient.put(apiURL.updateLanguage, { id: userId, languageId: lang.id }, authHeader())).data;
+    if (userId) {
+      const response = (await axiosClient.put(apiURL.updateLanguage, { id: userId, languageId: lang.id }, authHeader())).data;
+    }
 
     dispatch({ type: CHANGE_APP_LANGUAGE, payload: lang });
     localStorage.setItem('appLanguage', lang.code.toLowerCase());
