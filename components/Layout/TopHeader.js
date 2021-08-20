@@ -56,7 +56,7 @@ class TopHeader extends Component {
 
               <div className='col-lg-5 col-md-6'>
                 <ul className='top-header-right-nav'>
-                  <li>
+                  {/* <li>
                     <Link href='#'>
                       <a
                         data-toggle='modal'
@@ -76,7 +76,7 @@ class TopHeader extends Component {
                         {translations[language]['g12']} <i className='fas fa-balance-scale'></i>
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <div className='languages-list'>
                       <select onChange={(e) => changeAppLanguage(e.target.value)}>
