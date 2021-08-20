@@ -283,13 +283,13 @@ class ProductContent extends Component {
                 <i className='fas fa-card-plus'></i> Add to Card
               </button>
 
-              <div style={{ marginLeft: '10px' }}>
+              {/* <div style={{ marginLeft: '10px' }}>
                 <Link href='#'>
                   <a className='btn btn-light'>
                     <i className='far fa-heart'></i> Add to Wishlist
                   </a>
                 </Link>
-              </div>
+              </div> */}
             </div>
 
             {/* <div className='buy-checkbox-btn'>
@@ -304,11 +304,11 @@ class ProductContent extends Component {
               <span>Guaranteed safe checkout:</span>
 
               <div className='payment-methods'>
-                <Link href='#'>
+                {/* <Link href='#'>
                   <a>
                     <img src={require('../../images/payment-image/1.svg')} alt='image' />
                   </a>
-                </Link>
+                </Link> */}
 
                 <Link href='#'>
                   <a>
@@ -322,7 +322,7 @@ class ProductContent extends Component {
                   </a>
                 </Link>
 
-                <Link href='#'>
+                {/* <Link href='#'>
                   <a>
                     <img src={require('../../images/payment-image/4.svg')} alt='image' />
                   </a>
@@ -344,7 +344,7 @@ class ProductContent extends Component {
                   <a>
                     <img src={require('../../images/payment-image/7.svg')} alt='image' />
                   </a>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

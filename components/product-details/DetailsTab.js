@@ -46,7 +46,7 @@ class DetailsTab extends Component {
                   </span>
                 </li>
 
-                <li
+                {/* <li
                   onClick={(e) => {
                     e.preventDefault();
                     this.openTabSection(e, 'tab2');
@@ -66,7 +66,7 @@ class DetailsTab extends Component {
                   <span className='tabs-nav-text'>
                     <div className='dot'></div> Shipping
                   </span>
-                </li>
+                </li> */}
 
                 {/* <li
                   onClick={(e) => {
@@ -79,7 +79,7 @@ class DetailsTab extends Component {
                   </span>
                 </li> */}
 
-                <li
+                {/* <li
                   onClick={(e) => {
                     e.preventDefault();
                     this.openTabSection(e, 'tab5');
@@ -88,7 +88,7 @@ class DetailsTab extends Component {
                   <span className='tabs-nav-text'>
                     <div className='dot'></div> Reviews
                   </span>
-                </li>
+                </li> */}
               </ul>
             </div>
 
