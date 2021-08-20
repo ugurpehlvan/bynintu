@@ -58,7 +58,7 @@ const Index = ({ validateAccount }) => {
 
       <Banner />
 
-      <OfferArea />
+      {/* <OfferArea /> */}
 
       <Products
         latest={homePageData.last}
@@ -67,7 +67,7 @@ const Index = ({ validateAccount }) => {
         // CompareProducts={addedItemsToCompare}
       />
 
-      <CategoryProducts />
+      {/* <CategoryProducts /> */}
 
       <TrendingProducts products={homePageData.trends} CompareProducts={addedItemsToCompare} />
 
