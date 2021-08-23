@@ -31,10 +31,17 @@ import { apiURL, axiosClient } from '../../service';
 //   };
 // };
 
-const prod = 'http://localhost:8072';
-const test = 'https://test.bynintu.com';
-
 export async function getStaticPaths() {
+  let prod = 'http://localhost:8072';
+
+  console.log('node env getStaticPaths', process.env.NODE_ENV);
+
+  if (process.env.NODE_ENV === 'production') {
+    prod = 'http://localhost:8072';
+  } else {
+    prod = 'https://test.bynintu.com';
+  }
+
   const products = await axios.post(prod + '/api/v1/product/listSearch', {});
 
   const paths = products?.data?.map((product) => ({
@@ -46,6 +53,15 @@ export async function getStaticPaths() {
 
 // params will contain the id for each generated page.
 export async function getStaticProps({ params }) {
+  let prod = 'http://localhost:8072';
+
+  console.log('node env getStaticProps', process.env.NODE_ENV);
+
+  if (process.env.NODE_ENV === 'production') {
+    prod = 'http://localhost:8072';
+  } else {
+    prod = 'https://test.bynintu.com';
+  }
   return {
     props: {
       product: (await axios.get(prod + '/api/v1/product/' + params.id)).data,
