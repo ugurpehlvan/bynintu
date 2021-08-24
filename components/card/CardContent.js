@@ -33,7 +33,7 @@ class CardContent extends Component {
   handleChecked = (e) => {
     if (e.target.checked) {
       this.props.addShipping();
-      toast.success('Added $6 into total', {
+      toast.success('Added €6 into total', {
         position: 'bottom-left',
         autoClose: 2000,
         hideProgressBar: false,
@@ -43,7 +43,7 @@ class CardContent extends Component {
       });
     } else {
       this.props.substractShipping();
-      toast.error('Removed $6 from total', {
+      toast.error('Removed €6 from total', {
         position: 'bottom-left',
         autoClose: 2000,
         hideProgressBar: false,
@@ -80,7 +80,7 @@ class CardContent extends Component {
                     <div className='col-lg-5 col-md-5 text-right'>
                       <label>
                         <input type='checkbox' ref='shipping' onChange={this.handleChecked} />
-                        <span>Shipping(+6$)</span>
+                        <span>Shipping(+6€)</span>
                       </label>
                     </div>
                   </div>

@@ -53,18 +53,18 @@ class LeftFilter extends Component {
     render() {
         let { currentSelection, collection, brand, size, price, color, popular } = this.state;
         return (
-            <div 
-                className="modal left fade productsFilterModal show" 
+            <div
+                className="modal left fade productsFilterModal show"
                 style={{
                     display: "block", paddingRight: "16px"
                 }}
             >
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                        <button 
-                            type="button" 
-                            className="close" 
-                            data-dismiss="modal" 
+                        <button
+                            type="button"
+                            className="close"
+                            data-dismiss="modal"
                             aria-label="Close"
                             onClick={this.closeLeftFilter}
                         >
@@ -76,7 +76,7 @@ class LeftFilter extends Component {
                         <div className="modal-body">
                             <div className="woocommerce-sidebar-area">
                                 <div className={`collapse-widget filter-list-widget ${currentSelection ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${currentSelection ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "currentSelection")}
                                     >
@@ -125,7 +125,7 @@ class LeftFilter extends Component {
                                 </div>
 
                                 <div className={`collapse-widget collections-list-widget ${collection ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${collection ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "collection")}
                                     >
@@ -169,7 +169,7 @@ class LeftFilter extends Component {
                                 </div>
 
                                 <div className={`collapse-widget brands-list-widget ${brand ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${brand ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "brand")}
                                     >
@@ -213,7 +213,7 @@ class LeftFilter extends Component {
                                 </div>
 
                                 <div className={`collapse-widget size-list-widget ${size ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${size ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "size")}
                                     >
@@ -277,7 +277,7 @@ class LeftFilter extends Component {
                                 </div>
 
                                 <div className={`collapse-widget price-list-widget ${price ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${price ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "price")}
                                     >
@@ -289,39 +289,39 @@ class LeftFilter extends Component {
                                     <ul className={`price-list-row ${price ? 'block' : 'none'}`}>
                                         <li>
                                             <Link href="#">
-                                                <a>$10 - $100</a>
+                                                <a>€10 - €100</a>
                                             </Link>
                                         </li>
                                         <li className="active">
                                             <Link href="#">
-                                                <a>$100 - $200</a>
+                                                <a>€100 - €200</a>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="#">
-                                                <a>$200 - $300</a>
+                                                <a>€200 - €300</a>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="#">
-                                                <a>$300 - $400</a>
+                                                <a>€300 - €400</a>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="#">
-                                                <a>$400 - $500</a>
+                                                <a>€400 - €500</a>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="#">
-                                                <a>$500 - $600</a>
+                                                <a>€500 - €600</a>
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
 
                                 <div className={`collapse-widget color-list-widget ${color ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${color ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "color")}
                                     >
@@ -400,7 +400,7 @@ class LeftFilter extends Component {
                                 </div>
 
                                 <div className={`collapse-widget tag-list-widget ${popular ? '' : 'open'}`}>
-                                    <h3 
+                                    <h3
                                         className={`collapse-widget-title ${popular ? '' : 'active'}`}
                                         onClick={e => this.handleToggle(e, "popular")}
                                     >
@@ -546,7 +546,7 @@ class LeftFilter extends Component {
                                             <h4>Top Trending</h4>
                                             <span>Spring/Summer 2018 Collection</span>
                                         </div>
-                                        
+
                                         <Link href="#"><a></a></Link>
                                     </div>
                                 </div>

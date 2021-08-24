@@ -44,7 +44,7 @@ class Wishlist extends Component {
                     <div className='product-price'>
                       <span>1</span>
                       <span>x</span>
-                      <span className='price'>$191.00</span>
+                      <span className='price'>€191.00</span>
                     </div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ class Wishlist extends Component {
                     <div className='product-price'>
                       <span>1</span>
                       <span>x</span>
-                      <span className='price'>$191.00</span>
+                      <span className='price'>€191.00</span>
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ class Wishlist extends Component {
                     <div className='product-price'>
                       <span>1</span>
                       <span>x</span>
-                      <span className='price'>$191.00</span>
+                      <span className='price'>€191.00</span>
                     </div>
                   </div>
                 </div>

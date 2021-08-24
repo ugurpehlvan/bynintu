@@ -51,9 +51,9 @@ class LeftSidebar extends Component {
         return (
             <div className={`col-lg-${this.props.col ? this.props.col : '4' } col-md-12`}>
                 <div className="woocommerce-sidebar-area">
-                    <div 
+                    <div
                         className={`collapse-widget filter-list-widget ${currentSelection ? '' : 'open'}`}>
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${currentSelection ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "currentSelection")}
                         >
@@ -101,10 +101,10 @@ class LeftSidebar extends Component {
                         </div>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget collections-list-widget ${collection ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${collection ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "collection")}
                         >
@@ -147,10 +147,10 @@ class LeftSidebar extends Component {
                         </ul>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget brands-list-widget ${brand ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${brand ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "brand")}
                         >
@@ -193,10 +193,10 @@ class LeftSidebar extends Component {
                         </ul>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget size-list-widget ${size ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${size ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "size")}
                         >
@@ -259,10 +259,10 @@ class LeftSidebar extends Component {
                         </ul>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget price-list-widget ${price ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${price ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "price")}
                         >
@@ -274,41 +274,41 @@ class LeftSidebar extends Component {
                         <ul className={`price-list-row ${price ? 'block' : 'none'}`}>
                             <li>
                                 <Link href="#">
-                                    <a>$10 - $100</a>
+                                    <a>€10 - €100</a>
                                 </Link>
                             </li>
                             <li className="active">
                                 <Link href="#">
-                                    <a>$100 - $200</a>
+                                    <a>€100 - €200</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <a>$200 - $300</a>
+                                    <a>€200 - €300</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <a>$300 - $400</a>
+                                    <a>€300 - €400</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <a>$400 - $500</a>
+                                    <a>€400 - €500</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <a>$500 - $600</a>
+                                    <a>€500 - €600</a>
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget color-list-widget ${color ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${color ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "color")}
                         >
@@ -386,10 +386,10 @@ class LeftSidebar extends Component {
                         </ul>
                     </div>
 
-                    <div 
+                    <div
                         className={`collapse-widget tag-list-widget ${popular ? '' : 'open'}`}
                     >
-                        <h3 
+                        <h3
                             className={`collapse-widget-title ${popular ? '' : 'active'}`}
                             onClick={e => this.handleToggle(e, "popular")}
                         >
@@ -464,8 +464,8 @@ class LeftSidebar extends Component {
                                 </h3>
 
                                 <div className="product-price">
-                                    <span className="new-price">$191.00</span>
-                                    <span className="old-price">$291.00</span>
+                                    <span className="new-price">€191.00</span>
+                                    <span className="old-price">€291.00</span>
                                 </div>
                             </div>
                         </div>
@@ -492,8 +492,8 @@ class LeftSidebar extends Component {
                                 </h3>
 
                                 <div className="product-price">
-                                    <span className="new-price">$191.00</span>
-                                    <span className="old-price">$291.00</span>
+                                    <span className="new-price">€191.00</span>
+                                    <span className="old-price">€291.00</span>
                                 </div>
                             </div>
                         </div>
@@ -520,8 +520,8 @@ class LeftSidebar extends Component {
                                 </h3>
 
                                 <div className="product-price">
-                                    <span className="new-price">$191.00</span>
-                                    <span className="old-price">$291.00</span>
+                                    <span className="new-price">€191.00</span>
+                                    <span className="old-price">€291.00</span>
                                 </div>
                             </div>
                         </div>
