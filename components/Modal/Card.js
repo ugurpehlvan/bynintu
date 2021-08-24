@@ -80,7 +80,7 @@ class Card extends Component {
               <div className='product-card-subtotal'>
                 <span>Subtotal</span>
 
-                <span className='subtotal'>${total}</span>
+                <span className='subtotal'>€{total}</span>
               </div>
 
               <div className='product-card-btn'>
