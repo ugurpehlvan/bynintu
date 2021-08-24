@@ -19,6 +19,7 @@ export const validateAccount = (token, route) => async (dispatch, getState) => {
   const response = (await axiosClient.post(apiURL.validateAccount, token)).data;
   if (response?.result === 'OK') {
     dispatch({ type: VALIDATE_SUCCESS, payload: response });
+    route('/login');
   } else {
     dispatch({ type: VALIDATE_ERROR, payload: response?.error });
     route('/signup');
