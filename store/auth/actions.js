@@ -72,23 +72,24 @@ export const resetPassword = (formValues) => async (dispatch) => {
   // }
 };
 
-export const updatePassword = (formValues) => async (dispatch) => {
+export const updatePassword = (formValues, notify) => async (dispatch) => {
   const response = (await axiosClient.put(apiURL.updatePassword, formValues, authHeader())).data;
 
-  // if (response.success) {
-  //     dispatch({ type: AUTH_SUCCESS, payload: response });
-
-  // } else {
-  //     dispatch({ type: AUTH_ERROR, payload: response?.error });
-  // }
+  if (!response.error) {
+    notify(true);
+  } else {
+    notify(false);
+  }
 };
 
-export const updateCustomerProfile = (payload) => async (dispatch) => {
+export const updateCustomerProfile = (payload, notify) => async (dispatch) => {
   const response = (await axiosClient.put(apiURL.customer, payload, authHeader())).data;
 
   if (!response.error) {
     dispatch({ type: AUTH_SUCCESS, payload: response });
+    notify(true);
   } else {
-    dispatch({ type: AUTH_SUCCESS_ERROR, payload: response?.error });
+    dispatch({ type: AUTH_ERROR, payload: response?.error });
+    notify(false);
   }
 };

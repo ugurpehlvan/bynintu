@@ -42,6 +42,12 @@ const PasswordUpdate = ({ updatePassword }) => {
       updatePassword({
         currentPassword,
         newPassword,
+      }, (res) => {
+        if (res) {
+          notify('success', 'Password successfully updated');
+        } else {
+          notify('error', 'Error');
+        }
       });
     },
     [currentPassword, newPassword]

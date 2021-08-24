@@ -11,6 +11,7 @@ import { updateCustomerProfile } from 'store/auth/actions';
 // styles
 import styles from './user-info.module.css';
 import { connect } from 'react-redux';
+import notify from 'utils/notify';
 
 const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile }) => {
   const [firstName, setFirstName] = useState('');
@@ -58,17 +59,24 @@ const UserInfo = ({ user, phoneCodes = [], getPhoneCodes, updateCustomerProfile 
     } else {
       gender = '';
     }
+    console.log({ user });
 
     updateCustomerProfile({
-      id: user.id,
+      id: user?.id,
       firstName: firstName,
       lastName: lastName,
-      email: user.email,
+      email: user?.email,
       nationalId: '',
       isCorporate: false,
       phone: `${phoneCode}/${phone}`,
       birthDate: `${birthYear}-${birthMonth}-${birthDay}`,
       gender: gender,
+    }, (res) => {
+      if (res) {
+        notify('success', 'Profile successfully updated');
+      } else {
+        notify('error', 'Error');
+      }
     });
   };
 
@@ -310,7 +318,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPhoneCodes: () => dispatch(getPhoneCodes()),
-    updateCustomerProfile: (payload) => dispatch(updateCustomerProfile(payload)),
+    updateCustomerProfile: (payload, notify) => dispatch(updateCustomerProfile(payload, notify)),
   };
 };
 
