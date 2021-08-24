@@ -286,7 +286,7 @@ const AddressDialog = ({
 
             <div style={{ flex: '1 1 0px' }}>
               <label>Zip Code *</label>
-              <input value={zipCode} type='number' onChange={handleChange} className='form-control' placeholder='Zip Code' name='zipCode' />
+              <input value={zipCode} onChange={handleChange} className='form-control' placeholder='Zip Code' name='zipCode' />
             </div>
           </div>
         </div>
