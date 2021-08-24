@@ -82,7 +82,7 @@ class BestSeller extends Component {
                           </a>
                         </Link>
 
-                        <ul>
+                        {/* <ul>
                           <li>
                             <Link href='#'>
                               <a
@@ -112,7 +112,7 @@ class BestSeller extends Component {
                               </a>
                             </Link>
                           </li>
-                        </ul>
+                        </ul> */}
                       </div>
 
                       <div className='product-content'>
