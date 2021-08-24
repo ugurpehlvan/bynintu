@@ -31,7 +31,7 @@ export const signUp = (formValues, router, notify) => async (dispatch) => {
   if (response.user) {
     dispatch({ type: AUTH_SUCCESS, payload: response.user });
     localStorage.setItem('token', response.token);
-    router('/login');
+    router('/');
     notify(true);
   } else {
     dispatch({ type: AUTH_ERROR, payload: response?.error });
