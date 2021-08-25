@@ -54,11 +54,14 @@ const MyApp = ({ Component, pageProps }) => {
   }); //eslint-disable-line
 
   useEffect(() => {
-    axios.post('https://test.bynintu.com/api/v1/country/ipToCountry').then((res) => {
-      console.log({ res });
-    }).catch(err => {
-      console.log({ err });
-    })
+    axios
+      .post('https://test.bynintu.com/api/v1/country/ipToCountry')
+      .then((res) => {
+        console.log({ res });
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
   }, []);
 
   return (
