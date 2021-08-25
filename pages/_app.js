@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 // import withRedux from 'next-redux-wrapper';
 
@@ -9,6 +10,7 @@ import { useRouter } from 'next/router';
 import Layout from '../components/_App/Layout';
 
 // redux
+import { getIP } from 'store/account/actions';
 import { getCustomer } from 'store/auth/actions';
 import { getLanguages } from 'store/language/actions';
 import { createDefaultCard, viewCardPage } from 'store/actions/actions';
@@ -51,6 +53,14 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }); //eslint-disable-line
 
+  useEffect(() => {
+    axios.post('https://test.bynintu.com/api/v1/country/ipToCountry').then((res) => {
+      console.log({ res });
+    }).catch(err => {
+      console.log({ err });
+    })
+  }, []);
+
   return (
     <>
       <ToastContainer />
@@ -64,3 +74,13 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 export default MyApp;
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     searchAddress: () => dispatch(searchAddress()),
+//     deleteAddress: (id, callback) => dispatch(deleteAddress(id, callback)),
+//     getAddress: (id) => dispatch(getAddress(id)),
+//   };
+// };
+
+// export default connect({}, mapDispatchToProps)(MyApp);
