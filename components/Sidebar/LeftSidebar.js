@@ -49,7 +49,7 @@ class LeftSidebar extends Component {
   render() {
     let { currentSelection, collection, brand, size, price, color, popular } = this.state;
     return (
-      <div className={`col-lg-${this.props.col ? this.props.col : '4'} col-md-12`}>
+      <div className={`col-lg-${this.props.col ? this.props.col : '3'} col-md-12`}>
         <div className='woocommerce-sidebar-area'>
           <div className={`collapse-widget filter-list-widget ${currentSelection ? '' : 'open'}`}>
             <h3

@@ -57,8 +57,12 @@ const hookClass = ({ searchedProducts, CompareProducts, searchedProductsTotalCou
           <div className='row'>
             <LeftSidebar />
 
-            <div className='col-lg-8 col-md-12'>
-              <ProductsFilterOptions products={searchedProducts} searchedProductsTotalCount={searchedProductsTotalCount} onClick={handleGrid} />
+            <div className='col-lg-9 col-md-12'>
+              <ProductsFilterOptions
+                products={searchedProducts}
+                searchedProductsTotalCount={searchedProductsTotalCount}
+                onClick={handleGrid}
+              />
 
               <div id='products-filter' className={`products-collections-listing row ${gridClass}`}>
                 <ProductsCard products={searchedProducts} CompareProducts={CompareProducts} />
