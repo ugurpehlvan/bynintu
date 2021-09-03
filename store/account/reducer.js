@@ -8,6 +8,11 @@ import {
   SEARCH_ADDRESSES,
   SEARCH_ADDRESSES_ERROR,
   RESET_ADDRESS,
+  SEARCH_IP_TO_COUNTRY,
+  SEARCH_IP_TO_COUNTRY_ERROR,
+  FETCH_CARGO_PRICE,
+  FETCH_CARGO_PRICE_ERROR,
+  UPDATE_IP_TO_COUNTRY
 } from './keys';
 
 const initialState = {
@@ -15,6 +20,8 @@ const initialState = {
   phoneCodes: [],
   addresses: [],
   address: null,
+  ipToCountry: null,
+  cargoPrice: null
 };
 
 const countryReducer = (state = initialState, action) => {
@@ -28,6 +35,37 @@ const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: [],
+      };
+    case SEARCH_IP_TO_COUNTRY:
+      return {
+        ...state,
+        ipToCountry: action.payload,
+    };
+    case SEARCH_IP_TO_COUNTRY_ERROR:
+      return {
+        ...state,
+        ipToCountry: null,
+      };
+    case FETCH_CARGO_PRICE:
+      return {
+        ...state,
+        cargoPrice: action.payload,
+    };
+    case   FETCH_CARGO_PRICE_ERROR:
+      return {
+        ...state,
+        cargoPrice: null,
+      };
+    case  UPDATE_IP_TO_COUNTRY:
+      const selectedCountryID = Number(action?.payload);
+      const selectedCountry = state?.ipToCountry?.countries.find(el => el.id === selectedCountryID);
+
+      return {
+        ...state,
+        ipToCountry: {
+          ...state.ipToCountry,
+          defaultCountry: selectedCountry
+        },
       };
     case FETCH_PHONE_CODES:
       return {

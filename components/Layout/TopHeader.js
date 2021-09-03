@@ -8,6 +8,8 @@ import { translations } from 'resources';
 
 // actions
 import { changeAppLanguage } from 'store/language/actions';
+import { changeAppCountry } from 'store/account/actions';
+
 class TopHeader extends Component {
   state = {
     display: false,
@@ -22,8 +24,8 @@ class TopHeader extends Component {
   };
 
   render() {
-    const { language, languages, changeAppLanguage } = this.props;
-    console.log('languages', languages);
+    const { language, languages, changeAppLanguage, changeAppCountry, ipToCountry } = this.props;
+
     return (
       <>
         <div className='top-header'>
@@ -92,6 +94,19 @@ class TopHeader extends Component {
                       </select>
                     </div>
                   </li>
+                  <li>
+                    <div className='languages-list'>
+                      <select onChange={(e) => changeAppCountry(e.target.value)} value={ipToCountry?.defaultCountry?.id} >
+                        {ipToCountry?.countries?.map((country) => {
+                          return (
+                            <option key={country.id} value={country.id}>
+                              {country.name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -104,11 +119,12 @@ class TopHeader extends Component {
   }
 }
 
-const mapStateToProps = ({ language }) => {
+const mapStateToProps = ({ language, ...state }) => {
   return {
     language: language.appLanguage,
     languages: language.languages,
+    ipToCountry: state.account.ipToCountry
   };
 };
 
-export default connect(mapStateToProps, { changeAppLanguage })(TopHeader);
+export default connect(mapStateToProps, { changeAppLanguage, changeAppCountry })(TopHeader);

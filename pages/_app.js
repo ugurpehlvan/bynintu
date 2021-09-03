@@ -10,7 +10,7 @@ import axios from 'axios';
 import Layout from '../components/_App/Layout';
 
 // redux
-import { getIP } from 'store/account/actions';
+import { searchIpToCountry } from 'store/account/actions';
 import { getCustomer } from 'store/auth/actions';
 import { getLanguages } from 'store/language/actions';
 import { createDefaultCard, viewCardPage } from 'store/actions/actions';
@@ -54,14 +54,7 @@ const MyApp = ({ Component, pageProps }) => {
   }); //eslint-disable-line
 
   useEffect(() => {
-    axios
-      .post('https://test.bynintu.com/api/v1/country/ipToCountry')
-      .then((res) => {
-        console.log({ res });
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    store.dispatch(searchIpToCountry());
   }, []);
 
   return (
@@ -77,13 +70,3 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 export default MyApp;
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     searchAddress: () => dispatch(searchAddress()),
-//     deleteAddress: (id, callback) => dispatch(deleteAddress(id, callback)),
-//     getAddress: (id) => dispatch(getAddress(id)),
-//   };
-// };
-
-// export default connect({}, mapDispatchToProps)(MyApp);

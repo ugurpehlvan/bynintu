@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { addToCard, addCardToDatabase } from '../../store/actions/actions';
+import { getCargoPrice } from '../../store/account/actions';
 import SizeGuide from './SizeGuide';
 import Shipping from './Shipping';
 
@@ -61,6 +62,18 @@ class ProductContent extends Component {
   };
 
   handleWarehouseClick = (warehouse) => {
+    let countryId = this.props?.ipToCountry?.defaultCountry?.id;
+      if (warehouse.quantity === 0) {
+        alert("There isn't any product in warehouse");
+        return;
+      }
+
+      this.props.getCargoPrice({
+        productId: warehouse?.productId,
+        warehouseId: warehouse?.id,
+        countryId
+      });
+
     this.setState({ selectedWarehouse: warehouse });
   };
 
@@ -94,12 +107,18 @@ class ProductContent extends Component {
 
   render() {
     const { sizeGuide, shipModal, selectedWarehouse } = this.state;
-    const { product } = this.props;
+    const { product, cargoPrice } = this.props;
 
     const availableWareHouses = product?.warehouses?.filter?.((el) => el.quantity > 0);
 
     if (availableWareHouses?.length === 1 && !selectedWarehouse) {
       this.setState({ selectedWarehouse: availableWareHouses[0] });
+    }
+
+    let cargoFee  = null;
+
+    if(cargoPrice && cargoPrice.length) {
+      cargoFee = "€ " + cargoPrice[0].price;
     }
 
     return (
@@ -132,7 +151,7 @@ class ProductContent extends Component {
             </div>
 
             <div className='ship-price'>
-              <span className='title'>Ship-price:</span> <span className='price'>€ 20</span>
+              <span className='title'>Ship-price:</span> <span className='price'>{cargoFee}</span>
             </div>
 
             <ul className='product-info'>
@@ -146,7 +165,7 @@ class ProductContent extends Component {
                 <span>Availability:</span>{' '}
                 <Link href='#'>
                   <a>
-                    {product?.quantity ? 'In stock' : 'Out of stock'} {selectedWarehouse?.quantity ? (`${selectedWarehouse?.quantity} items`) : ''}
+                    {selectedWarehouse?.quantity ? 'In stock' : 'Out of stock'} {selectedWarehouse?.quantity ? (`${selectedWarehouse?.quantity} items`) : ''}
                   </a>
                 </Link>
               </li>
@@ -217,7 +236,7 @@ class ProductContent extends Component {
             </div> */}
 
             <div className='warehouse-info-wrapper'>
-              <h4>Shipped from:</h4>
+              <h4>Shipped from: {this.props?.ipToCountry?.defaultCountry?.name}</h4>
               <ul>
                 {availableWareHouses?.map((warehouse) => {
                   return (
@@ -356,10 +375,20 @@ class ProductContent extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    ipToCountry: state.account.ipToCountry,
+    cargoPrice: state.account.cargoPrice
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCard: (product, qty, warehouseId) => {
       dispatch(addToCard(product, qty, warehouseId));
+    },
+    getCargoPrice: (data) => {
+      dispatch(getCargoPrice(data));
     },
     addCardToDatabase: (product, qty, warehouseId) => {
       dispatch(addCardToDatabase(product, qty, warehouseId));
@@ -367,4 +396,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ProductContent);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductContent);

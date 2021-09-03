@@ -10,6 +10,11 @@ import {
   CREATE_ADDRESS,
   CREATE_ADDRESS_ERROR,
   RESET_ADDRESS,
+  SEARCH_IP_TO_COUNTRY,
+  SEARCH_IP_TO_COUNTRY_ERROR,
+  FETCH_CARGO_PRICE,
+  FETCH_CARGO_PRICE_ERROR,
+  UPDATE_IP_TO_COUNTRY
 } from './keys';
 
 export const searchAddress = () => async (dispatch) => {
@@ -72,6 +77,30 @@ export const getPhoneCodes = () => async (dispatch) => {
   } else {
     dispatch({ type: FETCH_PHONE_CODES_ERROR, payload: response?.error });
   }
+};
+
+export const searchIpToCountry = () => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.ipToCountry, {})).data;
+
+  if (!response.error) {
+    dispatch({ type: SEARCH_IP_TO_COUNTRY, payload: response });
+  } else {
+    dispatch({ type: SEARCH_IP_TO_COUNTRY_ERROR, payload: response?.error });
+  }
+};
+
+export const getCargoPrice = (payload) => async (dispatch) => {
+  const response = (await axiosClient.post(apiURL.getCargoPrice, payload)).data;
+
+  if (!response.error) {
+    dispatch({ type: FETCH_CARGO_PRICE, payload: response });
+  } else {
+    dispatch({ type: FETCH_CARGO_PRICE_ERROR, payload: response?.error });
+  }
+};
+
+export const changeAppCountry = (payload) => async (dispatch) => {
+  dispatch({ type: UPDATE_IP_TO_COUNTRY, payload });
 };
 
 export const resetAddressState = () => async (dispatch) => {

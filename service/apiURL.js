@@ -27,6 +27,8 @@ const apiUrl = {
   homePageData: '/api/api/v1/dashboard',
   listSearch: '/api/api/v1/product/listSearch',
   staticProduct: '/api/api/v1/product',
+  ipToCountry: '/api/api/v1/country/ipToCountry',
+  getCargoPrice: '/api/api/v1/product/getCargoPrice',
 };
 
 export default apiUrl;
