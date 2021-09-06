@@ -70,7 +70,7 @@ class ProductContent extends Component {
 
       this.props.getCargoPrice({
         productId: warehouse?.productId,
-        warehouseId: warehouse?.id,
+        warehouseId: warehouse?.warehouseId,
         countryId
       });
 
@@ -106,7 +106,7 @@ class ProductContent extends Component {
   };
 
   render() {
-    const { sizeGuide, shipModal, selectedWarehouse } = this.state;
+    const { sizeGuide, shipModal, selectedWarehouse, qty } = this.state;
     const { product, cargoPrice } = this.props;
 
     const availableWareHouses = product?.warehouses?.filter?.((el) => el.quantity > 0);
@@ -119,6 +119,10 @@ class ProductContent extends Component {
 
     if(cargoPrice && cargoPrice.length) {
       cargoFee = "€ " + cargoPrice[0].price;
+    }
+
+    if (qty > 1) {
+      cargoFee = "€ " + (((qty - 1) * cargoPrice[0].additionalPrice) + cargoPrice[0].price);
     }
 
     return (
