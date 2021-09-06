@@ -680,6 +680,7 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item .dropdown-menu {
+  /* WE CAN HIDE MENU FROM HERE */
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   background: #ffffff;
@@ -691,10 +692,10 @@ Navbar Area CSS
   z-index: 99;
   display: none;
   opacity: 0;
-  /* visibility: hidden; */
+  visibility: hidden;
   border-radius: 0;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: opacity 700ms, visibility 700ms;
+  transition: opacity 700ms, visibility 700ms;
   padding-top: 20px;
   padding-left: 5px;
   padding-right: 5px;
@@ -815,10 +816,22 @@ Navbar Area CSS
 }
 
 .comero-nav .navbar .navbar-nav .nav-item:hover .dropdown-menu {
+  /* we can show menu from here */
   opacity: 1;
   display: block;
-  /* visibility: visible; */
+  visibility: visible;
   top: 100%;
+  animation: dropdownmenufadeIn 1s;
+}
+
+@keyframes dropdownmenufadeIn {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
 }
 
 .comero-nav .navbar .navbar-nav .nav-item:last-child .dropdown-menu {
