@@ -4,12 +4,17 @@ import Router from 'next/router';
 import { connect } from 'react-redux';
 import CardProduct from './CardProduct';
 import { ToastContainer, toast, Slide } from 'react-toastify';
+import { viewCardPage } from '../../store/actions/actions';
 
 class CardContent extends Component {
   // componentWillUnmount() {
   //     if(this.refs.shipping.checked)
   //         this.props.substractShipping()
   // }
+
+  componentDidMount() {
+    if (localStorage.getItem('token')) this.props.viewCardPage();
+  }
 
   handleCheckOutClick = (e) => {
     e.preventDefault();
@@ -64,7 +69,7 @@ class CardContent extends Component {
             <div className='col-lg-12 col-md-12'>
               <form>
                 <div className='card-table table-responsive'>
-                  <CardProduct />
+                  <CardProduct cardList={this.props.cardList} />
                 </div>
 
                 <div className='card-buttons'>
@@ -77,12 +82,6 @@ class CardContent extends Component {
                       </div>
                     </div>
 
-                    <div className='col-lg-5 col-md-5 text-right'>
-                      <label>
-                        <input type='checkbox' ref='shipping' onChange={this.handleChecked} />
-                        <span>Shipping(+6€)</span>
-                      </label>
-                    </div>
                   </div>
                 </div>
 
@@ -121,6 +120,7 @@ const mapStateToProps = (state) => {
   return {
     total: state.other.total,
     shipping: state.other.shipping,
+    cardList: state.other.cardList,
   };
 };
 
@@ -128,6 +128,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addShipping: () => {
       dispatch({ type: 'ADD_SHIPPING' });
+    },
+    viewCardPage: () => {
+      dispatch(viewCardPage());
     },
     substractShipping: () => {
       dispatch({ type: 'SUB_SHIPPING' });

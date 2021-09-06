@@ -84,6 +84,12 @@ export const searchIpToCountry = () => async (dispatch) => {
 
   if (!response.error) {
     dispatch({ type: SEARCH_IP_TO_COUNTRY, payload: response });
+
+    // save country to localstorage if any country selected
+    const countryId = localStorage.getItem('countryId');
+    if (!countryId) {
+      localStorage.setItem('countryId', response.defaultCountry.id);
+    }
   } else {
     dispatch({ type: SEARCH_IP_TO_COUNTRY_ERROR, payload: response?.error });
   }
@@ -101,6 +107,7 @@ export const getCargoPrice = (payload) => async (dispatch) => {
 
 export const changeAppCountry = (payload) => async (dispatch) => {
   dispatch({ type: UPDATE_IP_TO_COUNTRY, payload });
+  localStorage.setItem('countryId', payload);
 };
 
 export const resetAddressState = () => async (dispatch) => {

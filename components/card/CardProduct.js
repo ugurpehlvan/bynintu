@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { removeItem, updateQuantity, viewCardPage } from '../../store/actions/actions';
+import { removeItem, updateQuantity } from '../../store/actions/actions';
 import { toast } from 'react-toastify';
 
 class CardProduct extends Component {
-  componentDidMount() {
-    if (localStorage.getItem('token')) this.props.viewCardPage();
-  }
 
   handleRemove = (product) => {
     this.props.removeItem(product);
@@ -35,8 +32,6 @@ class CardProduct extends Component {
     // 2- login olunca sepete eklenmis urun varsa sepeti veri tabanina yaz temizle
     // 3- Sign in degilsen urunu local storage kaydet ve local storage daki datayla cardList i guncelle
 
-    console.log('cardList', this.props.cardList);
-    console.log('items', this.props.items);
     let cardList = this.props.cardList.length ? (
       this.props?.cardList?.map((item, idx) => {
         return (
@@ -139,7 +134,6 @@ class CardProduct extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cardList: state.other.cardList,
     total: state.other.total,
   };
 };
@@ -148,9 +142,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     removeItem: (product) => {
       dispatch(removeItem(product));
-    },
-    viewCardPage: () => {
-      dispatch(viewCardPage());
     },
     updateQuantity: (product) => {
       dispatch(updateQuantity(product));

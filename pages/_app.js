@@ -61,17 +61,16 @@ const MyApp = ({ Component, pageProps }) => {
   const storeState = store.getState();
 
   useEffect(() => {
-
+    // save language ID to localstorage
     const languageID = localStorage.getItem('appLanguageId');
 
     const languages = storeState?.language?.languages;
-    if (!languages.length) return;
-
     if (!languageID) {
       store.dispatch(changeAppLanguage(
         JSON.stringify({ id: 1, name: "English", code: "EN", isRightHanded: false })
-      ));
-    } else {
+        ));
+      } else {
+      if (!languages.length) return;
       const language = languages?.find(el => el.id == languageID);
       store.dispatch(changeAppLanguage(JSON.stringify(language)));
     }

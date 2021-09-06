@@ -7,7 +7,11 @@ const createAxiosClient = () => {
     validateStatus: () => true,
   });
   axiosClient.interceptors.request.use(config => {
-    config.headers.common['languageId'] = 1;
+    const countryId = localStorage.getItem('countryId');
+    const languageId = localStorage.getItem('appLanguageId');
+
+    config.headers.common['languageId'] = languageId;
+    config.headers.common['countryId'] = countryId;
     return config;
   });
 
