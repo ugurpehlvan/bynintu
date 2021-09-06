@@ -6,6 +6,11 @@ const createAxiosClient = () => {
     withCredentials: true,
     validateStatus: () => true,
   });
+  axiosClient.interceptors.request.use(config => {
+    config.headers.common['languageId'] = 1;
+    return config;
+  });
+
   axiosClient.interceptors.response.use(customResponse);
   return axiosClient;
 };

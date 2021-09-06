@@ -12,7 +12,7 @@ import Layout from '../components/_App/Layout';
 // redux
 import { searchIpToCountry } from 'store/account/actions';
 import { getCustomer } from 'store/auth/actions';
-import { getLanguages } from 'store/language/actions';
+import { changeAppLanguage, getLanguages } from 'store/language/actions';
 import { createDefaultCard, viewCardPage } from 'store/actions/actions';
 import { useStore } from '../store/reducers/reducers';
 
@@ -56,6 +56,26 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     store.dispatch(searchIpToCountry());
   }, []);
+
+  // get all languages
+  const storeState = store.getState();
+
+  useEffect(() => {
+
+    const languageID = localStorage.getItem('appLanguageId');
+
+    const languages = storeState?.language?.languages;
+    if (!languages.length) return;
+
+    if (!languageID) {
+      store.dispatch(changeAppLanguage(
+        JSON.stringify({ id: 1, name: "English", code: "EN", isRightHanded: false })
+      ));
+    } else {
+      const language = languages?.find(el => el.id == languageID);
+      store.dispatch(changeAppLanguage(JSON.stringify(language)));
+    }
+  }, [storeState]);
 
   return (
     <>

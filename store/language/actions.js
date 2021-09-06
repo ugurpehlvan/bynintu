@@ -17,6 +17,7 @@ export const changeAppLanguage = (language) => async (dispatch, getState) => {
 
     dispatch({ type: CHANGE_APP_LANGUAGE, payload: lang });
     localStorage.setItem('appLanguage', lang.code.toLowerCase());
+    localStorage.setItem('appLanguageId', lang.id);
     localStorage.setItem('languageSetted', true);
   }
 };
