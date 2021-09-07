@@ -15,11 +15,11 @@ import apiUrl from 'service/apiURL';
 function Checkout({ total, address, currency, items, viewCardPage, language }) {
   const [clientSecret, setClientSecret] = useState(null);
   const [error, setError] = useState(null);
-  const [metadata, setMetadata] = useState(null);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+
   const amount = total.toFixed(2) * 100;
 
   const stripeIntent = async () => {
@@ -143,7 +143,7 @@ function Checkout({ total, address, currency, items, viewCardPage, language }) {
 
 const mapStateToProps = (state) => {
   return {
-    total: state.other.total,
+    // total: state.other.total,
     items: state.other.cardList,
     shipping: state.other.shipping,
     addresses: state.account.addresses,

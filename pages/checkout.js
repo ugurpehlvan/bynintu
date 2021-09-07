@@ -38,7 +38,7 @@ const Index = ({ language, addLocalCardToDataBase }) => {
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       router.push('/');
-    } 
+    }
     // else if (localStorage.getItem('cardWithoutLogin')) {
     //   createCardItems();
     // }

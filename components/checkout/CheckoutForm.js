@@ -24,7 +24,7 @@ import authHeader from 'utils/authHeader';
 import { apiURL, axiosClient } from 'service';
 import Stripe from 'components/Stripe/Stripe';
 
-function CheckoutForm({ total, shipping, searchAddress, getAddress, address, addresses }) {
+function CheckoutForm({ total, items, searchAddress, getAddress, address, addresses }) {
   const [addressDialogVisible, setAddressDialogVisible] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [token, setToken] = useState('');
@@ -46,7 +46,14 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
     console.log('Form submitted.');
   }
 
-  let totalAmount = (total + shipping).toFixed(2);
+  let cargoPrice = 0;
+    if (items?.length) {
+      for (let el of items) {
+        cargoPrice += el?.shippingPrice;
+      }
+    }
+
+  let totalAmount = (total + cargoPrice).toFixed(2);
 
   const stateSchema = {
     firstName: { value: '', error: '' },
@@ -136,7 +143,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
     }
     if (!localStorage.getItem('token')) Router.push('/login');
   }, []);
-
+  console.log({ totalAmount });
   return (
     <section className='checkout-area ptb-60'>
       <div className='container'>
@@ -196,7 +203,7 @@ function CheckoutForm({ total, shipping, searchAddress, getAddress, address, add
 
                 <OrderSummary />
 
-                {selectedAddress && <Stripe total={total} address={selectedAddress} />}
+                {selectedAddress && <Stripe total={totalAmount} address={selectedAddress} />}
               </div>
             </div>
           </div>
@@ -211,7 +218,6 @@ const mapStateToProps = (state) => {
   return {
     items: state.other.cardList,
     total: state.other.total,
-    shipping: state.other.shipping,
     address: state.account.address,
     addresses: state.account.addresses,
   };

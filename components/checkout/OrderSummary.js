@@ -4,6 +4,13 @@ import Link from 'next/link';
 
 class OrderSummary extends Component {
   render() {
+
+    let cargoPrice = 0;
+    if (this.props.items.length) {
+      for (let el of this.props.items) {
+        cargoPrice += el.shippingPrice;
+      }
+    }
     return (
       <div className='order-table table-responsive'>
         <table className='table table-bordered'>
@@ -45,7 +52,7 @@ class OrderSummary extends Component {
               </td>
 
               <td className='shipping-price'>
-                <span>€{this.props.shipping}</span>
+                <span>€{cargoPrice}</span>
               </td>
             </tr>
 
@@ -55,7 +62,7 @@ class OrderSummary extends Component {
               </td>
 
               <td className='product-subtotal'>
-                <span className='subtotal-amount'>€{this.props.total + this.props.shipping}</span>
+                <span className='subtotal-amount'>€{this.props.total + cargoPrice}</span>
               </td>
             </tr>
           </tbody>
