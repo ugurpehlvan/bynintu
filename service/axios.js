@@ -10,8 +10,8 @@ const createAxiosClient = () => {
     const countryId = localStorage.getItem('countryId');
     const languageId = localStorage.getItem('appLanguageId');
 
-    config.headers.common['languageId'] = languageId;
-    config.headers.common['countryId'] = countryId;
+    config.headers.common['languageid'] = languageId;
+    config.headers.common['countryid'] = countryId;
     return config;
   });
 

@@ -13,7 +13,15 @@ import { changeAppCountry } from 'store/account/actions';
 class TopHeader extends Component {
   state = {
     display: false,
+    countryId: null
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const countryId = localStorage.getItem('countryId');
+    if (prevState.countryId !== countryId) {
+      this.setState({ countryId });
+    }
+  }
 
   handleWishlist = () => {
     this.setState((prevState) => {
@@ -25,6 +33,7 @@ class TopHeader extends Component {
 
   render() {
     const { language, languages, changeAppLanguage, changeAppCountry, ipToCountry } = this.props;
+    const { countryId } = this.state;
 
     return (
       <>
@@ -96,7 +105,7 @@ class TopHeader extends Component {
                   </li>
                   <li>
                     <div className='languages-list'>
-                      <select onChange={(e) => changeAppCountry(e.target.value)} value={ipToCountry?.defaultCountry?.id} >
+                      <select onChange={(e) => changeAppCountry(e.target.value)} value={countryId} >
                         {ipToCountry?.countries?.map((country) => {
                           return (
                             <option key={country.id} value={country.id}>

@@ -60,6 +60,13 @@ class CardContent extends Component {
   };
 
   render() {
+    let cargoPrice = 0;
+    if (this.props.cardList.length) {
+      for (let el of this.props.cardList) {
+        cargoPrice += el.shippingPrice;
+      }
+    }
+
     return (
       <section className='card-area ptb-60'>
         <ToastContainer transition={Slide} />
@@ -93,12 +100,12 @@ class CardContent extends Component {
                       Subtotal <span>€{this.props.total}</span>
                     </li>
                     <li>
-                      Shipping <span>€{this.props.shipping}</span>
+                      Shipping <span>€ {cargoPrice}</span>
                     </li>
                     <li>
                       Total{' '}
                       <span>
-                        <b>€{this.props.total + this.props.shipping}</b>
+                        <b>€{this.props.total + cargoPrice}</b>
                       </span>
                     </li>
                   </ul>
